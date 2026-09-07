@@ -66,12 +66,57 @@
             --text-xs: 0.8rem;    /* 輔助說明 */
             --text-tiny: 0.72rem; /* 極小標籤 */
 
+            /* --- Section Spacing Scale (區塊垂直間距) --- */
+            --space-section-md: 100px;  /* 較緊湊的區塊，如三大事業群、認證 */
+            --space-section-lg: 140px;  /* 標準區塊，如 ESG、聯絡我們 */
+            --space-section-xl: 160px;  /* 最大區塊，如首頁 About、最新消息 */
 
             --font-display: 'Cormorant Garamond', serif;
             --font-serif: 'Noto Serif TC', serif;
             --font-sans: 'Montserrat', 'Noto Sans TC', sans-serif;
 
             --ease-poetic: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        /* ===== 字級 RWD 縮放 (Typography Responsive Scale) =====
+           :root 內每一個 --text-* 變數在此依斷點統一縮小，全站所有引用
+           var(--text-*) 的地方會自動跟著變小，不需要在個別 class 裡另外
+           覆寫 font-size（符合 typography.md 規範 §3）。 */
+        @media (max-width: 1024px) {
+            :root {
+                --text-giga: 9rem;
+                --text-mega: 6.5rem;
+                --text-hero: 4.4rem;
+                --text-4xl: 3rem;
+                --text-3xl: 2.6rem;
+                --text-2xl: 1.9rem;
+                --text-xl: 1.6rem;
+                --text-lg: 1.2rem;
+
+                --space-section-md: 70px;
+                --space-section-lg: 90px;
+                --space-section-xl: 100px;
+            }
+        }
+        @media (max-width: 640px) {
+            :root {
+                --text-giga: 5.5rem;
+                --text-mega: 4.2rem;
+                --text-hero: 3rem;
+                --text-4xl: 2.4rem;
+                --text-3xl: 2rem;
+                --text-2xl: 1.6rem;
+                --text-xl: 1.4rem;
+                --text-lg: 1.1rem;
+                --text-base: 0.95rem;
+                --text-sm: 0.86rem;
+                --text-xs: 0.78rem;
+                --text-tiny: 0.7rem;
+
+                --space-section-md: 56px;
+                --space-section-lg: 70px;
+                --space-section-xl: 80px;
+            }
         }
 
         * {
@@ -84,6 +129,8 @@
             scroll-behavior: smooth;
             font-size: var(--text-base);
             background-color: var(--c-white);
+            overflow-x: hidden;
+            max-width: 100%;
         }
 
         body {
@@ -186,8 +233,14 @@
         }
 
         .blanz-section {
-            padding: 160px 0;
+            padding: var(--space-section-xl) 0;
             position: relative;
+        }
+        @media (max-width: 1024px) {
+            .blanz-container { padding: 0 32px; }
+        }
+        @media (max-width: 640px) {
+            .blanz-container { padding: 0 22px; }
         }
 
         /* 頂部極簡固定導覽 */
@@ -304,6 +357,144 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        /* 手機版導覽：Logo 圖片切換（桌機用純文字版，手機用完整組合版） */
+        .logo-mobile { display: none; }
+
+        /* 手機版漢堡選單按鈕 */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 6px;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            z-index: 1200;
+        }
+        .nav-hamburger span {
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--c-ink);
+            transition: transform 0.4s var(--ease-poetic), opacity 0.3s ease, width 0.3s ease;
+        }
+        body.nav-open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); width: 24px; }
+        body.nav-open .nav-hamburger span:nth-child(2) { opacity: 0; }
+        body.nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); width: 24px; }
+
+        /* 手機版全螢幕選單面板 */
+        .nav-mobile-panel {
+            position: fixed;
+            top: var(--header-h, 74px);
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(252, 252, 250, 0.98);
+            backdrop-filter: blur(16px);
+            z-index: 999;
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-16px);
+            transition: opacity 0.4s var(--ease-poetic), transform 0.4s var(--ease-poetic), visibility 0.4s;
+            padding: 8px 28px 60px;
+        }
+        body.nav-open .nav-mobile-panel {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        body.nav-open {
+            overflow: hidden;
+        }
+        .nav-mobile-group {
+            border-bottom: 1px solid var(--c-line);
+        }
+        .nav-mobile-group-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 22px 2px;
+            font-family: var(--font-sans);
+            font-size: var(--text-sm);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--c-ink);
+            cursor: pointer;
+        }
+        .nav-mobile-group-head i {
+            width: 16px;
+            height: 16px;
+            color: var(--c-muted);
+            transition: transform 0.4s var(--ease-poetic);
+        }
+        .nav-mobile-group.is-open .nav-mobile-group-head i {
+            transform: rotate(180deg);
+        }
+        .nav-mobile-sub {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.4s var(--ease-poetic);
+        }
+        .nav-mobile-group.is-open .nav-mobile-sub {
+            grid-template-rows: 1fr;
+        }
+        .nav-mobile-sub-inner {
+            overflow: hidden;
+        }
+        .nav-mobile-sub a {
+            display: block;
+            padding: 12px 4px 12px 18px;
+            font-size: var(--text-xs);
+            letter-spacing: 0.1em;
+            color: var(--c-muted);
+            text-decoration: none;
+        }
+        .nav-mobile-sub a:hover, .nav-mobile-sub a:active {
+            color: var(--c-subtitle-blue);
+        }
+        .nav-mobile-lang {
+            display: flex;
+            gap: 28px;
+            padding: 26px 2px 0;
+        }
+        .nav-mobile-lang a {
+            font-size: var(--text-xs);
+            letter-spacing: 0.15em;
+            color: var(--c-muted);
+            text-decoration: none;
+        }
+        @media (max-width: 1024px) {
+            .nav-left-area .nav-split-menu,
+            .nav-right-area .nav-split-menu,
+            .nav-center-icon {
+                display: none;
+            }
+            .nav-hamburger { display: flex; }
+            .nav-left-area { padding-right: 0; }
+            .nav-right-area { padding-left: 0; justify-content: flex-end; flex: 0 0 auto; }
+            .blanz-nav-inner {
+                display: flex;
+                grid-template-columns: none;
+                justify-content: space-between;
+                align-items: center;
+                padding: 14px 24px;
+            }
+            .logo-desktop { display: none; }
+            .logo-mobile { display: block; }
+        }
+        @media (max-width: 640px) {
+            .blanz-nav-inner { padding: 12px 20px; }
+            .nav-mobile-panel { padding: 4px 22px 50px; }
         }
 
         /* 頂部詩意標題區塊 */
@@ -532,8 +723,14 @@
         @media (max-width: 1024px) {
             .hero-big-title { font-size: var(--text-hero); }
             .hero-big-subtitle { font-size: var(--text-sm); }
-            .hero-bottom-area { flex-direction: column; align-items: flex-start; gap: 40px; }
-            .hero-slide-nav { align-items: flex-start; padding-left: 20px; width: 100%; }
+            .hero-bottom-area { flex-direction: column; align-items: flex-start; gap: 40px; width: 100%; min-width: 0; }
+            /* 手機版改直式堆疊：大標題不再絕對定位釘死在底部，
+               改成跟導覽選單一起在 flex 排版中正常排列，避免兩者疊在一起。
+               flex 子項目預設 min-width:auto 會依內容(SEAWORTH 這種不斷字單詞)撐開寬度，
+               這裡強制歸零，避免橫向溢出整頁。 */
+            .hero-big-title-group { position: static; max-width: 100%; min-width: 0; }
+            .hero-big-title { min-width: 0; overflow-wrap: break-word; word-break: break-word; }
+            .hero-slide-nav { align-items: flex-start; padding-left: 20px; width: 100%; min-width: 0; }
             .slide-nav-item { width: 100%; max-width: 320px; }
         }
         @media (max-width: 640px) {
@@ -746,7 +943,7 @@
 
         /* 區塊 7：CONTACT US (極簡詩意登記處) */
         .contact-poetic-section {
-            padding: 140px 0;
+            padding: var(--space-section-lg) 0;
             background: var(--c-white);
         }
         .contact-poetic-header {
@@ -1031,6 +1228,8 @@
             }
             .dark-sectors-intro {
                 flex: none;
+                white-space: normal;
+                max-width: 100%;
             }
             .esg-stagger-layout, .rotunda-layout-grid, .contact-poetic-grid {
                 grid-template-columns: 1fr;
@@ -1059,13 +1258,15 @@
             .dark-sectors-row {
                 flex-direction: column;
             }
-            .dark-sectors-row.row-1 .dark-card,
-            .dark-sectors-row.row-2 .dark-card {
-                height: 280px;
-            }
             .dark-sectors-row .dark-card-plain {
                 display: none;
             }
+            /* .dark-card 的高度/濾鏡/遮罩背景實際覆寫移到本檔案後面
+               「.dark-card 基礎樣式」區塊之後（見 .dark-card-caption 附近），
+               因為這裡（本區塊在原始碼中位置較早）跟後面同選擇器、同屬性、
+               同優先權的基礎樣式相比，會被後面的基礎樣式蓋掉——即使這裡包在
+               手機版 media query 裡，CSS 優先權平手時仍是「原始碼順序在後者
+               勝出」，跟有沒有 media query 無關。 */
             .about-hero-banner {
                 margin-left: 0;
                 height: 260px;
@@ -1082,7 +1283,7 @@
         }
         /* 區塊 7：PROJECTS & FLEET (4 欄大圓角垂直船隊與港灣展示卡) */
         .section-projects {
-            padding: 160px 0 140px 0;
+            padding: var(--space-section-xl) 0 calc(var(--space-section-xl) - 20px) 0;
             background: var(--c-canvas);
         }
         .projects-header-top {
@@ -1173,7 +1374,7 @@
         /* ----- 三事業 版型實驗 B CSS (深色背景) ----- */
         .dark-sectors-section {
             background-color: var(--c-white);
-            padding: 140px 0;
+            padding: var(--space-section-lg) 0;
         }
         .dark-sectors-layout {
             display: flex;
@@ -1290,18 +1491,46 @@
         .dark-card:hover .dark-card-link::after {
             width: 0%;
         }
+        @media (max-width: 640px) {
+            /* 手機版卡片變窄變高、文字換行變多，原本設計是給桌機版寬扁卡片用的
+               漸層遮罩蓋不到整段文字，尤其碰到照片裡較亮的區域（天空、淺色衣服）
+               就看不清楚；卡片原高度也裝不下「E/S/G 大字＋標題＋段落＋連結」，
+               最上面的大寫字母會被 .dark-card 的 overflow:hidden 切掉。
+               這裡放在 .dark-card 基礎樣式「之後」，確保 CSS 優先權平手時
+               手機版覆寫真的會贏過前面的基礎樣式（不能放在檔案較前面的
+               mobile media query 區塊，那樣會被這裡的基礎樣式蓋掉）。 */
+            /* .dark-card-lg/-md 桌機版用 flex:3.5/1 分配「橫向」寬度比例，
+               但手機版 row 已改直式（flex-direction:column），flex 簡寫預設
+               的 flex-basis:0% 這時會去搶「垂直」尺寸的計算權，導致下面設的
+               height 完全被忽略。這裡要連 flex 一起歸零，height 才吃得到。
+               row-2 的 :first-child/:last-child 版本優先權比這裡單純的
+               class 選擇器高，要另外明確蓋掉才會生效。 */
+            .dark-sectors-row.row-1 .dark-card,
+            .dark-sectors-row.row-2 .dark-card,
+            .dark-sectors-row.row-2 .dark-card-md:first-child,
+            .dark-sectors-row.row-2 .dark-card-md:last-child {
+                flex: 0 0 auto;
+                height: 420px;
+            }
+            .dark-card img {
+                filter: brightness(0.4);
+            }
+            .dark-card-caption {
+                background: linear-gradient(0deg, rgba(0,0,0,0.94) 0%, rgba(0,0,0,0.8) 45%, rgba(0,0,0,0.35) 85%, rgba(0,0,0,0.15) 100%);
+            }
+        }
 
         /* ----- 三事業 CSS ----- */
         .section-container {
             max-width: 1240px;
             margin: 0 auto;
-            padding: 100px 32px 80px;
+            padding: var(--space-section-md) 32px calc(var(--space-section-md) - 20px);
         }
         #about {
             padding-bottom: 50px;
         }
         #three-sectors {
-            padding-top: 100px;
+            padding-top: var(--space-section-md);
         }
         .staggered-layout {
             display: flex;
@@ -1597,20 +1826,58 @@
             .header-block {
                 padding-right: 0;
             }
-            .overlay-panel, .card-bottom-left .overlay-panel {
-                width: 88%;
-                bottom: -28px;
-                right: 0;
-                left: auto;
-            }
             .cta-container {
                 margin-top: 70px;
             }
+            /* 三大事業群手機版：Group 2/3 原本是船圖與文字並排（flex-shrink:0
+               固定寬度 360px），窄螢幕一定爆版；Group 1 的標題/面板則是絕對定位
+               疊在船圖上。手機版統一改成上下堆疊，避免互相重疊或橫向溢出。 */
+            .staggered-layout { gap: 64px; }
+            /* 氛圍波浪線＋浮動點是用 yRel 百分比相對「整個三大事業群區塊」的
+               高度去定位，桌機版該區塊較矮，線條可以穩穩貼在最上緣/最下緣。
+               手機版三組改成上下堆疊後，整個區塊變得非常高，「最下緣附近」
+               這個相對位置就會落在第三組（華昇）卡片內容中間，而不是真的
+               貼在整個區塊的下緣，導致線條穿過文字看起來很亂。這條裝飾線
+               沒有精準對齊個別卡片的機制，手機版直接隱藏比較乾淨。 */
+            .staggered-lineart { display: none; }
+            .sector-group,
+            .group-1, .group-2, .group-3 {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 28px;
+                margin-top: 0;
+            }
+            .group-1 .header-block {
+                position: static;
+                width: 100%;
+            }
+            .group-1 .ship-img,
+            .group-2 .ship-img,
+            .group-3 .ship-img {
+                width: 100%;
+                max-width: 100%;
+                margin-left: 0;
+                margin-top: 0;
+            }
+            .group-1 .overlay-panel,
+            .group-2 .overlay-panel,
+            .group-3 .overlay-panel,
+            .overlay-panel {
+                position: static;
+                width: 100%;
+                max-width: 100%;
+                flex-shrink: 1;
+                margin: 0;
+            }
+            /* Group 2 的 DOM 順序是「文字面板 → 船圖」，手機版統一要求先船後文案，
+               用 order 調整視覺順序，不用動 HTML 結構 */
+            .group-2 .ship-img { order: 1; }
+            .group-2 .overlay-panel { order: 2; }
         }
         /* ===== 國際合規認證 & 全球網絡 (Certifications & Global Presence) ===== */
         .certs-section {
             background-color: var(--c-white);
-            padding: 100px 0;
+            padding: var(--space-section-md) 0;
             position: relative;
         }
         .certs-section::before {
@@ -2000,7 +2267,6 @@
         }
         @media (max-width: 640px) {
             .flagship-photo { width: 200px; }
-            .flagship-num { font-size: 4rem; }
         }
         /* Custom Cursor */
         body, a, button, input, textarea, select, .swiper-button-next, .swiper-button-prev {
@@ -2069,7 +2335,8 @@
             <!-- 左側：Logo 文字與 3 個選項 -->
             <div class="nav-left-area">
                 <a href="#top" style="display: flex; align-items: center; height: 100%;">
-                    <img src="assets/logo-text.png" alt="SEAWORTH HOLDING" style="height:32px; width:auto;">
+                    <img src="assets/logo-text.png" alt="SEAWORTH HOLDING" class="logo-desktop" style="height:32px; width:auto;">
+                    <img src="assets/logo-header-2.png" alt="SEAWORTH HOLDING" class="logo-mobile" style="height:34px; width:auto;">
                 </a>
                 <ul class="nav-split-menu">
                     <li class="has-dropdown">
@@ -2157,9 +2424,68 @@
                         </div>
                     </li>
                 </ul>
+                <button type="button" class="nav-hamburger" id="navHamburger" aria-label="開啟選單" aria-expanded="false" aria-controls="navMobilePanel">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </nav>
     </header>
+
+    <!-- 手機版全螢幕選單面板 -->
+    <div class="nav-mobile-panel" id="navMobilePanel">
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">集團總覽 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="about.html">關於海沃</a>
+                <a href="business-map.html">事業版圖</a>
+                <a href="tech-integration.html">技術整合能力</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">公司治理 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="governance-structure.html">公司治理架構</a>
+                <a href="risk-management.html">風險管理政策</a>
+                <a href="internal-audit.html">內部稽核與內控制度</a>
+                <a href="integrity.html">誠信經營守則</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">共善經營 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="environment.html">環境保護</a>
+                <a href="social-responsibility.html">社會責任</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">投資人專區 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="investment-highlights.html">投資亮點</a>
+                <a href="strategy.html">策略布局</a>
+                <a href="shareholder-info.html">股東訊息</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">最新消息 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="announcements.html">官方公告</a>
+                <a href="corporate-news.html">企業動態</a>
+                <a href="sustainability-practice.html">永續實踐</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">聯繫海沃 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="locations.html">營運據點</a>
+                <a href="contact-us.html">聯絡我們</a>
+                <a href="careers.html">人才招募</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-lang">
+            <a href="#">繁體中文</a>
+            <a href="#">English</a>
+        </div>
+    </div>
     <script>
         (function() {
             const header = document.querySelector('.blanz-header');
@@ -2169,6 +2495,44 @@
             }
             setHeaderHeight();
             window.addEventListener('resize', setHeaderHeight);
+        })();
+    </script>
+    <!-- 手機版漢堡選單邏輯 -->
+    <script>
+        (function() {
+            const hamburger = document.getElementById('navHamburger');
+            const panel = document.getElementById('navMobilePanel');
+            if (!hamburger || !panel) return;
+
+            function closeMenu() {
+                document.body.classList.remove('nav-open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
+            function toggleMenu() {
+                const isOpen = document.body.classList.toggle('nav-open');
+                hamburger.setAttribute('aria-expanded', String(isOpen));
+            }
+
+            hamburger.addEventListener('click', toggleMenu);
+
+            panel.querySelectorAll('.nav-mobile-group-head').forEach(head => {
+                head.addEventListener('click', () => {
+                    head.closest('.nav-mobile-group').classList.toggle('is-open');
+                });
+            });
+
+            panel.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', closeMenu);
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeMenu();
+            });
+
+            // 螢幕放大回桌機版時，確保選單面板與漢堡狀態重置乾淨
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 1024) closeMenu();
+            });
         })();
     </script>
 
