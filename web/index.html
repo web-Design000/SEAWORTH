@@ -3873,11 +3873,32 @@
                     ctx.arc(dotX, dotY, 4, 0, Math.PI * 2);
                     ctx.fill();
                 }
-                
-                requestAnimationFrame(draw);
+
+                if (isAnimating) {
+                    rafId = requestAnimationFrame(draw);
+                }
             }
-            
-            draw();
+
+            // 只在這個裝飾區塊實際進入畫面時才跑動畫，滾走就暫停，
+            // 避免 requestAnimationFrame 在背景無限空轉、白白耗電。
+            // 手機版這個 canvas 本身是 display:none（見 CSS），沒有版面盒，
+            // IntersectionObserver 永遠回報「不在畫面內」，動畫自然不會啟動。
+            let isAnimating = false;
+            let rafId = null;
+            const lineartObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (!isAnimating) {
+                            isAnimating = true;
+                            draw();
+                        }
+                    } else {
+                        isAnimating = false;
+                        if (rafId) cancelAnimationFrame(rafId);
+                    }
+                });
+            }, { threshold: 0 });
+            lineartObserver.observe(canvas);
         });
     </script>
 </body>
