@@ -1,0 +1,2704 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於海沃｜集團總覽｜SEAWORTH HOLDING</title>
+    <meta name="description" content="海沃控股集團成立於 2026 年，整合遠洋漁業上下游資源，旗下擘劃華偉、巨寶、華昇三大事業群，建構完整的全球海洋產業鏈。">
+    
+    <!-- Google Fonts: 頂級豪宅與藝廊詩意字體 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&family=Noto+Serif+TC:wght@200;300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- JSON-LD 結構化資料 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Corporation",
+      "name": "海沃控股集團",
+      "alternateName": "SEAWORTH HOLDING",
+      "url": "https://www.seaworth.com",
+      "logo": "https://www.seaworth.com/assets/logo-seaworth.svg",
+      "description": "整合智慧造船、遠洋漁撈、冷鏈物流與國際貿易，建構全流程可追溯的全球永續海洋產業體系。",
+      "foundingDate": "2026",
+      "headquarters": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Kaohsiung",
+          "addressCountry": "TW"
+        }
+      },
+      "knowsAbout": ["智慧遠洋漁撈", "海上超低溫冷鏈", "智慧造船", "MSC海洋認證", "ESG共善治理"]
+    }
+    </script>
+
+    <style>
+        :root {
+            /* 頂級豪宅 THE BLANZ 色系：純白留白、沉靜海洋深藍、金銅光澤與沉香灰 */
+            --c-white: #FFFFFF;
+            --c-canvas: #FCFCFA;
+            --c-subtle: #F6F6F4;
+            --c-charcoal: #1E2229;
+            --c-ink: #0E1217;
+            --c-muted: #646C7A; /* 加深原本的 #848B96，提升閱讀清晰度 */
+            --c-copper: var(--c-subtitle-blue);  /* 詩意點綴色，統一改為海沃富蘊藍 */
+            --c-copper-light: #B2C8CE;
+            --c-subtitle-blue: #00495B;  /* 海沃富蘊藍 */
+            --c-ocean-deep: #162B40;     /* 藝術深海藍 */
+            --c-line: rgba(0, 0, 0, 0.08);
+
+            /* --- Typography Scale --- */
+            --text-giga: 14rem;   /* 極大裝飾字 */
+            --text-mega: 10rem;   /* 背景裝飾字 */
+            --text-hero: 6rem;    /* Hero 區塊大標題 */
+            --text-4xl: 3.8rem;   /* 最大標題 */
+            --text-3xl: 3.2rem;   /* H2 區塊標題 */
+            --text-2xl: 2.2rem;   /* H3 副標題 */
+            --text-xl: 1.8rem;    /* H4 小標題 */
+            --text-lg: 1.35rem;   /* 卡片標題 */
+            --text-base: 1rem;    /* 預設內文 (16px) */
+            --text-sm: 0.9rem;    /* 小內文 */
+            --text-xs: 0.8rem;    /* 輔助說明 */
+            --text-tiny: 0.72rem; /* 極小標籤 */
+
+
+            --font-display: 'Cormorant Garamond', serif;
+            --font-serif: 'Noto Serif TC', serif;
+            --font-sans: 'Montserrat', 'Noto Sans TC', sans-serif;
+
+            --ease-poetic: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: var(--text-base);
+            background-color: var(--c-white);
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--c-charcoal);
+            background-color: var(--c-white);
+            line-height: 2.1;
+            letter-spacing: 0.04em;
+            font-weight: 300;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 標題與詩意字體 */
+        h1, h2, h3, h4, .serif {
+            font-family: var(--font-serif);
+            font-weight: 300;
+            color: var(--c-ink);
+            letter-spacing: 0.08em;
+        }
+
+        .en-poetic-lead {
+            font-family: var(--font-display);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            font-size: var(--text-sm);
+            color: var(--c-muted);
+            display: block;
+            margin-bottom: 2px; /* 從 12px 縮短以拉近兩行文字的間距 */
+        }
+
+        .en-poetic-title {
+            font-family: var(--font-display);
+            font-size: var(--text-3xl);
+            line-height: 1.1;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--c-ink);
+            font-weight: 400;
+        }
+
+        .en-poetic-title em {
+            color: var(--c-copper);
+            font-style: normal;
+        }
+
+        /* 全站 Loading 效果 */
+        .site-loader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: var(--c-canvas);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: opacity 0.9s var(--ease-poetic), visibility 0.9s var(--ease-poetic);
+        }
+        .site-loader.is-hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .site-loader-mark {
+            width: 40px;
+            height: auto;
+            opacity: 0;
+            animation: loader-mark-in 1s var(--ease-poetic) 0.1s forwards;
+        }
+        .site-loader-line {
+            width: 0;
+            height: 1px;
+            background: var(--c-ink);
+            animation: loader-line-pulse 2.2s ease-in-out 0.3s infinite;
+        }
+        .site-loader-text {
+            font-family: var(--font-display);
+            font-size: var(--text-tiny);
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--c-subtitle-blue);
+            opacity: 0;
+            animation: loader-mark-in 1s var(--ease-poetic) 0.3s forwards;
+        }
+        @keyframes loader-mark-in {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes loader-line-pulse {
+            0%, 100% { width: 0; opacity: 0; }
+            50% { width: 64px; opacity: 0.55; }
+        }
+
+        /* 版面容器與格線 */
+        .blanz-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+
+        .blanz-section {
+            padding: 160px 0;
+            position: relative;
+        }
+
+        /* 頂部極簡固定導覽 */
+        header.blanz-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--c-line);
+            transition: all 0.4s var(--ease-poetic);
+            animation: hero-fade-down 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        .blanz-nav-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 12px 60px; /* 縮減上下 padding，讓導覽列變矮 */
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+        }
+        
+        .nav-left-area {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-right: 40px;
+        }
+        
+        .nav-right-area {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-left: 40px;
+        }
+
+        .nav-split-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-split-menu a {
+            text-decoration: none;
+            color: var(--c-charcoal);
+            font-size: var(--text-sm);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+        .nav-split-menu a:hover {
+            color: var(--c-copper);
+        }
+
+        /* 導覽下拉選單（仿 dropdown-demo-advanced.html 提案 D：無界延展，改為淺色玻璃質感） */
+        .has-dropdown {
+            position: relative;
+        }
+        /* 下拉選單背景寬度滿版貼齊導覽列下方，內容置中 */
+        .nav-dropdown {
+            position: fixed;
+            top: var(--header-h, 74px);
+            left: 0;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(16px);
+            box-shadow: 0 24px 50px rgba(14, 18, 23, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s var(--ease-poetic), opacity 0.4s ease, visibility 0.5s;
+            z-index: 100;
+        }
+        .has-dropdown:hover .nav-dropdown {
+            opacity: 1;
+            visibility: visible;
+            max-height: 420px;
+        }
+        .nav-dropdown-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            padding: 24px 22px;
+        }
+        .nav-dropdown a {
+            font-family: var(--font-sans);
+            font-size: var(--text-sm);
+            letter-spacing: 0.18em;
+            color: var(--c-charcoal);
+            text-decoration: none;
+            text-align: center;
+            white-space: nowrap;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+        /* 一個連結被 hover 時，其他連結一起淡下去，形成群組明暗對比 */
+        .nav-dropdown-inner:hover a {
+            color: rgba(30, 34, 41, 0.35);
+        }
+        .nav-dropdown a:hover {
+            color: var(--c-subtitle-blue);
+        }
+
+        .nav-center-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 頂部詩意標題區塊 */
+        .hero-intro-section {
+            background-color: var(--c-white);
+            padding-top: 90px; /* 縮減高度，原本 120px */
+        }
+        .hero-poetic-header {
+            text-align: center;
+            padding: 10px 0 20px 0; /* 縮減高度，原本 20px 0 40px 0 */
+            animation: hero-fade-down 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+        }
+
+        /* 區塊 1：HERO BANNER (全景大洋與幻燈片導覽) */
+        .blanz-hero {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 190px); /* 更精確地扣除上方白色區塊高度 */
+            min-height: 500px; /* 安全最小高度 */
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 20px; 
+            z-index: 1;
+        }
+        .hero-bg-wrapper {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            animation: hero-bg-reveal 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+        }
+        @keyframes hero-bg-reveal {
+            from { transform: scale(1.08); }
+            to { transform: scale(1); }
+        }
+        .hero-bg-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.85);
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            transform: scale(1.02);
+            z-index: 1;
+        }
+        /* 放大動畫跟 4 秒自動切換同步：原尺寸 → 放大 → 收回原尺寸，收回後才切換下一張，
+           轉場那一刻永遠剛好落在 1.02 基準值，跟 WebGL shader 的補償係數對齊，不會跳動 */
+        @keyframes hero-zoom-cycle {
+            0% { transform: scale(1.02); }
+            65% { transform: scale(1.06); }
+            100% { transform: scale(1.02); }
+        }
+        .hero-bg-img.active {
+            animation-name: hero-zoom-cycle;
+            animation-timing-function: ease-in-out;
+            /* 實際秒數由 JS 動態帶入（= 自動切換間隔 - 轉場時間），確保收回原尺寸的時機剛好對齊下一次轉場 */
+            opacity: 1;
+            z-index: 2;
+        }
+        .hero-morph-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .hero-morph-canvas.active {
+            opacity: 1;
+        }
+        .hero-bg-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%);
+            z-index: 3;
+        }
+        .hero-content-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-top: 40px; /* 取消 140px，因為上方已經沒有 fixed header 擋住影像了 */
+            padding-left: 40px; 
+            padding-right: 40px;
+            z-index: 2;
+        }
+        
+        /* 幻燈片圓點 */
+        .hero-slide-dots {
+            align-self: flex-end;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 40px;
+            padding-right: 20px;
+            animation: hero-fade-in 1s ease 0.9s both;
+        }
+        .hero-slide-dots .dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .hero-slide-dots .dot.active, .hero-slide-dots .dot:hover {
+            background-color: #FFFFFF;
+            transform: scale(1.5);
+        }
+
+        /* 底部區域 */
+        .hero-bottom-area {
+            display: flex;
+            justify-content: flex-end; /* 讓導覽靠右 */
+            align-items: flex-end;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        /* 巨大英文標題 (緊貼最左下角) */
+        .hero-big-title-group {
+            position: absolute;
+            left: 0; /* 緊貼 content-wrapper 的左側 */
+            bottom: 0; /* 貼齊 bottom-area 底部 */
+            display: flex;
+            align-items: baseline;
+            gap: 24px;
+            z-index: 5;
+        }
+        .hero-big-title {
+            font-family: var(--font-display);
+            font-size: var(--text-mega);
+            color: #FFFFFF;
+            font-weight: 300;
+            line-height: 0.75;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            text-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            margin: 0;
+            padding-bottom: 10px; /* 留一點點避免被裁切 */
+            animation: hero-title-up 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+        }
+        .hero-big-subtitle {
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.9);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            position: relative;
+            top: -16px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            white-space: nowrap;
+            animation: hero-sub-slide 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+        }
+
+        /* 右側導覽選單 */
+        .hero-slide-nav {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0px;
+            position: relative;
+        }
+        .slide-nav-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: var(--text-xs);
+            letter-spacing: 0.15em;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            width: 260px;
+            text-transform: uppercase;
+            animation: hero-nav-slide 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        .hero-slide-nav .slide-nav-item:nth-child(1) { animation-delay: 0.45s; }
+        .hero-slide-nav .slide-nav-item:nth-child(2) { animation-delay: 0.6s; }
+        .hero-slide-nav .slide-nav-item:nth-child(3) { animation-delay: 0.75s; }
+        .hero-slide-nav .slide-nav-item:nth-child(4) { animation-delay: 0.9s; }
+
+        @keyframes hero-fade-down {
+            from { opacity: 0; transform: translateY(-24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes hero-title-up {
+            from { opacity: 0; transform: translateY(60px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes hero-sub-slide {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes hero-nav-slide {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes hero-fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .slide-nav-item:hover, .slide-nav-item.active-nav {
+            color: #FFFFFF;
+            border-bottom-color: #FFFFFF;
+            padding-right: 10px;
+        }
+        .slide-nav-item .nav-icon {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .slide-nav-item:hover .nav-icon, .slide-nav-item.active-nav .nav-icon {
+            opacity: 1;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-big-title { font-size: var(--text-hero); }
+            .hero-big-subtitle { font-size: var(--text-sm); }
+            .hero-bottom-area { flex-direction: column; align-items: flex-start; gap: 40px; }
+            .hero-slide-nav { align-items: flex-start; padding-left: 20px; width: 100%; }
+            .slide-nav-item { width: 100%; max-width: 320px; }
+        }
+        @media (max-width: 640px) {
+            .hero-big-title { font-size: var(--text-3xl); }
+            .hero-big-subtitle { font-size: var(--text-tiny); top: 0; display: block; margin-top: 8px; }
+            .hero-big-title-group { flex-direction: column; gap: 0; }
+        }
+
+        /* 區塊 2：ABOUT GROUP (文字疊圖歪斜錯位版面) */
+        .about-hero-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 60px;
+            position: relative;
+            z-index: 2;
+            margin-bottom: -70px;
+        }
+        .about-hero-title {
+            font-family: var(--font-display);
+            font-size: var(--text-3xl);
+            line-height: 1.2;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--c-ink);
+            font-weight: 400;
+            margin: 0;
+            transform: translateY(-90px);
+            will-change: transform;
+        }
+        .about-hero-title .accent-line {
+            color: var(--c-subtitle-blue);
+            font-family: var(--font-serif);
+            font-size: var(--text-lg);
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            display: block;
+            margin-top: 16px;
+        }
+        .about-hero-desc {
+            max-width: 620px;
+            padding-top: 14px;
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .about-hero-desc p {
+            font-size: var(--text-xs);
+            color: var(--c-muted);
+            line-height: 1.9;
+        }
+        .about-hero-banner {
+            position: relative;
+            z-index: 1;
+            margin-left: 18%;
+            height: 440px;
+            overflow: hidden;
+        }
+        .about-hero-banner img {
+            width: 100%;
+            height: 140%; /* 預留更多高度給視差滾動，效果更明顯 */
+            object-fit: cover;
+            display: block;
+            will-change: transform;
+            transform: translateY(-30%); /* 初始預設防閃爍 */
+        }
+
+        /* 區塊 3：THE BLANZ POETIC ARCHITECTURE (三大事業群) */
+        .poetic-quote-wrap {
+            margin-bottom: 80px;
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+        }
+        .poetic-mark-line {
+            width: 2px;
+            height: 48px;
+            background: var(--c-ink);
+        }
+        .poetic-quote-desc {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            width: 100%;
+            align-items: baseline;
+        }
+
+        /* 區塊 4：KEY NUMBERS & PANORAMIC CITYSCAPE (日夜雙重景觀橫幅) */
+        /* 區塊 5：ESG & SUSTAINABILITY (錯位海天疊加排版) */
+        .esg-stagger-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 90px;
+            align-items: center;
+        }
+        .esg-dual-img-stack {
+            position: relative;
+            padding-bottom: 70px;
+        }
+        .esg-img-main {
+            width: 90%;
+            height: 380px;
+            overflow: hidden;
+        }
+        .esg-img-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .esg-img-overlap {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 65%;
+            height: 220px;
+            overflow: hidden;
+            border: 8px solid var(--c-white);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+        }
+        .esg-img-overlap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .esg-editorial-right {
+            padding-left: 20px;
+        }
+        .esg-pillar-item {
+            margin-bottom: 36px;
+            position: relative;
+            padding-left: 28px;
+            border-left: 1px solid var(--c-line);
+            transition: border-color 0.3s ease;
+        }
+        .esg-pillar-item:hover {
+            border-left-color: var(--c-copper);
+        }
+        .esg-pillar-title {
+            font-size: var(--text-lg);
+            color: var(--c-ink);
+            margin-bottom: 6px;
+            font-weight: 400;
+        }
+        .esg-pillar-en {
+            font-family: var(--font-display);
+            font-size: var(--text-tiny);
+            letter-spacing: 0.22em;
+            color: var(--c-copper);
+            margin-bottom: 12px;
+            display: block;
+        }
+        .esg-pillar-text {
+            font-size: var(--text-sm);
+            color: var(--c-muted);
+            line-height: 1.9;
+        }
+
+        /* 區塊 6：POETIC CLASS & CERTIFICATIONS (圓形天光意象 + 4 欄垂直藝廊) */
+        .rotunda-cert-section {
+            background-color: var(--c-canvas);
+            border-top: 1px solid var(--c-line);
+            border-bottom: 1px solid var(--c-line);
+            padding: 160px 0;
+        }
+        .rotunda-layout-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 90px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+        .rotunda-circle-frame {
+            width: 100%;
+            height: 480px;
+            overflow: hidden;
+            background: #EAE6DF;
+        }
+        .rotunda-circle-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(110%);
+        }
+        .rotunda-right-text {
+            padding-right: 40px;
+        }
+
+        /* 4 欄垂直藝廊切片 (4-Columns Artwork Grid) */
+        .art-slices-4-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+        .art-slice-box {
+            height: 380px;
+            overflow: hidden;
+            background: #F0EDE8;
+        }
+        .art-slice-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(10%) brightness(0.96);
+            transition: transform 10s ease;
+        }
+        .art-slice-box:hover img {
+            transform: scale(1.06);
+        }
+
+        /* 區塊 7：CONTACT US (極簡詩意登記處) */
+        .contact-poetic-section {
+            padding: 140px 0;
+            background: var(--c-white);
+        }
+        .contact-poetic-header {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 100px;
+        }
+        .contact-poetic-title {
+            font-family: var(--font-display);
+            font-size: var(--text-3xl);
+            line-height: 1.1;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--c-ink);
+            font-weight: 400;
+        }
+        .contact-poetic-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 90px;
+            align-items: start;
+            max-width: 1040px;
+            margin: 0 auto;
+        }
+        .contact-poetic-info p {
+            font-size: 0.96rem;
+            color: var(--c-muted);
+            line-height: 2.1;
+            margin-bottom: 40px;
+            max-width: 480px;
+        }
+        .contact-channels-list {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+        .contact-channels-list li {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--c-line);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .channel-label {
+            font-size: var(--text-sm);
+            color: var(--c-ink);
+        }
+        .channel-mail {
+            font-family: var(--font-display);
+            font-size: var(--text-base);
+            color: var(--c-copper);
+            text-decoration: none;
+        }
+
+        /* 極簡無框線下劃線表單 */
+        .form-poetic-box {
+            position: relative;
+        }
+        .form-poetic-box::before {
+            content: '';
+            position: absolute;
+            left: -45px;
+            top: 4px;
+            bottom: 4px;
+            width: 1px;
+            background: var(--c-line);
+        }
+        .form-line-group {
+            margin-bottom: 32px;
+        }
+        .form-line-label {
+            display: block;
+            font-family: var(--font-display);
+            font-size: var(--text-sm);
+            font-weight: 600;
+            letter-spacing: normal;
+            text-transform: uppercase;
+            color: var(--c-charcoal);
+            margin-bottom: 8px;
+        }
+        .form-line-input, .form-line-textarea {
+            width: 100%;
+            padding: 12px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--c-line);
+            font-family: inherit;
+            font-size: var(--text-sm);
+            color: var(--c-ink);
+            outline: none;
+            transition: border-color 0.4s ease;
+            border-radius: 0;
+        }
+        .form-line-input:focus, .form-line-textarea:focus {
+            border-bottom-color: var(--c-ink);
+        }
+
+        /* 洽詢類別自訂下拉選單，取代瀏覽器原生下拉樣式 */
+        .custom-select {
+            position: relative;
+        }
+        .custom-select-trigger {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--c-line);
+            font-family: inherit;
+            font-size: var(--text-sm);
+            color: var(--c-ink);
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.4s ease;
+        }
+        .custom-select-trigger:hover,
+        .custom-select.is-open .custom-select-trigger {
+            border-bottom-color: var(--c-ink);
+        }
+        .custom-select-value.is-placeholder {
+            color: var(--c-muted);
+        }
+        .custom-select-chevron {
+            width: 16px;
+            height: 16px;
+            color: var(--c-muted);
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+        .custom-select.is-open .custom-select-chevron {
+            transform: rotate(180deg);
+        }
+        .custom-select-list {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            right: 0;
+            list-style: none;
+            margin: 0;
+            padding: 6px 0;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--c-line);
+            box-shadow: 0 20px 40px rgba(14, 18, 23, 0.1);
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            transition: max-height 0.4s var(--ease-poetic), opacity 0.3s ease, visibility 0.4s;
+            z-index: 50;
+        }
+        .custom-select.is-open .custom-select-list {
+            max-height: 320px;
+            opacity: 1;
+            visibility: visible;
+        }
+        .custom-select-list li {
+            padding: 12px 16px;
+            font-family: var(--font-serif);
+            font-size: var(--text-sm);
+            letter-spacing: 0.03em;
+            color: var(--c-charcoal);
+            cursor: pointer;
+            transition: color 0.25s ease, background-color 0.25s ease;
+        }
+        .custom-select-list li:hover,
+        .custom-select-list li.is-active {
+            color: var(--c-subtitle-blue);
+            background-color: var(--c-subtle);
+        }
+        .form-2-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .btn-poetic-submit {
+            display: inline-block;
+            background: none;
+            border: none;
+            color: var(--c-ink);
+            padding: 0 0 8px 0;
+            font-family: var(--font-display);
+            font-size: var(--text-xs);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            /* 隱藏原本的預設游標，因為我們有自己的藍綠點點 */
+            cursor: none; 
+            margin-top: 16px;
+            position: relative;
+            transition: color 0.4s ease;
+        }
+        .btn-poetic-submit::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--c-ink);
+            /* 跟上面一模一樣的 1.5s 極致緩慢縮短效果 */
+            transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
+        }
+        .btn-poetic-submit:hover {
+            color: rgb(0, 139, 156); /* 變成滑鼠游標的藍綠色 */
+        }
+        .btn-poetic-submit:hover::after {
+            width: 0%; /* 線條縮短到消失 */
+            background-color: rgb(0, 139, 156);
+        }
+
+        /* 頁尾 FOOTER (THE BLANZ 標誌性居中微型 Logo 與極簡收尾) */
+        footer.blanz-footer {
+            background: var(--c-white);
+            border-top: 1px solid var(--c-line);
+            padding: 40px 0 28px 0;
+            text-align: center;
+        }
+        .footer-logo-center {
+            font-family: var(--font-display);
+            font-size: var(--text-xl);
+            letter-spacing: 0.35em;
+            color: var(--c-ink);
+            margin-bottom: 14px;
+            text-transform: uppercase;
+        }
+        .footer-poetic-statement {
+            font-family: var(--font-serif);
+            font-size: var(--text-sm);
+            color: var(--c-muted);
+            max-width: 680px;
+            margin: 0 auto 18px auto;
+            line-height: 2.1;
+        }
+        .footer-bottom-info {
+            text-align: center;
+            font-size: var(--text-tiny);
+            letter-spacing: 0.15em;
+            color: var(--c-muted);
+            padding-top: 12px;
+        }
+
+        /* 訊息反饋通知 */
+        .toast-blanz {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: var(--c-ink);
+            color: #FFFFFF;
+            padding: 18px 32px;
+            font-size: var(--text-xs);
+            letter-spacing: 0.15em;
+            display: none;
+            align-items: center;
+            gap: 14px;
+            z-index: 2000;
+        }
+
+        /* 響應式佈局適配 */
+        @media (max-width: 1024px) {
+            .blanz-container {
+                padding: 0 32px;
+            }
+            .about-hero-header {
+                flex-direction: column;
+                gap: 24px;
+                margin-bottom: 0;
+            }
+            .about-hero-desc {
+                text-align: left;
+                max-width: 100%;
+                padding-top: 0;
+            }
+            .about-hero-banner {
+                margin-left: 10%;
+                height: 340px;
+            }
+            .dark-sectors-top {
+                flex-direction: column;
+                gap: 32px;
+            }
+            .dark-sectors-intro {
+                flex: none;
+            }
+            .esg-stagger-layout, .rotunda-layout-grid, .contact-poetic-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            .form-poetic-box::before {
+                display: none;
+            }
+            .art-slices-4-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .blanz-nav-menu {
+                display: none;
+            }
+            .about-hero-title {
+                font-size: var(--text-2xl);
+            }
+            .about-hero-title .accent-line {
+                font-size: 1.15rem;
+            }
+            .about-hero-header {
+                margin-bottom: 0;
+            }
+            .dark-sectors-row {
+                flex-direction: column;
+            }
+            .dark-sectors-row.row-1 .dark-card,
+            .dark-sectors-row.row-2 .dark-card {
+                height: 280px;
+            }
+            .dark-sectors-row .dark-card-plain {
+                display: none;
+            }
+            .about-hero-banner {
+                margin-left: 0;
+                height: 260px;
+            }
+            .form-2-split {
+                grid-template-columns: 1fr;
+            }
+            .hero-panorama-stage {
+                height: 48vh;
+            }
+            .art-slices-4-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* 區塊 7：PROJECTS & FLEET (4 欄大圓角垂直船隊與港灣展示卡) */
+        .section-projects {
+            padding: 160px 0 140px 0;
+            background: var(--c-canvas);
+        }
+        .projects-header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 1px solid var(--c-line);
+            padding-bottom: 20px;
+            margin-bottom: 50px;
+        }
+        .projects-h2 {
+            font-family: var(--font-display);
+            font-size: var(--text-3xl);
+            color: var(--c-ink);
+            letter-spacing: 0.08em;
+            line-height: 1;
+        }
+        .projects-4-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .project-card-item {
+            background: var(--c-white);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--c-line);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            border-color: transparent; /* 套用提案一設定 */
+        }
+        .project-card-item:hover {
+            transform: translateY(-12px) !important; /* 加上 !important 避免被 ScrollReveal 覆蓋 */
+            box-shadow: 0 32px 70px rgba(0, 73, 91, 0.18); /* 深海陰影跟著加深加大 */
+            border-color: rgba(0, 73, 91, 0.2);
+        }
+        .project-thumb-box {
+            height: 320px;
+            overflow: hidden;
+            position: relative;
+        }
+        .project-thumb-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 8s ease;
+        }
+        .project-card-item:hover .project-thumb-box img {
+            transform: scale(1.06);
+        }
+        .project-card-body {
+            padding: 24px 20px;
+        }
+        .project-card-tag {
+            font-family: var(--font-sans);
+            font-size: var(--text-xs);
+            color: var(--c-copper);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            display: block;
+        }
+        .project-card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--c-ink);
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+        .project-card-desc {
+            font-size: var(--text-xs);
+            color: var(--c-muted);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 1024px) {
+            .projects-4-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .projects-4-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ----- 三事業 版型實驗 B CSS (深色背景) ----- */
+        .dark-sectors-section {
+            background-color: var(--c-white);
+            padding: 140px 0;
+        }
+        .dark-sectors-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .dark-sectors-top {
+            display: flex;
+            gap: 40px; /* 留出充足間距 */
+            align-items: center;
+        }
+        .dark-sectors-intro {
+            flex: 0 0 auto; /* 自動縮放到文字剛剛好的寬度 */
+            white-space: nowrap; /* 強制不換行，維持完美的 3 行 */
+        }
+        .dark-sectors-title {
+            font-family: var(--font-display);
+            font-size: var(--text-3xl);
+            line-height: 1.2;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--c-ink);
+            font-weight: 400;
+            margin-bottom: 0;
+        }
+        .dark-sectors-accent {
+            display: block;
+            font-family: var(--font-serif);
+            font-size: var(--text-lg);
+            font-weight: 400;
+            color: var(--c-subtitle-blue);
+            letter-spacing: 0.15em;
+            margin-top: 16px;
+        }
+        .dark-sectors-row {
+            display: flex;
+            gap: 16px;
+        }
+        .dark-sectors-row.row-1 {
+            flex: 1;
+            min-width: 0;
+        }
+        .dark-sectors-row.row-1 .dark-card {
+            height: 380px;
+        }
+        .dark-sectors-row.row-2 .dark-card {
+            height: 320px;
+        }
+        .dark-card-lg { flex: 3.5; }
+        .dark-card-plain { flex: 0.8; }
+        .dark-sectors-row.row-2 .dark-card-md:first-child { flex: 1; }
+        .dark-sectors-row.row-2 .dark-card-md:last-child { flex: 1; }
+        .dark-card {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+        .dark-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.78);
+            transition: transform 0.6s var(--ease-poetic), filter 0.6s ease;
+        }
+        .dark-card:hover img {
+            transform: scale(1.05);
+            filter: brightness(0.6);
+        }
+        .dark-card-caption {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            padding: 28px 30px;
+            background: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 65%);
+        }
+        .dark-card-caption h3 {
+            font-family: var(--font-serif);
+            font-size: var(--text-lg);
+            font-weight: 500;
+            color: #FFFFFF;
+            margin-bottom: 8px;
+            letter-spacing: 0.02em;
+        }
+        .dark-card-caption p {
+            font-size: var(--text-xs);
+            color: #FFFFFF;
+            line-height: 1.7;
+            max-width: 420px;
+            margin-bottom: 14px;
+        }
+        .dark-card-link {
+            font-size: var(--text-xs);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            padding-bottom: 6px;
+            position: relative;
+            display: inline-block;
+        }
+        .dark-card-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.5);
+            transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .dark-card:hover .dark-card-link::after {
+            width: 0%;
+        }
+
+        /* ----- 三事業 CSS ----- */
+        .section-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 100px 32px 80px;
+        }
+        #about {
+            padding-bottom: 50px;
+        }
+        #three-sectors {
+            padding-top: 100px;
+        }
+        .staggered-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 100px;
+            width: 100%;
+            position: relative;
+            padding-bottom: 60px;
+        }
+        .sector-group {
+            position: relative;
+            width: 100%;
+            display: flex;
+        }
+        /* 背景線條裝飾：只鋪在最外側邊緣與頂部/底部留白，避開船體與文字 */
+        .staggered-lineart {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 100vw;
+            height: 100%;
+            margin-left: -50vw;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .staggered-lineart .lineart-wave {
+            fill: none;
+            stroke: rgba(14, 18, 23, 0.24);
+            stroke-width: 1px;
+            stroke-linecap: round;
+            vector-effect: non-scaling-stroke;
+        }
+        .staggered-lineart .lineart-echo {
+            fill: none;
+            stroke: rgba(14, 18, 23, 0.1);
+            stroke-width: 1px;
+            stroke-dasharray: 1 7;
+            stroke-linecap: round;
+            vector-effect: non-scaling-stroke;
+        }
+        .lineart-accent-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: rgba(0, 73, 91, 0.6);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+        }
+        @keyframes ship-float {
+            0% { translate: 0 0px; }
+            50% { translate: 0 -20px; }
+            100% { translate: 0 0px; }
+        }
+        .ship-img {
+            display: block;
+            height: auto;
+            will-change: translate, scale;
+            transform: translateZ(0); /* 強制開啟 GPU 次像素平滑渲染 (Sub-pixel rendering) */
+            backface-visibility: hidden; /* 防止邊緣閃爍 */
+            animation: ship-float 3.5s ease-in-out infinite;
+            transition: scale 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            scale: 1;
+        }
+        .group-1 .ship-img { animation-delay: 0s; }
+        .group-2 .ship-img { animation-delay: -2s; }
+        .group-3 .ship-img { animation-delay: -4s; }
+
+        /* Group 1: WIN HOPE 707 (華偉) */
+        .group-1 {
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+        }
+        .group-1 .header-block {
+            position: absolute;
+            right: 0;
+            left: auto;
+            top: 10%; /* 固定在右側上方 */
+            transform: none; /* 移除 translateY 避免難以預測的位移 */
+            width: 360px;
+            z-index: 10;
+        }
+        .group-1 .header-block .eyebrow-en {
+            display: block;
+            font-size: var(--text-xs);
+            font-family: var(--font-sans);
+            letter-spacing: 0.28em;
+            color: #8F9CA8;
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+        .group-1 .header-block h2 {
+            font-size: var(--text-3xl);
+            color: #2b3947;
+            margin-bottom: 8px;
+            line-height: 1.12;
+            font-family: var(--font-serif);
+            letter-spacing: 0.05em;
+        }
+        .group-1 .header-block span.tagline {
+            font-family: var(--font-serif); 
+            font-size: var(--text-lg); 
+            font-weight: 400;
+            color: var(--c-subtitle-blue); 
+            letter-spacing: 0.15em;
+            display: block;
+            margin-top: 16px;
+        }
+        .group-1 .ship-img {
+            width: 72%;
+            max-width: 880px;
+            height: auto;
+            object-fit: contain;
+            margin-left: -60px; /* 把船往左拉，不碰到右邊文字 */
+            margin-top: 180px; /* 只有大船本身大幅往下推 */
+            margin-bottom: 0px;
+        }
+        .group-1 .overlay-panel {
+            position: absolute;
+            right: 0; /* 固定在右側 */
+            top: 48%; /* 往上拉近與大標題的間距，調整至剛剛好的距離 */
+            bottom: auto;
+            width: 360px;
+            margin: 0;
+            z-index: 10;
+        }
+
+
+        /* Group 2: TIARA 108 (巨寶) */
+        .group-2 {
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start; /* 改為靠上對齊 */
+            gap: 0px;
+            margin-top: -100px; /* 往上拉近與第一組的距離 */
+        }
+        .group-2 .overlay-panel {
+            width: 360px;
+            flex-shrink: 0;
+            margin-top: 100px; /* 往下推移一點，對齊船頭左上方空白處 */
+        }
+        .group-2 .ship-img {
+            width: 66%;
+            max-width: 840px;
+            height: auto;
+            object-fit: contain;
+            margin-left: -120px; /* 大幅靠左貼近文字 */
+        }
+
+        /* Group 3: BL2203 (華昇) */
+        .group-3 {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 48px;
+        }
+        .group-3 .ship-img {
+            width: 66%;
+            max-width: 840px;
+            height: auto;
+            object-fit: contain;
+        }
+        .group-3 .overlay-panel {
+            width: 360px;
+            flex-shrink: 0;
+        }
+
+        /* Cards / Panels */
+        .overlay-panel {
+            background: transparent;
+            padding: 0;
+            box-shadow: none;
+            border: none;
+            transition: transform 0.4s ease;
+            z-index: 20;
+        }
+        .sector-group:hover .overlay-panel {
+            transform: translateY(-4px);
+        }
+        .sector-brand-logo {
+            height: 40px; /* 稍微放大 Logo */
+            width: auto;
+            object-fit: contain;
+            display: block;
+            margin-bottom: 14px;
+        }
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .panel-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #0E2238;
+            letter-spacing: 0.02em;
+        }
+        .panel-arrow {
+            color: #1A1A1A;
+            font-size: var(--text-base);
+            transition: transform 0.3s ease;
+        }
+        .group-card:hover .panel-arrow {
+            transform: translateX(4px);
+        }
+        .panel-desc {
+            font-size: var(--text-xs);
+            color: #616B76;
+            line-height: 1.65;
+            font-weight: 300;
+            margin-bottom: 12px;
+        }
+        .panel-divider {
+            width: 36px;
+            height: 1.5px;
+            background-color: #D2D8DE;
+            margin-bottom: 12px;
+        }
+        .panel-sub-label {
+            font-size: var(--text-tiny);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: #242E38;
+            margin-bottom: 8px;
+        }
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .tag {
+            font-size: var(--text-tiny);
+            color: #4A5560;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid #D9DEE3;
+            padding: 4px 10px;
+            letter-spacing: 0.02em;
+        }
+        .cta-container {
+            text-align: center;
+            margin-top: 40px; /* 將上方的距離縮小，讓它更靠近上方的區塊 */
+        }
+        .cta-btn {
+            display: inline-block;
+            color: var(--c-ink);
+            font-family: var(--font-display);
+            font-size: 0.84rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding-bottom: 6px;
+            position: relative;
+            transition: color 0.4s ease;
+        }
+        .cta-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--c-ink);
+            /* 跟上面一模一樣的 1.5s 極致緩慢縮短效果 */
+            transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
+        }
+        .cta-btn:hover {
+            color: rgb(0, 139, 156); /* 變成滑鼠游標的藍綠色 */
+        }
+        .cta-btn:hover::after {
+            width: 0%; /* 線條縮短到消失 */
+            background-color: rgb(0, 139, 156);
+        }
+        .news-link-btn {
+            font-family: var(--font-display);
+            font-size: var(--text-xs);
+            letter-spacing: 0.15em;
+            color: var(--c-ink);
+            text-decoration: none;
+            transition: color 0.4s ease;
+        }
+        .news-link-btn:hover {
+            color: rgb(0, 139, 156);
+        }
+        @media (max-width: 960px) {
+            .grid-layout {
+                grid-template-columns: 1fr;
+                gap: 72px 0;
+            }
+            .header-block {
+                padding-right: 0;
+            }
+            .overlay-panel, .card-bottom-left .overlay-panel {
+                width: 88%;
+                bottom: -28px;
+                right: 0;
+                left: auto;
+            }
+            .cta-container {
+                margin-top: 70px;
+            }
+        }
+        /* ===== 國際合規認證 & 全球網絡 (Certifications & Global Presence) ===== */
+        .certs-section {
+            background-color: var(--c-white);
+            padding: 100px 0;
+            position: relative;
+        }
+        .certs-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* 頂部為白色（與上一區塊無縫接合），向下漸層到米色 */
+            background: linear-gradient(to bottom, var(--c-white) 0%, var(--c-canvas) 150px, var(--c-canvas) 100%);
+            opacity: 0;
+            transition: opacity 1.8s ease;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .certs-section.bg-shift::before {
+            opacity: 1;
+        }
+        /* 確保內容在偽元素之上 */
+        .certs-section .blanz-container {
+            position: relative;
+            z-index: 1;
+        }
+        .certs-header {
+            text-align: center;
+            max-width: 820px;
+            margin: 0 auto 48px;
+        }
+        .certs-title {
+            font-family: var(--font-display);
+            font-size: var(--text-3xl);
+            line-height: 1.1;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--c-ink);
+            font-weight: 400;
+        }
+        /* 鑄印勳章集：認證徽章版型 */
+        .medallion-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 46px 40px;
+        }
+        .medallion {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 118px;
+            text-align: center;
+            
+            /* 入場動畫準備 */
+            opacity: 0;
+            position: relative;
+            top: 24px;
+            /* 將動畫時間拉長到 1s，讓浮現的過程更柔和 */
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), top 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        /* 一顆一顆依序進場 */
+        .medallion-row.in .medallion {
+            opacity: 1;
+            top: 0;
+        }
+        /* 拉大每一顆出現的時間間隔，原本差 0.1s，改為差 0.15s */
+        .medallion-row .medallion:nth-child(1) { transition-delay: 0.1s; }
+        .medallion-row .medallion:nth-child(2) { transition-delay: 0.25s; }
+        .medallion-row .medallion:nth-child(3) { transition-delay: 0.4s; }
+        .medallion-row .medallion:nth-child(4) { transition-delay: 0.55s; }
+        .medallion-row .medallion:nth-child(5) { transition-delay: 0.7s; }
+        .medallion-row .medallion:nth-child(6) { transition-delay: 0.85s; }
+        .medallion-row .medallion:nth-child(7) { transition-delay: 1.0s; }
+        .medallion:nth-child(even) { transform: translateY(26px); }
+        .medallion:nth-child(3n) { transform: translateY(-14px); }
+        .medallion-frame {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            border: 1px solid var(--c-copper-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            background: #FFFFFF;
+            box-shadow:
+                inset 0 2px 6px rgba(14, 18, 23, 0.12),
+                inset 0 -2px 4px rgba(255, 255, 255, 0.6),
+                0 10px 24px rgba(14, 18, 23, 0.05);
+            position: relative;
+        }
+        .medallion-frame::before {
+            content: "";
+            position: absolute;
+            inset: 6px;
+            border: 1px solid rgba(0, 73, 91, 0.35);
+            border-radius: 50%;
+        }
+        .medallion-frame img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: grayscale(60%) contrast(105%);
+            opacity: 0.85;
+        }
+        .medallion-frame .mark-text {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: var(--text-tiny);
+            color: var(--c-copper);
+        }
+        .medallion-name {
+            margin-top: 16px;
+            font-size: 0.76rem; /* 稍微放大一點點 */
+            font-weight: 500; /* 加粗一點點 */
+            color: var(--c-charcoal); /* 改為深灰色 */
+            letter-spacing: 0.04em;
+            line-height: 1.5;
+        }
+        @media (max-width: 720px) {
+            .medallion:nth-child(even),
+            .medallion:nth-child(3n) { transform: none; }
+        }
+        .network-row {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .network-row h3 {
+            font-family: var(--font-serif);
+            color: var(--c-ink);
+            font-weight: 500;
+            font-size: var(--text-lg);
+            margin-bottom: 14px;
+            letter-spacing: 0.05em;
+        }
+        .network-row p {
+            color: var(--c-muted);
+            font-size: var(--text-sm);
+            line-height: 2;
+            margin-bottom: 0;
+        }
+        .market-tags {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+        .market-tag-btn {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            color: var(--c-ink);
+            padding: 16px 32px;
+            border: 1px solid var(--c-ink);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            letter-spacing: 0.05em;
+            background: transparent;
+        }
+        .market-tag-btn:hover {
+            background: var(--c-ink);
+            color: #FFFFFF;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 960px) {
+            .network-row {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .market-tags {
+                justify-content: flex-start;
+            }
+        }
+
+        /* ===== 全站滾動入場效果 (Scroll Entrance Reveal) ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        .reveal.reveal-left {
+            transform: translateX(-32px);
+        }
+        .reveal.reveal-right {
+            transform: translateX(32px);
+        }
+        .reveal.in {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+
+        /* ===== 旗艦船隊 FLAGSHIP FLEET (Tuna Manzai 707，移植自 seaworth-homepage-corporate.html .master 區塊) ===== */
+        .flagship-scroll-wrapper {
+            position: relative;
+            height: 400vh;
+        }
+        .flagship-section {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--c-canvas);
+            color: var(--c-ink);
+            overflow: hidden;
+        }
+        .flagship-section .blanz-container {
+            width: 100%;
+        }
+        .flagship-top {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .flagship-subtitle {
+            display: block;
+            font-family: var(--font-serif);
+            font-size: var(--text-lg);
+            font-weight: 400;
+            color: var(--c-subtitle-blue);
+            letter-spacing: 0.15em;
+            margin-top: 16px;
+        }
+        .flagship-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 64px;
+            align-items: center;
+            margin-top: 60px;
+        }
+        .flagship-pop {
+            animation: flagship-content-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        @keyframes flagship-content-pop {
+            from { opacity: 0.4; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .flagship-left {
+            justify-self: end;
+            max-width: 320px;
+        }
+        .flagship-left p.flagship-tag {
+            font-family: var(--font-display);
+            font-size: var(--text-lg);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--c-copper);
+            margin-bottom: 18px;
+        }
+        .flagship-left h3 {
+            font-family: var(--font-serif);
+            color: var(--c-ink);
+            font-weight: 600;
+            font-size: var(--text-lg);
+            letter-spacing: 0.04em;
+            margin-bottom: 18px;
+        }
+        .flagship-left p.flagship-desc {
+            color: var(--c-muted);
+            font-size: var(--text-sm);
+            line-height: 1.9;
+            margin-bottom: 26px;
+            max-width: 320px;
+        }
+        .flagship-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-display);
+            font-size: 0.84rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding-bottom: 6px;
+            color: var(--c-ink);
+            position: relative;
+            transition: color 0.4s ease;
+        }
+        /* 替換原本的 border-bottom，改用偽元素來做動畫底線 */
+        .flagship-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--c-ink);
+            /* 線條慢慢變短的過渡動畫 (改為 1.5s 極致緩慢) */
+            transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
+        }
+        
+        .flagship-btn:hover {
+            color: rgb(0, 139, 156); /* 變成滑鼠游標的藍綠色 */
+        }
+        
+        .flagship-btn:hover::after {
+            width: 0%; /* 線條縮短到消失 */
+            background-color: rgb(0, 139, 156);
+        }
+        .flagship-photo {
+            width: 280px;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            aspect-ratio: 3 / 4;
+            margin: 0 auto;
+            background: var(--c-subtle);
+        }
+        .flagship-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .flagship-right {
+            text-align: right;
+            justify-self: start;
+            max-width: 260px;
+        }
+        .flagship-num {
+            font-family: var(--font-display);
+            font-size: var(--text-hero);
+            line-height: 1;
+            color: var(--c-copper);
+            font-variant-numeric: lining-nums tabular-nums;
+        }
+        .flagship-num .num-sym {
+            display: inline-block;
+            margin-right: -0.08em;
+        }
+        .flagship-num-label {
+            font-family: var(--font-display);
+            font-size: 0.86rem;
+            letter-spacing: 0.05em;
+            line-height: 1.7;
+            color: var(--c-muted);
+            margin-top: 10px;
+        }
+        .flagship-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 44px;
+        }
+        .flagship-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--c-line);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .flagship-dot.active {
+            background: var(--c-copper);
+            transform: scale(1.3);
+        }
+        .flagship-cap {
+            text-align: center;
+            font-size: 0.86rem;
+            letter-spacing: 0.05em;
+            color: var(--c-muted);
+            margin: 60px 0 0 0;
+        }
+        @media (max-width: 1024px) {
+            .flagship-scroll-wrapper {
+                height: auto;
+            }
+            .flagship-section {
+                position: relative;
+                height: auto;
+                padding: 120px 0 100px;
+            }
+            .flagship-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .flagship-left { order: 2; justify-self: center; max-width: 100%; }
+            .flagship-left p { margin-left: auto; margin-right: auto; }
+            .flagship-photo { order: 1; }
+            .flagship-right { order: 3; text-align: center; justify-self: center; max-width: 100%; }
+            .flagship-cap { position: static; margin-top: 40px; }
+        }
+        @media (max-width: 640px) {
+            .flagship-photo { width: 200px; }
+            .flagship-num { font-size: 4rem; }
+        }
+        /* Custom Cursor */
+        body, a, button, input, textarea, select, .swiper-button-next, .swiper-button-prev {
+            cursor: none !important;
+        }
+
+        .custom-cursor {
+            left: 0;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background-color: rgb(0, 139, 156); /* 使用者指定的藍綠色 */
+            position: fixed;
+            border-radius: 5px;
+            pointer-events: none;
+            z-index: 999999;
+            margin-top: -5px;
+            margin-left: -5px;
+        }
+
+        .custom-cursor__follower {
+            transition: transform .4s;
+            width: 6px;
+            height: 6px;
+            border-radius: 3px;
+            background-color: rgba(0, 139, 156, 0.8); /* 原版是實心色塊，稍微給點透明度避免完全一樣深 */
+            margin-top: -3px;
+            margin-left: -3px;
+        }
+    </style>
+
+<style>
+    /* ===== 分頁共用元件 (Subpage Shared Components) ===== */
+    .sp-hero {
+        position: relative;
+        width: 100%;
+        height: 46vh;
+        min-height: 380px;
+        overflow: hidden;
+        display: flex;
+        align-items: flex-end;
+        margin-top: 74px;
+    }
+    .sp-hero img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.72);
+    }
+    .sp-hero::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(14,18,23,0.15) 0%, rgba(14,18,23,0.55) 100%);
+    }
+    .sp-hero-inner {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        padding: 0 60px 56px;
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+    .sp-breadcrumb {
+        font-family: var(--font-sans);
+        font-size: var(--text-tiny);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.65);
+        margin-bottom: 18px;
+    }
+    .sp-breadcrumb a {
+        color: rgba(255,255,255,0.65);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    .sp-breadcrumb a:hover { color: #FFFFFF; }
+    .sp-hero-eyebrow {
+        font-family: var(--font-display);
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        font-size: var(--text-sm);
+        color: rgba(255,255,255,0.85);
+        display: block;
+        margin-bottom: 10px;
+    }
+    .sp-hero-title {
+        font-family: var(--font-display);
+        font-size: var(--text-4xl);
+        line-height: 1.1;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        font-weight: 400;
+        text-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+    .sp-hero-sub {
+        font-family: var(--font-serif);
+        font-size: var(--text-lg);
+        font-weight: 400;
+        letter-spacing: 0.15em;
+        color: rgba(255,255,255,0.9);
+        display: block;
+        margin-top: 16px;
+    }
+
+    .sp-section { padding: 120px 0; }
+    .sp-section-tight { padding: 60px 0 120px; }
+    .sp-section-head { margin-bottom: 56px; max-width: 760px; }
+    .sp-section-head .en-poetic-title { margin-bottom: 14px; }
+    .sp-section-head p { font-size: var(--text-sm); color: var(--c-muted); line-height: 2; }
+
+    .sp-intro {
+        max-width: 900px;
+    }
+    .sp-intro p {
+        font-size: var(--text-base);
+        color: var(--c-charcoal);
+        line-height: 2.1;
+        margin-bottom: 28px;
+    }
+    .sp-intro p:last-child { margin-bottom: 0; }
+
+    .sp-lede {
+        font-family: var(--font-serif);
+        font-size: var(--text-lg);
+        color: var(--c-subtitle-blue);
+        letter-spacing: 0.08em;
+        line-height: 1.8;
+        margin-bottom: 36px;
+        max-width: 780px;
+    }
+
+    /* 特色卡片網格 */
+    .sp-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+    .sp-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+    .sp-card {
+        padding: 40px 32px;
+        background: var(--c-subtle);
+        border-top: 2px solid var(--c-ink);
+    }
+    .sp-card-num {
+        font-family: var(--font-display);
+        font-size: var(--text-2xl);
+        color: var(--c-copper-light);
+        margin-bottom: 18px;
+        display: block;
+    }
+    .sp-card h3 {
+        font-size: var(--text-lg);
+        margin-bottom: 14px;
+        letter-spacing: 0.04em;
+    }
+    .sp-card p {
+        font-size: var(--text-xs);
+        color: var(--c-muted);
+        line-height: 1.9;
+    }
+
+    /* 圖文並列區塊 */
+    .sp-media-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 70px;
+        align-items: center;
+    }
+    .sp-media-row.reverse .sp-media-frame { order: 2; }
+    .sp-media-frame {
+        position: relative;
+        overflow: hidden;
+        height: 400px;
+        background: var(--c-subtle);
+    }
+    .sp-media-frame img {
+        width: 100%; height: 100%; object-fit: cover;
+    }
+    .sp-media-text h3 {
+        font-family: var(--font-serif);
+        font-size: var(--text-2xl);
+        margin-bottom: 20px;
+        letter-spacing: 0.06em;
+    }
+    .sp-media-text p {
+        font-size: var(--text-sm);
+        color: var(--c-muted);
+        line-height: 2;
+    }
+
+    /* 數字統計列 */
+    .sp-stat-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        text-align: center;
+        padding: 56px 0;
+        border-top: 1px solid var(--c-line);
+        border-bottom: 1px solid var(--c-line);
+    }
+    .sp-stat-num {
+        font-family: var(--font-display);
+        font-size: var(--text-4xl);
+        color: var(--c-ink);
+        line-height: 1;
+    }
+    .sp-stat-num .num-sym { color: var(--c-subtitle-blue); }
+    .sp-stat-label {
+        font-size: var(--text-xs);
+        color: var(--c-muted);
+        letter-spacing: 0.08em;
+        margin-top: 12px;
+    }
+
+    /* 條列式重點（誠信經營守則） */
+    .sp-numbered-list { border-top: 1px solid var(--c-line); }
+    .sp-numbered-item {
+        display: grid;
+        grid-template-columns: 90px 1fr;
+        gap: 32px;
+        padding: 36px 0;
+        border-bottom: 1px solid var(--c-line);
+    }
+    .sp-numbered-item .num {
+        font-family: var(--font-display);
+        font-size: var(--text-2xl);
+        color: var(--c-copper-light);
+    }
+    .sp-numbered-item h3 {
+        font-size: var(--text-lg);
+        margin-bottom: 10px;
+        letter-spacing: 0.03em;
+    }
+    .sp-numbered-item p {
+        font-size: var(--text-sm);
+        color: var(--c-muted);
+        line-height: 1.95;
+    }
+
+    /* 手風琴 (FAQ / 策略時間軸共用) */
+    .sp-accordion { border-top: 1px solid var(--c-line); }
+    .sp-accordion-item { border-bottom: 1px solid var(--c-line); }
+    .sp-accordion-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 28px 4px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        width: 100%;
+        text-align: left;
+        font-family: var(--font-sans);
+    }
+    .sp-accordion-head-left {
+        display: flex;
+        align-items: baseline;
+        gap: 20px;
+    }
+    .sp-accordion-index {
+        font-family: var(--font-display);
+        font-size: var(--text-lg);
+        color: var(--c-copper-light);
+        flex-shrink: 0;
+    }
+    .sp-accordion-title {
+        font-family: var(--font-serif);
+        font-size: var(--text-lg);
+        color: var(--c-ink);
+        letter-spacing: 0.03em;
+    }
+    .sp-accordion-tag {
+        display: block;
+        font-size: var(--text-tiny);
+        color: var(--c-subtitle-blue);
+        letter-spacing: 0.1em;
+        margin-top: 6px;
+        text-transform: uppercase;
+    }
+    .sp-accordion-icon {
+        flex-shrink: 0;
+        width: 18px; height: 18px;
+        color: var(--c-muted);
+        transition: transform 0.4s var(--ease-poetic);
+    }
+    .sp-accordion-item.is-open .sp-accordion-icon { transform: rotate(45deg); }
+    .sp-accordion-panel-wrap {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.5s var(--ease-poetic);
+    }
+    .sp-accordion-item.is-open .sp-accordion-panel-wrap { grid-template-rows: 1fr; }
+    .sp-accordion-panel { overflow: hidden; }
+    .sp-accordion-panel-inner { padding: 0 4px 32px; max-width: 820px; }
+    .sp-accordion-panel-inner p {
+        font-size: var(--text-sm);
+        color: var(--c-muted);
+        line-height: 2;
+    }
+    .sp-accordion-panel-inner .direction {
+        display: inline-block;
+        margin-top: 14px;
+        font-size: var(--text-xs);
+        color: var(--c-subtitle-blue);
+        letter-spacing: 0.06em;
+    }
+
+    /* 據點卡片 */
+    .sp-location-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+    }
+    .sp-location-card {
+        padding: 36px 28px;
+        border: 1px solid var(--c-line);
+        transition: border-color 0.3s ease;
+    }
+    .sp-location-card:hover { border-color: var(--c-subtitle-blue); }
+    .sp-location-tag {
+        font-size: var(--text-tiny);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--c-subtitle-blue);
+        display: block;
+        margin-bottom: 14px;
+    }
+    .sp-location-card h3 {
+        font-size: var(--text-lg);
+        margin-bottom: 10px;
+    }
+    .sp-location-card p {
+        font-size: var(--text-xs);
+        color: var(--c-muted);
+        line-height: 1.8;
+    }
+
+    /* 聯絡管道卡片（聯絡我們頁沿用首頁樣式） */
+
+    /* CTA 外連大按鈕（人才招募） */
+    .sp-cta-panel {
+        text-align: center;
+        padding: 100px 60px;
+        background: var(--c-charcoal);
+        color: #FFFFFF;
+    }
+    .sp-cta-panel h2 {
+        color: #FFFFFF;
+        font-size: var(--text-3xl);
+        margin-bottom: 20px;
+    }
+    .sp-cta-panel p {
+        font-size: var(--text-sm);
+        color: rgba(255,255,255,0.7);
+        max-width: 560px;
+        margin: 0 auto 40px;
+        line-height: 1.9;
+    }
+    .sp-cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 18px 44px;
+        border: 1px solid rgba(255,255,255,0.4);
+        color: #FFFFFF;
+        text-decoration: none;
+        font-size: var(--text-sm);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        transition: all 0.4s var(--ease-poetic);
+    }
+    .sp-cta-btn:hover { background: #FFFFFF; color: var(--c-ink); }
+
+    /* 空狀態（尚無最新公告） */
+    .sp-empty-state {
+        padding: 60px 0;
+        text-align: center;
+        color: var(--c-muted);
+        font-size: var(--text-sm);
+        border: 1px dashed var(--c-line);
+    }
+
+    /* 引導至其他子頁的連結列 */
+    .sp-crosslink-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 40px;
+        margin-top: 60px;
+        border-top: 1px solid var(--c-line);
+    }
+    .sp-crosslink-row a {
+        font-size: var(--text-sm);
+        letter-spacing: 0.1em;
+        color: var(--c-ink);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .sp-crosslink-row a:hover { color: var(--c-subtitle-blue); }
+
+    @media (max-width: 1024px) {
+        .sp-grid-3 { grid-template-columns: repeat(2, 1fr); }
+        .sp-location-grid { grid-template-columns: repeat(2, 1fr); }
+        .sp-stat-row { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; }
+        .sp-media-row { grid-template-columns: 1fr; gap: 36px; }
+        .sp-media-row.reverse .sp-media-frame { order: 0; }
+    }
+    @media (max-width: 640px) {
+        .sp-hero { height: 40vh; min-height: 320px; }
+        .sp-hero-title { font-size: var(--text-2xl); }
+        .sp-grid-3, .sp-grid-2 { grid-template-columns: 1fr; }
+        .sp-location-grid { grid-template-columns: 1fr; }
+        .sp-stat-row { grid-template-columns: repeat(2, 1fr); }
+        .sp-numbered-item { grid-template-columns: 1fr; gap: 8px; }
+        .sp-accordion-head-left { gap: 12px; }
+        .sp-cta-panel { padding: 70px 24px; }
+    }
+</style>
+
+</head>
+<body>
+
+<!-- 全站 Loading 效果：極簡置中 logomark + 呼吸細線，載入完成淡出 -->
+    <div class="site-loader" id="siteLoader">
+        <img src="assets/logo-icon.png" alt="" class="site-loader-mark">
+        <div class="site-loader-line"></div>
+        <span class="site-loader-text">LOADING</span>
+    </div>
+    <script>
+        (function() {
+            const loader = document.getElementById('siteLoader');
+            if (!loader) return;
+            const MIN_DISPLAY = 1500; // 最短顯示時間，避免快取時一閃而過，看不清楚內容
+            const shownAt = performance.now();
+
+            function hide() {
+                const wait = Math.max(0, MIN_DISPLAY - (performance.now() - shownAt));
+                setTimeout(() => {
+                    loader.classList.add('is-hidden');
+                    setTimeout(() => loader.remove(), 900);
+                }, wait);
+            }
+
+            if (document.readyState === 'complete') {
+                hide();
+            } else {
+                window.addEventListener('load', hide);
+            }
+        })();
+    </script>
+
+<header class="blanz-header">
+        <nav class="blanz-nav-inner">
+            <!-- 左側：Logo 文字與 3 個選項 -->
+            <div class="nav-left-area">
+                <a href="index.html" style="display: flex; align-items: center; height: 100%;">
+                    <img src="assets/logo-text.png" alt="SEAWORTH HOLDING" style="height:32px; width:auto;">
+                </a>
+                <ul class="nav-split-menu">
+                    <li class="has-dropdown">
+                        <a href="about.html">集團總覽</a>
+                        <div class="nav-dropdown">
+                            <div class="nav-dropdown-inner">
+                                <a href="about.html">關於海沃</a>
+                                <a href="business-map.html">事業版圖</a>
+                                <a href="tech-integration.html">技術整合能力</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="governance-structure.html">公司治理</a>
+                        <div class="nav-dropdown">
+                            <div class="nav-dropdown-inner">
+                                <a href="governance-structure.html">公司治理架構</a>
+                                <a href="risk-management.html">風險管理政策</a>
+                                <a href="internal-audit.html">內部稽核與內控制度</a>
+                                <a href="integrity.html">誠信經營守則</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="environment.html">共善經營</a>
+                        <div class="nav-dropdown">
+                            <div class="nav-dropdown-inner">
+                                <a href="environment.html">環境保護</a>
+                                <a href="social-responsibility.html">社會責任</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 中央：海神叉 Icon -->
+            <a href="index.html" class="nav-center-icon">
+                <img src="assets/logo-icon.png" alt="" style="height:48px; width:auto;">
+            </a>
+
+            <!-- 右側：4 個選項 -->
+            <div class="nav-right-area">
+                <ul class="nav-split-menu">
+                    <li class="has-dropdown">
+                        <a href="investment-highlights.html">投資人專區</a>
+                        <div class="nav-dropdown">
+                            <div class="nav-dropdown-inner">
+                                <a href="investment-highlights.html">投資亮點</a>
+                                <a href="strategy.html">策略布局</a>
+                                <a href="shareholder-info.html">股東訊息</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="announcements.html">最新消息</a>
+                        <div class="nav-dropdown">
+                            <div class="nav-dropdown-inner">
+                                <a href="announcements.html">官方公告</a>
+                                <a href="corporate-news.html">企業動態</a>
+                                <a href="sustainability-practice.html">永續實踐</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="contact-us.html">聯繫海沃</a>
+                        <div class="nav-dropdown">
+                            <div class="nav-dropdown-inner">
+                                <a href="locations.html">營運據點</a>
+                                <a href="contact-us.html">聯絡我們</a>
+                                <a href="careers.html">人才招募</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="nav-split-menu">
+                    <li class="nav-lang-picker has-dropdown">
+                        <a href="#" style="display: flex; align-items: center; gap: 4px;">
+                            TW <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i>
+                        </a>
+                        <div class="nav-dropdown">
+                            <div class="nav-dropdown-inner">
+                                <a href="#">繁體中文</a>
+                                <a href="#">English</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+<script>
+        (function() {
+            const header = document.querySelector('.blanz-header');
+            if (!header) return;
+            function setHeaderHeight() {
+                document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+            }
+            setHeaderHeight();
+            window.addEventListener('resize', setHeaderHeight);
+        })();
+    </script>
+
+<section class="sp-hero">
+        <img src="assets/hero-banner-01.jpg" alt="關於海沃">
+        <div class="sp-hero-inner">
+            <nav class="sp-breadcrumb">
+                    <a href="index.html">首頁</a> ／ <a href="about.html">集團總覽</a> ／ 關於海沃
+                </nav>
+            <span class="sp-hero-eyebrow">GROUP OVERVIEW</span>
+            <h1 class="sp-hero-title">ABOUT SEAWORTH<span class="sp-hero-sub">關於海沃</span></h1>
+        </div>
+    </section>
+
+<main>
+    <section class="blanz-section sp-section"><div class="blanz-container">
+        
+        <div class="sp-intro reveal">
+            <p>海沃控股集團成立於 2026 年，以整合遠洋漁業上下游資源、深化共善治理、提升營運效能為使命。集團旗下擘劃三大事業群，建構完整的全球海洋產業鏈：</p>
+        </div>
+
+        <div class="sp-grid-3" style="margin-top:56px;">
+            <div class="sp-card reveal delay-1">
+                <img src="assets/logo-huawei.png" alt="華偉漁業事業群" style="height:32px; width:auto; margin-bottom:24px;">
+                <h3>華偉漁業事業群</h3>
+                <p>發展起源可追溯至 1983 年，黃氏家族自高雄前鎮漁港投入冷凍倉儲，深耕遠洋漁業領域。集團自一艘圍網漁船啟航，逐步擴建船隊規模，為集團奠定厚實根基。</p>
+            </div>
+            <div class="sp-card reveal delay-2">
+                <img src="assets/logo-jubao.png" alt="巨寶漁業事業群" style="height:32px; width:auto; margin-bottom:24px;">
+                <h3>巨寶漁業事業群</h3>
+                <p>專營圍網漁船捕撈，並結合冷凍運搬船建構「海上移動冷鏈」優勢；同時跨足現代化造船領域，引進符合國際勞工規範與前瞻科技的船體設計，全方位提升海上作業安全與營運效率。</p>
+            </div>
+            <div class="sp-card reveal delay-3">
+                <img src="assets/logo-huasheng.png" alt="華昇魷釣事業群" style="height:32px; width:auto; margin-bottom:24px;">
+                <h3>華昇魷釣事業群</h3>
+                <p>專精高技術漁法，經營魷魚秋刀魚船與延繩釣漁船。多元船隊相輔相成，完美展現從精準捕撈、生態永續到全球冷鏈供應的頂尖實力。</p>
+            </div>
+        </div>
+
+        <div class="sp-intro reveal" style="margin-top:80px;">
+            <p>歷經逾四十載的砥礪深耕，本集團已蛻變為涵蓋智慧造船、遠洋漁撈、冷鏈物流及國際貿易的多元化控股集團。我們秉持「專業、誠信、創新、永續」的核心價值，優化企業內控與合規治理，全面引領產業轉型升級。</p>
+            <p>迎向全球漁業資源與環境永續的新局，海沃積極推動數位化船隊管理，落實 FISH、MSC 等國際永續認證與漁業組織規範；同時率先導入海上遠距醫療機制，以具體行動守護船員人權與職業安全。</p>
+            <p>海沃控股集團將持續提供安全、優質且全流程可追溯的優良漁獲，攜手全球夥伴，朝向「敬海而行、與世界共榮共善」的永續願景穩健邁進。</p>
+        </div>
+    
+    
+        <div class="sp-crosslink-row">
+                <a href="index.html">← 首頁</a>
+                <a href="business-map.html">事業版圖 →</a>
+            </div>
+            </div>
+        </section>
+</main>
+
+<footer class="blanz-footer">
+        <div class="blanz-container">
+            <div class="footer-logo-center">SEAWORTH</div>
+            <p class="footer-poetic-statement">
+                海沃控股集團（SEAWORTH HOLDING）成立於 2026 年，傳承逾四十載深厚根基，以整合遠洋漁業上下游資源、深化共善治理為使命，建構全流程可追溯的全球海洋產業體系。
+            </p>
+
+            <div class="footer-bottom-info">
+                <div>© 2026 SEAWORTH HOLDING. ALL RIGHTS RESERVED.</div>
+            </div>
+        </div>
+    </footer>
+
+<div class="toast-blanz" id="blanzToast">
+        <i data-lucide="check" style="width: 18px; height: 18px; color: var(--c-copper-light);"></i>
+        <span>INQUIRY SUBMITTED SUCCESSFULLY.</span>
+    </div>
+
+<script>
+    lucide.createIcons();
+</script>
+<script>
+// ===== 全站流暢滾動入場效果 (Scroll Reveal Observer) =====
+        (function() {
+            // 針對網格/卡片容器自動為子項目加上錯落延遲
+            const staggerGrids = document.querySelectorAll('.projects-4-grid, .dark-sectors-row, .staggered-layout, .contact-channels-list');
+            staggerGrids.forEach(grid => {
+                const items = grid.children;
+                for (let i = 0; i < items.length; i++) {
+                    if (!items[i].classList.contains('reveal')) {
+                        items[i].classList.add('reveal', `delay-${(i % 4) + 1}`);
+                    }
+                }
+            });
+
+            // 選取全站重點大標題、文字與圖表區塊
+            const revealSelectors = [
+                '.contact-poetic-header',
+                '.about-hero-title',
+                '.about-hero-desc',
+                '.about-hero-banner',
+                '.header-block',
+                '.ship-img',
+                '.overlay-panel',
+                '.sector-group',
+                '.dark-sectors-intro',
+                '.dark-sectors-row .dark-card',
+                '.poetic-quote-wrap',
+                '.certs-header',
+                '.medallion-row',
+                '.network-row',
+                '.cta-container',
+                '.projects-header-top',
+                '.project-card-item',
+                '.contact-poetic-info',
+                '.form-poetic-box',
+                '.footer-logo-center',
+                '.footer-poetic-statement',
+                '.footer-bottom-info'
+            ];
+
+            revealSelectors.forEach(sel => {
+                document.querySelectorAll(sel).forEach(el => {
+                    if (!el.classList.contains('reveal')) {
+                        el.classList.add('reveal');
+                    }
+                });
+            });
+
+            // 建立 IntersectionObserver 進行平滑入場監控
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in');
+                        obs.unobserve(entry.target); // 動畫觸發一次即解綁，節省效能
+                    }
+                });
+            }, {
+                threshold: 0.05,
+                rootMargin: '0px 0px 0px 0px'
+            });
+
+            document.querySelectorAll('.reveal, .reveal-trigger').forEach(el => observer.observe(el));
+        })();
+</script>
+
+</body>
+</html>
