@@ -2116,7 +2116,8 @@
     .sp-section-head p { font-size: var(--text-sm); color: var(--c-muted); line-height: 2; }
 
     .sp-intro {
-        max-width: 900px;
+        max-width: 1020px;
+        margin: 0 auto;
     }
     .sp-intro p {
         font-size: var(--text-base);
@@ -2132,8 +2133,8 @@
         color: var(--c-subtitle-blue);
         letter-spacing: 0.08em;
         line-height: 1.8;
-        margin-bottom: 36px;
-        max-width: 780px;
+        margin: 0 auto 36px;
+        max-width: 1020px;
     }
 
     /* 特色卡片網格 */
@@ -2238,6 +2239,76 @@
         font-size: var(--text-sm);
         color: var(--c-muted);
         line-height: 1.95;
+    }
+
+    /* 風險管理程序：這 3 項有明確先後順序（辨識 → 分析 → 監督），
+       跟誠信守則那種並列原則不同，改用有連接線的橫向流程節點，
+       強調「一步接一步」的程序感，而不是清單。 */
+    .sp-timeline {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 48px;
+        max-width: 1020px;
+        margin: 56px auto 0;
+    }
+    .sp-timeline-node-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 28px;
+    }
+    .sp-timeline-line {
+        flex: 1;
+        height: 1px;
+        background: var(--c-line);
+    }
+    .sp-timeline-item:first-child .sp-timeline-line-left,
+    .sp-timeline-item:last-child .sp-timeline-line-right {
+        visibility: hidden;
+    }
+    .sp-timeline-node {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        border: 1.5px solid var(--c-subtitle-blue);
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-display);
+        font-size: var(--text-xl);
+        color: var(--c-subtitle-blue);
+        margin: 0 14px;
+    }
+    .sp-timeline-title {
+        font-family: var(--font-serif);
+        font-size: var(--text-lg);
+        color: var(--c-ink);
+        letter-spacing: 0.03em;
+        margin-bottom: 12px;
+    }
+    .sp-timeline-desc {
+        font-size: var(--text-xs);
+        color: var(--c-muted);
+        line-height: 1.9;
+    }
+    @media (max-width: 860px) {
+        .sp-timeline { grid-template-columns: 1fr; gap: 0; }
+        .sp-timeline-item {
+            display: grid;
+            grid-template-columns: 56px 1fr;
+            gap: 24px;
+        }
+        .sp-timeline-node-row {
+            flex-direction: column;
+            margin-bottom: 0;
+            align-self: stretch;
+        }
+        .sp-timeline-line { width: 1px; flex: 1; min-height: 16px; }
+        .sp-timeline-line-left { margin: 0 auto 8px; }
+        .sp-timeline-line-right { margin: 8px auto 0; }
+        .sp-timeline-node { margin: 0; }
+        .sp-timeline-item:not(:last-child) { padding-bottom: 12px; }
+        .sp-timeline-title, .sp-timeline-desc { padding-bottom: 28px; }
     }
 
     /* 手風琴 (FAQ / 策略時間軸共用) */
@@ -2593,26 +2664,38 @@
             <p>在實務運作上，集團透過嚴格執行以下風險管理程序，建構全方位營運防護網：</p>
         </div>
 
-        <div class="sp-numbered-list">
-            <div class="sp-numbered-item reveal">
-                <span class="num">01</span>
-                <div>
-                    <h3>全面性風險辨識與範疇管理</h3>
-                    <p>以情境分析為主軸，結合總體環境分析 (PESTLE) 及流程分析工具，全面涵蓋策略、營運、財務、資訊、法遵及誠信風險。針對現代遠洋漁業特性，更將氣候變遷新興風險，以及 FISH (船員人權標準)、MSC（海洋管理委員會認證）、ILO C-188 (漁業工作公約) 等國際漁業人權與生態規範納入細部情境追蹤，確保供應鏈之高度合規。</p>
+        <div class="sp-timeline">
+            <div class="sp-timeline-item reveal">
+                <div class="sp-timeline-node-row">
+                    <span class="sp-timeline-line sp-timeline-line-left"></span>
+                    <span class="sp-timeline-node">01</span>
+                    <span class="sp-timeline-line sp-timeline-line-right"></span>
+                </div>
+                <div class="sp-timeline-text">
+                    <h3 class="sp-timeline-title">全面性風險辨識與範疇管理</h3>
+                    <p class="sp-timeline-desc">以情境分析為主軸，結合總體環境分析 (PESTLE) 及流程分析工具，全面涵蓋策略、營運、財務、資訊、法遵及誠信風險。針對現代遠洋漁業特性，更將氣候變遷新興風險，以及 FISH (船員人權標準)、MSC（海洋管理委員會認證）、ILO C-188 (漁業工作公約) 等國際漁業人權與生態規範納入細部情境追蹤，確保供應鏈之高度合規。</p>
                 </div>
             </div>
-            <div class="sp-numbered-item reveal">
-                <span class="num">02</span>
-                <div>
-                    <h3>風險分析、評估與精準風險回應</h3>
-                    <p>由執行辦公室訂定量化及質化量測標準，作為風險分析之依據。各營運單位將風險分析結果與風險胃納加以比對，設定風險事件之優先處理順序，並據此擬訂最適之風險回應（如減緩、規避、轉移或承擔）策略。</p>
+            <div class="sp-timeline-item reveal">
+                <div class="sp-timeline-node-row">
+                    <span class="sp-timeline-line sp-timeline-line-left"></span>
+                    <span class="sp-timeline-node">02</span>
+                    <span class="sp-timeline-line sp-timeline-line-right"></span>
+                </div>
+                <div class="sp-timeline-text">
+                    <h3 class="sp-timeline-title">風險分析、評估與精準風險回應</h3>
+                    <p class="sp-timeline-desc">由執行辦公室訂定量化及質化量測標準，作為風險分析之依據。各營運單位將風險分析結果與風險胃納加以比對，設定風險事件之優先處理順序，並據此擬訂最適之風險回應（如減緩、規避、轉移或承擔）策略。</p>
                 </div>
             </div>
-            <div class="sp-numbered-item reveal">
-                <span class="num">03</span>
-                <div>
-                    <h3>風險監督、審查與報導揭露</h3>
-                    <p>各營運單位定期編製並提交《風險回應計畫追蹤與評估表》，由風險管理小組及執行辦公室進行動態監控。集團定期揭露風險管理政策與程序、風險治理與管理組織架構、風險管理運作與執行情形，提供外部利害關係人參考，確保營運資訊之高透明度。</p>
+            <div class="sp-timeline-item reveal">
+                <div class="sp-timeline-node-row">
+                    <span class="sp-timeline-line sp-timeline-line-left"></span>
+                    <span class="sp-timeline-node">03</span>
+                    <span class="sp-timeline-line sp-timeline-line-right"></span>
+                </div>
+                <div class="sp-timeline-text">
+                    <h3 class="sp-timeline-title">風險監督、審查與報導揭露</h3>
+                    <p class="sp-timeline-desc">各營運單位定期編製並提交《風險回應計畫追蹤與評估表》，由風險管理小組及執行辦公室進行動態監控。集團定期揭露風險管理政策與程序、風險治理與管理組織架構、風險管理運作與執行情形，提供外部利害關係人參考，確保營運資訊之高透明度。</p>
                 </div>
             </div>
             </div>

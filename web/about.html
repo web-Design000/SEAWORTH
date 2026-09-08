@@ -2116,7 +2116,8 @@
     .sp-section-head p { font-size: var(--text-sm); color: var(--c-muted); line-height: 2; }
 
     .sp-intro {
-        max-width: 900px;
+        max-width: 1020px;
+        margin: 0 auto;
     }
     .sp-intro p {
         font-size: var(--text-base);
@@ -2132,8 +2133,8 @@
         color: var(--c-subtitle-blue);
         letter-spacing: 0.08em;
         line-height: 1.8;
-        margin-bottom: 36px;
-        max-width: 780px;
+        margin: 0 auto 36px;
+        max-width: 1020px;
     }
 
     /* 特色卡片網格 */
@@ -2161,6 +2162,26 @@
         color: var(--c-muted);
         line-height: 1.9;
     }
+
+    /* 三大事業群卡片：加上實船照片，呼應首頁三大事業群區塊用的同一批船照，
+       讓「關於海沃」這頁跟首頁產生視覺連結，而不只是純文字卡片。 */
+    .sp-sector-card { background: var(--c-subtle); overflow: hidden; }
+    .sp-sector-card-img { height: 200px; overflow: hidden; }
+    .sp-sector-card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(15%) brightness(0.95);
+        transition: filter 0.5s ease, transform 0.6s ease;
+    }
+    .sp-sector-card:hover .sp-sector-card-img img {
+        filter: grayscale(0%) brightness(1);
+        transform: scale(1.04);
+    }
+    .sp-sector-card-body { padding: 32px; border-top: 2px solid var(--c-ink); }
+    .sp-sector-card-body img.logo { height: 28px; width: auto; margin-bottom: 20px; display: block; }
+    .sp-sector-card-body h3 { font-size: var(--text-lg); margin-bottom: 14px; letter-spacing: 0.04em; }
+    .sp-sector-card-body p { font-size: var(--text-xs); color: var(--c-muted); line-height: 1.9; }
 
     /* 圖文並列區塊 */
     .sp-media-row {
@@ -2582,20 +2603,29 @@
         </div>
 
         <div class="sp-grid-3" style="margin-top:56px;">
-            <div class="sp-card reveal delay-1">
-                <img src="assets/logo-huawei.png" alt="華偉漁業事業群" style="height:32px; width:auto; margin-bottom:24px;">
-                <h3>華偉漁業事業群</h3>
-                <p>發展起源可追溯至 1983 年，黃氏家族自高雄前鎮漁港投入冷凍倉儲，深耕遠洋漁業領域。集團自一艘圍網漁船啟航，逐步擴建船隊規模，為集團奠定厚實根基。</p>
+            <div class="sp-sector-card reveal delay-1">
+                <div class="sp-sector-card-img"><img src="assets/2_nologo.jpg" alt="華偉漁業事業群"></div>
+                <div class="sp-sector-card-body">
+                    <img class="logo" src="assets/logo-huawei.png" alt="華偉漁業事業群">
+                    <h3>華偉漁業事業群</h3>
+                    <p>發展起源可追溯至 1983 年，黃氏家族自高雄前鎮漁港投入冷凍倉儲，深耕遠洋漁業領域。集團自一艘圍網漁船啟航，逐步擴建船隊規模，為集團奠定厚實根基。</p>
+                </div>
             </div>
-            <div class="sp-card reveal delay-2">
-                <img src="assets/logo-jubao.png" alt="巨寶漁業事業群" style="height:32px; width:auto; margin-bottom:24px;">
-                <h3>巨寶漁業事業群</h3>
-                <p>專營圍網漁船捕撈，並結合冷凍運搬船建構「海上移動冷鏈」優勢；同時跨足現代化造船領域，引進符合國際勞工規範與前瞻科技的船體設計，全方位提升海上作業安全與營運效率。</p>
+            <div class="sp-sector-card reveal delay-2">
+                <div class="sp-sector-card-img"><img src="assets/4_nologo.jpg" alt="巨寶漁業事業群"></div>
+                <div class="sp-sector-card-body">
+                    <img class="logo" src="assets/logo-jubao.png" alt="巨寶漁業事業群">
+                    <h3>巨寶漁業事業群</h3>
+                    <p>專營圍網漁船捕撈，並結合冷凍運搬船建構「海上移動冷鏈」優勢；同時跨足現代化造船領域，引進符合國際勞工規範與前瞻科技的船體設計，全方位提升海上作業安全與營運效率。</p>
+                </div>
             </div>
-            <div class="sp-card reveal delay-3">
-                <img src="assets/logo-huasheng.png" alt="華昇魷釣事業群" style="height:32px; width:auto; margin-bottom:24px;">
-                <h3>華昇魷釣事業群</h3>
-                <p>專精高技術漁法，經營魷魚秋刀魚船與延繩釣漁船。多元船隊相輔相成，完美展現從精準捕撈、生態永續到全球冷鏈供應的頂尖實力。</p>
+            <div class="sp-sector-card reveal delay-3">
+                <div class="sp-sector-card-img"><img src="assets/3_nologo.jpg" alt="華昇魷釣事業群"></div>
+                <div class="sp-sector-card-body">
+                    <img class="logo" src="assets/logo-huasheng.png" alt="華昇魷釣事業群">
+                    <h3>華昇魷釣事業群</h3>
+                    <p>專精高技術漁法，經營魷魚秋刀魚船與延繩釣漁船。多元船隊相輔相成，完美展現從精準捕撈、生態永續到全球冷鏈供應的頂尖實力。</p>
+                </div>
             </div>
         </div>
 

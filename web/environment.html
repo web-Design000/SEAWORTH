@@ -2116,7 +2116,8 @@
     .sp-section-head p { font-size: var(--text-sm); color: var(--c-muted); line-height: 2; }
 
     .sp-intro {
-        max-width: 900px;
+        max-width: 1020px;
+        margin: 0 auto;
     }
     .sp-intro p {
         font-size: var(--text-base);
@@ -2132,8 +2133,8 @@
         color: var(--c-subtitle-blue);
         letter-spacing: 0.08em;
         line-height: 1.8;
-        margin-bottom: 36px;
-        max-width: 780px;
+        margin: 0 auto 36px;
+        max-width: 1020px;
     }
 
     /* 特色卡片網格 */
@@ -2238,6 +2239,43 @@
         font-size: var(--text-sm);
         color: var(--c-muted);
         line-height: 1.95;
+    }
+
+    /* 環境保護三項行動彼此並列、無先後順序，跟風險管理的流程時間軸不同，
+       這裡用方形圖示格線，安靜、無連接線，貼合環境守護的沉靜調性。 */
+    .sp-eco-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 48px;
+        max-width: 1020px;
+        margin: 0 auto;
+    }
+    .sp-eco-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 8px;
+        background: var(--c-subtle);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--c-subtitle-blue);
+        margin-bottom: 24px;
+    }
+    .sp-eco-icon i { width: 26px; height: 26px; stroke-width: 1.4; }
+    .sp-eco-title {
+        font-family: var(--font-serif);
+        font-size: var(--text-lg);
+        color: var(--c-ink);
+        letter-spacing: 0.03em;
+        margin-bottom: 12px;
+    }
+    .sp-eco-desc {
+        font-size: var(--text-xs);
+        color: var(--c-muted);
+        line-height: 1.9;
+    }
+    @media (max-width: 860px) {
+        .sp-eco-grid { grid-template-columns: 1fr; gap: 44px; }
     }
 
     /* 手風琴 (FAQ / 策略時間軸共用) */
@@ -2579,27 +2617,22 @@
         
         <div class="sp-lede reveal">海沃控股集團的共善價值，奠基於「海洋環境保護」與「人本責任實踐」兩大核心支柱。在環境治理層面，集團以科學化與責任導向的漁業管理為基石，推行永續捕撈、降低對海洋生態環境的衝擊，並持續優化船隊營運效能。</div>
 
-        <div class="sp-numbered-list">
-            <div class="sp-numbered-item reveal">
-                <span class="num">01</span>
-                <div>
-                    <h3>海洋保育</h3>
-                    <p>所有的產品皆已取得國際認可之認證，包括海洋管理委員會（MSC）與海豚保護（Dolphin Safe）標章，嚴格遵循非纏結式集魚器（Fish Aggregating Device）使用規範，減少對海洋生物的干擾，並配合國際漁業組織（RFMOs）規範推動選擇性捕撈與物種保育，避免過度捕撈及非目標生物的誤捕。</p>
-                </div>
+        <div class="sp-eco-grid">
+            <div class="reveal">
+                <div class="sp-eco-icon"><i data-lucide="fish"></i></div>
+                <h3 class="sp-eco-title">海洋保育</h3>
+                <p class="sp-eco-desc">所有的產品皆已取得國際認可之認證，包括海洋管理委員會（MSC）與海豚保護（Dolphin Safe）標章，嚴格遵循非纏結式集魚器（Fish Aggregating Device）使用規範，減少對海洋生物的干擾，並配合國際漁業組織（RFMOs）規範推動選擇性捕撈與物種保育，避免過度捕撈及非目標生物的誤捕。</p>
             </div>
-            <div class="sp-numbered-item reveal">
-                <span class="num">02</span>
-                <div>
-                    <h3>積極落實《聯合國永續發展目標》（SDGs）</h3>
-                    <p>持續透過導入低碳節能航行技術等行動，守護生物多樣性，減緩漁業對海洋生態的衝擊，確保捕撈行為在經濟、環境與社會間取得平衡，為海洋生態健康盡到企業責任。</p>
-                </div>
+            <div class="reveal">
+                <div class="sp-eco-icon"><i data-lucide="leaf"></i></div>
+                <h3 class="sp-eco-title">積極落實《聯合國永續發展目標》（SDGs）</h3>
+                <p class="sp-eco-desc">持續透過導入低碳節能航行技術等行動，守護生物多樣性，減緩漁業對海洋生態的衝擊，確保捕撈行為在經濟、環境與社會間取得平衡，為海洋生態健康盡到企業責任。</p>
             </div>
-            <div class="sp-numbered-item reveal">
-                <span class="num">03</span>
-                <div>
-                    <h3>船上廢棄物分類與油料管理</h3>
-                    <p>透過定期巡檢、設備維護及船員教育訓練，降低油料洩漏與污染風險，確保集團的每艘船舶作業能符合國際海洋保育與航行安全的要求。</p>
-                </div>
+            <div class="reveal">
+                <div class="sp-eco-icon"><i data-lucide="droplet"></i></div>
+                <h3 class="sp-eco-title">船上廢棄物分類與油料管理</h3>
+                <p class="sp-eco-desc">透過定期巡檢、設備維護及船員教育訓練，降低油料洩漏與污染風險，確保集團的每艘船舶作業能符合國際海洋保育與航行安全的要求。</p>
+            </div>
             </div>
             </div>
     

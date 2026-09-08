@@ -2116,7 +2116,8 @@
     .sp-section-head p { font-size: var(--text-sm); color: var(--c-muted); line-height: 2; }
 
     .sp-intro {
-        max-width: 900px;
+        max-width: 1020px;
+        margin: 0 auto;
     }
     .sp-intro p {
         font-size: var(--text-base);
@@ -2132,8 +2133,8 @@
         color: var(--c-subtitle-blue);
         letter-spacing: 0.08em;
         line-height: 1.8;
-        margin-bottom: 36px;
-        max-width: 780px;
+        margin: 0 auto 36px;
+        max-width: 1020px;
     }
 
     /* 特色卡片網格 */
@@ -2160,6 +2161,52 @@
         font-size: var(--text-xs);
         color: var(--c-muted);
         line-height: 1.9;
+    }
+
+    /* 社會責任是人權、合規、反貪腐這類份量較重的議題，借用首頁 ESG 深色卡片
+       的調性（不用圖片，改用實色深海藍），跟環境保護頁淺色方塊圖示的輕盈感
+       形成對比，兩個共善經營子頁一深一淺，仍是同一套色彩系統。 */
+    .sp-dark-card-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        max-width: 1020px;
+        margin: 0 auto;
+    }
+    .sp-dark-card-row {
+        display: grid;
+        gap: 20px;
+    }
+    .sp-dark-card-row.row-3 { grid-template-columns: repeat(3, 1fr); }
+    .sp-dark-card-row.row-2 { grid-template-columns: repeat(2, 1fr); }
+    .sp-dark-card {
+        background: var(--c-ocean-deep);
+        padding: 36px 32px;
+    }
+    .sp-dark-card-num {
+        font-family: var(--font-display);
+        font-size: var(--text-xl);
+        color: var(--c-copper-light);
+        display: block;
+        margin-bottom: 18px;
+    }
+    .sp-dark-card h3 {
+        font-family: var(--font-serif);
+        font-size: var(--text-lg);
+        color: #FFFFFF;
+        letter-spacing: 0.03em;
+        margin-bottom: 14px;
+    }
+    .sp-dark-card p {
+        font-size: var(--text-xs);
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.85;
+    }
+    @media (max-width: 900px) {
+        .sp-dark-card-row.row-3,
+        .sp-dark-card-row.row-2 {
+            grid-template-columns: 1fr;
+        }
     }
 
     /* 圖文並列區塊 */
@@ -2579,35 +2626,39 @@
         
         <div class="sp-lede reveal">在社會責任層面，集團秉持以人為本的理念，重視船員的勞動權益、職業安全與身心健康，並依循國際標準建立透明且完善的管理制度。</div>
 
-        <div class="sp-grid-3">
-            <div class="sp-card reveal delay-1">
-                <span class="sp-card-num">01</span>
-                <h3>注重人權</h3>
-                <p>集團尊重並保障所有船員與員工之基本人權，嚴格禁止任何形式之強迫勞動、人口販運、童工、歧視及騷擾行為，致力打造多元、平等與包容（DEI）的工作環境。同時遵循《國際勞工組織漁業工作公約》（ILO C188）、FISH 船員人權標準等國際人權規範，持續提升勞動條件，維護每位從業人員的尊嚴與權益。</p>
+        <div class="sp-dark-card-grid">
+            <div class="sp-dark-card-row row-3">
+                <div class="sp-dark-card reveal delay-1">
+                    <span class="sp-dark-card-num">01</span>
+                    <h3>注重人權</h3>
+                    <p>集團尊重並保障所有船員與員工之基本人權，嚴格禁止任何形式之強迫勞動、人口販運、童工、歧視及騷擾行為，致力打造多元、平等與包容（DEI）的工作環境。同時遵循《國際勞工組織漁業工作公約》（ILO C188）、FISH 船員人權標準等國際人權規範，持續提升勞動條件，維護每位從業人員的尊嚴與權益。</p>
+                </div>
+                <div class="sp-dark-card reveal delay-2">
+                    <span class="sp-dark-card-num">02</span>
+                    <h3>合規營運</h3>
+                    <p>集團秉持責任漁業原則，嚴格遵循國際漁業管理組織及各營運所在地法規要求，建立完善的合規管理制度。透過船舶監控系統、觀察員制度、轉載／轉運管理政策及 IUU 非法、未報告及不受規範的漁撈防制措施，確保所有漁撈作業符合法規要求，提升營運透明度與管理效能。</p>
+                </div>
+                <div class="sp-dark-card reveal delay-3">
+                    <span class="sp-dark-card-num">03</span>
+                    <h3>漁獲可追溯制度</h3>
+                    <p>集團建立完善的漁獲可追溯管理機制，涵蓋捕撈、轉運、加工、倉儲及銷售等各階段作業流程，確保漁獲品的資訊完整。透過系統化管理與紀錄保存，提升供應鏈透明度，強化客戶對產品品質與來源的信任感。</p>
+                </div>
             </div>
-            <div class="sp-card reveal delay-2">
-                <span class="sp-card-num">02</span>
-                <h3>合規營運</h3>
-                <p>集團秉持責任漁業原則，嚴格遵循國際漁業管理組織及各營運所在地法規要求，建立完善的合規管理制度。透過船舶監控系統、觀察員制度、轉載／轉運管理政策及 IUU 非法、未報告及不受規範的漁撈防制措施，確保所有漁撈作業符合法規要求，提升營運透明度與管理效能。</p>
+            <div class="sp-dark-card-row row-2">
+                <div class="sp-dark-card reveal delay-1">
+                    <span class="sp-dark-card-num">04</span>
+                    <h3>反貪腐與公平競爭</h3>
+                    <p>集團秉持誠信經營原則，嚴禁任何形式之賄賂、貪腐、利益輸送、壟斷及不正當競爭行為。所有商業活動均遵循公平、公正及透明原則進行，並透過內部控制、教育訓練及申訴機制，持續強化企業倫理文化意識。</p>
+                </div>
+                <div class="sp-dark-card reveal delay-2">
+                    <span class="sp-dark-card-num">05</span>
+                    <h3>國際認證與責任漁業</h3>
+                    <p>集團積極推動永續漁業管理，並取得海洋管理委員會（MSC）及海豚保護（Dolphin Safe）等國際認證與標章。透過符合國際標準的漁撈與管理措施，展現對海洋資源保育與責任漁業的長期承諾。</p>
+                </div>
             </div>
-            <div class="sp-card reveal delay-3">
-                <span class="sp-card-num">03</span>
-                <h3>漁獲可追溯制度</h3>
-                <p>集團建立完善的漁獲可追溯管理機制，涵蓋捕撈、轉運、加工、倉儲及銷售等各階段作業流程，確保漁獲品的資訊完整。透過系統化管理與紀錄保存，提升供應鏈透明度，強化客戶對產品品質與來源的信任感。</p>
-            </div>
-            <div class="sp-card reveal delay-4">
-                <span class="sp-card-num">04</span>
-                <h3>反貪腐與公平競爭</h3>
-                <p>集團秉持誠信經營原則，嚴禁任何形式之賄賂、貪腐、利益輸送、壟斷及不正當競爭行為。所有商業活動均遵循公平、公正及透明原則進行，並透過內部控制、教育訓練及申訴機制，持續強化企業倫理文化意識。</p>
-            </div>
-            <div class="sp-card reveal delay-1">
-                <span class="sp-card-num">05</span>
-                <h3>國際認證與責任漁業</h3>
-                <p>集團積極推動永續漁業管理，並取得海洋管理委員會（MSC）及海豚保護（Dolphin Safe）等國際認證與標章。透過符合國際標準的漁撈與管理措施，展現對海洋資源保育與責任漁業的長期承諾。</p>
-            </div>
-            </div>
-    
-    
+        </div>
+
+
         <div class="sp-crosslink-row">
                 <a href="environment.html">← 環境保護</a>
                 <a href="investment-highlights.html">投資亮點 →</a>
