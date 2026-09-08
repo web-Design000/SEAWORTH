@@ -2459,6 +2459,147 @@
         .sp-accordion-head-left { gap: 12px; }
         .sp-cta-panel { padding: 70px 24px; }
     }
+    /* ===== 懸浮圓球互動版型 CSS ===== */
+    .sp-stage{
+        position:relative; min-height:85vh; overflow:hidden;
+        display:flex; align-items:center;
+        background:var(--c-canvas);
+        border-bottom: 1px solid var(--c-line);
+    }
+    .sp-lineart{position:absolute;inset:0;z-index:0;width:100%;height:100%;}
+    .sp-lineart path, .sp-lineart circle{fill:none;stroke:rgba(22,43,64,.34);stroke-width:1.6;}
+
+    .sp-bg-photo{
+        position:absolute;inset:0;z-index:1;opacity:0;
+        background-size:cover;background-position:center;
+        transition:opacity 1.1s var(--ease-poetic);
+    }
+    .sp-bg-photo.on{opacity:1;}
+    .sp-bg-wash{position:absolute;inset:0;z-index:1;background:rgba(252,252,250,.72);pointer-events:none;}
+
+    .sp-content-row{
+        position:relative;z-index:2;width:100%;max-width:1240px;margin:0 auto;padding:0 60px;
+        display:grid;grid-template-columns:1fr auto 1.2fr;align-items:center;gap:70px;
+    }
+
+    /* 中央三顆圓球 */
+    .sp-sphere-col{display:flex;flex-direction:column;align-items:center;gap:30px;grid-column:2;}
+    .sp-sphere{
+        position:relative;width:clamp(112px,10.5vw,166px);height:clamp(112px,10.5vw,166px);
+        border-radius:50%;overflow:hidden;cursor:pointer;
+        box-shadow:0 16px 40px rgba(22,43,64,.16);
+        transition:transform .45s var(--ease-poetic), box-shadow .45s var(--ease-poetic);
+    }
+    .sp-sphere:hover{transform:translateY(-4px);}
+    .sp-sphere.active{
+        transform:scale(1.06);
+        box-shadow:0 0 0 3px var(--c-copper), 0 20px 44px rgba(22,43,64,.22);
+    }
+    .sp-sphere img{width:100%;height:100%;object-fit:cover;display:block;}
+    .sp-sphere-label{
+        position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+        background:linear-gradient(180deg, rgba(14,18,23,.04) 0%, rgba(14,18,23,.32) 100%);
+        color:#fff;font-family:var(--font-serif);font-weight:600;font-size:1.05rem;letter-spacing:.08em;
+        text-shadow:0 2px 10px rgba(0,0,0,.35);
+    }
+
+    /* 右側文案 */
+    .sp-text-col{grid-column:3;text-align:left;}
+    .sp-text-inner{
+        display:grid;position:relative;padding:38px 42px;border-radius:2px;
+        background:rgba(255,255,255,.66);backdrop-filter:blur(20px) saturate(120%);-webkit-backdrop-filter:blur(20px) saturate(120%);
+        box-shadow:0 30px 70px rgba(22,43,64,.08);
+        transition:background .5s var(--ease-poetic), box-shadow .5s var(--ease-poetic);
+    }
+    .sp-headline-stage {
+        position: relative; display: block;
+        margin-bottom: 18px;
+    }
+    .sp-headline {
+        position: absolute; top: 0; left: 0; right: 0;
+        opacity: 0; transform: translateY(10px); pointer-events: none;
+        transition: opacity .8s var(--ease-poetic), transform .8s var(--ease-poetic);
+    }
+    .sp-headline.on { 
+        position: relative; 
+        opacity: 1; transform: translateY(0); pointer-events: auto; 
+    }
+    .sp-headline h2 {
+        font-family: var(--font-serif); font-weight: 400; font-size: var(--text-2xl);
+        color: var(--c-ink); letter-spacing: .06em; line-height: 1.25; margin: 0;
+    }
+
+    .sp-eyebrow-stage {
+        position: relative; display: block;
+        margin-bottom: 26px;
+    }
+    .sp-eyebrow {
+        position: absolute; top: 0; left: 0; right: 0;
+        opacity: 0; transform: translateY(10px); pointer-events: none;
+        transition: opacity .8s var(--ease-poetic) .06s, transform .8s var(--ease-poetic) .06s;
+    }
+    .sp-eyebrow.on { 
+        position: relative; 
+        opacity: 1; transform: translateY(0); pointer-events: auto; 
+    }
+    .sp-eyebrow span {
+        display: block; font-family: var(--font-sans); font-size: var(--text-sm); font-weight: 300;
+        color: var(--c-muted); line-height: 1.85; margin-bottom: 6px;
+    }
+
+    .sp-brand-stage {
+        position: relative; display: block;
+        padding-top: 18px; border-top: 1px solid var(--c-line);
+    }
+    .sp-brand {
+        position: absolute; top: 0; left: 0; right: 0;
+        opacity: 0; transform: translateY(10px); pointer-events: none;
+        transition: opacity .8s var(--ease-poetic) .12s, transform .8s var(--ease-poetic) .12s;
+    }
+    .sp-brand.on { 
+        position: relative; 
+        opacity: 1; transform: translateY(0); pointer-events: auto; 
+    }
+    .sp-brand-lockup { display: flex; align-items: baseline; gap: 2px; margin-bottom: 8px; }
+    .sp-brand-big { font-family: var(--font-display); font-weight: 600; font-size: var(--text-3xl); color: var(--c-ocean-deep); line-height: 1; }
+    .sp-brand-rest { font-family: var(--font-display); font-weight: 600; font-size: var(--text-lg); letter-spacing: .06em; color: var(--c-ocean-deep); text-transform: uppercase; }
+    .sp-brand-sub { font-family: var(--font-sans); font-size: var(--text-xs); letter-spacing: .24em; color: var(--c-copper); text-transform: uppercase; }
+
+    .sp-idle, .sp-content-stack {
+        position: absolute; top: 0; left: 0; right: 0; padding: 38px 42px;
+        transition: opacity .5s var(--ease-poetic);
+        opacity: 0; pointer-events: none;
+    }
+    /* default state for idle is visible, handled by HTML and JS removing .hide */
+    .sp-idle:not(.hide) { position: relative; opacity: 1; pointer-events: auto; }
+    .sp-content-stack.show { position: relative; opacity: 1; pointer-events: auto; }
+
+    .sp-text-inner {
+        position: relative; border-radius: 2px; padding: 0; /* padding moved to children */
+        background: rgba(255,255,255,.66); backdrop-filter: blur(20px) saturate(120%); -webkit-backdrop-filter: blur(20px) saturate(120%);
+        box-shadow: 0 30px 70px rgba(22,43,64,.08);
+        transition: background .5s var(--ease-poetic), box-shadow .5s var(--ease-poetic);
+    }
+
+    .sp-top-eyebrow {
+        display: block; font-family: var(--font-display); font-style: italic; font-size: var(--text-sm);
+        letter-spacing: .2em; color: var(--c-copper); text-transform: uppercase; margin-bottom: 12px;
+    }
+    .sp-idle-headline {
+        font-family: var(--font-serif); font-weight: 400; font-size: var(--text-2xl);
+        color: var(--c-ink); letter-spacing: .06em; margin: 0 0 18px 0; line-height: 1.25;
+    }
+    .sp-idle-desc { font-size: var(--text-sm); font-weight: 300; color: var(--c-muted); line-height: 1.9; max-width: 320px; margin: 0; }
+
+    @media (max-width:900px){
+        .sp-content-row { grid-template-columns: 1fr; justify-items: center; gap: 36px; padding: 80px 28px 60px; }
+        .sp-sphere-col { grid-column: 1; flex-direction: row; }
+        .sp-text-col { grid-column: 1; text-align: center; }
+        .sp-headline { white-space: normal; }
+        .sp-brand-lockup { justify-content: center; }
+        .sp-eyebrow span { text-align: center; }
+        .sp-idle-desc { max-width: none; }
+    }
 </style>
 
 </head>
@@ -2613,36 +2754,104 @@
     </section>
 
 <main>
-    <section class="blanz-section sp-section"><div class="blanz-container">
-        
-        <div class="sp-lede reveal">海沃控股集團的共善價值，奠基於「海洋環境保護」與「人本責任實踐」兩大核心支柱。在環境治理層面，集團以科學化與責任導向的漁業管理為基石，推行永續捕撈、降低對海洋生態環境的衝擊，並持續優化船隊營運效能。</div>
+    <section class="sp-stage">
+        <svg class="sp-lineart" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+            <circle cx="150" cy="1050" r="620"/>
+            <circle cx="30" cy="1100" r="430"/>
+            <path d="M -200 900 Q 220 800 620 900 T 1460 900 T 2300 900 T 3140 900" />
+            <path d="M -200 1000 Q 220 920 620 1000 T 1460 1000 T 2300 1000 T 3140 1000" />
+            <path d="M 990 40 L 990 1040" stroke-dasharray="2 10"/>
+        </svg>
 
-        <div class="sp-eco-grid">
-            <div class="reveal">
-                <div class="sp-eco-icon"><i data-lucide="fish"></i></div>
-                <h3 class="sp-eco-title">海洋保育</h3>
-                <p class="sp-eco-desc">所有的產品皆已取得國際認可之認證，包括海洋管理委員會（MSC）與海豚保護（Dolphin Safe）標章，嚴格遵循非纏結式集魚器（Fish Aggregating Device）使用規範，減少對海洋生物的干擾，並配合國際漁業組織（RFMOs）規範推動選擇性捕撈與物種保育，避免過度捕撈及非目標生物的誤捕。</p>
+        <div class="sp-bg-photo" data-i="0" style="background-image:url('assets/pho_ocean.jpg');background-position:75% center;"></div>
+        <div class="sp-bg-photo" data-i="1" style="background-image:url('assets/esg-environment.jpg');background-position:70% 25%;"></div>
+        <div class="sp-bg-photo" data-i="2" style="background-image:url('assets/tech-tide-analysis.jpg');"></div>
+        <div class="sp-bg-wash"></div>
+
+        <div class="sp-content-row">
+            <div class="sp-sphere-col" id="spSpheres">
+                <div class="sp-sphere" data-i="0">
+                    <img src="assets/pho_ocean.jpg" alt="海洋保育" style="object-position:75% center;">
+                    <div class="sp-sphere-label">保育</div>
+                </div>
+                <div class="sp-sphere" data-i="1">
+                    <img src="assets/esg-environment.jpg" alt="落實 SDGs" style="object-position:70% 25%;">
+                    <div class="sp-sphere-label">SDGs</div>
+                </div>
+                <div class="sp-sphere" data-i="2">
+                    <img src="assets/tech-tide-analysis.jpg" alt="廢棄物管理">
+                    <div class="sp-sphere-label">管理</div>
+                </div>
             </div>
-            <div class="reveal">
-                <div class="sp-eco-icon"><i data-lucide="leaf"></i></div>
-                <h3 class="sp-eco-title">積極落實《聯合國永續發展目標》（SDGs）</h3>
-                <p class="sp-eco-desc">持續透過導入低碳節能航行技術等行動，守護生物多樣性，減緩漁業對海洋生態的衝擊，確保捕撈行為在經濟、環境與社會間取得平衡，為海洋生態健康盡到企業責任。</p>
+
+            <div class="sp-text-col">
+                <div class="sp-text-inner">
+                    <div class="sp-idle" id="spIdle">
+                        <span class="sp-top-eyebrow">SEAWORTH HOLDING</span>
+                        <h2 class="sp-idle-headline">環境治理支柱</h2>
+                        <p class="sp-idle-desc">海沃控股集團的共善價值，奠基於「海洋環境保護」與「人本責任實踐」兩大核心支柱。在環境治理層面，集團以科學化與責任導向的漁業管理為基石，推行永續捕撈、降低對海洋生態環境的衝擊，並持續優化船隊營運效能。</p>
+                    </div>
+
+                    <div class="sp-content-stack" id="spContentStack">
+                        <div class="sp-headline-stage">
+                            <div class="sp-headline" data-i="0">
+                                <span class="sp-top-eyebrow">SEAWORTH HOLDING</span>
+                                <h2>海洋保育</h2>
+                            </div>
+                            <div class="sp-headline" data-i="1">
+                                <span class="sp-top-eyebrow">SEAWORTH HOLDING</span>
+                                <h2>落實《聯合國永續發展目標》</h2>
+                            </div>
+                            <div class="sp-headline" data-i="2">
+                                <span class="sp-top-eyebrow">SEAWORTH HOLDING</span>
+                                <h2>船上廢棄物分類與油料管理</h2>
+                            </div>
+                        </div>
+
+                        <div class="sp-eyebrow-stage">
+                            <div class="sp-eyebrow" data-i="0">
+                                <span>所有的產品皆已取得國際認可之認證，包括海洋管理委員會（MSC）與海豚保護標章。</span>
+                                <span>嚴格遵循非纏結式集魚器使用規範，減少對海洋生物的干擾。</span>
+                                <span>配合國際漁業組織規範推動選擇性捕撈與物種保育。</span>
+                            </div>
+                            <div class="sp-eyebrow" data-i="1">
+                                <span>持續透過導入低碳節能航行技術等行動，守護生物多樣性。</span>
+                                <span>減緩漁業對海洋生態的衝擊，確保捕撈行為在經濟、環境與社會間取得平衡。</span>
+                                <span>為海洋生態健康盡到企業責任。</span>
+                            </div>
+                            <div class="sp-eyebrow" data-i="2">
+                                <span>透過定期巡檢、設備維護及船員教育訓練，降低油料洩漏風險。</span>
+                                <span>確實執行船上廢棄物分類管理。</span>
+                                <span>確保集團的每艘船舶作業能符合國際海洋保育與航行安全的要求。</span>
+                            </div>
+                        </div>
+
+                        <div class="sp-brand-stage">
+                            <div class="sp-brand" data-i="0">
+                                <div class="sp-brand-lockup"><span class="sp-brand-big">E</span><span class="sp-brand-rest">cology</span></div>
+                                <div class="sp-brand-sub">MARINE CONSERVATION</div>
+                            </div>
+                            <div class="sp-brand" data-i="1">
+                                <div class="sp-brand-lockup"><span class="sp-brand-big">S</span><span class="sp-brand-rest">DGs</span></div>
+                                <div class="sp-brand-sub">SUSTAINABLE DEVELOPMENT</div>
+                            </div>
+                            <div class="sp-brand" data-i="2">
+                                <div class="sp-brand-lockup"><span class="sp-brand-big">M</span><span class="sp-brand-rest">anagement</span></div>
+                                <div class="sp-brand-sub">WASTE & FUEL CONTROL</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="reveal">
-                <div class="sp-eco-icon"><i data-lucide="droplet"></i></div>
-                <h3 class="sp-eco-title">船上廢棄物分類與油料管理</h3>
-                <p class="sp-eco-desc">透過定期巡檢、設備維護及船員教育訓練，降低油料洩漏與污染風險，確保集團的每艘船舶作業能符合國際海洋保育與航行安全的要求。</p>
-            </div>
-            </div>
-            </div>
-    
-    
+        </div>
+    </section>
+
+    <div class="blanz-container" style="padding: 60px 60px 100px 60px;">
         <div class="sp-crosslink-row">
-                <a href="integrity.html">← 誠信經營守則</a>
-                <a href="social-responsibility.html">社會責任 →</a>
-            </div>
-            </div>
-        </section>
+            <a href="integrity.html">← 誠信經營守則</a>
+            <a href="social-responsibility.html">社會責任 →</a>
+        </div>
+    </div>
 </main>
 
 <footer class="blanz-footer">
@@ -2756,5 +2965,40 @@ document.addEventListener("DOMContentLoaded", () => {
     
 </script>
 
+<script>
+    (function(){
+        const sphereCol = document.getElementById('spSpheres');
+        const spheres = document.querySelectorAll('.sp-sphere');
+        const idle = document.getElementById('spIdle');
+        const stack = document.getElementById('spContentStack');
+
+        function setActive(i){
+            document.querySelectorAll('.sp-sphere').forEach(el => el.classList.toggle('active', +el.dataset.i === i));
+            document.querySelectorAll('.sp-bg-photo, .sp-eyebrow, .sp-headline, .sp-brand').forEach(el => el.classList.toggle('on', +el.dataset.i === i));
+            if(idle) idle.classList.add('hide');
+            if(stack) stack.classList.add('show');
+        }
+
+        function setIdle(){
+            document.querySelectorAll('.sp-sphere').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.sp-bg-photo').forEach(el => el.classList.remove('on'));
+            if(idle) idle.classList.remove('hide');
+            if(stack) stack.classList.remove('show');
+        }
+
+        if(spheres && sphereCol) {
+            spheres.forEach(sp => {
+                sp.addEventListener('click', () => setActive(+sp.dataset.i));
+                sp.addEventListener('mouseenter', () => setActive(+sp.dataset.i));
+            });
+
+            sphereCol.addEventListener('mouseleave', setIdle);
+
+            document.addEventListener('click', (e) => {
+                if (!sphereCol.contains(e.target)) setIdle();
+            });
+        }
+    })();
+</script>
 </body>
 </html>
