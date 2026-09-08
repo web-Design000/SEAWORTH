@@ -2136,6 +2136,27 @@
         max-width: 780px;
     }
 
+    /* 頁面導言：借用首頁「THE BLANZ POETIC ARCHITECTURE」原本設計好、
+       卻沒有實際套用在任何區塊上的 .poetic-quote-wrap 版型（細直線 +
+       不對稱雙欄），取代原本單純靠左的大段文字，呼應首頁的編輯排版語彙。 */
+    .sp-quote-lede {
+        font-family: var(--font-serif);
+        font-size: var(--text-lg);
+        color: var(--c-subtitle-blue);
+        letter-spacing: 0.06em;
+        line-height: 1.85;
+    }
+    .sp-quote-body p {
+        font-size: var(--text-sm);
+        color: var(--c-muted);
+        line-height: 2;
+        margin-bottom: 20px;
+    }
+    .sp-quote-body p:last-child { margin-bottom: 0; }
+    @media (max-width: 1024px) {
+        .poetic-quote-desc { grid-template-columns: 1fr; gap: 28px; }
+    }
+
     /* 特色卡片網格 */
     .sp-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
     .sp-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
@@ -2577,13 +2598,126 @@
 <main>
     <section class="blanz-section sp-section"><div class="blanz-container">
         
-        <div class="sp-lede reveal">海沃控股集團視「穩健經營」與「永續發展」為企業核心治理原則，建立權責分工清晰、由上而下的公司治理架構。</div>
-        <div class="sp-intro reveal">
-            <p>集團治理架構以董事會為最高決策核心，統籌集團整體策略方向；董事長並召集各事業群及各功能處一階主管，組成「風險管理小組」，配置專責之風險管理執行辦公室，同時設立獨立之稽核室，依風險導向原則檢視內部控制作業之落實情形。各部門另推選領域專家擔任風險管理功能人員，將治理意識徹底融入日常營運決策與一線作業，協助董事會及管理階層持續提升治理品質與營運效能。</p>
+        <div class="poetic-quote-wrap reveal">
+            <div class="poetic-mark-line"></div>
+            <div class="poetic-quote-desc">
+                <div class="sp-quote-lede">海沃控股集團視「穩健經營」與「永續發展」為企業核心治理原則，建立權責分工清晰、由上而下的公司治理架構。</div>
+                <div class="sp-quote-body">
+                    <p>集團治理架構以董事會為最高決策核心，統籌集團整體策略方向；董事長並召集各事業群及各功能處一階主管，組成「風險管理小組」，配置專責之風險管理執行辦公室，同時設立獨立之稽核室，依風險導向原則檢視內部控制作業之落實情形。各部門另推選領域專家擔任風險管理功能人員，將治理意識徹底融入日常營運決策與一線作業，協助董事會及管理階層持續提升治理品質與營運效能。</p>
+                </div>
+            </div>
         </div>
 
         <div class="sp-media-frame reveal" style="height:auto; margin-top:20px; background:var(--c-white); border:1px solid var(--c-line); padding:40px; text-align:center;">
-            <img src="assets/org-chart.png" alt="海沃控股集團組織架構圖" style="width:100%; height:auto; object-fit:contain;">
+            <!-- 這張圖是寬幅橫向組織樹（7 欄），窄螢幕直接等比縮小會讓文字小到看不清楚，
+                 所以改成外層可橫向滾動、SVG 本身維持最小寬度，手機版用滑動瀏覽完整圖，
+                 不犧牲文字清晰度。 -->
+            <div style="overflow-x:auto; -webkit-overflow-scrolling:touch;">
+            <svg viewBox="0 0 1360 690" xmlns="http://www.w3.org/2000/svg" style="width:100%; min-width:800px; height:auto; display:block;" role="img" aria-label="海沃控股集團組織架構圖">
+                <defs>
+                    <style>
+                        .oc-node-title { font-family: 'Noto Serif TC', serif; font-weight: 500; }
+                        .oc-line { stroke: rgba(14,18,23,0.28); stroke-width: 1.2; fill: none; }
+                    </style>
+                </defs>
+
+                <!-- 英文標籤：跟下面的圖表本體隔開足夠距離，避免重疊 -->
+                <text x="680" y="18" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="15" letter-spacing="4" fill="#646C7A" font-style="italic">ORGANIZATION CHART</text>
+
+                <g transform="translate(0, 32)">
+
+                <!-- 連接線：股東會 -> 董事會 -->
+                <line class="oc-line" x1="680" y1="73" x2="680" y2="110" />
+                <!-- 董事會 -> 董事長 -->
+                <line class="oc-line" x1="680" y1="168" x2="680" y2="205" />
+                <!-- 董事長 -> 各功能性委員會 -->
+                <line class="oc-line" x1="765" y1="235" x2="805" y2="235" />
+                <!-- 董事長主幹向下 -->
+                <line class="oc-line" x1="680" y1="263" x2="680" y2="450" />
+                <!-- 第四層橫向分支：稽核室 -- 企業風險與公共關係部 -->
+                <line class="oc-line" x1="220" y1="310" x2="1140" y2="310" />
+                <line class="oc-line" x1="220" y1="310" x2="220" y2="332" />
+                <line class="oc-line" x1="1140" y1="310" x2="1140" y2="332" />
+                <!-- 第五層分配橫桿 -->
+                <line class="oc-line" x1="100" y1="450" x2="1260" y2="450" />
+                <line class="oc-line" x1="100" y1="450" x2="100" y2="470" />
+                <line class="oc-line" x1="293" y1="450" x2="293" y2="470" />
+                <line class="oc-line" x1="487" y1="450" x2="487" y2="470" />
+                <line class="oc-line" x1="680" y1="450" x2="680" y2="470" />
+                <line class="oc-line" x1="873" y1="450" x2="873" y2="470" />
+                <line class="oc-line" x1="1067" y1="450" x2="1067" y2="470" />
+                <line class="oc-line" x1="1260" y1="450" x2="1260" y2="470" />
+
+                <!-- Tier 1：股東會 -->
+                <rect x="595" y="18" width="170" height="55" rx="2" fill="#00495B" />
+                <text x="680" y="51" text-anchor="middle" class="oc-node-title" font-size="20" fill="#FFFFFF">股東會</text>
+
+                <!-- Tier 2：董事會 -->
+                <rect x="595" y="113" width="170" height="55" rx="2" fill="#00495B" />
+                <text x="680" y="146" text-anchor="middle" class="oc-node-title" font-size="20" fill="#FFFFFF">董事會</text>
+
+                <!-- Tier 3：董事長 -->
+                <rect x="595" y="208" width="170" height="55" rx="2" fill="#00495B" />
+                <text x="680" y="241" text-anchor="middle" class="oc-node-title" font-size="20" fill="#FFFFFF">董事長</text>
+
+                <!-- Tier 3 側支：各功能性委員會 -->
+                <rect x="805" y="205" width="190" height="60" rx="2" fill="#FFFFFF" stroke="#00495B" stroke-width="1.2" />
+                <text x="900" y="230" text-anchor="middle" class="oc-node-title" font-size="16" fill="#00495B">各功能性</text>
+                <text x="900" y="252" text-anchor="middle" class="oc-node-title" font-size="16" fill="#00495B">委員會</text>
+
+                <!-- Tier 4：稽核室 -->
+                <rect x="130" y="332" width="180" height="58" rx="2" fill="#FFFFFF" stroke="#B2C8CE" stroke-width="1.2" />
+                <text x="220" y="368" text-anchor="middle" class="oc-node-title" font-size="17" fill="#0E1217">稽核室</text>
+
+                <!-- Tier 4：企業風險與公共關係部 -->
+                <rect x="1040" y="332" width="200" height="58" rx="2" fill="#FFFFFF" stroke="#B2C8CE" stroke-width="1.2" />
+                <text x="1140" y="357" text-anchor="middle" class="oc-node-title" font-size="15" fill="#0E1217">企業風險與</text>
+                <text x="1140" y="378" text-anchor="middle" class="oc-node-title" font-size="15" fill="#0E1217">公共關係部</text>
+
+                <!-- Tier 5：七個業務/事業處 -->
+                <!-- 華偉漁業事業群 -->
+                <rect x="20" y="470" width="160" height="70" rx="2" fill="#F6F6F4" stroke="#D9DEE3" stroke-width="1" />
+                <text x="100" y="500" text-anchor="middle" class="oc-node-title" font-size="15" fill="#1E2229">華偉漁業</text>
+                <text x="100" y="521" text-anchor="middle" class="oc-node-title" font-size="15" fill="#1E2229">事業群</text>
+
+                <!-- 巨寶漁業事業群 -->
+                <rect x="213" y="470" width="160" height="70" rx="2" fill="#F6F6F4" stroke="#D9DEE3" stroke-width="1" />
+                <text x="293" y="500" text-anchor="middle" class="oc-node-title" font-size="15" fill="#1E2229">巨寶漁業</text>
+                <text x="293" y="521" text-anchor="middle" class="oc-node-title" font-size="15" fill="#1E2229">事業群</text>
+
+                <!-- 華昇魷釣事業群 -->
+                <rect x="407" y="470" width="160" height="70" rx="2" fill="#F6F6F4" stroke="#D9DEE3" stroke-width="1" />
+                <text x="487" y="500" text-anchor="middle" class="oc-node-title" font-size="15" fill="#1E2229">華昇魷釣</text>
+                <text x="487" y="521" text-anchor="middle" class="oc-node-title" font-size="15" fill="#1E2229">事業群</text>
+
+                <!-- 總管理處 -->
+                <rect x="600" y="470" width="160" height="70" rx="2" fill="#F6F6F4" stroke="#D9DEE3" stroke-width="1" />
+                <text x="680" y="511" text-anchor="middle" class="oc-node-title" font-size="16" fill="#1E2229">總管理處</text>
+
+                <!-- 業務處 -->
+                <rect x="793" y="470" width="160" height="70" rx="2" fill="#F6F6F4" stroke="#D9DEE3" stroke-width="1" />
+                <text x="873" y="511" text-anchor="middle" class="oc-node-title" font-size="16" fill="#1E2229">業務處</text>
+
+                <!-- 財務處 -->
+                <rect x="987" y="470" width="160" height="70" rx="2" fill="#F6F6F4" stroke="#D9DEE3" stroke-width="1" />
+                <text x="1067" y="511" text-anchor="middle" class="oc-node-title" font-size="16" fill="#1E2229">財務處</text>
+
+                <!-- 銷售處 -->
+                <rect x="1180" y="470" width="160" height="70" rx="2" fill="#F6F6F4" stroke="#D9DEE3" stroke-width="1" />
+                <text x="1260" y="511" text-anchor="middle" class="oc-node-title" font-size="16" fill="#1E2229">銷售處</text>
+
+                <!-- 圖例 -->
+                <g transform="translate(20, 600)">
+                    <rect x="0" y="0" width="16" height="16" rx="1" fill="#00495B" />
+                    <text x="24" y="13" font-family="'Montserrat','Noto Sans TC',sans-serif" font-size="13" fill="#646C7A">核心治理鏈</text>
+                    <rect x="140" y="0" width="16" height="16" rx="1" fill="#FFFFFF" stroke="#00495B" stroke-width="1.2" />
+                    <text x="164" y="13" font-family="'Montserrat','Noto Sans TC',sans-serif" font-size="13" fill="#646C7A">監督／幕僚職能</text>
+                    <rect x="320" y="0" width="16" height="16" rx="1" fill="#F6F6F4" stroke="#D9DEE3" stroke-width="1" />
+                    <text x="344" y="13" font-family="'Montserrat','Noto Sans TC',sans-serif" font-size="13" fill="#646C7A">事業群／營運處</text>
+                </g>
+                </g>
+            </svg>
+            </div>
         </div>
     
     

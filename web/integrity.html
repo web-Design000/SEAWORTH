@@ -2116,7 +2116,8 @@
     .sp-section-head p { font-size: var(--text-sm); color: var(--c-muted); line-height: 2; }
 
     .sp-intro {
-        max-width: 900px;
+        max-width: 1020px;
+        margin: 0 auto;
     }
     .sp-intro p {
         font-size: var(--text-base);
@@ -2132,8 +2133,8 @@
         color: var(--c-subtitle-blue);
         letter-spacing: 0.08em;
         line-height: 1.8;
-        margin-bottom: 36px;
-        max-width: 780px;
+        margin: 0 auto 36px;
+        max-width: 1020px;
     }
 
     /* 特色卡片網格 */
@@ -2238,6 +2239,48 @@
         font-size: var(--text-sm);
         color: var(--c-muted);
         line-height: 1.95;
+    }
+
+    /* 誠信經營守則專用版面：條文是嚴肅的行為規範，不適合卡片式的輕快感，
+       改用巨大的空心數字當作章節標記，營造出版品／規範文件的莊重編排感，
+       跟其他「清單型」頁面（如風險管理三步驟）刻意做出區隔。 */
+    .sp-principle-list { max-width: 1020px; margin: 0 auto; border-top: 1px solid var(--c-line); }
+    .sp-principle-item {
+        position: relative;
+        display: grid;
+        grid-template-columns: 170px 1fr;
+        gap: 8px;
+        padding: 52px 0;
+        border-bottom: 1px solid var(--c-line);
+        align-items: start;
+    }
+    .sp-principle-num {
+        font-family: var(--font-display);
+        font-size: var(--text-mega);
+        line-height: 0.75;
+        font-weight: 400;
+        color: rgba(0, 73, 91, 0.1);
+        -webkit-text-stroke: 1.5px rgba(0, 73, 91, 0.45);
+        user-select: none;
+    }
+    .sp-principle-title {
+        font-family: var(--font-serif);
+        font-size: var(--text-xl);
+        color: var(--c-ink);
+        letter-spacing: 0.04em;
+        margin-bottom: 16px;
+        padding-top: 10px;
+    }
+    .sp-principle-desc {
+        font-size: var(--text-sm);
+        color: var(--c-muted);
+        line-height: 2;
+        max-width: 720px;
+    }
+    @media (max-width: 768px) {
+        .sp-principle-item { grid-template-columns: 1fr; gap: 4px; padding: 40px 0; }
+        .sp-principle-num { font-size: var(--text-4xl); line-height: 1; }
+        .sp-principle-title { padding-top: 4px; }
     }
 
     /* 手風琴 (FAQ / 策略時間軸共用) */
@@ -2587,54 +2630,54 @@
 
         <div class="sp-lede reveal">本集團以「零容忍（Zero Tolerance）」的態度，嚴格落實以下誠信經營、法律合規與商業倫理規範：</div>
 
-        <div class="sp-numbered-list">
-            <div class="sp-numbered-item reveal">
-                <span class="num">01</span>
+        <div class="sp-principle-list">
+            <div class="sp-principle-item reveal">
+                <span class="sp-principle-num">01</span>
                 <div>
-                    <h3>嚴格法令遵循（Compliance）</h3>
-                    <p>集團於全球各據點及海域開展業務時，均將「法令遵循」視為營運之首要底線。全體同仁必須嚴格遵守國際公約、營運所在國法規、國際漁業管理組織、環境保護等國際規範，杜絕任何形式之違法行為。</p>
+                    <h3 class="sp-principle-title">嚴格法令遵循（Compliance）</h3>
+                    <p class="sp-principle-desc">集團於全球各據點及海域開展業務時，均將「法令遵循」視為營運之首要底線。全體同仁必須嚴格遵守國際公約、營運所在國法規、國際漁業管理組織、環境保護等國際規範，杜絕任何形式之違法行為。</p>
                 </div>
             </div>
-            <div class="sp-numbered-item reveal">
-                <span class="num">02</span>
+            <div class="sp-principle-item reveal">
+                <span class="sp-principle-num">02</span>
                 <div>
-                    <h3>落實勞動人權與尊嚴保障</h3>
-                    <p>秉持以人為本的精神，集團嚴格將「勞動人權保障」定導為誠信經營的關鍵指標。我們嚴格遵循 C-188 漁業工作公約等「國際勞工組織」制定之標準及國際 FISH 船員人權標準，提供安全、平等、無歧視且具備尊嚴的勞動環境。透過建置健全的薪酬福利、人權合規審查與海上遠距醫療照護，全力維護船員與全體同仁之勞動人權與人身安全，禁止任何形式之強迫勞動、人口販運與非法剝削。</p>
+                    <h3 class="sp-principle-title">落實勞動人權與尊嚴保障</h3>
+                    <p class="sp-principle-desc">秉持以人為本的精神，集團嚴格將「勞動人權保障」定導為誠信經營的關鍵指標。我們嚴格遵循 C-188 漁業工作公約等「國際勞工組織」制定之標準及國際 FISH 船員人權標準，提供安全、平等、無歧視且具備尊嚴的勞動環境。透過建置健全的薪酬福利、人權合規審查與海上遠距醫療照護，全力維護船員與全體同仁之勞動人權與人身安全，禁止任何形式之強迫勞動、人口販運與非法剝削。</p>
                 </div>
             </div>
-            <div class="sp-numbered-item reveal">
-                <span class="num">03</span>
+            <div class="sp-principle-item reveal">
+                <span class="sp-principle-num">03</span>
                 <div>
-                    <h3>嚴禁不當利益與反貪腐</h3>
-                    <p>集團全體同仁於執行業務時，嚴禁直接或間接提供、承諾、要求或收受任何形式之不正當利益、賄賂、貪污、回扣或不當利益交換，以維護公平、公正的商業競爭環境。</p>
+                    <h3 class="sp-principle-title">嚴禁不當利益與反貪腐</h3>
+                    <p class="sp-principle-desc">集團全體同仁於執行業務時，嚴禁直接或間接提供、承諾、要求或收受任何形式之不正當利益、賄賂、貪污、回扣或不當利益交換，以維護公平、公正的商業競爭環境。</p>
                 </div>
             </div>
-            <div class="sp-numbered-item reveal">
-                <span class="num">04</span>
+            <div class="sp-principle-item reveal">
+                <span class="sp-principle-num">04</span>
                 <div>
-                    <h3>推動誠信供應鏈與責任採購</h3>
-                    <p>集團拒絕與任何涉及非法、未報告及不受規範（IUU）漁業活動範疇之夥伴合作，確保供應鏈之全流程可追溯性與國際貿易合規。</p>
+                    <h3 class="sp-principle-title">推動誠信供應鏈與責任採購</h3>
+                    <p class="sp-principle-desc">集團拒絕與任何涉及非法、未報告及不受規範（IUU）漁業活動範疇之夥伴合作，確保供應鏈之全流程可追溯性與國際貿易合規。</p>
                 </div>
             </div>
-            <div class="sp-numbered-item reveal">
-                <span class="num">05</span>
+            <div class="sp-principle-item reveal">
+                <span class="sp-principle-num">05</span>
                 <div>
-                    <h3>落實利益衝突迴避</h3>
-                    <p>集團要求所有董事、專業經理人及員工於執行職務時，避免個人與公司利益產生衝突。如有潛在利益衝突情形，應主動揭露並依相關規範辦理，以維持決策之公正性與透明度。</p>
+                    <h3 class="sp-principle-title">落實利益衝突迴避</h3>
+                    <p class="sp-principle-desc">集團要求所有董事、專業經理人及員工於執行職務時，避免個人與公司利益產生衝突。如有潛在利益衝突情形，應主動揭露並依相關規範辦理，以維持決策之公正性與透明度。</p>
                 </div>
             </div>
-            <div class="sp-numbered-item reveal">
-                <span class="num">06</span>
+            <div class="sp-principle-item reveal">
+                <span class="sp-principle-num">06</span>
                 <div>
-                    <h3>維護資訊透明與公平交易</h3>
-                    <p>集團秉持誠信透明原則，嚴格遵守反托拉斯法及公平交易法，反對任何形式之聯合壟斷、價格操縱、限制競爭或不當得利行為。我們承諾向股東、金融機構及所有利害關係人，提供真實、準確、即時且透明之財務與營運報導，堅決杜絕財報造假、虛偽不實之陳述，以及任何形式之內線交易，確保市場交易之公平性。</p>
+                    <h3 class="sp-principle-title">維護資訊透明與公平交易</h3>
+                    <p class="sp-principle-desc">集團秉持誠信透明原則，嚴格遵守反托拉斯法及公平交易法，反對任何形式之聯合壟斷、價格操縱、限制競爭或不當得利行為。我們承諾向股東、金融機構及所有利害關係人，提供真實、準確、即時且透明之財務與營運報導，堅決杜絕財報造假、虛偽不實之陳述，以及任何形式之內線交易，確保市場交易之公平性。</p>
                 </div>
             </div>
-            <div class="sp-numbered-item reveal">
-                <span class="num">07</span>
+            <div class="sp-principle-item reveal">
+                <span class="sp-principle-num">07</span>
                 <div>
-                    <h3>恪守保密義務與安全防護</h3>
-                    <p>集團高度重視智慧財產權與商業機密控管。全體同仁對於集團之核心技術、智慧造船工藝、商業策略、財務數據及客戶與供應商之資料，均負有嚴格的保密義務。非經授權不得向第三方揭露，並透過現代化資安防禦，全力確保商業秘密與資料安全。</p>
+                    <h3 class="sp-principle-title">恪守保密義務與安全防護</h3>
+                    <p class="sp-principle-desc">集團高度重視智慧財產權與商業機密控管。全體同仁對於集團之核心技術、智慧造船工藝、商業策略、財務數據及客戶與供應商之資料，均負有嚴格的保密義務。非經授權不得向第三方揭露，並透過現代化資安防禦，全力確保商業秘密與資料安全。</p>
                 </div>
             </div>
             </div>

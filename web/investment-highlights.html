@@ -2132,8 +2132,8 @@
         color: var(--c-subtitle-blue);
         letter-spacing: 0.08em;
         line-height: 1.8;
-        margin-bottom: 36px;
-        max-width: 780px;
+        margin: 0 auto 36px;
+        max-width: 1020px;
     }
 
     /* 特色卡片網格 */
@@ -2160,6 +2160,60 @@
         font-size: var(--text-xs);
         color: var(--c-muted);
         line-height: 1.9;
+    }
+
+    /* 投資亮點專用版面：內容本質是「六項優勢」，比起卡片格線，
+       用一列一列的規格表式排版更像法說會簡報，借用首頁認證區塊的
+       圓形徽章畫框（.medallion-frame）處理 icon，跟誠信守則的巨大
+       空心數字、公司治理架構的引言分欄，三頁三種完全不同的節奏。 */
+    .sp-highlight-list { max-width: 1020px; margin: 0 auto; border-top: 1px solid var(--c-line); }
+    .sp-highlight-item {
+        display: grid;
+        grid-template-columns: 88px 56px 1fr;
+        gap: 28px;
+        align-items: center;
+        padding: 36px 0;
+        border-bottom: 1px solid var(--c-line);
+    }
+    .sp-highlight-icon-frame {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 1px solid var(--c-copper-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--c-subtitle-blue);
+        flex-shrink: 0;
+    }
+    .sp-highlight-icon-frame i { width: 30px; height: 30px; stroke-width: 1.4; }
+    .sp-highlight-index {
+        font-family: var(--font-display);
+        font-size: var(--text-2xl);
+        color: var(--c-copper-light);
+        text-align: center;
+    }
+    .sp-highlight-title {
+        font-family: var(--font-serif);
+        font-size: var(--text-lg);
+        color: var(--c-ink);
+        letter-spacing: 0.03em;
+        margin-bottom: 8px;
+    }
+    .sp-highlight-desc {
+        font-size: var(--text-sm);
+        color: var(--c-muted);
+        line-height: 1.9;
+    }
+    @media (max-width: 768px) {
+        .sp-highlight-item {
+            grid-template-columns: 64px 1fr;
+            gap: 20px;
+            padding: 28px 0;
+        }
+        .sp-highlight-index { display: none; }
+        .sp-highlight-icon-frame { width: 60px; height: 60px; }
+        .sp-highlight-icon-frame i { width: 24px; height: 24px; }
     }
 
     /* 圖文並列區塊 */
@@ -2579,36 +2633,54 @@
         
         <div class="sp-lede reveal">海沃控股集團憑藉深厚產業根基與全鏈路整合能力，構築六大核心投資亮點：</div>
 
-        <div class="sp-grid-3">
-            <div class="sp-card reveal delay-1">
-                <span class="sp-card-num">01</span>
-                <h3>深耕遠洋漁業</h3>
-                <p>長年深耕遠洋漁業、具備跨洋區作業經驗</p>
+        <div class="sp-highlight-list">
+            <div class="sp-highlight-item reveal">
+                <div class="sp-highlight-icon-frame"><i data-lucide="anchor"></i></div>
+                <span class="sp-highlight-index">01</span>
+                <div>
+                    <h3 class="sp-highlight-title">深耕遠洋漁業</h3>
+                    <p class="sp-highlight-desc">長年深耕遠洋漁業、具備跨洋區作業經驗</p>
+                </div>
             </div>
-            <div class="sp-card reveal delay-2">
-                <span class="sp-card-num">02</span>
-                <h3>船隊整合能力</h3>
-                <p>整合圍網船、魷釣船、延繩釣船及冷凍運搬合計近 40 艘之船隊，提升整體營運效益</p>
+            <div class="sp-highlight-item reveal">
+                <div class="sp-highlight-icon-frame"><i data-lucide="ship"></i></div>
+                <span class="sp-highlight-index">02</span>
+                <div>
+                    <h3 class="sp-highlight-title">船隊整合能力</h3>
+                    <p class="sp-highlight-desc">整合圍網船、魷釣船、延繩釣船及冷凍運搬合計近 40 艘之船隊，提升整體營運效益</p>
+                </div>
             </div>
-            <div class="sp-card reveal delay-3">
-                <span class="sp-card-num">03</span>
-                <h3>冷鏈與供應鏈</h3>
-                <p>建構全球冷鏈供應體系，確保穩定漁獲品質優良</p>
+            <div class="sp-highlight-item reveal">
+                <div class="sp-highlight-icon-frame"><i data-lucide="snowflake"></i></div>
+                <span class="sp-highlight-index">03</span>
+                <div>
+                    <h3 class="sp-highlight-title">冷鏈與供應鏈</h3>
+                    <p class="sp-highlight-desc">建構全球冷鏈供應體系，確保穩定漁獲品質優良</p>
+                </div>
             </div>
-            <div class="sp-card reveal delay-4">
-                <span class="sp-card-num">04</span>
-                <h3>國際合作布局</h3>
-                <p>與亞洲、歐洲、美洲等市場建立供應合作關係</p>
+            <div class="sp-highlight-item reveal">
+                <div class="sp-highlight-icon-frame"><i data-lucide="globe"></i></div>
+                <span class="sp-highlight-index">04</span>
+                <div>
+                    <h3 class="sp-highlight-title">國際合作布局</h3>
+                    <p class="sp-highlight-desc">與亞洲、歐洲、美洲等市場建立供應合作關係</p>
+                </div>
             </div>
-            <div class="sp-card reveal delay-1">
-                <span class="sp-card-num">05</span>
-                <h3>永續與合規</h3>
-                <p>推動 ESG、責任採購、供應鏈合規與風險控管</p>
+            <div class="sp-highlight-item reveal">
+                <div class="sp-highlight-icon-frame"><i data-lucide="shield-check"></i></div>
+                <span class="sp-highlight-index">05</span>
+                <div>
+                    <h3 class="sp-highlight-title">永續與合規</h3>
+                    <p class="sp-highlight-desc">推動 ESG、責任採購、供應鏈合規與風險控管</p>
+                </div>
             </div>
-            <div class="sp-card reveal delay-2">
-                <span class="sp-card-num">06</span>
-                <h3>技術升級</h3>
-                <p>自有圍網船設計並持續優化船舶設備、冷凍技術及節能效率，強化競爭優勢</p>
+            <div class="sp-highlight-item reveal">
+                <div class="sp-highlight-icon-frame"><i data-lucide="cpu"></i></div>
+                <span class="sp-highlight-index">06</span>
+                <div>
+                    <h3 class="sp-highlight-title">技術升級</h3>
+                    <p class="sp-highlight-desc">自有圍網船設計並持續優化船舶設備、冷凍技術及節能效率，強化競爭優勢</p>
+                </div>
             </div>
             </div>
     
