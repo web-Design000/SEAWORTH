@@ -306,6 +306,144 @@
             justify-content: center;
         }
 
+        /* 手機版導覽：Logo 圖片切換（桌機用純文字版，手機用完整組合版） */
+        .logo-mobile { display: none; }
+
+        /* 手機版漢堡選單按鈕 */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 6px;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            z-index: 1200;
+        }
+        .nav-hamburger span {
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--c-ink);
+            transition: transform 0.4s var(--ease-poetic), opacity 0.3s ease, width 0.3s ease;
+        }
+        body.nav-open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); width: 24px; }
+        body.nav-open .nav-hamburger span:nth-child(2) { opacity: 0; }
+        body.nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); width: 24px; }
+
+        /* 手機版全螢幕選單面板 */
+        .nav-mobile-panel {
+            position: fixed;
+            top: var(--header-h, 74px);
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(252, 252, 250, 0.98);
+            backdrop-filter: blur(16px);
+            z-index: 999;
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-16px);
+            transition: opacity 0.4s var(--ease-poetic), transform 0.4s var(--ease-poetic), visibility 0.4s;
+            padding: 8px 28px 60px;
+        }
+        body.nav-open .nav-mobile-panel {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        body.nav-open {
+            overflow: hidden;
+        }
+        .nav-mobile-group {
+            border-bottom: 1px solid var(--c-line);
+        }
+        .nav-mobile-group-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 22px 2px;
+            font-family: var(--font-sans);
+            font-size: var(--text-sm);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--c-ink);
+            cursor: pointer;
+        }
+        .nav-mobile-group-head i {
+            width: 16px;
+            height: 16px;
+            color: var(--c-muted);
+            transition: transform 0.4s var(--ease-poetic);
+        }
+        .nav-mobile-group.is-open .nav-mobile-group-head i {
+            transform: rotate(180deg);
+        }
+        .nav-mobile-sub {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.4s var(--ease-poetic);
+        }
+        .nav-mobile-group.is-open .nav-mobile-sub {
+            grid-template-rows: 1fr;
+        }
+        .nav-mobile-sub-inner {
+            overflow: hidden;
+        }
+        .nav-mobile-sub a {
+            display: block;
+            padding: 12px 4px 12px 18px;
+            font-size: var(--text-xs);
+            letter-spacing: 0.1em;
+            color: var(--c-muted);
+            text-decoration: none;
+        }
+        .nav-mobile-sub a:hover, .nav-mobile-sub a:active {
+            color: var(--c-subtitle-blue);
+        }
+        .nav-mobile-lang {
+            display: flex;
+            gap: 28px;
+            padding: 26px 2px 0;
+        }
+        .nav-mobile-lang a {
+            font-size: var(--text-xs);
+            letter-spacing: 0.15em;
+            color: var(--c-muted);
+            text-decoration: none;
+        }
+        @media (max-width: 1024px) {
+            .nav-left-area .nav-split-menu,
+            .nav-right-area .nav-split-menu,
+            .nav-center-icon {
+                display: none;
+            }
+            .nav-hamburger { display: flex; }
+            .nav-left-area { padding-right: 0; }
+            .nav-right-area { padding-left: 0; justify-content: flex-end; flex: 0 0 auto; }
+            .blanz-nav-inner {
+                display: flex;
+                grid-template-columns: none;
+                justify-content: space-between;
+                align-items: center;
+                padding: 14px 24px;
+            }
+            .logo-desktop { display: none; }
+            .logo-mobile { display: block; }
+        }
+        @media (max-width: 640px) {
+            .blanz-nav-inner { padding: 12px 20px; }
+            .nav-mobile-panel { padding: 4px 22px 50px; }
+        }
+
         /* 頂部詩意標題區塊 */
         .hero-intro-section {
             background-color: var(--c-white);
@@ -2503,7 +2641,8 @@
             <!-- 左側：Logo 文字與 3 個選項 -->
             <div class="nav-left-area">
                 <a href="index.html" style="display: flex; align-items: center; height: 100%;">
-                    <img src="assets/logo-text.png" alt="SEAWORTH HOLDING" style="height:32px; width:auto;">
+                    <img src="assets/logo-text.png" alt="SEAWORTH HOLDING" class="logo-desktop" style="height:32px; width:auto;">
+                    <img src="assets/logo-header-2.png" alt="SEAWORTH HOLDING" class="logo-mobile" style="height:34px; width:auto;">
                 </a>
                 <ul class="nav-split-menu">
                     <li class="has-dropdown">
@@ -2591,9 +2730,68 @@
                         </div>
                     </li>
                 </ul>
+                <button type="button" class="nav-hamburger" id="navHamburger" aria-label="開啟選單" aria-expanded="false" aria-controls="navMobilePanel">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </nav>
     </header>
+
+    <!-- 手機版全螢幕選單面板 -->
+    <div class="nav-mobile-panel" id="navMobilePanel">
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">集團總覽 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="about.html">關於海沃</a>
+                <a href="business-map.html">事業版圖</a>
+                <a href="tech-integration.html">技術整合能力</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">公司治理 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="governance-structure.html">公司治理架構</a>
+                <a href="risk-management.html">風險管理政策</a>
+                <a href="internal-audit.html">內部稽核與內控制度</a>
+                <a href="integrity.html">誠信經營守則</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">共善經營 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="environment.html">環境保護</a>
+                <a href="social-responsibility.html">社會責任</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">投資人專區 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="investment-highlights.html">投資亮點</a>
+                <a href="strategy.html">策略布局</a>
+                <a href="shareholder-info.html">股東訊息</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">最新消息 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="announcements.html">官方公告</a>
+                <a href="corporate-news.html">企業動態</a>
+                <a href="sustainability-practice.html">永續實踐</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">聯繫海沃 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="locations.html">營運據點</a>
+                <a href="contact-us.html">聯絡我們</a>
+                <a href="careers.html">人才招募</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-lang">
+            <a href="#">繁體中文</a>
+            <a href="#">English</a>
+        </div>
+    </div>
 <script>
         (function() {
             const header = document.querySelector('.blanz-header');
@@ -2603,6 +2801,44 @@
             }
             setHeaderHeight();
             window.addEventListener('resize', setHeaderHeight);
+        })();
+    </script>
+    <!-- 手機版漢堡選單邏輯 -->
+    <script>
+        (function() {
+            const hamburger = document.getElementById('navHamburger');
+            const panel = document.getElementById('navMobilePanel');
+            if (!hamburger || !panel) return;
+
+            function closeMenu() {
+                document.body.classList.remove('nav-open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
+            function toggleMenu() {
+                const isOpen = document.body.classList.toggle('nav-open');
+                hamburger.setAttribute('aria-expanded', String(isOpen));
+            }
+
+            hamburger.addEventListener('click', toggleMenu);
+
+            panel.querySelectorAll('.nav-mobile-group-head').forEach(head => {
+                head.addEventListener('click', () => {
+                    head.closest('.nav-mobile-group').classList.toggle('is-open');
+                });
+            });
+
+            panel.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', closeMenu);
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeMenu();
+            });
+
+            // 螢幕放大回桌機版時，確保選單面板與漢堡狀態重置乾淨
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 1024) closeMenu();
+            });
         })();
     </script>
 
@@ -2628,62 +2864,62 @@
             <img src="assets/integrity-core-values.jpg" alt="海沃控股集團誠信創新核心價值">
         </div>
 
-        <div class="sp-lede reveal">本集團以「零容忍（Zero Tolerance）」的態度，嚴格落實以下誠信經營、法律合規與商業倫理規範：</div>
+        <div class="sp-lede reveal">本集團以「零容忍（Zero Tolerance）」的立場，嚴格落實以下誠信經營、法律合規與商業倫理規範：</div>
 
         <div class="sp-principle-list">
             <div class="sp-principle-item reveal">
                 <span class="sp-principle-num">01</span>
                 <div>
                     <h3 class="sp-principle-title">嚴格法令遵循（Compliance）</h3>
-                    <p class="sp-principle-desc">集團於全球各據點及海域開展業務時，均將「法令遵循」視為營運之首要底線。全體同仁必須嚴格遵守國際公約、營運所在國法規、國際漁業管理組織、環境保護等國際規範，杜絕任何形式之違法行為。</p>
+                    <p class="sp-principle-desc">集團於全球各據點及海域開展業務時，始終將「法令遵循」列為營運治理之首要原則與不可逾越之底線。全體同仁嚴格遵守國際公約、營運所在國法規、國際漁業管理組織，以及環境保護與永續發展等國際規範，集團杜絕任何形式之違法、違規或規避監管行為。並持續透過制度建置、內部控制與監督機制，強化全球營運之合規治理，確保企業穩健、透明且永續發展。</p>
                 </div>
             </div>
             <div class="sp-principle-item reveal">
                 <span class="sp-principle-num">02</span>
                 <div>
                     <h3 class="sp-principle-title">落實勞動人權與尊嚴保障</h3>
-                    <p class="sp-principle-desc">秉持以人為本的精神，集團嚴格將「勞動人權保障」定導為誠信經營的關鍵指標。我們嚴格遵循 C-188 漁業工作公約等「國際勞工組織」制定之標準及國際 FISH 船員人權標準，提供安全、平等、無歧視且具備尊嚴的勞動環境。透過建置健全的薪酬福利、人權合規審查與海上遠距醫療照護，全力維護船員與全體同仁之勞動人權與人身安全，禁止任何形式之強迫勞動、人口販運與非法剝削。</p>
+                    <p class="sp-principle-desc">秉持以人為本的核心理念，集團將「勞動人權保障」定導為誠信經營與永續治理的關鍵指標。我們嚴格遵循國際勞工組織（ILO）《漁業工作公約》（C-188）等國際勞動標準，以及國際 FISH 船員人權標準，致力於提供安全、平等、無歧視且具備人格尊嚴的勞動環境。透過完善的薪酬福利制度、人權合規審查機制與海上遠距醫療照護體系，全面強化船員與全體同仁之勞動人權與人身安全保障，堅決禁止任何形式之強迫勞動、人口販運、歧視與非法剝削。</p>
                 </div>
             </div>
             <div class="sp-principle-item reveal">
                 <span class="sp-principle-num">03</span>
                 <div>
                     <h3 class="sp-principle-title">嚴禁不當利益與反貪腐</h3>
-                    <p class="sp-principle-desc">集團全體同仁於執行業務時，嚴禁直接或間接提供、承諾、要求或收受任何形式之不正當利益、賄賂、貪污、回扣或不當利益交換，以維護公平、公正的商業競爭環境。</p>
+                    <p class="sp-principle-desc">集團全體同仁於執行業務時，嚴禁直接或間接提供、承諾、要求或收受任何形式之不正當利益、賄賂、貪污、回扣或不當利益交換，以維護公平、公正的交易秩序及商業競爭環境。</p>
                 </div>
             </div>
             <div class="sp-principle-item reveal">
                 <span class="sp-principle-num">04</span>
                 <div>
                     <h3 class="sp-principle-title">推動誠信供應鏈與責任採購</h3>
-                    <p class="sp-principle-desc">集團拒絕與任何涉及非法、未報告及不受規範（IUU）漁業活動範疇之夥伴合作，確保供應鏈之全流程可追溯性與國際貿易合規。</p>
+                    <p class="sp-principle-desc">集團拒絕與任何涉及非法、未報告及不受規範（IUU）漁業活動範疇之夥伴合作，確保供應鏈之全流程可追溯性與國際貿易合規，以負責任的採購與合作原則，強化供應鏈管理。</p>
                 </div>
             </div>
             <div class="sp-principle-item reveal">
                 <span class="sp-principle-num">05</span>
                 <div>
                     <h3 class="sp-principle-title">落實利益衝突迴避</h3>
-                    <p class="sp-principle-desc">集團要求所有董事、專業經理人及員工於執行職務時，避免個人與公司利益產生衝突。如有潛在利益衝突情形，應主動揭露並依相關規範辦理，以維持決策之公正性與透明度。</p>
+                    <p class="sp-principle-desc">集團要求所有董事、專業經理人及員工於執行職務與參與決策時，避免個人利益與公司利益產生衝突。如涉及實際或有潛在利益衝突情形，應主動揭露並依相關規範辦理，以維持決策之獨立性、公正性與透明度。</p>
                 </div>
             </div>
             <div class="sp-principle-item reveal">
                 <span class="sp-principle-num">06</span>
                 <div>
                     <h3 class="sp-principle-title">維護資訊透明與公平交易</h3>
-                    <p class="sp-principle-desc">集團秉持誠信透明原則，嚴格遵守反托拉斯法及公平交易法，反對任何形式之聯合壟斷、價格操縱、限制競爭或不當得利行為。我們承諾向股東、金融機構及所有利害關係人，提供真實、準確、即時且透明之財務與營運報導，堅決杜絕財報造假、虛偽不實之陳述，以及任何形式之內線交易，確保市場交易之公平性。</p>
+                    <p class="sp-principle-desc">集團秉持誠信透明與公平競爭原則，嚴格遵守反托拉斯法及公平交易法，反對任何形式之聯合壟斷、價格操縱、限制競爭及其他不當得利行為。我們承諾向股東、金融機構及所有利害關係人，提供真實、準確、即時且透明之財務與營運報導，堅決杜絕財報造假、虛偽不實陳述及任何形式之內線交易，以維護資訊可信度、市場交易秩序公平性。</p>
                 </div>
             </div>
             <div class="sp-principle-item reveal">
                 <span class="sp-principle-num">07</span>
                 <div>
                     <h3 class="sp-principle-title">恪守保密義務與安全防護</h3>
-                    <p class="sp-principle-desc">集團高度重視智慧財產權與商業機密控管。全體同仁對於集團之核心技術、智慧造船工藝、商業策略、財務數據及客戶與供應商之資料，均負有嚴格的保密義務。非經授權不得向第三方揭露，並透過現代化資安防禦，全力確保商業秘密與資料安全。</p>
+                    <p class="sp-principle-desc">集團高度重視智慧財產權、商業機密及資料安全控管。全體同仁對於集團核心技術、智慧造船工藝、商業策略、財務數據及客戶與供應商之資料，均負有嚴格的保密義務。非經授權不得向第三方揭露，並透過現代化資安防禦，強化重要資訊資產之管理與保護，降低未經授權存取、使用或揭露之風險，全力確保企業營運、客戶及合作夥伴商業秘密與資料安全。</p>
                 </div>
             </div>
             </div>
 
         <div class="sp-intro reveal" style="margin-top:60px;">
-            <p>海沃控股集團將持續深化誠信經營文化，並透過教育訓練、內部宣導及定期檢視，提升全體員工之誠信意識與遵守法規之觀念。海沃控股集團堅信，誠信與法治是企業走向國際、贏得全球利害關係人信任的唯一道路。我們將持續以最高標準的道德自律，穩健邁向共榮共善的永續願景。</p>
+            <p>海沃控股集團將持續深化誠信經營文化，並透過教育訓練、內部宣導及定期檢視，將誠信與法遵觀念融入日常營運、員工意識與組織決策，逐步建構制度化、透明且具責任意識的治理文化。海沃控股集團堅信，誠信與法治是企業走向國際、贏得全球利害關係人信任的唯一道路。我們將持續以最高標準的道德自律與負責任的經營原則，穩健邁向共榮共善的永續願景。</p>
         </div>
     
     

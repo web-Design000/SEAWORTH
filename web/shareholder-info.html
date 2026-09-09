@@ -306,6 +306,144 @@
             justify-content: center;
         }
 
+        /* 手機版導覽：Logo 圖片切換（桌機用純文字版，手機用完整組合版） */
+        .logo-mobile { display: none; }
+
+        /* 手機版漢堡選單按鈕 */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 6px;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            z-index: 1200;
+        }
+        .nav-hamburger span {
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--c-ink);
+            transition: transform 0.4s var(--ease-poetic), opacity 0.3s ease, width 0.3s ease;
+        }
+        body.nav-open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); width: 24px; }
+        body.nav-open .nav-hamburger span:nth-child(2) { opacity: 0; }
+        body.nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); width: 24px; }
+
+        /* 手機版全螢幕選單面板 */
+        .nav-mobile-panel {
+            position: fixed;
+            top: var(--header-h, 74px);
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(252, 252, 250, 0.98);
+            backdrop-filter: blur(16px);
+            z-index: 999;
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-16px);
+            transition: opacity 0.4s var(--ease-poetic), transform 0.4s var(--ease-poetic), visibility 0.4s;
+            padding: 8px 28px 60px;
+        }
+        body.nav-open .nav-mobile-panel {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        body.nav-open {
+            overflow: hidden;
+        }
+        .nav-mobile-group {
+            border-bottom: 1px solid var(--c-line);
+        }
+        .nav-mobile-group-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 22px 2px;
+            font-family: var(--font-sans);
+            font-size: var(--text-sm);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--c-ink);
+            cursor: pointer;
+        }
+        .nav-mobile-group-head i {
+            width: 16px;
+            height: 16px;
+            color: var(--c-muted);
+            transition: transform 0.4s var(--ease-poetic);
+        }
+        .nav-mobile-group.is-open .nav-mobile-group-head i {
+            transform: rotate(180deg);
+        }
+        .nav-mobile-sub {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.4s var(--ease-poetic);
+        }
+        .nav-mobile-group.is-open .nav-mobile-sub {
+            grid-template-rows: 1fr;
+        }
+        .nav-mobile-sub-inner {
+            overflow: hidden;
+        }
+        .nav-mobile-sub a {
+            display: block;
+            padding: 12px 4px 12px 18px;
+            font-size: var(--text-xs);
+            letter-spacing: 0.1em;
+            color: var(--c-muted);
+            text-decoration: none;
+        }
+        .nav-mobile-sub a:hover, .nav-mobile-sub a:active {
+            color: var(--c-subtitle-blue);
+        }
+        .nav-mobile-lang {
+            display: flex;
+            gap: 28px;
+            padding: 26px 2px 0;
+        }
+        .nav-mobile-lang a {
+            font-size: var(--text-xs);
+            letter-spacing: 0.15em;
+            color: var(--c-muted);
+            text-decoration: none;
+        }
+        @media (max-width: 1024px) {
+            .nav-left-area .nav-split-menu,
+            .nav-right-area .nav-split-menu,
+            .nav-center-icon {
+                display: none;
+            }
+            .nav-hamburger { display: flex; }
+            .nav-left-area { padding-right: 0; }
+            .nav-right-area { padding-left: 0; justify-content: flex-end; flex: 0 0 auto; }
+            .blanz-nav-inner {
+                display: flex;
+                grid-template-columns: none;
+                justify-content: space-between;
+                align-items: center;
+                padding: 14px 24px;
+            }
+            .logo-desktop { display: none; }
+            .logo-mobile { display: block; }
+        }
+        @media (max-width: 640px) {
+            .blanz-nav-inner { padding: 12px 20px; }
+            .nav-mobile-panel { padding: 4px 22px 50px; }
+        }
+
         /* 頂部詩意標題區塊 */
         .hero-intro-section {
             background-color: var(--c-white);
@@ -2460,7 +2598,8 @@
             <!-- 左側：Logo 文字與 3 個選項 -->
             <div class="nav-left-area">
                 <a href="index.html" style="display: flex; align-items: center; height: 100%;">
-                    <img src="assets/logo-text.png" alt="SEAWORTH HOLDING" style="height:32px; width:auto;">
+                    <img src="assets/logo-text.png" alt="SEAWORTH HOLDING" class="logo-desktop" style="height:32px; width:auto;">
+                    <img src="assets/logo-header-2.png" alt="SEAWORTH HOLDING" class="logo-mobile" style="height:34px; width:auto;">
                 </a>
                 <ul class="nav-split-menu">
                     <li class="has-dropdown">
@@ -2548,9 +2687,68 @@
                         </div>
                     </li>
                 </ul>
+                <button type="button" class="nav-hamburger" id="navHamburger" aria-label="開啟選單" aria-expanded="false" aria-controls="navMobilePanel">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </nav>
     </header>
+
+    <!-- 手機版全螢幕選單面板 -->
+    <div class="nav-mobile-panel" id="navMobilePanel">
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">集團總覽 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="about.html">關於海沃</a>
+                <a href="business-map.html">事業版圖</a>
+                <a href="tech-integration.html">技術整合能力</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">公司治理 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="governance-structure.html">公司治理架構</a>
+                <a href="risk-management.html">風險管理政策</a>
+                <a href="internal-audit.html">內部稽核與內控制度</a>
+                <a href="integrity.html">誠信經營守則</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">共善經營 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="environment.html">環境保護</a>
+                <a href="social-responsibility.html">社會責任</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">投資人專區 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="investment-highlights.html">投資亮點</a>
+                <a href="strategy.html">策略布局</a>
+                <a href="shareholder-info.html">股東訊息</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">最新消息 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="announcements.html">官方公告</a>
+                <a href="corporate-news.html">企業動態</a>
+                <a href="sustainability-practice.html">永續實踐</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">聯繫海沃 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="locations.html">營運據點</a>
+                <a href="contact-us.html">聯絡我們</a>
+                <a href="careers.html">人才招募</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-lang">
+            <a href="#">繁體中文</a>
+            <a href="#">English</a>
+        </div>
+    </div>
 <script>
         (function() {
             const header = document.querySelector('.blanz-header');
@@ -2560,6 +2758,44 @@
             }
             setHeaderHeight();
             window.addEventListener('resize', setHeaderHeight);
+        })();
+    </script>
+    <!-- 手機版漢堡選單邏輯 -->
+    <script>
+        (function() {
+            const hamburger = document.getElementById('navHamburger');
+            const panel = document.getElementById('navMobilePanel');
+            if (!hamburger || !panel) return;
+
+            function closeMenu() {
+                document.body.classList.remove('nav-open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
+            function toggleMenu() {
+                const isOpen = document.body.classList.toggle('nav-open');
+                hamburger.setAttribute('aria-expanded', String(isOpen));
+            }
+
+            hamburger.addEventListener('click', toggleMenu);
+
+            panel.querySelectorAll('.nav-mobile-group-head').forEach(head => {
+                head.addEventListener('click', () => {
+                    head.closest('.nav-mobile-group').classList.toggle('is-open');
+                });
+            });
+
+            panel.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', closeMenu);
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeMenu();
+            });
+
+            // 螢幕放大回桌機版時，確保選單面板與漢堡狀態重置乾淨
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 1024) closeMenu();
+            });
         })();
     </script>
 
@@ -2602,7 +2838,7 @@
                 <div class="sp-accordion-panel-wrap">
                     <div class="sp-accordion-panel">
                         <div class="sp-accordion-panel-inner">
-                            <p>海沃控股集團深耕遠洋漁業核心，透過戰略性向產業鏈上下游延伸，建構涵蓋「船舶建造、船隊經營管理、冷凍倉儲、冷鏈物流及漁獲貿易」的全鏈路垂直整合營運模式。藉由關鍵資源的深度掌控，最大化提升跨國供應鏈之協同效應與產業壁壘。</p>
+                            <p>海沃控股集團深耕遠洋漁業為核心，戰略性向產業鏈上下游延伸，建構涵蓋「船舶建造、船隊經營管理、冷凍倉儲、冷鏈物流及漁獲貿易」的全鏈路垂直整合營運模式。藉由關鍵資源的深度掌控，最大化提升跨國供應鏈之協同效應與產業壁壘。</p>
                             
                         </div>
                     </div>
@@ -2622,7 +2858,7 @@
                 <div class="sp-accordion-panel-wrap">
                     <div class="sp-accordion-panel">
                         <div class="sp-accordion-panel-inner">
-                            <p>歷經四十餘載的砥礪深耕，本集團已由傳統遠洋漁業，發展為集「智慧造船、現代漁撈、智慧冷鏈物流、全球國際貿易」於一體之多元化跨國控股集團。我們始終秉持「專業、誠信、創新、永續」的核心價值，深化組織治理與全球法令遵循，以責任引領產業轉型，構築長青的永續發展基石。</p>
+                            <p>歷經四十餘載的砥礪深耕，本集團已由傳統遠洋漁業，發展為集「智慧造船、現代化漁撈、智慧冷鏈物流、國際漁獲貿易」於一體之多元化、跨領域、跨國際控股集團。我們始終秉持「專業、誠信、創新、永續」的核心價值，深化組織治理與全球法令遵循，以責任引領產業轉型，構築長青的永續發展基石與穩健的競爭基礎。</p>
                             
                         </div>
                     </div>
@@ -2642,7 +2878,7 @@
                 <div class="sp-accordion-panel-wrap">
                     <div class="sp-accordion-panel">
                         <div class="sp-accordion-panel-inner">
-                            <p>可參閱本網站「投資人專區」之「投資亮點」與「策略布局」。</p>
+                            <p>可參閱本網站「投資人專區」之「投資亮點」與「策略布局」了解集團核心事業、營運架構、產業布局及未來發展方向。</p>
                             
                         </div>
                     </div>
@@ -2662,7 +2898,7 @@
                 <div class="sp-accordion-panel-wrap">
                     <div class="sp-accordion-panel">
                         <div class="sp-accordion-panel-inner">
-                            <p>海沃控股集團將永續經營視為企業發展之核心錨點。在環境（E）維度上，集團深耕海洋資源保育，推動低碳船隊建設以實踐環境保護承諾；在社會（S）維度上，我們全面保障一線船員權益，並建構透明且合規之永續責任供應鏈；在治理（G）維度上，集團則持續深化公司治理效能、健全營運韌性與風險管理機制，致力實踐兼顧生態共榮與經濟價值的現代化漁業控股體系。</p>
+                            <p>海沃控股集團將永續經營視為企業發展之核心錨點，從環境（E）、社會（S）與治理（G）三大面向推動。在環境（E）維度上，集團深耕海洋資源保育與責任漁業，推動低碳船隊建設以實踐環境保護承諾；在社會（S）維度上，我們全面保障一線船員權益、職業安全，並建構透明且合規之永續責任供應鏈；在治理（G）維度上，集團則持續強化公司治理效能、健全營運韌性、風險管理機制及營運透明度，透過 ESG 與核心事業的結合，致力實踐兼顧生態共榮、經濟價值、社會責任的現代化漁業控股體系。</p>
                             
                         </div>
                     </div>
@@ -2682,7 +2918,7 @@
                 <div class="sp-accordion-panel-wrap">
                     <div class="sp-accordion-panel">
                         <div class="sp-accordion-panel-inner">
-                            <p>集團布建多元化遠洋船隊，包含圍網船、魷釣船、鮪延繩釣船與冷凍運搬船，並遵循科學化管理，依據不同目標漁種及特定作業海域之環境特性，進行動態配置與友善調度，體現對海洋資源永續利用的承諾。</p>
+                            <p>集團布建多元化遠洋船隊，包含圍網船、魷釣船、鮪延繩釣船與冷凍運搬船等不同船隊，並遵循科學化管理，依據不同目標漁種及特定作業海域之環境特性，進行動態配置與友善調度，體現對海洋資源永續利用的承諾。</p>
                             
                         </div>
                     </div>
@@ -2742,7 +2978,7 @@
                 <div class="sp-accordion-panel-wrap">
                     <div class="sp-accordion-panel">
                         <div class="sp-accordion-panel-inner">
-                            <p>展望未來，集團將持續深化全球供應鏈之動態配置，加速導入 AI 智慧船隊管理系統以優化捕撈與調度能效。同時，我們將積極推進跨區域之責任漁業國際合作，在永續發展的前提下健全跨國風險防禦機制，進一步堆疊集團的整體營運韌性與長期競爭優勢。</p>
+                            <p>海沃控股集團將持續深化遠洋漁業核心能力與全球供應鏈布局，並朝向船隊智慧化、營運數位化、供應鏈整合及永續漁業等方向發展。在技術應用方面，加速導入 AI 智慧船隊管理系統以優化捕撈與調度能效。同時，我們將積極推進跨區域之責任漁業國際合作，在永續發展的前提下，強化跨國營運風險應變能力與防禦機制，進一步堆疊集團的整體營運韌性與長期競爭優勢。</p>
                             
                         </div>
                     </div>

@@ -306,6 +306,144 @@
             justify-content: center;
         }
 
+        /* 手機版導覽：Logo 圖片切換（桌機用純文字版，手機用完整組合版） */
+        .logo-mobile { display: none; }
+
+        /* 手機版漢堡選單按鈕 */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 6px;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            z-index: 1200;
+        }
+        .nav-hamburger span {
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--c-ink);
+            transition: transform 0.4s var(--ease-poetic), opacity 0.3s ease, width 0.3s ease;
+        }
+        body.nav-open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); width: 24px; }
+        body.nav-open .nav-hamburger span:nth-child(2) { opacity: 0; }
+        body.nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); width: 24px; }
+
+        /* 手機版全螢幕選單面板 */
+        .nav-mobile-panel {
+            position: fixed;
+            top: var(--header-h, 74px);
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(252, 252, 250, 0.98);
+            backdrop-filter: blur(16px);
+            z-index: 999;
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-16px);
+            transition: opacity 0.4s var(--ease-poetic), transform 0.4s var(--ease-poetic), visibility 0.4s;
+            padding: 8px 28px 60px;
+        }
+        body.nav-open .nav-mobile-panel {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        body.nav-open {
+            overflow: hidden;
+        }
+        .nav-mobile-group {
+            border-bottom: 1px solid var(--c-line);
+        }
+        .nav-mobile-group-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 22px 2px;
+            font-family: var(--font-sans);
+            font-size: var(--text-sm);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--c-ink);
+            cursor: pointer;
+        }
+        .nav-mobile-group-head i {
+            width: 16px;
+            height: 16px;
+            color: var(--c-muted);
+            transition: transform 0.4s var(--ease-poetic);
+        }
+        .nav-mobile-group.is-open .nav-mobile-group-head i {
+            transform: rotate(180deg);
+        }
+        .nav-mobile-sub {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.4s var(--ease-poetic);
+        }
+        .nav-mobile-group.is-open .nav-mobile-sub {
+            grid-template-rows: 1fr;
+        }
+        .nav-mobile-sub-inner {
+            overflow: hidden;
+        }
+        .nav-mobile-sub a {
+            display: block;
+            padding: 12px 4px 12px 18px;
+            font-size: var(--text-xs);
+            letter-spacing: 0.1em;
+            color: var(--c-muted);
+            text-decoration: none;
+        }
+        .nav-mobile-sub a:hover, .nav-mobile-sub a:active {
+            color: var(--c-subtitle-blue);
+        }
+        .nav-mobile-lang {
+            display: flex;
+            gap: 28px;
+            padding: 26px 2px 0;
+        }
+        .nav-mobile-lang a {
+            font-size: var(--text-xs);
+            letter-spacing: 0.15em;
+            color: var(--c-muted);
+            text-decoration: none;
+        }
+        @media (max-width: 1024px) {
+            .nav-left-area .nav-split-menu,
+            .nav-right-area .nav-split-menu,
+            .nav-center-icon {
+                display: none;
+            }
+            .nav-hamburger { display: flex; }
+            .nav-left-area { padding-right: 0; }
+            .nav-right-area { padding-left: 0; justify-content: flex-end; flex: 0 0 auto; }
+            .blanz-nav-inner {
+                display: flex;
+                grid-template-columns: none;
+                justify-content: space-between;
+                align-items: center;
+                padding: 14px 24px;
+            }
+            .logo-desktop { display: none; }
+            .logo-mobile { display: block; }
+        }
+        @media (max-width: 640px) {
+            .blanz-nav-inner { padding: 12px 20px; }
+            .nav-mobile-panel { padding: 4px 22px 50px; }
+        }
+
         /* 頂部詩意標題區塊 */
         .hero-intro-section {
             background-color: var(--c-white);
@@ -2140,9 +2278,30 @@
     /* 特色卡片網格 */
     .sp-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
     .sp-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+    /* 技術三大支柱卡片：圖片滿版置頂＋下方留白內文，呼應「關於海沃」頁
+       三大事業群卡片的作法，讓照片有機會呼吸，而不是照片跟文字都硬塞在
+       同一層 padding 裡、看起來像沒設計過的陽春卡片。 */
     .sp-card {
-        padding: 40px 32px;
         background: var(--c-subtle);
+        overflow: hidden;
+    }
+    .sp-card-media {
+        height: 220px;
+        overflow: hidden;
+    }
+    .sp-card-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(15%) brightness(0.95);
+        transition: filter 0.5s ease, transform 0.6s ease;
+    }
+    .sp-card:hover .sp-card-media img {
+        filter: grayscale(0%) brightness(1);
+        transform: scale(1.04);
+    }
+    .sp-card-body {
+        padding: 32px;
         border-top: 2px solid var(--c-ink);
     }
     .sp-card-num {
@@ -2161,6 +2320,47 @@
         font-size: var(--text-xs);
         color: var(--c-muted);
         line-height: 1.9;
+    }
+
+    /* 條列式重點（比照「誠信經營」頁的守則清單，大數字＋標題＋說明），
+       用來取代原本一整段密密麻麻的文字段落 */
+    .sp-principle-list { max-width: 1020px; margin: 0 auto; border-top: 1px solid var(--c-line); }
+    .sp-principle-item {
+        position: relative;
+        display: grid;
+        grid-template-columns: 170px 1fr;
+        gap: 8px;
+        padding: 52px 0;
+        border-bottom: 1px solid var(--c-line);
+        align-items: start;
+    }
+    .sp-principle-num {
+        font-family: var(--font-display);
+        font-size: var(--text-mega);
+        line-height: 0.75;
+        font-weight: 400;
+        color: rgba(0, 73, 91, 0.1);
+        -webkit-text-stroke: 1.5px rgba(0, 73, 91, 0.45);
+        user-select: none;
+    }
+    .sp-principle-title {
+        font-family: var(--font-serif);
+        font-size: var(--text-xl);
+        color: var(--c-ink);
+        letter-spacing: 0.04em;
+        margin-bottom: 16px;
+        padding-top: 10px;
+    }
+    .sp-principle-desc {
+        font-size: var(--text-sm);
+        color: var(--c-muted);
+        line-height: 2;
+        max-width: 720px;
+    }
+    @media (max-width: 768px) {
+        .sp-principle-item { grid-template-columns: 1fr; gap: 4px; padding: 40px 0; }
+        .sp-principle-num { font-size: var(--text-4xl); line-height: 1; }
+        .sp-principle-title { padding-top: 4px; }
     }
 
     /* 圖文並列區塊 */
@@ -2461,7 +2661,8 @@
             <!-- 左側：Logo 文字與 3 個選項 -->
             <div class="nav-left-area">
                 <a href="index.html" style="display: flex; align-items: center; height: 100%;">
-                    <img src="assets/logo-text.png" alt="SEAWORTH HOLDING" style="height:32px; width:auto;">
+                    <img src="assets/logo-text.png" alt="SEAWORTH HOLDING" class="logo-desktop" style="height:32px; width:auto;">
+                    <img src="assets/logo-header-2.png" alt="SEAWORTH HOLDING" class="logo-mobile" style="height:34px; width:auto;">
                 </a>
                 <ul class="nav-split-menu">
                     <li class="has-dropdown">
@@ -2549,9 +2750,68 @@
                         </div>
                     </li>
                 </ul>
+                <button type="button" class="nav-hamburger" id="navHamburger" aria-label="開啟選單" aria-expanded="false" aria-controls="navMobilePanel">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </nav>
     </header>
+
+    <!-- 手機版全螢幕選單面板 -->
+    <div class="nav-mobile-panel" id="navMobilePanel">
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">集團總覽 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="about.html">關於海沃</a>
+                <a href="business-map.html">事業版圖</a>
+                <a href="tech-integration.html">技術整合能力</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">公司治理 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="governance-structure.html">公司治理架構</a>
+                <a href="risk-management.html">風險管理政策</a>
+                <a href="internal-audit.html">內部稽核與內控制度</a>
+                <a href="integrity.html">誠信經營守則</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">共善經營 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="environment.html">環境保護</a>
+                <a href="social-responsibility.html">社會責任</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">投資人專區 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="investment-highlights.html">投資亮點</a>
+                <a href="strategy.html">策略布局</a>
+                <a href="shareholder-info.html">股東訊息</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">最新消息 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="announcements.html">官方公告</a>
+                <a href="corporate-news.html">企業動態</a>
+                <a href="sustainability-practice.html">永續實踐</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">聯繫海沃 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="locations.html">營運據點</a>
+                <a href="contact-us.html">聯絡我們</a>
+                <a href="careers.html">人才招募</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-lang">
+            <a href="#">繁體中文</a>
+            <a href="#">English</a>
+        </div>
+    </div>
 <script>
         (function() {
             const header = document.querySelector('.blanz-header');
@@ -2561,6 +2821,44 @@
             }
             setHeaderHeight();
             window.addEventListener('resize', setHeaderHeight);
+        })();
+    </script>
+    <!-- 手機版漢堡選單邏輯 -->
+    <script>
+        (function() {
+            const hamburger = document.getElementById('navHamburger');
+            const panel = document.getElementById('navMobilePanel');
+            if (!hamburger || !panel) return;
+
+            function closeMenu() {
+                document.body.classList.remove('nav-open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
+            function toggleMenu() {
+                const isOpen = document.body.classList.toggle('nav-open');
+                hamburger.setAttribute('aria-expanded', String(isOpen));
+            }
+
+            hamburger.addEventListener('click', toggleMenu);
+
+            panel.querySelectorAll('.nav-mobile-group-head').forEach(head => {
+                head.addEventListener('click', () => {
+                    head.closest('.nav-mobile-group').classList.toggle('is-open');
+                });
+            });
+
+            panel.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', closeMenu);
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeMenu();
+            });
+
+            // 螢幕放大回桌機版時，確保選單面板與漢堡狀態重置乾淨
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 1024) closeMenu();
+            });
         })();
     </script>
 
@@ -2578,40 +2876,79 @@
 <main>
     <section class="blanz-section sp-section"><div class="blanz-container">
         
-        <div class="sp-intro reveal">
-            <p>海沃控股集團全面啟動數位轉型，建置數據驅動的現代化智慧營運中心。透過整合物聯網（IoT）電子浮標、AI 輔助漁撈設備，與高精準度海事大數據分析，實現漁場動態的精準預測，全面優化船舶調度、航線規劃與捕撈作業之全鏈路效能。同時，集團建置數位化船員健康管理系統，並導入低延遲海上遠距醫療照護平台，跨越海洋通訊限制，提供一線同仁即時健康監測與跨海域緊急醫療決策支援。</p>
+        <div class="sp-lede reveal">海沃控股集團全面啟動數位轉型，建置數據驅動的現代化智慧營運中心。</div>
+
+        <div class="sp-media-row reveal">
+            <div class="sp-media-frame">
+                <img src="assets/landmark-fleet.jpg" alt="海沃控股集團智慧營運船隊">
+            </div>
+            <div class="sp-media-text">
+                <h3>數據驅動的智慧營運中心</h3>
+                <p>透過整合物聯網（IoT）電子浮標、AI 輔助漁撈設備，與高精準度海事大數據分析，實現漁場動態的精準預測，全面優化船舶調度、航線規劃與捕撈作業之全鏈路效能。同時，集團建置數位化船員健康管理系統，並導入低延遲海上遠距醫療照護平台，突破海洋通訊限制，提供一線同仁即時健康監測與跨海域緊急醫療決策支援。</p>
+            </div>
         </div>
 
-        <div class="sp-grid-3">
-            <div class="sp-card reveal delay-1" style="padding:0; background:none; border:none;">
-                <div class="sp-media-frame" style="height:220px; margin-bottom:24px;">
+        <div class="sp-grid-3" style="margin-top:80px;">
+            <div class="sp-card reveal delay-1">
+                <div class="sp-card-media">
                     <img src="assets/tech-tide-analysis.jpg" alt="洋流潮汐分析">
                 </div>
-                <h3>洋流潮汐分析</h3>
-                <p>整合海事大數據，精準掌握漁場動態與洋流變化，優化航線規劃與捕撈時機。</p>
+                <div class="sp-card-body">
+                    <h3>洋流潮汐分析</h3>
+                    <p>整合海事大數據，精準掌握漁場動態與洋流變化，優化航線規劃與捕撈時機。</p>
+                </div>
             </div>
-            <div class="sp-card reveal delay-2" style="padding:0; background:none; border:none;">
-                <div class="sp-media-frame" style="height:220px; margin-bottom:24px;">
+            <div class="sp-card reveal delay-2">
+                <div class="sp-card-media">
                     <img src="assets/tech-fish-ai.jpg" alt="科技魚況分析">
                 </div>
-                <h3>科技魚況分析</h3>
-                <p>導入 AI 輔助漁撈設備，實現漁況動態的精準預測，全面優化捕撈作業效能。</p>
+                <div class="sp-card-body">
+                    <h3>科技魚況分析</h3>
+                    <p>導入 AI 輔助漁撈設備，實現漁況動態的精準預測，全面優化捕撈作業效能。</p>
+                </div>
             </div>
-            <div class="sp-card reveal delay-3" style="padding:0; background:none; border:none;">
-                <div class="sp-media-frame" style="height:220px; margin-bottom:24px;">
+            <div class="sp-card reveal delay-3">
+                <div class="sp-card-media">
                     <img src="assets/tech-telemedicine.jpg" alt="海上遠距醫療">
                 </div>
-                <h3>海上遠距醫療</h3>
-                <p>低延遲遠距醫療照護平台，跨越海洋通訊限制，提供即時健康監測與緊急決策支援。</p>
+                <div class="sp-card-body">
+                    <h3>海上遠距醫療</h3>
+                    <p>低延遲遠距醫療照護平台，突破海洋通訊限制，提供即時健康監測與緊急決策支援。</p>
+                </div>
             </div>
-            </div>
-
-        <div class="sp-intro reveal" style="margin-top:70px;">
-            <p>在永續發展的技術佈局上，集團以科技賦能綠色低碳轉型，積極引進低碳替代燃油與智慧節能船舶系統；在海洋保育與合規治理層面，自主研發並對接國際漁業管理組織之全流程可追溯系統，將生態打擾與環境衝擊降至最低。集團更透過數位化供應鏈透明度管理，嚴格落實 ILO 國際勞工公約標準，以科技化、可驗證的數據保障船員人權與勞動尊嚴，全面翻轉遠洋漁業的傳統形象。</p>
-            <p>立足於技術整合、數位制度創新及數據合規治理，海沃控股集團將持續建構兼顧環境保護、社會共榮與經濟成長的現代化遠洋漁業科技控股體系，以智慧責任引領產業升級，攜手世界共榮成長。</p>
         </div>
-    
-    
+
+        <div class="sp-lede reveal" style="margin-top:90px;">在永續發展的技術佈局上，海沃以科技賦能綠色低碳轉型與合規治理，落實下列三大實踐：</div>
+
+        <div class="sp-principle-list">
+            <div class="sp-principle-item reveal">
+                <span class="sp-principle-num">01</span>
+                <div>
+                    <h3 class="sp-principle-title">綠色低碳轉型</h3>
+                    <p class="sp-principle-desc">積極引進低碳替代燃油與智慧節能船舶系統，以科技賦能遠洋漁業的綠色轉型，降低整體船隊之能源耗損與碳排放。</p>
+                </div>
+            </div>
+            <div class="sp-principle-item reveal">
+                <span class="sp-principle-num">02</span>
+                <div>
+                    <h3 class="sp-principle-title">全流程可追溯系統</h3>
+                    <p class="sp-principle-desc">自主研發並對接國際漁業管理組織之全流程可追溯系統，將生態打擾與環境衝擊降至最低，落實海洋保育與合規治理。</p>
+                </div>
+            </div>
+            <div class="sp-principle-item reveal">
+                <span class="sp-principle-num">03</span>
+                <div>
+                    <h3 class="sp-principle-title">數位供應鏈與人權保障</h3>
+                    <p class="sp-principle-desc">透過數位化供應鏈透明度管理，嚴格落實 ILO 國際勞工公約標準，以科技化、可驗證的數據保障船員人權與勞動尊嚴。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sp-intro reveal" style="margin-top:56px;">
+            <p>立足於技術整合、數位制度創新及數據合規治理，海沃控股集團將持續打造兼具環境永續、社會共榮與經濟成長的現代化遠洋漁業科技控股體系。以科技驅動產業升級，以制度強化治理效能，以責任引領永續發展，全面提升遠洋漁業的智慧化、數位化與國際化水平，攜手全球夥伴共創產業新格局，實現企業成長、社會共榮與永續海洋的長期價值。</p>
+        </div>
+
+
         <div class="sp-crosslink-row">
                 <a href="business-map.html">← 事業版圖</a>
                 <a href="governance-structure.html">公司治理架構 →</a>

@@ -140,7 +140,6 @@
             line-height: 2.1;
             letter-spacing: 0.04em;
             font-weight: 300;
-            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -1120,6 +1119,10 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
+            margin-bottom: 32px;
+        }
+        .form-2-split .form-line-group {
+            margin-bottom: 0;
         }
         .btn-poetic-submit {
             display: inline-block;
@@ -1246,6 +1249,18 @@
             .blanz-nav-menu {
                 display: none;
             }
+            .contact-poetic-header {
+                margin-bottom: 50px;
+            }
+            .contact-poetic-grid {
+                gap: 40px;
+            }
+            .contact-poetic-info p {
+                margin-bottom: 24px;
+            }
+            .contact-channels-list {
+                margin-bottom: 24px;
+            }
             .about-hero-title {
                 font-size: var(--text-2xl);
             }
@@ -1273,6 +1288,12 @@
             }
             .form-2-split {
                 grid-template-columns: 1fr;
+            }
+            .btn-poetic-submit {
+                display: block;
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
             }
             .hero-panorama-stage {
                 height: 48vh;
@@ -1368,6 +1389,11 @@
         @media (max-width: 640px) {
             .projects-4-grid {
                 grid-template-columns: 1fr;
+            }
+            /* 單欄變成滿版寬之後，原本桌機用的 320px 高度比例會太接近正方形，
+               改成比較扁的裁切，看起來更像一般新聞卡片縮圖 */
+            .project-thumb-box {
+                height: 220px;
             }
         }
 
@@ -1818,6 +1844,21 @@
         .news-link-btn:hover {
             color: rgb(0, 139, 156);
         }
+        /* 最新消息標題列：桌機是「標題在左、VIEW ALL NEWS 在右」同一行的
+           space-between 排法，窄螢幕硬擠在一起會讓副標題被迫換行，
+           跟右邊按鈕文字疊在一起。手機版改成上下堆疊，按鈕獨立一行、
+           左對齊，並加大點擊區域方便手指點按。 */
+        @media (max-width: 1024px) {
+            .projects-header-top {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            .news-link-btn {
+                display: inline-block;
+                padding: 6px 0;
+            }
+        }
         @media (max-width: 960px) {
             .grid-layout {
                 grid-template-columns: 1fr;
@@ -2221,11 +2262,17 @@
             color: var(--c-muted);
             margin-top: 10px;
         }
+        .flagship-dots-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 44px;
+        }
         .flagship-dots {
             display: flex;
             justify-content: center;
             gap: 12px;
-            margin-top: 44px;
         }
         .flagship-dot {
             width: 8px;
@@ -2238,6 +2285,29 @@
         .flagship-dot.active {
             background: var(--c-copper);
             transform: scale(1.3);
+        }
+        .flagship-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            background: none;
+            border: 1px solid var(--c-line);
+            border-radius: 50%;
+            color: var(--c-muted);
+            cursor: pointer;
+            transition: border-color 0.3s ease, color 0.3s ease;
+        }
+        .flagship-arrow:hover {
+            border-color: var(--c-copper);
+            color: var(--c-copper);
+        }
+        .flagship-arrow i {
+            width: 16px;
+            height: 16px;
+            pointer-events: none;
         }
         .flagship-cap {
             text-align: center;
@@ -2253,24 +2323,35 @@
             .flagship-section {
                 position: relative;
                 height: auto;
-                padding: 120px 0 100px;
+                /* 手機版不再黏住捲動，改成一般區塊，跟其他區塊一樣改用間距變數，
+                   同時把桌機版特別大的上下留白收緊，資訊才不用捲很久才看得完 */
+                padding: var(--space-section-md) 0 calc(var(--space-section-md) - 20px) 0;
             }
             .flagship-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
+                margin-top: 32px;
+                gap: 32px;
             }
             .flagship-left { order: 2; justify-self: center; max-width: 100%; }
             .flagship-left p { margin-left: auto; margin-right: auto; }
+            .flagship-left p.flagship-tag,
+            .flagship-left h3 { margin-bottom: 12px; }
+            .flagship-left p.flagship-desc { margin-bottom: 18px; }
             .flagship-photo { order: 1; }
             .flagship-right { order: 3; text-align: center; justify-self: center; max-width: 100%; }
-            .flagship-cap { position: static; margin-top: 40px; }
+            .flagship-dots-row { margin-top: 28px; }
+            .flagship-cap { position: static; margin-top: 24px; }
         }
         @media (max-width: 640px) {
             .flagship-photo { width: 200px; }
         }
-        /* Custom Cursor */
-        body, a, button, input, textarea, select, .swiper-button-next, .swiper-button-prev {
-            cursor: none !important;
+        /* Custom Cursor：只在有滑鼠的裝置上取代原生游標，觸控裝置沒有滑鼠游標可言，
+           保留原生 cursor 即可（實際建立游標元素的判斷在對應的 JS 區塊）。 */
+        @media (pointer: fine) {
+            body, a, button, input, textarea, select, .swiper-button-next, .swiper-button-prev {
+                cursor: none !important;
+            }
         }
 
         .custom-cursor {
@@ -2806,11 +2887,19 @@
                         <div class="flagship-num-label" id="flagshipLabel">年產業深耕經驗<br>源自 1983 年</div>
                     </div>
                 </div>
-                <div class="flagship-dots">
-                    <span class="flagship-dot active" data-index="0"></span>
-                    <span class="flagship-dot" data-index="1"></span>
-                    <span class="flagship-dot" data-index="2"></span>
-                    <span class="flagship-dot" data-index="3"></span>
+                <div class="flagship-dots-row">
+                    <button type="button" class="flagship-arrow" id="flagshipArrowPrev" aria-label="上一組數據">
+                        <i data-lucide="chevron-left"></i>
+                    </button>
+                    <div class="flagship-dots">
+                        <span class="flagship-dot active" data-index="0"></span>
+                        <span class="flagship-dot" data-index="1"></span>
+                        <span class="flagship-dot" data-index="2"></span>
+                        <span class="flagship-dot" data-index="3"></span>
+                    </div>
+                    <button type="button" class="flagship-arrow" id="flagshipArrowNext" aria-label="下一組數據">
+                        <i data-lucide="chevron-right"></i>
+                    </button>
                 </div>
                 <p class="flagship-cap reveal">近 40 艘現代化合規船隊，全面符合國際合規標準</p>
             </div>
@@ -2907,7 +2996,7 @@
                         </li>
                         <li>
                             <span class="channel-label">公共關係與媒體事務</span>
-                            <a href="mailto:pr@seaworth.com" class="channel-mail">pr@seaworth.com</a>
+                            <a href="mailto:press@seaworth.com" class="channel-mail">press@seaworth.com</a>
                         </li>
                     </ul>
 
@@ -2929,7 +3018,7 @@
                                 <ul class="custom-select-list" role="listbox" tabindex="-1">
                                     <li role="option" data-value="IR">投資人關係洽詢 (invest@seaworth.com)</li>
                                     <li role="option" data-value="Partnership">商務合作與業務洽詢 (partnership@seaworth.com)</li>
-                                    <li role="option" data-value="PR">公共關係與媒體事務 (pr@seaworth.com)</li>
+                                    <li role="option" data-value="PR">公共關係與媒體事務 (press@seaworth.com)</li>
                                     <li role="option" data-value="Other">其他事宜</li>
                                 </ul>
                                 <input type="hidden" id="serviceSelect" name="service" required>
@@ -3636,6 +3725,14 @@
                 document.querySelector('.flagship-right')
             ];
 
+            // 對應 CSS 的 @media (max-width: 1024px)：只有超過這個寬度，
+            // .flagship-section 才是 position: sticky（畫面真的會黏住），
+            // 才需要跑捲動切換卡片的邏輯。
+            const desktopStickyQuery = window.matchMedia('(min-width: 1025px)');
+            function isDesktopStickyMode() {
+                return desktopStickyQuery.matches;
+            }
+
             let currentIndex = 0;
             let numRAF = null;
 
@@ -3688,6 +3785,11 @@
             }
 
             function onScroll() {
+                // 手機/平板（≤1024px）CSS 已把區塊改回一般排版（不黏住），
+                // 這裡也要跟著關閉「捲動切換」，改由 dot 點擊切換，避免畫面沒黏住
+                // 卻在背景照樣切內容，造成捲動時內容忽然跳動的問題。
+                if (!isDesktopStickyMode()) return;
+
                 const rect = wrapper.getBoundingClientRect();
                 const viewportHeight = window.innerHeight;
                 const scrollable = wrapper.offsetHeight - viewportHeight;
@@ -3712,15 +3814,35 @@
                 }
             });
 
+            function goToIndex(i) {
+                if (!isDesktopStickyMode()) {
+                    // 手機/平板：畫面沒有黏住，直接原地切換卡片內容即可
+                    applyState(i);
+                    return;
+                }
+                const viewportHeight = window.innerHeight;
+                const scrollable = wrapper.offsetHeight - viewportHeight;
+                if (scrollable <= 0) return;
+                const targetScroll = wrapper.offsetTop + (scrollable * (i / states.length)) + 10;
+                window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+            }
+
             dots.forEach((dot, i) => {
-                dot.addEventListener('click', () => {
-                    const viewportHeight = window.innerHeight;
-                    const scrollable = wrapper.offsetHeight - viewportHeight;
-                    if (scrollable <= 0) return;
-                    const targetScroll = wrapper.offsetTop + (scrollable * (i / states.length)) + 10;
-                    window.scrollTo({ top: targetScroll, behavior: 'smooth' });
-                });
+                dot.addEventListener('click', () => goToIndex(i));
             });
+
+            const prevBtn = document.getElementById('flagshipArrowPrev');
+            const nextBtn = document.getElementById('flagshipArrowNext');
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    goToIndex((currentIndex - 1 + states.length) % states.length);
+                });
+            }
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    goToIndex((currentIndex + 1) % states.length);
+                });
+            }
 
             onScroll();
 
@@ -3757,6 +3879,10 @@
     </script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            // 觸控裝置沒有滑鼠，不需要（也不會觸發 mousemove）自訂游標，
+            // 建立了反而會停在畫面左上角不動，變成一個卡住的小色塊。
+            if (!window.matchMedia('(pointer: fine)').matches) return;
+
             const root = document.querySelector('body');
 
             // Real cursor element
