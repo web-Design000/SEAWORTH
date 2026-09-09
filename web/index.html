@@ -2290,24 +2290,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 32px;
-            height: 32px;
-            padding: 0;
+            padding: 8px 12px;
             background: none;
-            border: 1px solid var(--c-line);
-            border-radius: 50%;
+            border: none;
             color: var(--c-muted);
+            font-family: var(--font-display);
+            font-size: 1.3rem;
             cursor: pointer;
-            transition: border-color 0.3s ease, color 0.3s ease;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
         .flagship-arrow:hover {
-            border-color: var(--c-copper);
             color: var(--c-copper);
-        }
-        .flagship-arrow i {
-            width: 16px;
-            height: 16px;
-            pointer-events: none;
         }
         .flagship-cap {
             text-align: center;
@@ -2889,7 +2882,7 @@
                 </div>
                 <div class="flagship-dots-row">
                     <button type="button" class="flagship-arrow" id="flagshipArrowPrev" aria-label="上一組數據">
-                        <i data-lucide="chevron-left"></i>
+                        ←
                     </button>
                     <div class="flagship-dots">
                         <span class="flagship-dot active" data-index="0"></span>
@@ -2898,7 +2891,7 @@
                         <span class="flagship-dot" data-index="3"></span>
                     </div>
                     <button type="button" class="flagship-arrow" id="flagshipArrowNext" aria-label="下一組數據">
-                        <i data-lucide="chevron-right"></i>
+                        →
                     </button>
                 </div>
                 <p class="flagship-cap reveal">近 40 艘現代化合規船隊，全面符合國際合規標準</p>
@@ -3782,6 +3775,22 @@
                     void el.offsetWidth; // 強制 reflow，讓動畫可以重新觸發
                     el.classList.add('flagship-pop');
                 });
+                updateArrowState(currentIndex);
+            }
+
+            function updateArrowState(idx) {
+                const prevBtn = document.getElementById('flagshipArrowPrev');
+                if (prevBtn) {
+                    if (idx === 0) {
+                        prevBtn.style.opacity = '0.3';
+                        prevBtn.style.pointerEvents = 'none';
+                        prevBtn.style.cursor = 'default';
+                    } else {
+                        prevBtn.style.opacity = '1';
+                        prevBtn.style.pointerEvents = 'auto';
+                        prevBtn.style.cursor = 'pointer';
+                    }
+                }
             }
 
             function onScroll() {
@@ -3835,16 +3844,22 @@
             const nextBtn = document.getElementById('flagshipArrowNext');
             if (prevBtn) {
                 prevBtn.addEventListener('click', () => {
-                    goToIndex((currentIndex - 1 + states.length) % states.length);
+                    if (currentIndex > 0) goToIndex(currentIndex - 1);
                 });
             }
             if (nextBtn) {
                 nextBtn.addEventListener('click', () => {
-                    goToIndex((currentIndex + 1) % states.length);
+                    if (currentIndex === states.length - 1) {
+                        const scrollY = window.scrollY || window.pageYOffset;
+                        window.scrollTo({ top: scrollY + wrapper.getBoundingClientRect().bottom, behavior: 'smooth' });
+                    } else {
+                        goToIndex(currentIndex + 1);
+                    }
                 });
             }
 
             onScroll();
+            updateArrowState(currentIndex);
 
             // 首次滾動進入畫面時，讓初始數字也跑一次入場動畫
             const numEntranceObserver = new IntersectionObserver((entries, obs) => {

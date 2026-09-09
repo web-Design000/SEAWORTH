@@ -2175,8 +2175,8 @@
     .sp-hero {
         position: relative;
         width: 100%;
-        height: 46vh;
-        min-height: 380px;
+        height: 35vh;
+        min-height: 280px;
         overflow: hidden;
         display: flex;
         align-items: flex-end;
@@ -2820,64 +2820,156 @@
         })();
     </script>
 
-<section class="sp-hero">
-        <img src="assets/hero-banner-01.jpg" alt="關於海沃">
-        <div class="sp-hero-inner">
-            <nav class="sp-breadcrumb">
-                    <a href="index.html">首頁</a> ／ <a href="about.html">集團總覽</a> ／ 關於海沃
-                </nav>
-            <span class="sp-hero-eyebrow">GROUP OVERVIEW</span>
-            <h1 class="sp-hero-title">ABOUT SEAWORTH<span class="sp-hero-sub">關於海沃</span></h1>
-        </div>
-    </section>
-
-<main>
-    <section class="blanz-section sp-section"><div class="blanz-container">
-        
-        <div class="sp-intro reveal">
-            <p>海沃控股集團成立於 2026 年，以整合遠洋漁業上下游資源、深化共善治理、提升營運效能為使命。集團旗下擘劃三大事業群，深耕漁撈、造船與冷鏈三大專業領域，建構健全且具韌性的全球海洋產業鏈：</p>
-        </div>
-
-        <div class="sp-grid-3" style="margin-top:56px;">
-            <div class="sp-sector-card reveal delay-1">
-                <div class="sp-sector-card-img"><img src="assets/2_nologo.jpg" alt="華偉漁業事業群"></div>
-                <div class="sp-sector-card-body">
-                    <img class="logo" src="assets/logo-huawei.png" alt="華偉漁業事業群">
-                    <h3>華偉漁業事業群</h3>
-                    <p>發展起源可追溯至 1983 年，黃氏家族自高雄前鎮漁港投入冷凍倉儲，深耕遠洋漁業領域。集團自一艘圍網漁船啟航，隨著長年經驗累積逐步擴建船隊規模，為集團奠定厚實根基。</p>
-                </div>
-            </div>
-            <div class="sp-sector-card reveal delay-2">
-                <div class="sp-sector-card-img"><img src="assets/4_nologo.jpg" alt="巨寶漁業事業群"></div>
-                <div class="sp-sector-card-body">
-                    <img class="logo" src="assets/logo-jubao.png" alt="巨寶漁業事業群">
-                    <h3>巨寶漁業事業群</h3>
-                    <p>專營圍網漁船捕撈，並結合冷凍運搬船建構「海上移動冷鏈」優勢；同時跨足現代化造船領域，引進符合國際勞工規範與前瞻科技的船體設計，全方位提升海上作業安全與營運效率。</p>
-                </div>
-            </div>
-            <div class="sp-sector-card reveal delay-3">
-                <div class="sp-sector-card-img"><img src="assets/3_nologo.jpg" alt="華昇魷釣事業群"></div>
-                <div class="sp-sector-card-body">
-                    <img class="logo" src="assets/logo-huasheng.png" alt="華昇魷釣事業群">
-                    <h3>華昇魷釣事業群</h3>
-                    <p>專精高技術漁法，經營魷魚秋刀魚船與延繩釣漁船。多元船隊相輔相成，完美展現從精準捕撈、生態永續到全球冷鏈供應的頂尖實力。</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="sp-intro reveal" style="margin-top:80px;">
-            <p>歷經逾四十載的砥礪深耕，本集團蛻變為涵蓋智慧造船、遠洋漁撈、冷鏈物流及國際貿易的多元控股集團。我們堅持「專業、誠信、創新、永續」的核心價值，優化企業內控與合規治理，全面引領產業轉型升級。</p>
-            <p>迎向全球漁業資源與環境永續的新局，海沃積極推動數位化船隊管理，落實 FISH、MSC 等國際永續認證與漁業組織規範；同時率先導入海上遠距醫療機制，以具體行動守護船員人權與職業安全。</p>
-            <p>從海洋出發，也對海洋負責。海沃控股集團將持續提供安全、優質且全流程可追溯的優良漁獲，攜手全球夥伴，共同推動更具責任與韌性的現代遠洋漁業。朝向「敬海而行、與世界共榮共善」的永續願景穩健邁進。</p>
-        </div>
+<style>
+    .about-manifesto {
+        padding: 40px 0 60px;
+    }
+    .about-manifesto-title {
+        font-family: var(--font-display); 
+        font-size: clamp(3.5rem, 8vw, var(--text-hero)); 
+        line-height: 1.05; 
+        letter-spacing: 0.02em; 
+        color: var(--c-ocean-deep); 
+        margin-bottom: 48px; 
+        font-weight: 300;
+        text-transform: uppercase;
+    }
+    .about-manifesto-title span {
+        font-family: var(--font-serif); 
+        font-size: clamp(1.8rem, 4vw, var(--text-2xl)); 
+        display: block; 
+        margin-top: 16px; 
+        color: var(--c-charcoal);
+        letter-spacing: 0.1em;
+    }
     
-    
-        <div class="sp-crosslink-row">
+    .about-staggered-list {
+        display: flex;
+        flex-direction: column;
+        gap: 120px;
+        margin-top: 80px;
+        margin-bottom: 120px;
+    }
+    .about-staggered-item {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+        align-items: center;
+    }
+    @media (min-width: 1024px) {
+        .about-staggered-item {
+            grid-template-columns: 5fr 4fr;
+            gap: 100px;
+        }
+        .about-staggered-item:nth-child(even) {
+            grid-template-columns: 4fr 5fr;
+        }
+        .about-staggered-item:nth-child(even) .about-staggered-img {
+            order: 2;
+        }
+        .about-staggered-item:nth-child(even) .about-staggered-content {
+            padding-right: 40px;
+        }
+        .about-staggered-item:nth-child(odd) .about-staggered-content {
+            padding-left: 40px;
+        }
+    }
+    .about-staggered-img {
+        position: relative;
+        overflow: hidden;
+        border-radius: 4px;
+        aspect-ratio: 4/3;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+    .about-staggered-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+    .about-staggered-item:hover .about-staggered-img img {
+        transform: scale(1.03);
+    }
+    .about-staggered-content .logo {
+        height: 56px;
+        width: auto;
+        margin-bottom: 32px;
+        display: block;
+    }
+    .about-staggered-content h3 {
+        font-family: var(--font-serif);
+        font-size: var(--text-3xl);
+        color: var(--c-ocean-deep);
+        margin-bottom: 24px;
+        font-weight: 400;
+        letter-spacing: 0.05em;
+    }
+    .about-staggered-content p {
+        font-size: var(--text-base);
+        line-height: 2.2;
+        color: var(--c-charcoal);
+    }
+</style>
+
+<main style="padding-top: 0px;">
+    <section class="blanz-section" style="padding-top: 40px;">
+        <div class="blanz-container" style="max-width: 1200px;">
+            
+            <nav class="sp-breadcrumb" style="color: var(--c-muted); margin-bottom: 24px;">
+                <a href="index.html" style="color: var(--c-muted);">首頁</a> ／ <a href="about.html" style="color: var(--c-muted);">集團總覽</a> ／ 關於海沃
+            </nav>
+            
+            <div class="about-manifesto reveal" style="padding-top: 0;">
+                <span class="eyebrow" style="font-family: var(--font-display); letter-spacing: 0.3em; text-transform: uppercase; font-size: var(--text-sm); color: var(--c-copper); display: block; margin-bottom: 24px;">GROUP OVERVIEW</span>
+                <h1 class="about-manifesto-title">
+                    ABOUT SEAWORTH
+                    <span>關於海沃</span>
+                </h1>
+                
+                <div style="font-size: var(--text-lg); line-height: 2; color: var(--c-charcoal); max-width: 860px; font-weight: 300;">
+                    <p>海沃控股集團成立於 2026 年，以整合遠洋漁業上下游資源、深化共善治理、提升營運效能為使命。集團旗下擘劃三大事業群，深耕漁撈、造船與冷鏈三大專業領域，建構健全且具韌性的全球海洋產業鏈：</p>
+                </div>
+            </div>
+
+            <div class="about-staggered-list">
+                <div class="about-staggered-item reveal">
+                    <div class="about-staggered-img"><img src="assets/2_nologo.jpg" alt="華偉漁業事業群"></div>
+                    <div class="about-staggered-content">
+                        <img class="logo" src="assets/logo-huawei.png" alt="華偉漁業事業群">
+                        <h3>華偉漁業事業群</h3>
+                        <p>發展起源可追溯至 1983 年，黃氏家族自高雄前鎮漁港投入冷凍倉儲，深耕遠洋漁業領域。集團自一艘圍網漁船啟航，隨著長年經驗累積逐步擴建船隊規模，為集團奠定厚實根基。</p>
+                    </div>
+                </div>
+                <div class="about-staggered-item reveal">
+                    <div class="about-staggered-img"><img src="assets/4_nologo.jpg" alt="巨寶漁業事業群"></div>
+                    <div class="about-staggered-content">
+                        <img class="logo" src="assets/logo-jubao.png" alt="巨寶漁業事業群">
+                        <h3>巨寶漁業事業群</h3>
+                        <p>專營圍網漁船捕撈，並結合冷凍運搬船建構「海上移動冷鏈」優勢；同時跨足現代化造船領域，引進符合國際勞工規範與前瞻科技的船體設計，全方位提升海上作業安全與營運效率。</p>
+                    </div>
+                </div>
+                <div class="about-staggered-item reveal">
+                    <div class="about-staggered-img"><img src="assets/3_nologo.jpg" alt="華昇魷釣事業群"></div>
+                    <div class="about-staggered-content">
+                        <img class="logo" src="assets/logo-huasheng.png" alt="華昇魷釣事業群">
+                        <h3>華昇魷釣事業群</h3>
+                        <p>專精高技術漁法，經營魷魚秋刀魚船與延繩釣漁船。多元船隊相輔相成，完美展現從精準捕撈、生態永續到全球冷鏈供應的頂尖實力。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sp-intro reveal" style="max-width: 860px; margin: 0; padding-bottom: 80px;">
+                <p>歷經逾四十載的砥礪深耕，本集團蛻變為涵蓋智慧造船、遠洋漁撈、冷鏈物流及國際貿易的多元控股集團。我們堅持「專業、誠信、創新、永續」的核心價值，優化企業內控與合規治理，全面引領產業轉型升級。</p>
+                <p>迎向全球漁業資源與環境永續的新局，海沃積極推動數位化船隊管理，落實 FISH、MSC 等國際永續認證與漁業組織規範；同時率先導入海上遠距醫療機制，以具體行動守護船員人權與職業安全。</p>
+                <p>從海洋出發，也對海洋負責。海沃控股集團將持續提供安全、優質且全流程可追溯的優良漁獲，攜手全球夥伴，共同推動更具責任與韌性的現代遠洋漁業。朝向「敬海而行、與世界共榮共善」的永續願景穩健邁進。</p>
+            </div>
+            
+            <div class="sp-crosslink-row">
                 <a href="index.html">← 首頁</a>
                 <a href="business-map.html">事業版圖 →</a>
             </div>
-            </div>
-        </section>
+        </div>
+    </section>
 </main>
 
 <footer class="blanz-footer">
