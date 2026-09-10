@@ -2391,7 +2391,6 @@
         align-items: center;
         padding-top: 40px;
         margin-top: 60px;
-        border-top: 1px solid var(--c-line);
     }
     .sp-crosslink-row a {
         font-size: var(--text-sm);
@@ -2401,8 +2400,25 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
+        position: relative;
+        padding-bottom: 6px;
+        transition: color 0.4s ease;
     }
-    .sp-crosslink-row a:hover { color: var(--c-subtitle-blue); }
+    .sp-crosslink-row a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: var(--c-ink);
+        transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
+    }
+    .sp-crosslink-row a:hover { color: rgb(0, 139, 156); }
+    .sp-crosslink-row a:hover::after {
+        width: 0%;
+        background-color: rgb(0, 139, 156);
+    }
 
     @media (max-width: 1024px) {
         .sp-grid-3 { grid-template-columns: repeat(2, 1fr); }
@@ -2421,6 +2437,139 @@
         .sp-accordion-head-left { gap: 12px; }
         .sp-cta-panel { padding: 70px 24px; }
     }
+
+        /* 手機版漢堡按鈕與全螢幕選單 */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 16px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1002;
+            padding: 0;
+            margin-left: 16px;
+        }
+        .nav-hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: var(--c-charcoal);
+            transition: all 0.4s var(--ease-poetic);
+            transform-origin: center;
+        }
+        body.nav-open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); width: 24px; }
+        body.nav-open .nav-hamburger span:nth-child(2) { opacity: 0; }
+        body.nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); width: 24px; }
+
+        .nav-mobile-panel {
+            position: fixed;
+            inset: 0;
+            background-color: var(--c-white);
+            z-index: 1000;
+            padding: 100px 32px 40px;
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px);
+            transition: all 0.5s var(--ease-poetic);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        body.nav-open .nav-mobile-panel {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .nav-mobile-group {
+            border-bottom: 1px solid var(--c-line);
+        }
+        .nav-mobile-group:last-of-type { border-bottom: none; }
+        
+        .nav-mobile-group-head {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            background: transparent;
+            border: none;
+            font-family: var(--font-sans);
+            font-size: 1.15rem;
+            color: var(--c-charcoal);
+            text-align: left;
+            cursor: pointer;
+            letter-spacing: 0.1em;
+        }
+        .nav-mobile-group-head i {
+            width: 20px;
+            height: 20px;
+            color: var(--c-muted);
+            transition: transform 0.4s ease;
+        }
+        .nav-mobile-group.is-open .nav-mobile-group-head i {
+            transform: rotate(180deg);
+        }
+        
+        .nav-mobile-sub {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.4s var(--ease-poetic);
+        }
+        .nav-mobile-group.is-open .nav-mobile-sub {
+            grid-template-rows: 1fr;
+        }
+        .nav-mobile-sub-inner {
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding-bottom: 0;
+        }
+        .nav-mobile-group.is-open .nav-mobile-sub-inner {
+            padding-bottom: 24px;
+        }
+        .nav-mobile-sub-inner a {
+            font-size: 1rem;
+            color: var(--c-muted);
+            text-decoration: none;
+            padding-left: 8px;
+            letter-spacing: 0.08em;
+        }
+        
+        .nav-mobile-lang {
+            margin-top: 40px;
+            display: flex;
+            gap: 24px;
+            padding: 0 8px;
+        }
+        .nav-mobile-lang a {
+            font-size: 0.95rem;
+            color: var(--c-charcoal);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+        }
+
+        @media (max-width: 1024px) {
+            .nav-left-area .nav-split-menu,
+            .nav-right-area .nav-split-menu,
+            .nav-center-icon {
+                display: none;
+            }
+            .nav-hamburger { display: flex; }
+            .nav-left-area { padding-right: 0; }
+            .nav-right-area { padding-left: 0; justify-content: flex-end; flex: 0 0 auto; }
+            .blanz-nav-inner {
+                display: flex;
+                grid-template-columns: none;
+                justify-content: space-between;
+                align-items: center;
+                padding: 14px 24px;
+            }
+        }
 </style>
 
 </head>
@@ -2548,9 +2697,119 @@
                         </div>
                     </li>
                 </ul>
+
+                <button type="button" class="nav-hamburger" id="navHamburger" aria-label="開啟選單" aria-expanded="false" aria-controls="navMobilePanel">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </nav>
     </header>
+
+    <!-- 手機版全螢幕選單面板 -->
+    <div class="nav-mobile-panel" id="navMobilePanel">
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">集團總覽 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="about.html">關於海沃</a>
+                <a href="business-map.html">事業版圖</a>
+                <a href="tech-integration.html">技術整合能力</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">公司治理 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="governance-structure.html">公司治理架構</a>
+                <a href="risk-management.html">風險管理政策</a>
+                <a href="internal-audit.html">內部稽核與內控制度</a>
+                <a href="integrity.html">誠信經營守則</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">共善經營 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="environment.html">環境保護</a>
+                <a href="social-responsibility.html">社會責任</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">投資人專區 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="investment-highlights.html">投資亮點</a>
+                <a href="strategy.html">策略布局</a>
+                <a href="shareholder-info.html">股東訊息</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">最新消息 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="announcements.html">官方公告</a>
+                <a href="corporate-news.html">企業動態</a>
+                <a href="sustainability-practice.html">永續實踐</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">聯繫海沃 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="locations.html">營運據點</a>
+                <a href="contact-us.html">聯絡我們</a>
+                <a href="careers.html">人才招募</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-lang">
+            <a href="#">繁體中文</a>
+            <a href="#">English</a>
+        </div>
+    </div>
+    <script>
+        (function() {
+            const header = document.querySelector('.blanz-header');
+            if (!header) return;
+            function setHeaderHeight() {
+                document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+            }
+            setHeaderHeight();
+            window.addEventListener('resize', setHeaderHeight);
+        })();
+    </script>
+    <!-- 手機版漢堡選單邏輯 -->
+    <script>
+        (function() {
+            const hamburger = document.getElementById('navHamburger');
+            const panel = document.getElementById('navMobilePanel');
+            if (!hamburger || !panel) return;
+
+            function closeMenu() {
+                document.body.classList.remove('nav-open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
+            function toggleMenu() {
+                const isOpen = document.body.classList.toggle('nav-open');
+                hamburger.setAttribute('aria-expanded', String(isOpen));
+            }
+
+            hamburger.addEventListener('click', toggleMenu);
+
+            panel.querySelectorAll('.nav-mobile-group-head').forEach(head => {
+                head.addEventListener('click', () => {
+                    head.closest('.nav-mobile-group').classList.toggle('is-open');
+                });
+            });
+
+            panel.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', closeMenu);
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeMenu();
+            });
+
+            // 螢幕放大回桌機版時，確保選單面板與漢堡狀態重置乾淨
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 1024) closeMenu();
+            });
+        })();
+    </script>
+
 <script>
         (function() {
             const header = document.querySelector('.blanz-header');

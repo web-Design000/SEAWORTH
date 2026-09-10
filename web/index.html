@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>海沃控股集團 SEAWORTH HOLDING｜THE POETIC OCEANIC CLASS</title>
     <meta name="description" content="海沃控股集團（SEAWORTH HOLDING）整合智慧造船、遠洋漁撈、冷鏈物流與國際貿易，打造全流程可追溯的全球海洋產業體系。">
     
@@ -109,6 +109,10 @@
                 --text-xl: 1.4rem;
                 --text-lg: 1.1rem;
                 --text-base: 0.95rem;
+
+                --space-section-md: 32px;
+                --space-section-lg: 40px;
+                --space-section-xl: 48px;
                 --text-sm: 0.86rem;
                 --text-xs: 0.78rem;
                 --text-tiny: 0.7rem;
@@ -129,8 +133,7 @@
             scroll-behavior: smooth;
             font-size: var(--text-base);
             background-color: var(--c-white);
-            overflow-x: hidden;
-            max-width: 100%;
+            width: 100%;
         }
 
         body {
@@ -140,6 +143,8 @@
             line-height: 2.1;
             letter-spacing: 0.04em;
             font-weight: 300;
+            overflow-x: hidden;
+            width: 100%;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -736,6 +741,8 @@
             .hero-big-title { font-size: var(--text-3xl); }
             .hero-big-subtitle { font-size: var(--text-tiny); top: 0; display: block; margin-top: 8px; }
             .hero-big-title-group { flex-direction: column; gap: 0; }
+            .hero-content-wrapper { padding-left: 24px; padding-right: 24px; }
+            .hero-slide-dots { padding-right: 0px; }
         }
 
         /* 區塊 2：ABOUT GROUP (文字疊圖歪斜錯位版面) */
@@ -1263,6 +1270,7 @@
             }
             .about-hero-title {
                 font-size: var(--text-2xl);
+                transform: none;
             }
             .about-hero-title .accent-line {
                 font-size: 1.15rem;
@@ -1394,6 +1402,13 @@
                改成比較扁的裁切，看起來更像一般新聞卡片縮圖 */
             .project-thumb-box {
                 height: 220px;
+            }
+            .project-card-item:hover {
+                transform: none !important;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            }
+            .project-card-item:hover .project-thumb-box img {
+                transform: none;
             }
         }
 
@@ -1542,7 +1557,8 @@
                 filter: brightness(0.4);
             }
             .dark-card-caption {
-                background: linear-gradient(0deg, rgba(0,0,0,0.94) 0%, rgba(0,0,0,0.8) 45%, rgba(0,0,0,0.35) 85%, rgba(0,0,0,0.15) 100%);
+                padding-top: 120px;
+                background: linear-gradient(0deg, rgba(0,0,0,0.94) 0%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0) 100%);
             }
         }
 
@@ -1852,7 +1868,10 @@
             .projects-header-top {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 20px;
+                justify-content: flex-start;
+                gap: 16px;
+                padding-bottom: 20px;
+                margin-bottom: 32px;
             }
             .news-link-btn {
                 display: inline-block;
@@ -1868,7 +1887,7 @@
                 padding-right: 0;
             }
             .cta-container {
-                margin-top: 70px;
+                margin-top: 24px;
             }
             /* 三大事業群手機版：Group 2/3 原本是船圖與文字並排（flex-shrink:0
                固定寬度 360px），窄螢幕一定爆版；Group 1 的標題/面板則是絕對定位
@@ -1914,6 +1933,11 @@
                用 order 調整視覺順序，不用動 HTML 結構 */
             .group-2 .ship-img { order: 1; }
             .group-2 .overlay-panel { order: 2; }
+        }
+        @media (max-width: 640px) {
+            .grid-layout { gap: 40px 0; }
+            .staggered-layout { gap: 40px; padding-bottom: 0; }
+            .cta-container { margin-top: 12px; }
         }
         /* ===== 國際合規認證 & 全球網絡 (Certifications & Global Presence) ===== */
         .certs-section {
@@ -3167,6 +3191,10 @@
             const START_OFFSET = -90; // px，初始往上偏移的距離
 
             function updateAboutTitle() {
+                if (window.innerWidth <= 1024) {
+                    aboutTitle.style.transform = '';
+                    return;
+                }
                 const rect = aboutTitle.getBoundingClientRect();
                 if (rect.top < window.innerHeight && rect.bottom > 0) {
                     // 進度：從標題進入視窗底部（0）到完全離開視窗頂部（1），拉長距離讓位移更明顯

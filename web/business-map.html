@@ -2304,15 +2304,15 @@
     /* 圖文並列區塊 */
     .sp-media-row {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 70px;
+        grid-template-columns: 1.25fr 1fr;
+        gap: 60px;
         align-items: center;
     }
     .sp-media-row.reverse .sp-media-frame { order: 2; }
     .sp-media-frame {
         position: relative;
         overflow: hidden;
-        height: 400px;
+        height: 520px;
         background: var(--c-subtle);
     }
     .sp-media-frame img {
@@ -2530,7 +2530,6 @@
         align-items: center;
         padding-top: 40px;
         margin-top: 60px;
-        border-top: 1px solid var(--c-line);
     }
     .sp-crosslink-row a {
         font-size: var(--text-sm);
@@ -2540,8 +2539,25 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
+        position: relative;
+        padding-bottom: 6px;
+        transition: color 0.4s ease;
     }
-    .sp-crosslink-row a:hover { color: var(--c-subtitle-blue); }
+    .sp-crosslink-row a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: var(--c-ink);
+        transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
+    }
+    .sp-crosslink-row a:hover { color: rgb(0, 139, 156); }
+    .sp-crosslink-row a:hover::after {
+        width: 0%;
+        background-color: rgb(0, 139, 156);
+    }
 
     @media (max-width: 1024px) {
         .sp-grid-3 { grid-template-columns: repeat(2, 1fr); }
@@ -2878,6 +2894,45 @@
 
 <script>
     lucide.createIcons();
+</script>
+<!-- 數字統計列：捲動進入畫面時從 0 跑到目標數字 -->
+<script>
+    (function() {
+        const row = document.querySelector('.sp-stat-row');
+        if (!row) return;
+        const items = Array.from(row.querySelectorAll('.sp-stat-num')).map(el => {
+            const suffixEl = el.querySelector('.num-sym');
+            const suffixHTML = suffixEl ? suffixEl.outerHTML : '';
+            const target = parseInt(el.textContent, 10) || 0;
+            el.innerHTML = '0' + suffixHTML;
+            return { el, target, suffixHTML };
+        });
+
+        function animate(duration) {
+            duration = duration || 1400;
+            const start = performance.now();
+            function tick(now) {
+                const t = Math.min(1, (now - start) / duration);
+                const eased = 1 - Math.pow(1 - t, 3);
+                items.forEach(item => {
+                    const current = Math.round(item.target * eased);
+                    item.el.innerHTML = current + item.suffixHTML;
+                });
+                if (t < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+        }
+
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animate();
+                    obs.disconnect();
+                }
+            });
+        }, { threshold: 0.4 });
+        observer.observe(row);
+    })();
 </script>
 <script>
 // ===== 全站流暢滾動入場效果 (Scroll Reveal Observer) =====

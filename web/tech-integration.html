@@ -2322,45 +2322,109 @@
         line-height: 1.9;
     }
 
-    /* 條列式重點（比照「誠信經營」頁的守則清單，大數字＋標題＋說明），
-       用來取代原本一整段密密麻麻的文字段落 */
-    .sp-principle-list { max-width: 1020px; margin: 0 auto; border-top: 1px solid var(--c-line); }
-    .sp-principle-item {
-        position: relative;
+    /* 三大實踐：不對稱拼貼式網格（bento grid），混合圖片、引言與重點卡片，
+       取代原本三段一樣重的大數字清單，其中一格加深色強調當作視覺焦點。 */
+    .tech-bento {
         display: grid;
-        grid-template-columns: 170px 1fr;
-        gap: 8px;
-        padding: 52px 0;
-        border-bottom: 1px solid var(--c-line);
+        grid-template-columns: 1fr 1.15fr;
+        gap: 2px;
+        background: var(--c-line);
+        margin: 90px 0 56px;
         align-items: start;
     }
-    .sp-principle-num {
+    .tech-bento-left, .tech-bento-right {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+    .tech-bento-left > div, .tech-bento-right > div {
+        background: var(--c-canvas);
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .tech-bento-intro .eyebrow {
         font-family: var(--font-display);
-        font-size: var(--text-mega);
-        line-height: 0.75;
-        font-weight: 400;
-        color: rgba(0, 73, 91, 0.1);
-        -webkit-text-stroke: 1.5px rgba(0, 73, 91, 0.45);
-        user-select: none;
-    }
-    .sp-principle-title {
-        font-family: var(--font-serif);
-        font-size: var(--text-xl);
-        color: var(--c-ink);
-        letter-spacing: 0.04em;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        font-size: var(--text-xs);
+        color: var(--c-copper);
+        display: block;
         margin-bottom: 16px;
-        padding-top: 10px;
     }
-    .sp-principle-desc {
-        font-size: var(--text-sm);
+    .tech-bento-intro p {
+        font-family: var(--font-serif);
+        font-size: var(--text-lg);
+        line-height: 1.7;
+        color: var(--c-ink);
+        font-weight: 300;
+    }
+    .tech-bento-photo {
+        height: 300px;
+        padding: 0 !important;
+        overflow: hidden;
+    }
+    .tech-bento-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .tech-bento-right > .tech-bento-dark {
+        background: var(--c-ocean-deep);
+        color: #FFFFFF;
+    }
+    /* 右側三格：文字在左、大數字編號在右，呼應參考稿的「文字 + 大數字」排法 */
+    .tech-bento-cell-1, .tech-bento-cell-2, .tech-bento-cell-3 {
+        flex-direction: row !important;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+    }
+    .tech-bento-cell-text { flex: 1; min-width: 0; }
+    .tech-bento-cell-num {
+        font-family: var(--font-display);
+        font-size: var(--text-4xl);
+        line-height: 1;
+        color: var(--c-copper-light);
+        flex-shrink: 0;
+    }
+    .tech-bento-dark .tech-bento-cell-num { color: rgba(255,255,255,0.35); }
+    .tech-bento h3 {
+        font-family: var(--font-serif);
+        font-size: var(--text-lg);
+        margin-bottom: 12px;
+        font-weight: 400;
+        letter-spacing: 0.03em;
+        color: var(--c-ink);
+    }
+    .tech-bento-dark h3 { color: #FFFFFF; }
+    .tech-bento p.desc {
+        font-size: var(--text-xs);
         color: var(--c-muted);
-        line-height: 2;
-        max-width: 720px;
+        line-height: 1.9;
     }
-    @media (max-width: 768px) {
-        .sp-principle-item { grid-template-columns: 1fr; gap: 4px; padding: 40px 0; }
-        .sp-principle-num { font-size: var(--text-4xl); line-height: 1; }
-        .sp-principle-title { padding-top: 4px; }
+    .tech-bento-dark p.desc { color: rgba(255,255,255,0.82); }
+    .tech-bento-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 18px;
+        font-family: var(--font-display);
+        font-size: var(--text-xs);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        text-decoration: none;
+    }
+    .tech-bento-link i { width: 14px; height: 14px; transition: transform 0.3s ease; }
+    .tech-bento-link:hover i { transform: translateX(4px); }
+    @media (max-width: 1024px) {
+        .tech-bento { grid-template-columns: 1fr; }
+        .tech-bento-photo { height: 240px; }
+        .tech-bento-left > div, .tech-bento-right > div { padding: 32px; }
+        .tech-bento-cell-1, .tech-bento-cell-2, .tech-bento-cell-3 {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 12px;
+        }
+        .tech-bento-cell-num { align-self: flex-end; }
     }
 
     /* 圖文並列區塊 */
@@ -2592,7 +2656,6 @@
         align-items: center;
         padding-top: 40px;
         margin-top: 60px;
-        border-top: 1px solid var(--c-line);
     }
     .sp-crosslink-row a {
         font-size: var(--text-sm);
@@ -2602,8 +2665,25 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
+        position: relative;
+        padding-bottom: 6px;
+        transition: color 0.4s ease;
     }
-    .sp-crosslink-row a:hover { color: var(--c-subtitle-blue); }
+    .sp-crosslink-row a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: var(--c-ink);
+        transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
+    }
+    .sp-crosslink-row a:hover { color: rgb(0, 139, 156); }
+    .sp-crosslink-row a:hover::after {
+        width: 0%;
+        background-color: rgb(0, 139, 156);
+    }
 
     @media (max-width: 1024px) {
         .sp-grid-3 { grid-template-columns: repeat(2, 1fr); }
@@ -2918,33 +2998,43 @@
             </div>
         </div>
 
-        <div class="sp-lede reveal" style="margin-top:90px;">在永續發展的技術佈局上，海沃以科技賦能綠色低碳轉型與合規治理，落實下列三大實踐：</div>
-
-        <div class="sp-principle-list">
-            <div class="sp-principle-item reveal">
-                <span class="sp-principle-num">01</span>
-                <div>
-                    <h3 class="sp-principle-title">綠色低碳轉型</h3>
-                    <p class="sp-principle-desc">積極引進低碳替代燃油與智慧節能船舶系統，以科技賦能遠洋漁業的綠色轉型，降低整體船隊之能源耗損與碳排放。</p>
+        <div class="tech-bento reveal">
+            <div class="tech-bento-left">
+                <div class="tech-bento-intro">
+                    <span class="eyebrow">SUSTAINABILITY</span>
+                    <p>在永續發展的技術佈局上，海沃以科技賦能綠色低碳轉型與合規治理，落實下列三大實踐。</p>
+                </div>
+                <div class="tech-bento-photo">
+                    <img src="assets/esg-environment.jpg" alt="永續發展技術佈局">
                 </div>
             </div>
-            <div class="sp-principle-item reveal">
-                <span class="sp-principle-num">02</span>
-                <div>
-                    <h3 class="sp-principle-title">全流程可追溯系統</h3>
-                    <p class="sp-principle-desc">自主研發並對接國際漁業管理組織之全流程可追溯系統，將生態打擾與環境衝擊降至最低，落實海洋保育與合規治理。</p>
+            <div class="tech-bento-right">
+                <div class="tech-bento-cell-1">
+                    <div class="tech-bento-cell-text">
+                        <h3>綠色低碳轉型</h3>
+                        <p class="desc">積極引進低碳替代燃油與智慧節能船舶系統，以科技賦能遠洋漁業的綠色轉型，降低整體船隊之能源耗損與碳排放。</p>
+                    </div>
+                    <span class="tech-bento-cell-num">01</span>
                 </div>
-            </div>
-            <div class="sp-principle-item reveal">
-                <span class="sp-principle-num">03</span>
-                <div>
-                    <h3 class="sp-principle-title">數位供應鏈與人權保障</h3>
-                    <p class="sp-principle-desc">透過數位化供應鏈透明度管理，嚴格落實 ILO 國際勞工公約標準，以科技化、可驗證的數據保障船員人權與勞動尊嚴。</p>
+                <div class="tech-bento-cell-2 tech-bento-dark">
+                    <div class="tech-bento-cell-text">
+                        <h3>全流程可追溯系統</h3>
+                        <p class="desc">自主研發並對接國際漁業管理組織之全流程可追溯系統，將生態打擾與環境衝擊降至最低，落實海洋保育與合規治理。</p>
+                        <a href="sustainability-practice.html" class="tech-bento-link">深入了解永續實踐 <i data-lucide="arrow-right"></i></a>
+                    </div>
+                    <span class="tech-bento-cell-num">02</span>
+                </div>
+                <div class="tech-bento-cell-3">
+                    <div class="tech-bento-cell-text">
+                        <h3>數位供應鏈與人權保障</h3>
+                        <p class="desc">透過數位化供應鏈透明度管理，嚴格落實 ILO 國際勞工公約標準，以科技化、可驗證的數據保障船員人權與勞動尊嚴。</p>
+                    </div>
+                    <span class="tech-bento-cell-num">03</span>
                 </div>
             </div>
         </div>
 
-        <div class="sp-intro reveal" style="margin-top:56px;">
+        <div class="sp-intro reveal" style="margin-bottom:56px;">
             <p>立足於技術整合、數位制度創新及數據合規治理，海沃控股集團將持續打造兼具環境永續、社會共榮與經濟成長的現代化遠洋漁業科技控股體系。以科技驅動產業升級，以制度強化治理效能，以責任引領永續發展，全面提升遠洋漁業的智慧化、數位化與國際化水平，攜手全球夥伴共創產業新格局，實現企業成長、社會共榮與永續海洋的長期價值。</p>
         </div>
 
