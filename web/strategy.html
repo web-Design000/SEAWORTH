@@ -2168,6 +2168,135 @@
             margin-top: -3px;
             margin-left: -3px;
         }
+    
+        
+        
+        
+        /* Focus Mode Accordion */
+        .focus-mode-accordion {
+            margin-top: 3rem;
+            margin-bottom: 5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .focus-mode-accordion .sp-accordion-item {
+            border-bottom: none;
+            background: rgba(var(--c-obsidian-rgb), 0.02);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(var(--c-obsidian-rgb), 0.05);
+        }
+        .focus-mode-accordion .sp-accordion-head {
+            padding: 2rem;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.4s ease;
+        }
+        .focus-mode-accordion .sp-accordion-head-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        .focus-mode-accordion .sp-accordion-index {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--c-copper-light);
+            min-width: 30px;
+        }
+        .focus-mode-accordion .sp-accordion-title {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--c-obsidian);
+            margin-bottom: 0.3rem;
+            transition: color 0.4s ease;
+        }
+        .focus-mode-accordion .sp-accordion-tag {
+            display: block;
+            font-size: 0.95rem;
+            color: var(--c-slate-gray);
+            transition: color 0.4s ease;
+        }
+        .focus-mode-accordion .sp-accordion-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--c-slate-gray);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Panel */
+        .focus-mode-accordion .sp-accordion-panel-wrap {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .focus-mode-accordion .sp-accordion-panel {
+            overflow: hidden;
+        }
+        .focus-mode-accordion .sp-accordion-panel-inner {
+            padding: 0 2rem 2.5rem 5rem;
+        }
+        .focus-mode-accordion .sp-accordion-panel-inner p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--c-slate-gray);
+            margin: 0;
+            transition: color 0.4s ease;
+        }
+
+        /* Active State (Focus Mode) */
+        .focus-mode-accordion.has-active .sp-accordion-item:not(.is-active) {
+            opacity: 0.4;
+            transform: scale(0.98);
+        }
+        .focus-mode-accordion .sp-accordion-item.is-active {
+            background: var(--c-ocean-deep);
+            border-color: var(--c-ocean-deep);
+            box-shadow: 0 10px 30px rgba(var(--c-ocean-deep-rgb), 0.2);
+            transform: scale(1.02);
+            z-index: 10;
+            position: relative;
+        }
+        .focus-mode-accordion .sp-accordion-item.is-active .sp-accordion-title {
+            color: var(--c-white);
+        }
+        .focus-mode-accordion .sp-accordion-item.is-active .sp-accordion-tag {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .focus-mode-accordion .sp-accordion-item.is-active .sp-accordion-panel-inner p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .focus-mode-accordion .sp-accordion-item.is-active .sp-accordion-icon {
+            transform: rotate(135deg);
+            color: var(--c-copper-light);
+        }
+        .focus-mode-accordion .sp-accordion-item.is-active .sp-accordion-panel-wrap {
+            grid-template-rows: 1fr;
+        }
+        
+        @media (max-width: 768px) {
+            .focus-mode-accordion .sp-accordion-head {
+                padding: 1.5rem;
+            }
+            .focus-mode-accordion .sp-accordion-panel-inner {
+                padding: 0 1.5rem 2rem 1.5rem;
+            }
+            .focus-mode-accordion .sp-accordion-head-left {
+                gap: 1rem;
+            }
+            .focus-mode-accordion .sp-accordion-title {
+                font-size: 1.25rem;
+            }
+        }
+
     </style>
 
 <style>
@@ -2816,7 +2945,7 @@
     </script>
 
 <section class="sp-hero">
-        <img src="assets/hero-strategy.jpg" alt="策略佈局">
+        <img src="assets/hero-strategy.jpg" alt="策略佈局" style="object-position: center 35%;">
         <div class="sp-hero-inner">
             <nav class="sp-breadcrumb">
                     <a href="index.html">首頁</a> ／ <a href="investment-highlights.html">投資人專區</a> ／ 策略佈局
@@ -2830,7 +2959,7 @@
     <section class="blanz-section sp-section"><div class="blanz-container">
         
         <div class="sp-lede reveal">海沃控股集團以十二大策略主軸，逐步構築從遠洋作業到國際控股集團的完整發展藍圖。點擊展開查看各主軸之策略佈局內容。</div>
-        <div class="sp-accordion">
+                                        <div class="sp-accordion focus-mode-accordion">
             <div class="sp-accordion-item">
                 <button type="button" class="sp-accordion-head" aria-expanded="false">
                     <span class="sp-accordion-head-left">
@@ -2846,7 +2975,6 @@
                     <div class="sp-accordion-panel">
                         <div class="sp-accordion-panel-inner">
                             <p>作業海域橫跨太平洋與大西洋，並與亞洲、歐洲、美洲等市場建立供應合作。</p>
-                            
                         </div>
                     </div>
                 </div>
@@ -2866,7 +2994,6 @@
                     <div class="sp-accordion-panel">
                         <div class="sp-accordion-panel-inner">
                             <p>發展鮪延繩釣船、圍網船、魷釣船、運搬船等多元船隊配置。</p>
-                            
                         </div>
                     </div>
                 </div>
@@ -2886,7 +3013,6 @@
                     <div class="sp-accordion-panel">
                         <div class="sp-accordion-panel-inner">
                             <p>整合捕撈、冷凍、運輸、倉儲與國際貿易。</p>
-                            
                         </div>
                     </div>
                 </div>
@@ -2906,7 +3032,6 @@
                     <div class="sp-accordion-panel">
                         <div class="sp-accordion-panel-inner">
                             <p>穩定供應日本、美國、歐盟及食品加工市場。</p>
-                            
                         </div>
                     </div>
                 </div>
@@ -2926,7 +3051,6 @@
                     <div class="sp-accordion-panel">
                         <div class="sp-accordion-panel-inner">
                             <p>導入 MSC、Dolphin Safe、ISSF 等國際永續漁業標準。</p>
-                            
                         </div>
                     </div>
                 </div>
@@ -2946,7 +3070,6 @@
                     <div class="sp-accordion-panel">
                         <div class="sp-accordion-panel-inner">
                             <p>改善船員生活環境、薪資福利、安全管理與教育訓練，導入遠距醫療、落實暴力零容忍、保障 Wi-Fi 通訊權。</p>
-                            
                         </div>
                     </div>
                 </div>
@@ -2966,7 +3089,6 @@
                     <div class="sp-accordion-panel">
                         <div class="sp-accordion-panel-inner">
                             <p>提升船隊燃油效率、導入節能設備與低碳燃料方向。</p>
-                            
                         </div>
                     </div>
                 </div>
@@ -2986,7 +3108,6 @@
                     <div class="sp-accordion-panel">
                         <div class="sp-accordion-panel-inner">
                             <p>強化船舶監控、電子化管理與數據化營運系統。</p>
-                            
                         </div>
                     </div>
                 </div>
@@ -3006,7 +3127,6 @@
                     <div class="sp-accordion-panel">
                         <div class="sp-accordion-panel-inner">
                             <p>遵循 RFMO、IMO、ILO 與國際供應鏈規範。</p>
-                            
                         </div>
                     </div>
                 </div>
@@ -3026,7 +3146,6 @@
                     <div class="sp-accordion-panel">
                         <div class="sp-accordion-panel-inner">
                             <p>強化「永續、安全、透明」企業形象與國際信任度。</p>
-                            
                         </div>
                     </div>
                 </div>
@@ -3046,7 +3165,6 @@
                     <div class="sp-accordion-panel">
                         <div class="sp-accordion-panel-inner">
                             <p>於中國、泰國、韓國、PNG 等地建立分公司。</p>
-                            
                         </div>
                     </div>
                 </div>
@@ -3066,12 +3184,957 @@
                     <div class="sp-accordion-panel">
                         <div class="sp-accordion-panel-inner">
                             <p>整合集團資源與各事業體，建立現代化治理與管理制度。</p>
-                            
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="sp-accordion-item">
+                <button type="button" class="sp-accordion-head" aria-expanded="false">
+                    <span class="sp-accordion-head-left">
+                        <span class="sp-accordion-index">01</span>
+                        <span>
+                            <span class="sp-accordion-title">全球漁業布局</span>
+                            <span class="sp-accordion-tag">建立區域化遠洋漁業合作網絡</span>
+                        </span>
+                    </span>
+                    <i data-lucide="plus" class="sp-accordion-icon"></i>
+                </button>
+                <div class="sp-accordion-panel-wrap">
+                    <div class="sp-accordion-panel">
+                        <div class="sp-accordion-panel-inner">
+                            <p>作業海域橫跨太平洋與大西洋，並與亞洲、歐洲、美洲等市場建立供應合作。</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div class="sp-accordion-item">
+                <button type="button" class="sp-accordion-head" aria-expanded="false">
+                    <span class="sp-accordion-head-left">
+                        <span class="sp-accordion-index">02</span>
+                        <span>
+                            <span class="sp-accordion-title">多元船隊發展</span>
+                            <span class="sp-accordion-tag">提升漁撈效率與營運彈性</span>
+                        </span>
+                    </span>
+                    <i data-lucide="plus" class="sp-accordion-icon"></i>
+                </button>
+                <div class="sp-accordion-panel-wrap">
+                    <div class="sp-accordion-panel">
+                        <div class="sp-accordion-panel-inner">
+                            <p>發展鮪延繩釣船、圍網船、魷釣船、運搬船等多元船隊配置。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sp-accordion-item">
+                <button type="button" class="sp-accordion-head" aria-expanded="false">
+                    <span class="sp-accordion-head-left">
+                        <span class="sp-accordion-index">03</span>
+                        <span>
+                            <span class="sp-accordion-title">產業鏈垂直整合</span>
+                            <span class="sp-accordion-tag">確保全球供貨穩定性</span>
+                        </span>
+                    </span>
+                    <i data-lucide="plus" class="sp-accordion-icon"></i>
+                </button>
+                <div class="sp-accordion-panel-wrap">
+                    <div class="sp-accordion-panel">
+                        <div class="sp-accordion-panel-inner">
+                            <p>整合捕撈、冷凍、運輸、倉儲與國際貿易。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sp-accordion-item">
+                <button type="button" class="sp-accordion-head" aria-expanded="false">
+                    <span class="sp-accordion-head-left">
+                        <span class="sp-accordion-index">04</span>
+                        <span>
+                            <span class="sp-accordion-title">國際市場拓展</span>
+                            <span class="sp-accordion-tag">強化國際市場競爭力</span>
+                        </span>
+                    </span>
+                    <i data-lucide="plus" class="sp-accordion-icon"></i>
+                </button>
+                <div class="sp-accordion-panel-wrap">
+                    <div class="sp-accordion-panel">
+                        <div class="sp-accordion-panel-inner">
+                            <p>穩定供應日本、美國、歐盟及食品加工市場。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sp-accordion-item">
+                <button type="button" class="sp-accordion-head" aria-expanded="false">
+                    <span class="sp-accordion-head-left">
+                        <span class="sp-accordion-index">05</span>
+                        <span>
+                            <span class="sp-accordion-title">永續漁業策略</span>
+                            <span class="sp-accordion-tag">推動責任漁業與海洋保育</span>
+                        </span>
+                    </span>
+                    <i data-lucide="plus" class="sp-accordion-icon"></i>
+                </button>
+                <div class="sp-accordion-panel-wrap">
+                    <div class="sp-accordion-panel">
+                        <div class="sp-accordion-panel-inner">
+                            <p>導入 MSC、Dolphin Safe、ISSF 等國際永續漁業標準。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sp-accordion-item">
+                <button type="button" class="sp-accordion-head" aria-expanded="false">
+                    <span class="sp-accordion-head-left">
+                        <span class="sp-accordion-index">06</span>
+                        <span>
+                            <span class="sp-accordion-title">船員人權與福利</span>
+                            <span class="sp-accordion-tag">建立友善與安全的海上工作環境</span>
+                        </span>
+                    </span>
+                    <i data-lucide="plus" class="sp-accordion-icon"></i>
+                </button>
+                <div class="sp-accordion-panel-wrap">
+                    <div class="sp-accordion-panel">
+                        <div class="sp-accordion-panel-inner">
+                            <p>改善船員生活環境、薪資福利、安全管理與教育訓練，導入遠距醫療、落實暴力零容忍、保障 Wi-Fi 通訊權。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sp-accordion-item">
+                <button type="button" class="sp-accordion-head" aria-expanded="false">
+                    <span class="sp-accordion-head-left">
+                        <span class="sp-accordion-index">07</span>
+                        <span>
+                            <span class="sp-accordion-title">低碳與節能轉型</span>
+                            <span class="sp-accordion-tag">推動綠色航運與減碳目標</span>
+                        </span>
+                    </span>
+                    <i data-lucide="plus" class="sp-accordion-icon"></i>
+                </button>
+                <div class="sp-accordion-panel-wrap">
+                    <div class="sp-accordion-panel">
+                        <div class="sp-accordion-panel-inner">
+                            <p>提升船隊燃油效率、導入節能設備與低碳燃料方向。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sp-accordion-item">
+                <button type="button" class="sp-accordion-head" aria-expanded="false">
+                    <span class="sp-accordion-head-left">
+                        <span class="sp-accordion-index">08</span>
+                        <span>
+                            <span class="sp-accordion-title">智慧船隊管理</span>
+                            <span class="sp-accordion-tag">發展智慧遠洋漁業模式</span>
+                        </span>
+                    </span>
+                    <i data-lucide="plus" class="sp-accordion-icon"></i>
+                </button>
+                <div class="sp-accordion-panel-wrap">
+                    <div class="sp-accordion-panel">
+                        <div class="sp-accordion-panel-inner">
+                            <p>強化船舶監控、電子化管理與數據化營運系統。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sp-accordion-item">
+                <button type="button" class="sp-accordion-head" aria-expanded="false">
+                    <span class="sp-accordion-head-left">
+                        <span class="sp-accordion-index">09</span>
+                        <span>
+                            <span class="sp-accordion-title">法規與國際接軌</span>
+                            <span class="sp-accordion-tag">降低營運與法規風險</span>
+                        </span>
+                    </span>
+                    <i data-lucide="plus" class="sp-accordion-icon"></i>
+                </button>
+                <div class="sp-accordion-panel-wrap">
+                    <div class="sp-accordion-panel">
+                        <div class="sp-accordion-panel-inner">
+                            <p>遵循 RFMO、IMO、ILO 與國際供應鏈規範。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sp-accordion-item">
+                <button type="button" class="sp-accordion-head" aria-expanded="false">
+                    <span class="sp-accordion-head-left">
+                        <span class="sp-accordion-index">10</span>
+                        <span>
+                            <span class="sp-accordion-title">提升品牌與企業形象</span>
+                            <span class="sp-accordion-tag">提升品牌價值與國際能見度</span>
+                        </span>
+                    </span>
+                    <i data-lucide="plus" class="sp-accordion-icon"></i>
+                </button>
+                <div class="sp-accordion-panel-wrap">
+                    <div class="sp-accordion-panel">
+                        <div class="sp-accordion-panel-inner">
+                            <p>強化「永續、安全、透明」企業形象與國際信任度。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sp-accordion-item">
+                <button type="button" class="sp-accordion-head" aria-expanded="false">
+                    <span class="sp-accordion-head-left">
+                        <span class="sp-accordion-index">11</span>
+                        <span>
+                            <span class="sp-accordion-title">經營海外營運據點</span>
+                            <span class="sp-accordion-tag">區域化營運中心</span>
+                        </span>
+                    </span>
+                    <i data-lucide="plus" class="sp-accordion-icon"></i>
+                </button>
+                <div class="sp-accordion-panel-wrap">
+                    <div class="sp-accordion-panel">
+                        <div class="sp-accordion-panel-inner">
+                            <p>於中國、泰國、韓國、PNG 等地建立分公司。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sp-accordion-item">
+                <button type="button" class="sp-accordion-head" aria-expanded="false">
+                    <span class="sp-accordion-head-left">
+                        <span class="sp-accordion-index">12</span>
+                        <span>
+                            <span class="sp-accordion-title">控股化公司組織</span>
+                            <span class="sp-accordion-tag">朝向國際控股集團發展</span>
+                        </span>
+                    </span>
+                    <i data-lucide="plus" class="sp-accordion-icon"></i>
+                </button>
+                <div class="sp-accordion-panel-wrap">
+                    <div class="sp-accordion-panel">
+                        <div class="sp-accordion-panel-inner">
+                            <p>整合集團資源與各事業體，建立現代化治理與管理制度。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">公司治理 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="governance-structure.html">公司治理架構</a>
+                <a href="risk-management.html">風險管理政策</a>
+                <a href="internal-audit.html">內部稽核與內控制度</a>
+                <a href="integrity.html">誠信經營守則</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">共善經營 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="environment.html">環境保護</a>
+                <a href="social-responsibility.html">社會責任</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">投資人專區 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="investment-highlights.html">投資亮點</a>
+                <a href="strategy.html">策略布局</a>
+                <a href="shareholder-info.html">股東訊息</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">最新消息 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="announcements.html">官方公告</a>
+                <a href="corporate-news.html">企業動態</a>
+                <a href="sustainability-practice.html">永續實踐</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">聯繫海沃 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="locations.html">營運據點</a>
+                <a href="contact-us.html">聯絡我們</a>
+                <a href="careers.html">人才招募</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-lang">
+            <a href="#">繁體中文</a>
+            <a href="#">English</a>
+        </div>
+    </div>
+<script>
+        (function() {
+            const header = document.querySelector('.blanz-header');
+            if (!header) return;
+            function setHeaderHeight() {
+                document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+            }
+            setHeaderHeight();
+            window.addEventListener('resize', setHeaderHeight);
+        })();
+    </script>
+    <!-- 手機版漢堡選單邏輯 -->
+    <script>
+        (function() {
+            const hamburger = document.getElementById('navHamburger');
+            const panel = document.getElementById('navMobilePanel');
+            if (!hamburger || !panel) return;
+
+            function closeMenu() {
+                document.body.classList.remove('nav-open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
+            function toggleMenu() {
+                const isOpen = document.body.classList.toggle('nav-open');
+                hamburger.setAttribute('aria-expanded', String(isOpen));
+            }
+
+            hamburger.addEventListener('click', toggleMenu);
+
+            panel.querySelectorAll('.nav-mobile-group-head').forEach(head => {
+                head.addEventListener('click', () => {
+                    head.closest('.nav-mobile-group').classList.toggle('is-open');
+                });
+            });
+
+            panel.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', closeMenu);
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeMenu();
+            });
+
+            // 螢幕放大回桌機版時，確保選單面板與漢堡狀態重置乾淨
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 1024) closeMenu();
+            });
+        })();
+    </script>
+
+<section class="sp-hero">
+        <img src="assets/hero-strategy.jpg" alt="策略佈局" style="object-position: center 35%;">
+        <div class="sp-hero-inner">
+            <nav class="sp-breadcrumb">
+                    <a href="index.html">首頁</a> ／ <a href="investment-highlights.html">投資人專區</a> ／ 策略佈局
+                </nav>
+            <span class="sp-hero-eyebrow">INVESTOR RELATIONS</span>
+            <h1 class="sp-hero-title">STRATEGY<span class="sp-hero-sub">策略佈局</span></h1>
+        </div>
+    </section>
+
+<main>
+    <section class="blanz-section sp-section"><div class="blanz-container">
+        
+        <div class="sp-lede reveal">海沃控股集團以十二大策略主軸，逐步構築從遠洋作業到國際控股集團的完整發展藍圖。點擊展開查看各主軸之策略佈局內容。</div>
+                                <div class="strategy-split-container">
+            <div class="strategy-split-nav">
+                <ul class="strategy-nav-list">
+                    <li class="strategy-nav-item active" data-target="strategy-01">
+                        <span class="nav-num">01</span>
+                        <span class="nav-title">全球漁業布局</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="strategy-02">
+                        <span class="nav-num">02</span>
+                        <span class="nav-title">多元船隊發展</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="strategy-03">
+                        <span class="nav-num">03</span>
+                        <span class="nav-title">產業鏈垂直整合</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="strategy-04">
+                        <span class="nav-num">04</span>
+                        <span class="nav-title">國際市場拓展</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="strategy-05">
+                        <span class="nav-num">05</span>
+                        <span class="nav-title">永續漁業策略</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="strategy-06">
+                        <span class="nav-num">06</span>
+                        <span class="nav-title">船員人權與福利</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="strategy-07">
+                        <span class="nav-num">07</span>
+                        <span class="nav-title">低碳與節能轉型</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="strategy-08">
+                        <span class="nav-num">08</span>
+                        <span class="nav-title">智慧船隊管理</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="strategy-09">
+                        <span class="nav-num">09</span>
+                        <span class="nav-title">法規與國際接軌</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="strategy-10">
+                        <span class="nav-num">10</span>
+                        <span class="nav-title">提升品牌與企業形象</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="strategy-11">
+                        <span class="nav-num">11</span>
+                        <span class="nav-title">經營海外營運據點</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="strategy-12">
+                        <span class="nav-num">12</span>
+                        <span class="nav-title">控股化公司組織</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="strategy-split-content">
+                <div class="strategy-content-item active" id="strategy-01">
+                    <div class="strategy-content-num">01</div>
+                    <h3 class="strategy-content-title">全球漁業布局</h3>
+                    <div class="strategy-content-tag">建立區域化遠洋漁業合作網絡</div>
+                    <p class="strategy-content-desc">作業海域橫跨太平洋與大西洋，並與亞洲、歐洲、美洲等市場建立供應合作。</p>
+                </div>
+                <div class="strategy-content-item" id="strategy-02">
+                    <div class="strategy-content-num">02</div>
+                    <h3 class="strategy-content-title">多元船隊發展</h3>
+                    <div class="strategy-content-tag">提升漁撈效率與營運彈性</div>
+                    <p class="strategy-content-desc">發展鮪延繩釣船、圍網船、魷釣船、運搬船等多元船隊配置。</p>
+                </div>
+                <div class="strategy-content-item" id="strategy-03">
+                    <div class="strategy-content-num">03</div>
+                    <h3 class="strategy-content-title">產業鏈垂直整合</h3>
+                    <div class="strategy-content-tag">確保全球供貨穩定性</div>
+                    <p class="strategy-content-desc">整合捕撈、冷凍、運輸、倉儲與國際貿易。</p>
+                </div>
+                <div class="strategy-content-item" id="strategy-04">
+                    <div class="strategy-content-num">04</div>
+                    <h3 class="strategy-content-title">國際市場拓展</h3>
+                    <div class="strategy-content-tag">強化國際市場競爭力</div>
+                    <p class="strategy-content-desc">穩定供應日本、美國、歐盟及食品加工市場。</p>
+                </div>
+                <div class="strategy-content-item" id="strategy-05">
+                    <div class="strategy-content-num">05</div>
+                    <h3 class="strategy-content-title">永續漁業策略</h3>
+                    <div class="strategy-content-tag">推動責任漁業與海洋保育</div>
+                    <p class="strategy-content-desc">導入 MSC、Dolphin Safe、ISSF 等國際永續漁業標準。</p>
+                </div>
+                <div class="strategy-content-item" id="strategy-06">
+                    <div class="strategy-content-num">06</div>
+                    <h3 class="strategy-content-title">船員人權與福利</h3>
+                    <div class="strategy-content-tag">建立友善與安全的海上工作環境</div>
+                    <p class="strategy-content-desc">改善船員生活環境、薪資福利、安全管理與教育訓練，導入遠距醫療、落實暴力零容忍、保障 Wi-Fi 通訊權。</p>
+                </div>
+                <div class="strategy-content-item" id="strategy-07">
+                    <div class="strategy-content-num">07</div>
+                    <h3 class="strategy-content-title">低碳與節能轉型</h3>
+                    <div class="strategy-content-tag">推動綠色航運與減碳目標</div>
+                    <p class="strategy-content-desc">提升船隊燃油效率、導入節能設備與低碳燃料方向。</p>
+                </div>
+                <div class="strategy-content-item" id="strategy-08">
+                    <div class="strategy-content-num">08</div>
+                    <h3 class="strategy-content-title">智慧船隊管理</h3>
+                    <div class="strategy-content-tag">發展智慧遠洋漁業模式</div>
+                    <p class="strategy-content-desc">強化船舶監控、電子化管理與數據化營運系統。</p>
+                </div>
+                <div class="strategy-content-item" id="strategy-09">
+                    <div class="strategy-content-num">09</div>
+                    <h3 class="strategy-content-title">法規與國際接軌</h3>
+                    <div class="strategy-content-tag">降低營運與法規風險</div>
+                    <p class="strategy-content-desc">遵循 RFMO、IMO、ILO 與國際供應鏈規範。</p>
+                </div>
+                <div class="strategy-content-item" id="strategy-10">
+                    <div class="strategy-content-num">10</div>
+                    <h3 class="strategy-content-title">提升品牌與企業形象</h3>
+                    <div class="strategy-content-tag">提升品牌價值與國際能見度</div>
+                    <p class="strategy-content-desc">強化「永續、安全、透明」企業形象與國際信任度。</p>
+                </div>
+                <div class="strategy-content-item" id="strategy-11">
+                    <div class="strategy-content-num">11</div>
+                    <h3 class="strategy-content-title">經營海外營運據點</h3>
+                    <div class="strategy-content-tag">區域化營運中心</div>
+                    <p class="strategy-content-desc">於中國、泰國、韓國、PNG 等地建立分公司。</p>
+                </div>
+                <div class="strategy-content-item" id="strategy-12">
+                    <div class="strategy-content-num">12</div>
+                    <h3 class="strategy-content-title">控股化公司組織</h3>
+                    <div class="strategy-content-tag">朝向國際控股集團發展</div>
+                    <p class="strategy-content-desc">整合集團資源與各事業體，建立現代化治理與管理制度。</p>
+                </div>
+            </div>
+        </div>        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">公司治理 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="governance-structure.html">公司治理架構</a>
+                <a href="risk-management.html">風險管理政策</a>
+                <a href="internal-audit.html">內部稽核與內控制度</a>
+                <a href="integrity.html">誠信經營守則</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">共善經營 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="environment.html">環境保護</a>
+                <a href="social-responsibility.html">社會責任</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">投資人專區 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="investment-highlights.html">投資亮點</a>
+                <a href="strategy.html">策略布局</a>
+                <a href="shareholder-info.html">股東訊息</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">最新消息 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="announcements.html">官方公告</a>
+                <a href="corporate-news.html">企業動態</a>
+                <a href="sustainability-practice.html">永續實踐</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">聯繫海沃 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="locations.html">營運據點</a>
+                <a href="contact-us.html">聯絡我們</a>
+                <a href="careers.html">人才招募</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-lang">
+            <a href="#">繁體中文</a>
+            <a href="#">English</a>
+        </div>
+    </div>
+<script>
+        (function() {
+            const header = document.querySelector('.blanz-header');
+            if (!header) return;
+            function setHeaderHeight() {
+                document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+            }
+            setHeaderHeight();
+            window.addEventListener('resize', setHeaderHeight);
+        })();
+    </script>
+    <!-- 手機版漢堡選單邏輯 -->
+    <script>
+        (function() {
+            const hamburger = document.getElementById('navHamburger');
+            const panel = document.getElementById('navMobilePanel');
+            if (!hamburger || !panel) return;
+
+            function closeMenu() {
+                document.body.classList.remove('nav-open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
+            function toggleMenu() {
+                const isOpen = document.body.classList.toggle('nav-open');
+                hamburger.setAttribute('aria-expanded', String(isOpen));
+            }
+
+            hamburger.addEventListener('click', toggleMenu);
+
+            panel.querySelectorAll('.nav-mobile-group-head').forEach(head => {
+                head.addEventListener('click', () => {
+                    head.closest('.nav-mobile-group').classList.toggle('is-open');
+                });
+            });
+
+            panel.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', closeMenu);
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeMenu();
+            });
+
+            // 螢幕放大回桌機版時，確保選單面板與漢堡狀態重置乾淨
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 1024) closeMenu();
+            });
+        })();
+    </script>
+
+<section class="sp-hero">
+        <img src="assets/hero-strategy.jpg" alt="策略佈局" style="object-position: center 35%;">
+        <div class="sp-hero-inner">
+            <nav class="sp-breadcrumb">
+                    <a href="index.html">首頁</a> ／ <a href="investment-highlights.html">投資人專區</a> ／ 策略佈局
+                </nav>
+            <span class="sp-hero-eyebrow">INVESTOR RELATIONS</span>
+            <h1 class="sp-hero-title">STRATEGY<span class="sp-hero-sub">策略佈局</span></h1>
+        </div>
+    </section>
+
+<main>
+    <section class="blanz-section sp-section"><div class="blanz-container">
+        
+        <div class="sp-lede reveal">海沃控股集團以十二大策略主軸，逐步構築從遠洋作業到國際控股集團的完整發展藍圖。點擊展開查看各主軸之策略佈局內容。</div>
+                        <div class="strategy-bento-grid">
+            <div class="bento-card">
+                <div class="bento-card-front">
+                    <div class="bento-num">01</div>
+                    <div class="bento-title">全球漁業布局</div>
+                </div>
+                <div class="bento-card-back">
+                    <div class="bento-title-small">全球漁業布局</div>
+                    <div class="bento-tag">建立區域化遠洋漁業合作網絡</div>
+                    <p class="bento-desc">作業海域橫跨太平洋與大西洋，並與亞洲、歐洲、美洲等市場建立供應合作。</p>
+                </div>
+            </div>
+            <div class="bento-card">
+                <div class="bento-card-front">
+                    <div class="bento-num">02</div>
+                    <div class="bento-title">多元船隊發展</div>
+                </div>
+                <div class="bento-card-back">
+                    <div class="bento-title-small">多元船隊發展</div>
+                    <div class="bento-tag">提升漁撈效率與營運彈性</div>
+                    <p class="bento-desc">發展鮪延繩釣船、圍網船、魷釣船、運搬船等多元船隊配置。</p>
+                </div>
+            </div>
+            <div class="bento-card">
+                <div class="bento-card-front">
+                    <div class="bento-num">03</div>
+                    <div class="bento-title">產業鏈垂直整合</div>
+                </div>
+                <div class="bento-card-back">
+                    <div class="bento-title-small">產業鏈垂直整合</div>
+                    <div class="bento-tag">確保全球供貨穩定性</div>
+                    <p class="bento-desc">整合捕撈、冷凍、運輸、倉儲與國際貿易。</p>
+                </div>
+            </div>
+            <div class="bento-card">
+                <div class="bento-card-front">
+                    <div class="bento-num">04</div>
+                    <div class="bento-title">國際市場拓展</div>
+                </div>
+                <div class="bento-card-back">
+                    <div class="bento-title-small">國際市場拓展</div>
+                    <div class="bento-tag">強化國際市場競爭力</div>
+                    <p class="bento-desc">穩定供應日本、美國、歐盟及食品加工市場。</p>
+                </div>
+            </div>
+            <div class="bento-card">
+                <div class="bento-card-front">
+                    <div class="bento-num">05</div>
+                    <div class="bento-title">永續漁業策略</div>
+                </div>
+                <div class="bento-card-back">
+                    <div class="bento-title-small">永續漁業策略</div>
+                    <div class="bento-tag">推動責任漁業與海洋保育</div>
+                    <p class="bento-desc">導入 MSC、Dolphin Safe、ISSF 等國際永續漁業標準。</p>
+                </div>
+            </div>
+            <div class="bento-card">
+                <div class="bento-card-front">
+                    <div class="bento-num">06</div>
+                    <div class="bento-title">船員人權與福利</div>
+                </div>
+                <div class="bento-card-back">
+                    <div class="bento-title-small">船員人權與福利</div>
+                    <div class="bento-tag">建立友善與安全的海上工作環境</div>
+                    <p class="bento-desc">改善船員生活環境、薪資福利、安全管理與教育訓練，導入遠距醫療、落實暴力零容忍、保障 Wi-Fi 通訊權。</p>
+                </div>
+            </div>
+            <div class="bento-card">
+                <div class="bento-card-front">
+                    <div class="bento-num">07</div>
+                    <div class="bento-title">低碳與節能轉型</div>
+                </div>
+                <div class="bento-card-back">
+                    <div class="bento-title-small">低碳與節能轉型</div>
+                    <div class="bento-tag">推動綠色航運與減碳目標</div>
+                    <p class="bento-desc">提升船隊燃油效率、導入節能設備與低碳燃料方向。</p>
+                </div>
+            </div>
+            <div class="bento-card">
+                <div class="bento-card-front">
+                    <div class="bento-num">08</div>
+                    <div class="bento-title">智慧船隊管理</div>
+                </div>
+                <div class="bento-card-back">
+                    <div class="bento-title-small">智慧船隊管理</div>
+                    <div class="bento-tag">發展智慧遠洋漁業模式</div>
+                    <p class="bento-desc">強化船舶監控、電子化管理與數據化營運系統。</p>
+                </div>
+            </div>
+            <div class="bento-card">
+                <div class="bento-card-front">
+                    <div class="bento-num">09</div>
+                    <div class="bento-title">法規與國際接軌</div>
+                </div>
+                <div class="bento-card-back">
+                    <div class="bento-title-small">法規與國際接軌</div>
+                    <div class="bento-tag">降低營運與法規風險</div>
+                    <p class="bento-desc">遵循 RFMO、IMO、ILO 與國際供應鏈規範。</p>
+                </div>
+            </div>
+            <div class="bento-card">
+                <div class="bento-card-front">
+                    <div class="bento-num">10</div>
+                    <div class="bento-title">提升品牌與企業形象</div>
+                </div>
+                <div class="bento-card-back">
+                    <div class="bento-title-small">提升品牌與企業形象</div>
+                    <div class="bento-tag">提升品牌價值與國際能見度</div>
+                    <p class="bento-desc">強化「永續、安全、透明」企業形象與國際信任度。</p>
+                </div>
+            </div>
+            <div class="bento-card">
+                <div class="bento-card-front">
+                    <div class="bento-num">11</div>
+                    <div class="bento-title">經營海外營運據點</div>
+                </div>
+                <div class="bento-card-back">
+                    <div class="bento-title-small">經營海外營運據點</div>
+                    <div class="bento-tag">區域化營運中心</div>
+                    <p class="bento-desc">於中國、泰國、韓國、PNG 等地建立分公司。</p>
+                </div>
+            </div>
+            <div class="bento-card">
+                <div class="bento-card-front">
+                    <div class="bento-num">12</div>
+                    <div class="bento-title">控股化公司組織</div>
+                </div>
+                <div class="bento-card-back">
+                    <div class="bento-title-small">控股化公司組織</div>
+                    <div class="bento-tag">朝向國際控股集團發展</div>
+                    <p class="bento-desc">整合集團資源與各事業體，建立現代化治理與管理制度。</p>
+                </div>
+            </div>
+        </div>        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">公司治理 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="governance-structure.html">公司治理架構</a>
+                <a href="risk-management.html">風險管理政策</a>
+                <a href="internal-audit.html">內部稽核與內控制度</a>
+                <a href="integrity.html">誠信經營守則</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">共善經營 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="environment.html">環境保護</a>
+                <a href="social-responsibility.html">社會責任</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">投資人專區 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="investment-highlights.html">投資亮點</a>
+                <a href="strategy.html">策略布局</a>
+                <a href="shareholder-info.html">股東訊息</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">最新消息 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="announcements.html">官方公告</a>
+                <a href="corporate-news.html">企業動態</a>
+                <a href="sustainability-practice.html">永續實踐</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-group">
+            <button type="button" class="nav-mobile-group-head">聯繫海沃 <i data-lucide="chevron-down"></i></button>
+            <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
+                <a href="locations.html">營運據點</a>
+                <a href="contact-us.html">聯絡我們</a>
+                <a href="careers.html">人才招募</a>
+            </div></div>
+        </div>
+        <div class="nav-mobile-lang">
+            <a href="#">繁體中文</a>
+            <a href="#">English</a>
+        </div>
+    </div>
+<script>
+        (function() {
+            const header = document.querySelector('.blanz-header');
+            if (!header) return;
+            function setHeaderHeight() {
+                document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+            }
+            setHeaderHeight();
+            window.addEventListener('resize', setHeaderHeight);
+        })();
+    </script>
+    <!-- 手機版漢堡選單邏輯 -->
+    <script>
+        (function() {
+            const hamburger = document.getElementById('navHamburger');
+            const panel = document.getElementById('navMobilePanel');
+            if (!hamburger || !panel) return;
+
+            function closeMenu() {
+                document.body.classList.remove('nav-open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
+            function toggleMenu() {
+                const isOpen = document.body.classList.toggle('nav-open');
+                hamburger.setAttribute('aria-expanded', String(isOpen));
+            }
+
+            hamburger.addEventListener('click', toggleMenu);
+
+            panel.querySelectorAll('.nav-mobile-group-head').forEach(head => {
+                head.addEventListener('click', () => {
+                    head.closest('.nav-mobile-group').classList.toggle('is-open');
+                });
+            });
+
+            panel.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', closeMenu);
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeMenu();
+            });
+
+            // 螢幕放大回桌機版時，確保選單面板與漢堡狀態重置乾淨
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 1024) closeMenu();
+            });
+        })();
+    </script>
+
+<section class="sp-hero">
+        <img src="assets/hero-strategy.jpg" alt="策略佈局" style="object-position: center 35%;">
+        <div class="sp-hero-inner">
+            <nav class="sp-breadcrumb">
+                    <a href="index.html">首頁</a> ／ <a href="investment-highlights.html">投資人專區</a> ／ 策略佈局
+                </nav>
+            <span class="sp-hero-eyebrow">INVESTOR RELATIONS</span>
+            <h1 class="sp-hero-title">STRATEGY<span class="sp-hero-sub">策略佈局</span></h1>
+        </div>
+    </section>
+
+<main>
+    <section class="blanz-section sp-section"><div class="blanz-container">
+        
+        <div class="sp-lede reveal">海沃控股集團以十二大策略主軸，逐步構築從遠洋作業到國際控股集團的完整發展藍圖。點擊展開查看各主軸之策略佈局內容。</div>
+                <div class="strategy-split-container">
+            <div class="strategy-split-nav">
+                <ul class="strategy-nav-list">
+                    <li class="strategy-nav-item active" data-target="strategy-01">
+                        <span class="nav-num">01</span>
+                        <span class="nav-title">全球漁業布局</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="strategy-02">
+                        <span class="nav-num">02</span>
+                        <span class="nav-title">多元船隊發展</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="strategy-03">
+                        <span class="nav-num">03</span>
+                        <span class="nav-title">產業鏈垂直整合</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="strategy-04">
+                        <span class="nav-num">04</span>
+                        <span class="nav-title">國際市場拓展</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="strategy-05">
+                        <span class="nav-num">05</span>
+                        <span class="nav-title">永續漁業策略</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="strategy-06">
+                        <span class="nav-num">06</span>
+                        <span class="nav-title">船員人權與福利</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="strategy-07">
+                        <span class="nav-num">07</span>
+                        <span class="nav-title">低碳與節能轉型</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="strategy-08">
+                        <span class="nav-num">08</span>
+                        <span class="nav-title">智慧船隊管理</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="strategy-09">
+                        <span class="nav-num">09</span>
+                        <span class="nav-title">法規與國際接軌</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="strategy-10">
+                        <span class="nav-num">10</span>
+                        <span class="nav-title">提升品牌與企業形象</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="strategy-11">
+                        <span class="nav-num">11</span>
+                        <span class="nav-title">經營海外營運據點</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="strategy-12">
+                        <span class="nav-num">12</span>
+                        <span class="nav-title">控股化公司組織</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="strategy-split-content">
+                <div class="strategy-content-item active" id="strategy-01">
+                    <div class="strategy-content-num">01</div>
+                    <h3 class="strategy-content-title">全球漁業布局</h3>
+                    <div class="strategy-content-tag">建立區域化遠洋漁業合作網絡</div>
+                    <p class="strategy-content-desc">作業海域橫跨太平洋與大西洋，並與亞洲、歐洲、美洲等市場建立供應合作。</p>
+                </div>
+                <div class="strategy-content-item" id="strategy-02">
+                    <div class="strategy-content-num">02</div>
+                    <h3 class="strategy-content-title">多元船隊發展</h3>
+                    <div class="strategy-content-tag">提升漁撈效率與營運彈性</div>
+                    <p class="strategy-content-desc">發展鮪延繩釣船、圍網船、魷釣船、運搬船等多元船隊配置。</p>
+                </div>
+                <div class="strategy-content-item" id="strategy-03">
+                    <div class="strategy-content-num">03</div>
+                    <h3 class="strategy-content-title">產業鏈垂直整合</h3>
+                    <div class="strategy-content-tag">確保全球供貨穩定性</div>
+                    <p class="strategy-content-desc">整合捕撈、冷凍、運輸、倉儲與國際貿易。</p>
+                </div>
+                <div class="strategy-content-item" id="strategy-04">
+                    <div class="strategy-content-num">04</div>
+                    <h3 class="strategy-content-title">國際市場拓展</h3>
+                    <div class="strategy-content-tag">強化國際市場競爭力</div>
+                    <p class="strategy-content-desc">穩定供應日本、美國、歐盟及食品加工市場。</p>
+                </div>
+                <div class="strategy-content-item" id="strategy-05">
+                    <div class="strategy-content-num">05</div>
+                    <h3 class="strategy-content-title">永續漁業策略</h3>
+                    <div class="strategy-content-tag">推動責任漁業與海洋保育</div>
+                    <p class="strategy-content-desc">導入 MSC、Dolphin Safe、ISSF 等國際永續漁業標準。</p>
+                </div>
+                <div class="strategy-content-item" id="strategy-06">
+                    <div class="strategy-content-num">06</div>
+                    <h3 class="strategy-content-title">船員人權與福利</h3>
+                    <div class="strategy-content-tag">建立友善與安全的海上工作環境</div>
+                    <p class="strategy-content-desc">改善船員生活環境、薪資福利、安全管理與教育訓練，導入遠距醫療、落實暴力零容忍、保障 Wi-Fi 通訊權。</p>
+                </div>
+                <div class="strategy-content-item" id="strategy-07">
+                    <div class="strategy-content-num">07</div>
+                    <h3 class="strategy-content-title">低碳與節能轉型</h3>
+                    <div class="strategy-content-tag">推動綠色航運與減碳目標</div>
+                    <p class="strategy-content-desc">提升船隊燃油效率、導入節能設備與低碳燃料方向。</p>
+                </div>
+                <div class="strategy-content-item" id="strategy-08">
+                    <div class="strategy-content-num">08</div>
+                    <h3 class="strategy-content-title">智慧船隊管理</h3>
+                    <div class="strategy-content-tag">發展智慧遠洋漁業模式</div>
+                    <p class="strategy-content-desc">強化船舶監控、電子化管理與數據化營運系統。</p>
+                </div>
+                <div class="strategy-content-item" id="strategy-09">
+                    <div class="strategy-content-num">09</div>
+                    <h3 class="strategy-content-title">法規與國際接軌</h3>
+                    <div class="strategy-content-tag">降低營運與法規風險</div>
+                    <p class="strategy-content-desc">遵循 RFMO、IMO、ILO 與國際供應鏈規範。</p>
+                </div>
+                <div class="strategy-content-item" id="strategy-10">
+                    <div class="strategy-content-num">10</div>
+                    <h3 class="strategy-content-title">提升品牌與企業形象</h3>
+                    <div class="strategy-content-tag">提升品牌價值與國際能見度</div>
+                    <p class="strategy-content-desc">強化「永續、安全、透明」企業形象與國際信任度。</p>
+                </div>
+                <div class="strategy-content-item" id="strategy-11">
+                    <div class="strategy-content-num">11</div>
+                    <h3 class="strategy-content-title">經營海外營運據點</h3>
+                    <div class="strategy-content-tag">區域化營運中心</div>
+                    <p class="strategy-content-desc">於中國、泰國、韓國、PNG 等地建立分公司。</p>
+                </div>
+                <div class="strategy-content-item" id="strategy-12">
+                    <div class="strategy-content-num">12</div>
+                    <h3 class="strategy-content-title">控股化公司組織</h3>
+                    <div class="strategy-content-tag">朝向國際控股集團發展</div>
+                    <p class="strategy-content-desc">整合集團資源與各事業體，建立現代化治理與管理制度。</p>
+                </div>
+            </div>
+        </div>
+
     
     
         <div class="sp-crosslink-row">

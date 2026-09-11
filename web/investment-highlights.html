@@ -2629,6 +2629,143 @@
         .sp-accordion-head-left { gap: 12px; }
         .sp-cta-panel { padding: 70px 24px; }
     }
+
+        /* Split-Screen Layout for Highlights */
+        .strategy-split-container {
+            display: flex;
+            gap: 4rem;
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+            position: relative;
+            align-items: flex-start;
+        }
+        .strategy-split-nav {
+            flex: 0 0 300px;
+            position: sticky;
+            top: 120px;
+            height: fit-content;
+        }
+        .strategy-nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-left: 1px solid rgba(var(--c-obsidian-rgb), 0.1);
+        }
+        .strategy-nav-item {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            color: var(--c-slate-gray);
+            font-size: 0.95rem;
+            border-left: 2px solid transparent;
+            margin-left: -1px;
+        }
+        .strategy-nav-item:hover {
+            color: var(--c-obsidian);
+            background: rgba(var(--c-obsidian-rgb), 0.02);
+        }
+        .strategy-nav-item.active {
+            color: var(--c-ocean-deep);
+            font-weight: 600;
+            border-left-color: var(--c-ocean-deep);
+            background: rgba(var(--c-ocean-deep-rgb), 0.05);
+        }
+        .strategy-nav-item .nav-num {
+            font-family: var(--font-serif);
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+        
+        .strategy-split-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8rem;
+            padding-bottom: 50vh;
+        }
+        .strategy-content-item {
+            opacity: 0.2;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            scroll-margin-top: 120px;
+            position: relative;
+        }
+        .strategy-content-item.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .highlight-content-icon {
+            color: var(--c-copper-light);
+            margin-bottom: 1rem;
+        }
+        .highlight-content-icon svg {
+            width: 48px;
+            height: 48px;
+        }
+        .strategy-content-num {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            color: rgba(var(--c-obsidian-rgb), 0.1);
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+        .strategy-content-title {
+            font-size: 2rem;
+            color: var(--c-obsidian);
+            margin-bottom: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+        .strategy-content-desc {
+            font-size: 1.1rem;
+            color: var(--c-slate-gray);
+            line-height: 1.8;
+            max-width: 600px;
+        }
+
+        @media (max-width: 900px) {
+            .strategy-split-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .strategy-split-nav {
+                position: static;
+                flex: auto;
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 1rem;
+            }
+            .strategy-nav-list {
+                display: flex;
+                border-left: none;
+                border-bottom: 1px solid rgba(var(--c-obsidian-rgb), 0.1);
+                width: max-content;
+            }
+            .strategy-nav-item {
+                border-left: none;
+                border-bottom: 2px solid transparent;
+                margin-left: 0;
+                margin-bottom: -1px;
+                padding: 1rem;
+            }
+            .strategy-nav-item.active {
+                border-left-color: transparent;
+                border-bottom-color: var(--c-ocean-deep);
+            }
+            .strategy-split-content {
+                gap: 4rem;
+                padding-bottom: 2rem;
+            }
+            .strategy-content-item {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
 </style>
 
 </head>
@@ -2885,56 +3022,75 @@
         
         <div class="sp-lede reveal">海沃控股集團憑藉深厚產業根基與全鏈路整合能力，構築六大核心投資亮點：</div>
 
-        <div class="sp-highlight-list">
-            <div class="sp-highlight-item reveal">
-                <div class="sp-highlight-icon-frame"><i data-lucide="anchor"></i></div>
-                <span class="sp-highlight-index">01</span>
-                <div>
-                    <h3 class="sp-highlight-title">深耕遠洋漁業</h3>
-                    <p class="sp-highlight-desc">長年深耕遠洋漁業、具備跨洋區作業經驗</p>
+                <div class="strategy-split-container">
+            <div class="strategy-split-nav">
+                <ul class="strategy-nav-list">
+                    <li class="strategy-nav-item active" data-target="highlight-01">
+                        <span class="nav-num">01</span>
+                        <span class="nav-title">深耕遠洋漁業</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="highlight-02">
+                        <span class="nav-num">02</span>
+                        <span class="nav-title">船隊整合能力</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="highlight-03">
+                        <span class="nav-num">03</span>
+                        <span class="nav-title">冷鏈與供應鏈</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="highlight-04">
+                        <span class="nav-num">04</span>
+                        <span class="nav-title">國際合作布局</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="highlight-05">
+                        <span class="nav-num">05</span>
+                        <span class="nav-title">永續與合規</span>
+                    </li>
+                    <li class="strategy-nav-item" data-target="highlight-06">
+                        <span class="nav-num">06</span>
+                        <span class="nav-title">技術升級</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="strategy-split-content">
+                <div class="strategy-content-item active" id="highlight-01">
+                    <div class="highlight-content-icon"><i data-lucide="anchor"></i></div>
+                    <div class="strategy-content-num">01</div>
+                    <h3 class="strategy-content-title">深耕遠洋漁業</h3>
+                    <p class="strategy-content-desc">長年深耕遠洋漁業、具備跨洋區作業經驗</p>
+                </div>
+                <div class="strategy-content-item" id="highlight-02">
+                    <div class="highlight-content-icon"><i data-lucide="ship"></i></div>
+                    <div class="strategy-content-num">02</div>
+                    <h3 class="strategy-content-title">船隊整合能力</h3>
+                    <p class="strategy-content-desc">整合圍網船、魷釣船、延繩釣船及冷凍運搬合計近 40 艘之船隊，提升整體營運效益</p>
+                </div>
+                <div class="strategy-content-item" id="highlight-03">
+                    <div class="highlight-content-icon"><i data-lucide="snowflake"></i></div>
+                    <div class="strategy-content-num">03</div>
+                    <h3 class="strategy-content-title">冷鏈與供應鏈</h3>
+                    <p class="strategy-content-desc">建構全球冷鏈供應體系，確保穩定漁獲品質優良</p>
+                </div>
+                <div class="strategy-content-item" id="highlight-04">
+                    <div class="highlight-content-icon"><i data-lucide="globe"></i></div>
+                    <div class="strategy-content-num">04</div>
+                    <h3 class="strategy-content-title">國際合作布局</h3>
+                    <p class="strategy-content-desc">與亞洲、歐洲、美洲等市場建立供應合作關係</p>
+                </div>
+                <div class="strategy-content-item" id="highlight-05">
+                    <div class="highlight-content-icon"><i data-lucide="shield-check"></i></div>
+                    <div class="strategy-content-num">05</div>
+                    <h3 class="strategy-content-title">永續與合規</h3>
+                    <p class="strategy-content-desc">推動 ESG、責任採購、供應鏈合規與風險控管</p>
+                </div>
+                <div class="strategy-content-item" id="highlight-06">
+                    <div class="highlight-content-icon"><i data-lucide="cpu"></i></div>
+                    <div class="strategy-content-num">06</div>
+                    <h3 class="strategy-content-title">技術升級</h3>
+                    <p class="strategy-content-desc">自有圍網船設計並持續優化船舶設備、冷凍技術及節能效率，強化競爭優勢</p>
                 </div>
             </div>
-            <div class="sp-highlight-item reveal">
-                <div class="sp-highlight-icon-frame"><i data-lucide="ship"></i></div>
-                <span class="sp-highlight-index">02</span>
-                <div>
-                    <h3 class="sp-highlight-title">船隊整合能力</h3>
-                    <p class="sp-highlight-desc">整合圍網船、魷釣船、延繩釣船及冷凍運搬合計近 40 艘之船隊，提升整體營運效益</p>
-                </div>
-            </div>
-            <div class="sp-highlight-item reveal">
-                <div class="sp-highlight-icon-frame"><i data-lucide="snowflake"></i></div>
-                <span class="sp-highlight-index">03</span>
-                <div>
-                    <h3 class="sp-highlight-title">冷鏈與供應鏈</h3>
-                    <p class="sp-highlight-desc">建構全球冷鏈供應體系，確保穩定漁獲品質優良</p>
-                </div>
-            </div>
-            <div class="sp-highlight-item reveal">
-                <div class="sp-highlight-icon-frame"><i data-lucide="globe"></i></div>
-                <span class="sp-highlight-index">04</span>
-                <div>
-                    <h3 class="sp-highlight-title">國際合作布局</h3>
-                    <p class="sp-highlight-desc">與亞洲、歐洲、美洲等市場建立供應合作關係</p>
-                </div>
-            </div>
-            <div class="sp-highlight-item reveal">
-                <div class="sp-highlight-icon-frame"><i data-lucide="shield-check"></i></div>
-                <span class="sp-highlight-index">05</span>
-                <div>
-                    <h3 class="sp-highlight-title">永續與合規</h3>
-                    <p class="sp-highlight-desc">推動 ESG、責任採購、供應鏈合規與風險控管</p>
-                </div>
-            </div>
-            <div class="sp-highlight-item reveal">
-                <div class="sp-highlight-icon-frame"><i data-lucide="cpu"></i></div>
-                <span class="sp-highlight-index">06</span>
-                <div>
-                    <h3 class="sp-highlight-title">技術升級</h3>
-                    <p class="sp-highlight-desc">自有圍網船設計並持續優化船舶設備、冷凍技術及節能效率，強化競爭優勢</p>
-                </div>
-            </div>
-            </div>
+        </div>
+
     
     
         <div class="sp-crosslink-row">
@@ -3054,6 +3210,61 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     
+</script>
+
+
+<script>
+    // Highlights Scrollspy
+    const strategyItems = document.querySelectorAll('.strategy-content-item');
+    const strategyNavs = document.querySelectorAll('.strategy-nav-item');
+
+    if (strategyItems.length > 0 && strategyNavs.length > 0) {
+        strategyNavs.forEach(nav => {
+            nav.addEventListener('click', () => {
+                const targetId = nav.getAttribute('data-target');
+                const targetEl = document.getElementById(targetId);
+                if (targetEl) {
+                    const headerOffset = 100;
+                    const elementPosition = targetEl.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.scrollY - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '-120px 0px -50% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    strategyItems.forEach(item => item.classList.remove('active'));
+                    strategyNavs.forEach(nav => nav.classList.remove('active'));
+                    
+                    entry.target.classList.add('active');
+                    const targetId = entry.target.getAttribute('id');
+                    const activeNav = document.querySelector(`.strategy-nav-item[data-target="${targetId}"]`);
+                    if (activeNav) {
+                        activeNav.classList.add('active');
+                        if (window.innerWidth <= 900) {
+                            activeNav.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                        }
+                    }
+                }
+            });
+        }, observerOptions);
+
+        strategyItems.forEach(item => {
+            observer.observe(item);
+        });
+    }
 </script>
 
 </body>

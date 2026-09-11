@@ -2566,8 +2566,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-top: 40px;
-        margin-top: 60px;
+        padding-top: 16px;
+        margin-top: 16px;
     }
     .sp-crosslink-row a {
         font-size: var(--text-sm);
@@ -2618,12 +2618,10 @@
     .sp-stage{
         position:relative; height:100vh; overflow:hidden;
         display:flex; align-items:center;
-        background:var(--c-canvas);
-        border-bottom: 1px solid var(--c-line);
+        background:var(--c-white);
         scroll-snap-align: start;
     }
-    .sp-lineart{position:absolute;inset:0;z-index:0;width:100%;height:100%;}
-    .sp-lineart path, .sp-lineart circle{fill:none;stroke:rgba(22,43,64,.34);stroke-width:1.6;}
+    .sp-lineart-canvas{position:absolute;inset:0;z-index:0;width:100%;height:100%;pointer-events:none;}
 
     .sp-bg-photo{
         position:absolute;inset:0;z-index:1;opacity:0;
@@ -2631,7 +2629,7 @@
         transition:opacity 1.1s var(--ease-poetic);
     }
     .sp-bg-photo.on{opacity:1;}
-    .sp-bg-wash{position:absolute;inset:0;z-index:1;background:rgba(252,252,250,.72);pointer-events:none;}
+    .sp-bg-wash{position:absolute;inset:0;z-index:1;background:rgba(255,255,255,.72);pointer-events:none;}
 
     .sp-content-row{
         position:relative;z-index:2;width:100%;max-width:1240px;margin:0 auto;padding:0 60px;
@@ -2746,6 +2744,7 @@
     .sp-idle-desc { font-size: var(--text-sm); font-weight: 300; color: var(--c-muted); line-height: 1.9; max-width: 320px; margin: 0; }
 
     @media (max-width:900px){
+        .sp-stage { height: auto; min-height: 0; }
         .sp-content-row { grid-template-columns: 1fr; justify-items: center; gap: 36px; padding: 80px 28px 60px; }
         .sp-sphere-col { grid-column: 1; flex-direction: row; }
         .sp-text-col { grid-column: 1; text-align: center; }
@@ -3007,31 +3006,25 @@
 
 <main>
     <section class="sp-stage">
-        <svg class="sp-lineart" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
-            <circle cx="150" cy="1050" r="620"/>
-            <circle cx="30" cy="1100" r="430"/>
-            <path d="M -200 900 Q 220 800 620 900 T 1460 900 T 2300 900 T 3140 900" />
-            <path d="M -200 1000 Q 220 920 620 1000 T 1460 1000 T 2300 1000 T 3140 1000" />
-            <path d="M 990 40 L 990 1040" stroke-dasharray="2 10"/>
-        </svg>
+        <canvas class="sp-lineart-canvas" id="envWaveCanvas"></canvas>
 
-        <div class="sp-bg-photo" data-i="0" style="background-image:url('assets/pho_ocean.jpg');background-position:75% center;"></div>
-        <div class="sp-bg-photo" data-i="1" style="background-image:url('assets/esg-environment.jpg');background-position:70% 25%;"></div>
-        <div class="sp-bg-photo" data-i="2" style="background-image:url('assets/tech-tide-analysis.jpg');"></div>
+        <div class="sp-bg-photo" data-i="0" style="background-image:url('assets/env-sdg-eco.png');background-position:center;"></div>
+        <div class="sp-bg-photo" data-i="1" style="background-image:url('assets/env-sdg-fishery.png');background-position:center;"></div>
+        <div class="sp-bg-photo" data-i="2" style="background-image:url('assets/env-sdg-corp.png');background-position:center;"></div>
         <div class="sp-bg-wash"></div>
 
         <div class="sp-content-row">
             <div class="sp-sphere-col" id="spSpheres">
                 <div class="sp-sphere" data-i="0">
-                    <img src="assets/pho_ocean.jpg" alt="海洋保育" style="object-position:75% center;">
+                    <img src="assets/env-sdg-eco.png" alt="海洋保育">
                     <div class="sp-sphere-label">保育</div>
                 </div>
                 <div class="sp-sphere" data-i="1">
-                    <img src="assets/esg-environment.jpg" alt="落實 SDGs" style="object-position:70% 25%;">
+                    <img src="assets/env-sdg-fishery.png" alt="落實 SDGs">
                     <div class="sp-sphere-label">SDGs</div>
                 </div>
                 <div class="sp-sphere" data-i="2">
-                    <img src="assets/tech-tide-analysis.jpg" alt="廢棄物管理">
+                    <img src="assets/env-sdg-corp.png" alt="廢棄物管理">
                     <div class="sp-sphere-label">管理</div>
                 </div>
             </div>
@@ -3094,7 +3087,7 @@
         </div>
     </section>
 
-    <div class="blanz-container" style="padding: 60px 60px 100px 60px;">
+    <div class="blanz-container" style="padding: 0 60px 40px 60px;">
         <div class="sp-crosslink-row">
             <a href="integrity.html">← 誠信經營守則</a>
             <a href="social-responsibility.html">社會責任 →</a>
@@ -3122,6 +3115,123 @@
 
 <script>
     lucide.createIcons();
+</script>
+<!-- 環境治理支柱區塊背景動態波浪線，做法比照首頁三大事業群區塊 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const canvas = document.getElementById('envWaveCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let simplex = new SimplexNoise();
+        let time = 0;
+
+        function resize() {
+            const rect = canvas.parentElement.getBoundingClientRect();
+            width = rect.width;
+            height = rect.height;
+            canvas.width = width * window.devicePixelRatio;
+            canvas.height = height * window.devicePixelRatio;
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        function draw() {
+            ctx.clearRect(0, 0, width, height);
+
+            const linesConfig = [
+                { type: 'wave', yRel: 0.09 },
+                { type: 'echo', yRel: 0.12 },
+                { type: 'wave', yRel: 0.91 },
+                { type: 'echo', yRel: 0.88 }
+            ];
+
+            const stepX = 5;
+            time += 0.0012;
+
+            for (let i = 0; i < linesConfig.length; i++) {
+                let config = linesConfig[i];
+                ctx.beginPath();
+
+                if (config.type === 'wave') {
+                    ctx.strokeStyle = 'rgba(14, 18, 23, 0.42)';
+                    ctx.lineWidth = 1.4;
+                    ctx.setLineDash([]);
+                } else {
+                    ctx.strokeStyle = 'rgba(14, 18, 23, 0.32)';
+                    ctx.lineWidth = 1.4;
+                    ctx.setLineDash([2, 6]);
+                }
+
+                let baseY = height * config.yRel;
+
+                for (let x = 0; x <= width; x += stepX) {
+                    let noiseValue = simplex.noise3D(x * 0.002, i * 0.5, time);
+                    let offsetY = noiseValue * 35;
+                    let y = baseY + offsetY;
+
+                    if (x === 0) {
+                        ctx.moveTo(x, y);
+                    } else {
+                        ctx.lineTo(x, y);
+                    }
+                }
+                ctx.stroke();
+            }
+
+            const dots = [
+                { xRel: 0.58, yRel: 0.22, seed: 10 },
+                { xRel: 0.76, yRel: 0.78, seed: 20 },
+                { xRel: 0.15, yRel: 0.76, seed: 30 }
+            ];
+            ctx.fillStyle = 'rgba(0, 73, 91, 0.35)';
+            for (let dot of dots) {
+                let baseX = width * dot.xRel;
+                let baseY = height * dot.yRel;
+
+                let floatX = simplex.noise3D(dot.seed, 0, time * 0.8) * 35;
+                let floatY = simplex.noise3D(0, dot.seed, time * 0.8) * 35;
+
+                let dotX = baseX + floatX;
+                let dotY = baseY + floatY;
+
+                if (dotY > height - 5) dotY = height - 5;
+                if (dotY < 5) dotY = 5;
+
+                ctx.beginPath();
+                ctx.arc(dotX, dotY, 4, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            if (isAnimating) {
+                rafId = requestAnimationFrame(draw);
+            }
+        }
+
+        // 只在這個裝飾區塊實際進入畫面時才跑動畫，滾走就暫停，
+        // 避免 requestAnimationFrame 在背景無限空轉、白白耗電。
+        let isAnimating = false;
+        let rafId = null;
+        const lineartObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (!isAnimating) {
+                        isAnimating = true;
+                        draw();
+                    }
+                } else {
+                    isAnimating = false;
+                    if (rafId) cancelAnimationFrame(rafId);
+                }
+            });
+        }, { threshold: 0 });
+        lineartObserver.observe(canvas);
+    });
 </script>
 <script>
 // ===== 全站流暢滾動入場效果 (Scroll Reveal Observer) =====
