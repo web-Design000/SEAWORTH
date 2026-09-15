@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>事業版圖｜集團總覽｜SEAWORTH HOLDING</title>
-    <meta name="description" content="海沃控股集團以遠洋漁業為核心，佈局近 40 艘現代化作業船隊，跨國營運據點涵蓋巴布亞紐幾內亞、泰國、中國及韓國。">
+    <title>海沃控股集團正式成立，整合遠洋全產業鏈生態系｜官方公告｜SEAWORTH HOLDING</title>
+    <meta name="description" content="海沃控股集團正式成立，匯聚深耕海洋逾四十載之造船、漁撈與貿易巨頭，整合遠洋全產業鏈生態系，開啟共善治理新紀元。">
     
     <!-- Google Fonts: 頂級豪宅與藝廊詩意字體 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -304,144 +304,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        /* 手機版導覽：Logo 圖片切換（桌機用純文字版，手機用完整組合版） */
-        .logo-mobile { display: none; }
-
-        /* 手機版漢堡選單按鈕 */
-        .nav-hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-end;
-            gap: 6px;
-            width: 40px;
-            height: 40px;
-            background: none;
-            border: none;
-            padding: 0;
-            cursor: pointer;
-            z-index: 1200;
-        }
-        .nav-hamburger span {
-            display: block;
-            width: 24px;
-            height: 1px;
-            background: var(--c-ink);
-            transition: transform 0.4s var(--ease-poetic), opacity 0.3s ease, width 0.3s ease;
-        }
-        body.nav-open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); width: 24px; }
-        body.nav-open .nav-hamburger span:nth-child(2) { opacity: 0; }
-        body.nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); width: 24px; }
-
-        /* 手機版全螢幕選單面板 */
-        .nav-mobile-panel {
-            position: fixed;
-            top: var(--header-h, 74px);
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(252, 252, 250, 0.98);
-            backdrop-filter: blur(16px);
-            z-index: 999;
-            overflow-y: auto;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-16px);
-            transition: opacity 0.4s var(--ease-poetic), transform 0.4s var(--ease-poetic), visibility 0.4s;
-            padding: 8px 28px 60px;
-        }
-        body.nav-open .nav-mobile-panel {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        body.nav-open {
-            overflow: hidden;
-        }
-        .nav-mobile-group {
-            border-bottom: 1px solid var(--c-line);
-        }
-        .nav-mobile-group-head {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            background: none;
-            border: none;
-            padding: 22px 2px;
-            font-family: var(--font-sans);
-            font-size: var(--text-sm);
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--c-ink);
-            cursor: pointer;
-        }
-        .nav-mobile-group-head i {
-            width: 16px;
-            height: 16px;
-            color: var(--c-muted);
-            transition: transform 0.4s var(--ease-poetic);
-        }
-        .nav-mobile-group.is-open .nav-mobile-group-head i {
-            transform: rotate(180deg);
-        }
-        .nav-mobile-sub {
-            display: grid;
-            grid-template-rows: 0fr;
-            transition: grid-template-rows 0.4s var(--ease-poetic);
-        }
-        .nav-mobile-group.is-open .nav-mobile-sub {
-            grid-template-rows: 1fr;
-        }
-        .nav-mobile-sub-inner {
-            overflow: hidden;
-        }
-        .nav-mobile-sub a {
-            display: block;
-            padding: 12px 4px 12px 18px;
-            font-size: var(--text-xs);
-            letter-spacing: 0.1em;
-            color: var(--c-muted);
-            text-decoration: none;
-        }
-        .nav-mobile-sub a:hover, .nav-mobile-sub a:active {
-            color: var(--c-subtitle-blue);
-        }
-        .nav-mobile-lang {
-            display: flex;
-            gap: 28px;
-            padding: 26px 2px 0;
-        }
-        .nav-mobile-lang a {
-            font-size: var(--text-xs);
-            letter-spacing: 0.15em;
-            color: var(--c-muted);
-            text-decoration: none;
-        }
-        @media (max-width: 1024px) {
-            .nav-left-area .nav-split-menu,
-            .nav-right-area .nav-split-menu,
-            .nav-center-icon {
-                display: none;
-            }
-            .nav-hamburger { display: flex; }
-            .nav-left-area { padding-right: 0; }
-            .nav-right-area { padding-left: 0; justify-content: flex-end; flex: 0 0 auto; }
-            .blanz-nav-inner {
-                display: flex;
-                grid-template-columns: none;
-                justify-content: space-between;
-                align-items: center;
-                padding: 14px 24px;
-            }
-            .logo-desktop { display: none; }
-            .logo-mobile { display: block; }
-        }
-        @media (max-width: 640px) {
-            .blanz-nav-inner { padding: 12px 20px; }
-            .nav-mobile-panel { padding: 4px 22px 50px; }
         }
 
         /* 頂部詩意標題區塊 */
@@ -1305,6 +1167,16 @@
         @media (max-width: 640px) {
             .projects-4-grid {
                 grid-template-columns: 1fr;
+            }
+            .project-thumb-box {
+                height: 220px;
+            }
+            .project-card-item:hover {
+                transform: none !important;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            }
+            .project-card-item:hover .project-thumb-box img {
+                transform: none;
             }
         }
 
@@ -2254,8 +2126,7 @@
     .sp-section-head p { font-size: var(--text-sm); color: var(--c-muted); line-height: 2; }
 
     .sp-intro {
-        max-width: 1020px;
-        margin: 0 auto;
+        max-width: 1200px;
     }
     .sp-intro p {
         font-size: var(--text-base);
@@ -2265,14 +2136,206 @@
     }
     .sp-intro p:last-child { margin-bottom: 0; }
 
+    .article-meta {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 22px;
+    }
+    .article-title {
+        font-family: var(--font-serif);
+        font-size: var(--text-2xl);
+        line-height: 1.4;
+        color: var(--c-ink);
+        font-weight: 400;
+        max-width: 1200px;
+        margin-bottom: 32px;
+    }
+    .article-hero-img {
+        width: 100%;
+        max-width: 1200px;
+        height: 440px;
+        border-radius: 2px;
+        overflow: hidden;
+        margin: 8px 0 56px;
+    }
+    .article-hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .article-quote {
+        max-width: 780px;
+        font-family: var(--font-serif);
+        font-size: var(--text-lg);
+        color: var(--c-subtitle-blue);
+        line-height: 1.9;
+        border-left: 2px solid var(--c-copper);
+        padding: 4px 0 4px 28px;
+        margin: 12px 0 40px;
+    }
+    @media (max-width: 640px) {
+        .article-title { font-size: var(--text-xl); line-height: 1.5; }
+        .article-hero-img { height: 220px; margin: 4px 0 40px; }
+        .article-quote { font-size: var(--text-base); padding-left: 20px; }
+    }
+
+    /* 文章樣式規格表：僅供後台開發參考，非文章正式內容 */
+    .style-spec-box {
+        max-width: 1200px;
+        margin-top: 100px;
+        padding: 40px 44px;
+        border: 1px dashed var(--c-line);
+        background: var(--c-subtle);
+        border-radius: 4px;
+    }
+    .style-spec-box .style-spec-title {
+        font-family: var(--font-sans);
+        font-size: var(--text-sm);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--c-copper);
+        margin-bottom: 6px;
+    }
+    .style-spec-box .style-spec-note {
+        font-size: var(--text-xs);
+        color: var(--c-muted);
+        margin-bottom: 28px;
+    }
+    @media (max-width: 640px) {
+        .style-spec-box { padding: 28px 20px; margin-top: 60px; }
+    }
+
+    /* 內文元件樣式展示：CMS 富文本編輯器各區塊樣式範本 */
+    .demo-block { margin-bottom: 40px; }
+    .demo-block:last-child { margin-bottom: 0; }
+    .demo-label {
+        font-family: var(--font-sans);
+        font-size: var(--text-tiny);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--c-muted);
+        margin-bottom: 10px;
+    }
+    .demo-h1, .demo-h2, .demo-h3, .demo-h4, .demo-h5 {
+        font-family: var(--font-serif);
+        color: var(--c-ink);
+        font-weight: 600;
+        line-height: 1.3;
+    }
+    .demo-h1 { font-size: var(--text-2xl); }
+    .demo-h2 { font-size: var(--text-xl); }
+    .demo-h3 { font-size: var(--text-lg); }
+    .demo-h4 { font-size: var(--text-base); }
+    .demo-h5 { font-size: var(--text-sm); letter-spacing: 0.02em; }
+    .demo-bold { font-size: var(--text-base); color: var(--c-charcoal); font-weight: 700; }
+    .demo-italic { font-size: var(--text-base); color: var(--c-charcoal); font-style: italic; }
+    .demo-paragraph { font-size: var(--text-base); color: var(--c-charcoal); line-height: 2.1; }
+
+    .demo-gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+    .demo-gallery img { width: 100%; height: 180px; object-fit: cover; display: block; border-radius: 2px; }
+
+    .demo-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+    .demo-table thead th {
+        background: var(--c-ocean-deep);
+        color: #FFFFFF;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        padding: 16px 20px;
+        text-align: center;
+    }
+    .demo-table tbody td {
+        padding: 14px 20px;
+        text-align: center;
+        color: var(--c-charcoal);
+        border-bottom: 1px solid var(--c-line);
+    }
+    .demo-table tbody tr:nth-child(odd) { background: var(--c-subtle); }
+    .demo-table tfoot td {
+        padding: 16px 20px;
+        text-align: center;
+        background: rgba(0, 73, 91, 0.08);
+        color: var(--c-subtitle-blue);
+        font-weight: 600;
+    }
+
+    .demo-ul, .demo-ol {
+        font-size: var(--text-base);
+        color: var(--c-charcoal);
+        line-height: 2;
+        padding-left: 24px;
+    }
+    .demo-ul li::marker { color: var(--c-copper); }
+    .demo-ol li::marker { color: var(--c-subtitle-blue); font-weight: 600; }
+
+    .demo-link {
+        color: var(--c-subtitle-blue);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        font-size: var(--text-base);
+    }
+    .demo-link:hover { color: rgb(0, 139, 156); }
+
+    .demo-quote-photo {
+        position: relative;
+        padding: 36px 44px;
+        border-left: 3px solid var(--c-copper);
+        overflow: hidden;
+        border-radius: 2px;
+    }
+    .demo-quote-photo img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+    }
+    .demo-quote-photo::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, rgba(14,18,23,0.82), rgba(14,18,23,0.55));
+        z-index: 1;
+    }
+    .demo-quote-photo span {
+        position: relative;
+        z-index: 2;
+        display: block;
+        font-family: var(--font-serif);
+        font-size: var(--text-lg);
+        color: #FFFFFF;
+        line-height: 1.8;
+    }
+
+    .demo-signature {
+        padding-top: 20px;
+        border-top: 1px solid var(--c-line);
+        font-size: var(--text-sm);
+        color: var(--c-charcoal);
+    }
+    .demo-signature a { color: var(--c-subtitle-blue); text-decoration: underline; text-underline-offset: 2px; }
+
+    .demo-source {
+        font-size: var(--text-xs);
+        color: var(--c-muted);
+    }
+    .demo-source a { color: var(--c-subtitle-blue); text-decoration: none; }
+    .demo-source a:hover { text-decoration: underline; }
+
+    @media (max-width: 640px) {
+        .demo-gallery { grid-template-columns: repeat(2, 1fr); }
+        .demo-quote-photo { padding: 24px 24px; }
+    }
+
     .sp-lede {
         font-family: var(--font-serif);
         font-size: var(--text-lg);
         color: var(--c-subtitle-blue);
         letter-spacing: 0.08em;
         line-height: 1.8;
-        margin: 0 auto 36px;
-        max-width: 1020px;
+        margin-bottom: 36px;
+        max-width: 780px;
     }
 
     /* 特色卡片網格 */
@@ -2304,15 +2367,15 @@
     /* 圖文並列區塊 */
     .sp-media-row {
         display: grid;
-        grid-template-columns: 1.25fr 1fr;
-        gap: 60px;
+        grid-template-columns: 1fr 1fr;
+        gap: 70px;
         align-items: center;
     }
     .sp-media-row.reverse .sp-media-frame { order: 2; }
     .sp-media-frame {
         position: relative;
         overflow: hidden;
-        height: 520px;
+        height: 400px;
         background: var(--c-subtle);
     }
     .sp-media-frame img {
@@ -2576,6 +2639,139 @@
         .sp-accordion-head-left { gap: 12px; }
         .sp-cta-panel { padding: 70px 24px; }
     }
+
+        /* 手機版漢堡按鈕與全螢幕選單 */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 16px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1002;
+            padding: 0;
+            margin-left: 16px;
+        }
+        .nav-hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: var(--c-charcoal);
+            transition: all 0.4s var(--ease-poetic);
+            transform-origin: center;
+        }
+        body.nav-open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); width: 24px; }
+        body.nav-open .nav-hamburger span:nth-child(2) { opacity: 0; }
+        body.nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); width: 24px; }
+
+        .nav-mobile-panel {
+            position: fixed;
+            inset: 0;
+            background-color: var(--c-white);
+            z-index: 1000;
+            padding: 100px 32px 40px;
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px);
+            transition: all 0.5s var(--ease-poetic);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        body.nav-open .nav-mobile-panel {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .nav-mobile-group {
+            border-bottom: 1px solid var(--c-line);
+        }
+        .nav-mobile-group:last-of-type { border-bottom: none; }
+        
+        .nav-mobile-group-head {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            background: transparent;
+            border: none;
+            font-family: var(--font-sans);
+            font-size: 1.15rem;
+            color: var(--c-charcoal);
+            text-align: left;
+            cursor: pointer;
+            letter-spacing: 0.1em;
+        }
+        .nav-mobile-group-head i {
+            width: 20px;
+            height: 20px;
+            color: var(--c-muted);
+            transition: transform 0.4s ease;
+        }
+        .nav-mobile-group.is-open .nav-mobile-group-head i {
+            transform: rotate(180deg);
+        }
+        
+        .nav-mobile-sub {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.4s var(--ease-poetic);
+        }
+        .nav-mobile-group.is-open .nav-mobile-sub {
+            grid-template-rows: 1fr;
+        }
+        .nav-mobile-sub-inner {
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding-bottom: 0;
+        }
+        .nav-mobile-group.is-open .nav-mobile-sub-inner {
+            padding-bottom: 24px;
+        }
+        .nav-mobile-sub-inner a {
+            font-size: 1rem;
+            color: var(--c-muted);
+            text-decoration: none;
+            padding-left: 8px;
+            letter-spacing: 0.08em;
+        }
+        
+        .nav-mobile-lang {
+            margin-top: 40px;
+            display: flex;
+            gap: 24px;
+            padding: 0 8px;
+        }
+        .nav-mobile-lang a {
+            font-size: 0.95rem;
+            color: var(--c-charcoal);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+        }
+
+        @media (max-width: 1024px) {
+            .nav-left-area .nav-split-menu,
+            .nav-right-area .nav-split-menu,
+            .nav-center-icon {
+                display: none;
+            }
+            .nav-hamburger { display: flex; }
+            .nav-left-area { padding-right: 0; }
+            .nav-right-area { padding-left: 0; justify-content: flex-end; flex: 0 0 auto; }
+            .blanz-nav-inner {
+                display: flex;
+                grid-template-columns: none;
+                justify-content: space-between;
+                align-items: center;
+                padding: 14px 24px;
+            }
+        }
 </style>
 
 </head>
@@ -2615,8 +2811,7 @@
             <!-- 左側：Logo 文字與 3 個選項 -->
             <div class="nav-left-area">
                 <a href="index.html" style="display: flex; align-items: center; height: 100%;">
-                    <img src="assets/logo-text.png" alt="SEAWORTH HOLDING" class="logo-desktop" style="height:32px; width:auto;">
-                    <img src="assets/logo-header-2.png" alt="SEAWORTH HOLDING" class="logo-mobile" style="height:34px; width:auto;">
+                    <img src="assets/logo-text.png" alt="SEAWORTH HOLDING" style="height:32px; width:auto;">
                 </a>
                 <ul class="nav-split-menu">
                     <li class="has-dropdown">
@@ -2704,6 +2899,7 @@
                         </div>
                     </li>
                 </ul>
+
                 <button type="button" class="nav-hamburger" id="navHamburger" aria-label="開啟選單" aria-expanded="false" aria-controls="navMobilePanel">
                     <span></span><span></span><span></span>
                 </button>
@@ -2766,7 +2962,7 @@
             <a href="#">English</a>
         </div>
     </div>
-<script>
+    <script>
         (function() {
             const header = document.querySelector('.blanz-header');
             if (!header) return;
@@ -2816,62 +3012,147 @@
         })();
     </script>
 
+<script>
+        (function() {
+            const header = document.querySelector('.blanz-header');
+            if (!header) return;
+            function setHeaderHeight() {
+                document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+            }
+            setHeaderHeight();
+            window.addEventListener('resize', setHeaderHeight);
+        })();
+    </script>
+
 <section class="sp-hero">
-        <img src="assets/hero-business-map.jpg" alt="事業版圖">
+        <img src="assets/hero-announcements.jpg" alt="官方公告">
         <div class="sp-hero-inner">
             <nav class="sp-breadcrumb">
-                    <a href="index.html">首頁</a> ／ <a href="about.html">集團總覽</a> ／ 事業版圖
+                    <a href="index.html">首頁</a> ／ <a href="announcements.html">最新消息</a> ／ <a href="announcements.html">官方公告</a> ／ 集團成立公告
                 </nav>
-            <span class="sp-hero-eyebrow">GROUP OVERVIEW</span>
-            <h1 class="sp-hero-title">BUSINESS MAP<span class="sp-hero-sub">事業版圖</span></h1>
+            <span class="sp-hero-eyebrow">NEWS & INSIGHTS</span>
+            <h1 class="sp-hero-title">ANNOUNCEMENTS<span class="sp-hero-sub">官方公告</span></h1>
         </div>
     </section>
 
 <main>
-    <section class="blanz-section sp-section"><div class="blanz-container">
-        
-        <div class="sp-lede reveal">海沃控股集團以遠洋漁業為核心，深度整合大型船舶建造、遠洋捕撈、冷凍倉儲及國際貿易，成功構築「從深海到市場」的一體化產業鏈，具備全流程可追溯性的全球冷鏈供應優勢。</div>
+    <article class="blanz-section sp-section"><div class="blanz-container" style="max-width: 1200px;">
 
-        <div class="sp-stat-row reveal" style="margin-bottom:70px;">
-            <div>
-                <div class="sp-stat-num">40<span class="num-sym">+</span></div>
-                <div class="sp-stat-label">艘現代化合規船隊</div>
-            </div>
-            <div>
-                <div class="sp-stat-num">2</div>
-                <div class="sp-stat-label">大洋戰略作業海域</div>
-            </div>
-            <div>
-                <div class="sp-stat-num">4</div>
-                <div class="sp-stat-label">大跨國營運據點</div>
-            </div>
-            <div>
-                <div class="sp-stat-num">3</div>
-                <div class="sp-stat-label">大洲市場經銷網路</div>
-            </div>
+        <div class="article-meta reveal">
+            <span class="project-card-tag">2026.08.15 ‧ CORPORATE</span>
         </div>
 
-        <div class="sp-media-row reveal">
-            <div class="sp-media-frame">
-                <img src="assets/enterprise-map.jpg" alt="海沃控股集團全球事業版圖">
-            </div>
-            <div class="sp-media-text">
-                <h3>鏈結全球大洋資源</h3>
-                <p>集團麾下佈局近 40 艘符合國際最高合規標準的現代化作業船隊與凍船。船型涵蓋大型美式圍網船、延繩釣船、魷釣暨秋刀魚船及冷凍運搬船，構築兼具高效率與多元化的頂尖船隊。作業海域橫跨太平洋與大西洋，精準捕撈正鰹、黃鰭鮪、大目鮪、長鰭鮪、魷魚及秋刀魚等全球核心經濟魚種。</p>
-            </div>
+        <h1 class="article-title reveal">海沃控股集團正式成立，整合遠洋全產業鏈生態系</h1>
+
+        <div class="sp-lede reveal">匯聚深耕海洋逾四十載之造船、漁撈與貿易巨頭，開啟共善治理新紀元。</div>
+
+        <div class="article-hero-img reveal">
+            <img src="assets/news-corporate.png" alt="海沃控股集團正式成立，整合遠洋全產業鏈生態系">
         </div>
 
-        <div class="sp-intro reveal" style="margin-top:70px;">
-            <p>聚焦全球化版圖拓展，本集團於巴布亞紐幾內亞、泰國、中國及韓國建構跨國營運戰略據點，並與 PNA 國家及國際漁業組織締結深厚的策略合作夥伴關係，鞏固核心漁業資源；集團全面深化永續治理，經銷網路垂直滲透亞洲、歐洲及美洲等全球主流消費市場，穩健建立龐大的國際版圖。</p>
+        <div class="sp-intro reveal">
+            <p>海沃控股集團（SEAWORTH HOLDING）今日正式對外宣布成立，標誌著集團旗下三大事業群——華偉漁業事業群、巨寶漁業事業群與華昇魷釣事業群——自此邁入控股化統籌治理的全新階段。此次整合並非白手起家，而是傳承逾四十載深厚根基：自 1983 年黃氏家族於高雄前鎮漁港投入冷凍倉儲、以一艘圍網漁船啟航以來，三大事業體歷經數十年各自深耕，如今匯聚為一，正式建構起橫跨造船、遠洋漁撈、海上冷鏈與國際貿易的全產業鏈生態系。</p>
+
+            <p>集團表示，控股化的核心目的，在於整合分散多年的資源與管理制度，建立現代化的集團治理架構，使各事業體在維持專業分工的同時，能共享技術、船隊調度與供應鏈資源，並以統一標準推動「永續、安全、透明」的企業形象。透過此次整合，集團也將加速導入 AI 智慧船隊管理系統，強化船舶監控與數據化營運，並持續遵循 RFMO、IMO、ILO 等國際規範，降低跨國營運與法規風險。</p>
+
+            <div class="article-quote reveal">「我們不是在建立一個新事業，而是在為四十年累積的信任，找到一個可以被看見、被追溯、被託付的治理架構。」——集團管理層表示</div>
+
+            <p>展望未來，海沃控股集團將持續深化遠洋漁業核心能力，並朝向船隊智慧化、營運數位化與供應鏈整合等方向發展，同時於中國、泰國、韓國、巴布亞紐幾內亞（PNG）等地既有據點基礎上，強化區域化營運中心佈局。集團強調，此次正式成立僅是起點，後續將陸續發布永續發展報告書、國際認證進展與船隊擴建計畫等重大訊息，邀請股東與社會大眾持續關注。</p>
         </div>
-    
-    
+
         <div class="sp-crosslink-row">
-                <a href="about.html">← 關於海沃</a>
-                <a href="tech-integration.html">技術整合能力 →</a>
+                <a href="announcements.html">← 返回官方公告</a>
+                <a href="corporate-news.html">企業動態 →</a>
             </div>
+
+        <div class="style-spec-box">
+            <p class="style-spec-title">內文元件樣式展示 Content Block Styles</p>
+            <p class="style-spec-note">此區塊為示範文章的內文元件樣式展示，供後續建置文章後台（CMS）富文本編輯器時對照各區塊樣式，非文章正式內容，上線前請移除。</p>
+
+            <div class="demo-block"><h1 class="demo-h1">示意標題 H1</h1></div>
+            <div class="demo-block"><h2 class="demo-h2">示意標題 H2</h2></div>
+            <div class="demo-block"><h3 class="demo-h3">示意標題 H3</h3></div>
+            <div class="demo-block"><h4 class="demo-h4">示意標題 H4</h4></div>
+            <div class="demo-block"><h5 class="demo-h5">示意標題 H5</h5></div>
+
+            <div class="demo-block"><p class="demo-bold">示意粗體　海沃控股集團。</p></div>
+            <div class="demo-block"><p class="demo-italic">示意斜體　海沃控股集團。</p></div>
+
+            <div class="demo-block">
+                <p class="demo-label">示意內文</p>
+                <p class="demo-paragraph">海沃控股集團整合遠洋漁業、智慧造船與國際貿易三大事業群，以逾四十載累積之經驗為基礎，建構橫跨捕撈、冷鏈物流至終端貿易之全流程可追溯體系。集團秉持「共善治理」核心理念，於營運擴張的同時，同步強化 ESG 永續實踐與國際法規遵循，逐步朝向亞太區域領先之海洋產業控股集團邁進。</p>
             </div>
-        </section>
+
+            <div class="demo-block">
+                <p class="demo-label">示意圖庫 Image Gallery</p>
+                <div class="demo-gallery">
+                    <img src="assets/landmark-fleet.jpg" alt="示意圖片">
+                    <img src="assets/hero-tech.jpg" alt="示意圖片">
+                    <img src="assets/hero-noir.jpg" alt="示意圖片">
+                    <img src="assets/fish-jump.jpg" alt="示意圖片">
+                    <img src="assets/esg-environment.jpg" alt="示意圖片">
+                    <img src="assets/hero-governance.jpg" alt="示意圖片">
+                </div>
+            </div>
+
+            <div class="demo-block">
+                <p class="demo-label">示意表格 Table</p>
+                <table class="demo-table">
+                    <thead>
+                        <tr><th>Header table</th><th>Header table</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>table</td><td>table</td></tr>
+                        <tr><td>table</td><td>table</td></tr>
+                    </tbody>
+                    <tfoot>
+                        <tr><td>Footer table</td><td>Footer table</td></tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div class="demo-block">
+                <p class="demo-label">無序列表 Unordered List</p>
+                <ul class="demo-ul">
+                    <li>This is a paragraph. This is a paragraph. This is a paragraph.</li>
+                    <li>This is a paragraph. This is a paragraph. This is a paragraph.</li>
+                    <li>This is a paragraph. This is a paragraph. This is a paragraph.</li>
+                </ul>
+            </div>
+
+            <div class="demo-block">
+                <p class="demo-label">有序列表 Ordered List</p>
+                <ol class="demo-ol">
+                    <li>This is a paragraph. This is a paragraph. This is a paragraph.</li>
+                    <li>This is a paragraph. This is a paragraph. This is a paragraph.</li>
+                    <li>This is a paragraph. This is a paragraph. This is a paragraph.</li>
+                </ol>
+            </div>
+
+            <div class="demo-block">
+                <p class="demo-label">連結 Link</p>
+                <a href="#" class="demo-link">Link 示意連結文字</a>
+            </div>
+
+            <div class="demo-block">
+                <p class="demo-label">引言 Quote</p>
+                <div class="demo-quote-photo">
+                    <img src="assets/texture-band.jpg" alt="">
+                    <span>引言　海沃控股集團。</span>
+                </div>
+            </div>
+
+            <div class="demo-block">
+                <p class="demo-label">示意簽名檔 Signature</p>
+                <p class="demo-signature">撰文｜海沃控股集團　<a href="index.html">官方網站</a></p>
+            </div>
+
+            <div class="demo-block">
+                <p class="demo-source">來自：<a href="#">中時新聞網綜合報導</a>／<a href="#">王小明</a></p>
+            </div>
+        </div>
+            </div>
+        </article>
 </main>
 
 <footer class="blanz-footer">
@@ -2894,66 +3175,6 @@
 
 <script>
     lucide.createIcons();
-</script>
-<!-- 數字統計列：捲動進入畫面時從 0 跑到目標數字 -->
-<script>
-    (function() {
-        const row = document.querySelector('.sp-stat-row');
-        if (!row) return;
-        const items = Array.from(row.querySelectorAll('.sp-stat-num')).map(el => {
-            const suffixEl = el.querySelector('.num-sym');
-            const suffixHTML = suffixEl ? suffixEl.outerHTML : '';
-            const target = parseInt(el.textContent, 10) || 0;
-            // 立即設定為 0
-            el.innerHTML = '0' + suffixHTML;
-            return { el, target, suffixHTML };
-        });
-
-        function animate(duration) {
-            duration = duration || 1500; // 時間調整到最剛好的 1.5 秒
-            const start = performance.now();
-            let lastUpdate = 0;
-            
-            function tick(now) {
-                const t = Math.min(1, (now - start) / duration);
-                
-                // 限制約 50ms 更新一次 (約 20fps)，避免跳太快變成糊的
-                if (now - lastUpdate > 50 || t === 1) {
-                    items.forEach(item => {
-                        if (t < 1) {
-                            // 動畫期間：產生亂碼，依據目標數字位數產生對應的隨機數
-                            const maxVal = Math.pow(10, item.target.toString().length);
-                            const randomNum = Math.floor(Math.random() * maxVal);
-                            item.el.innerHTML = randomNum + item.suffixHTML;
-                        } else {
-                            // 動畫結束：鎖定正確目標數字
-                            item.el.innerHTML = item.target + item.suffixHTML;
-                        }
-                    });
-                    lastUpdate = now;
-                }
-                
-                if (t < 1) requestAnimationFrame(tick);
-            }
-            requestAnimationFrame(tick);
-        }
-
-        // 等待全站載入（含圖片）與 Loading 動畫結束後，再開始監聽
-        window.addEventListener('load', () => {
-            // 可以額外加一個小延遲，確保 loading 畫面完全消失
-            setTimeout(() => {
-                const observer = new IntersectionObserver((entries, obs) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            setTimeout(() => animate(), 300);
-                            obs.disconnect();
-                        }
-                    });
-                }, { threshold: 0.1 });
-                observer.observe(row);
-            }, 500);
-        });
-    })();
 </script>
 <script>
 // ===== 全站流暢滾動入場效果 (Scroll Reveal Observer) =====
@@ -3044,7 +3265,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     
 </script>
-
 
 </body>
 </html>
