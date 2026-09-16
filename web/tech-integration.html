@@ -2275,53 +2275,35 @@
         color: var(--c-subtitle-blue);
         letter-spacing: 0.08em;
         line-height: 1.8;
-        margin: 40px auto 80px;
+        margin: 0 auto 60px; /* Reduced top margin to move content up */
         max-width: 1020px;
         text-align: center;
         display: flex;
-        align-items: flex-start;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
         gap: 24px;
-    }
-    .sp-lede::before {
-        content: '';
-        width: 2px;
-        height: 48px;
-        background: var(--c-copper);
-        flex-shrink: 0;
-        margin-top: 8px;
     }
 
     /* 錯落式佈局 (Data-driven Smart Center) */
     .sp-media-row {
         display: grid;
-        grid-template-columns: 1fr 1.1fr;
-        gap: 90px;
+        grid-template-columns: 1.1fr 1fr; /* Image column slightly larger */
+        gap: 60px; /* Reduced gap */
         align-items: center;
-        margin-bottom: 120px;
+        margin-bottom: 0; /* Removed excessive bottom margin */
     }
     .sp-media-row.reverse .sp-media-frame { order: 2; }
     .sp-media-frame {
         position: relative;
-        padding-bottom: 70px;
         background: transparent;
         height: auto;
     }
     .sp-media-frame img {
-        width: 90%; 
+        width: 100%; /* Make image fill the frame */
         height: 480px; 
         object-fit: cover;
         box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-    }
-    .sp-media-frame::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 65%;
-        height: 280px;
-        background-color: var(--c-subtle);
-        z-index: -1;
+        border-radius: 4px;
     }
     .sp-media-text h3 {
         font-family: var(--font-serif);
@@ -2387,25 +2369,21 @@
         line-height: 1.9;
     }
 
-       /* 三大實踐：全新版型 (參考首頁風格) */
+       /* 三大實踐：全新版型 (Card Stack) */
     .tech-bento {
         display: grid;
-        grid-template-columns: 1fr 1.15fr;
-        background: transparent;
-        margin: 90px 0 56px;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        margin: 80px 0 120px;
         align-items: stretch;
     }
     .tech-bento-left, .tech-bento-right {
         display: flex;
         flex-direction: column;
-    }
-    .tech-bento-left {
-        border-right: 1px solid var(--c-line);
-        background: var(--c-subtle);
+        gap: 24px;
     }
     .tech-bento-left > .tech-bento-intro {
-        padding: 40px 60px 40px 0;
-        background: var(--c-canvas);
+        padding-bottom: 20px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -2413,6 +2391,7 @@
     .tech-bento-left > .tech-bento-photo {
         flex: 1;
         overflow: hidden;
+        border-radius: 4px;
     }
     .tech-bento-photo img { 
         width: 100%; 
@@ -2421,11 +2400,12 @@
         display: block; 
     }
     .tech-bento-right > div {
-        padding: 50px 40px 50px 60px;
+        padding: 48px;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        background: transparent;
+        background: var(--c-subtle);
+        border-radius: 4px;
         flex: 1;
     }
     .tech-bento-intro .eyebrow {
@@ -2508,34 +2488,6 @@
         .tech-bento-cell-num { align-self: flex-end; }
     }
 
-    /* 圖文並列區塊 */
-    .sp-media-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 70px;
-        align-items: center;
-    }
-    .sp-media-row.reverse .sp-media-frame { order: 2; }
-    .sp-media-frame {
-        position: relative;
-        overflow: hidden;
-        height: 400px;
-        background: var(--c-subtle);
-    }
-    .sp-media-frame img {
-        width: 100%; height: 100%; object-fit: cover;
-    }
-    .sp-media-text h3 {
-        font-family: var(--font-serif);
-        font-size: var(--text-2xl);
-        margin-bottom: 20px;
-        letter-spacing: 0.06em;
-    }
-    .sp-media-text p {
-        font-size: var(--text-sm);
-        color: var(--c-muted);
-        line-height: 2;
-    }
 
     /* 數字統計列 */
     .sp-stat-row {
@@ -3035,7 +2987,7 @@
     </section>
 
 <main>
-    <section class="blanz-section sp-section"><div class="blanz-container">
+    <section class="blanz-section sp-section-tight"><div class="blanz-container">
         
         <div class="sp-lede reveal">海沃控股集團全面啟動數位轉型，建置數據驅動的現代化智慧營運中心。</div>
 
@@ -3089,44 +3041,44 @@
 
     <section class="blanz-section sp-section"><div class="blanz-container">
 
-        <div class="tech-bento reveal">
-            <div class="tech-bento-left">
-                <div class="tech-bento-intro">
-                    <span class="eyebrow">SUSTAINABILITY</span>
-                    <p>在永續發展的技術佈局上，海沃以科技賦能綠色低碳轉型與合規治理，落實下列三大實踐。</p>
-                </div>
-                <div class="tech-bento-photo">
-                    <img src="assets/esg-environment.jpg" alt="永續發展技術佈局">
+        <!-- 前導引言 -->
+        <div class="sp-section-head reveal" style="margin: 0 auto 60px; text-align: center; max-width: 800px;">
+            <span class="en-poetic-title" style="color: var(--c-copper); font-size: var(--text-xs); letter-spacing: 0.25em;">SUSTAINABILITY</span>
+            <p style="font-size: var(--text-lg); color: var(--c-ink); line-height: 1.8; margin-top: 16px;">
+                在永續發展的技術佈局上，海沃以科技賦能綠色低碳轉型與合規治理，落實下列三大實踐。
+            </p>
+        </div>
+
+        <!-- 三大實踐條列 -->
+        <div class="sp-numbered-list reveal" style="max-width: 900px; margin: 0 auto 80px;">
+            <div class="sp-numbered-item">
+                <div class="num">01</div>
+                <div>
+                    <h3 style="font-family: var(--font-serif); color: var(--c-ink);">綠色低碳轉型</h3>
+                    <p>積極引進低碳替代燃油與智慧節能船舶系統，以科技賦能遠洋漁業的綠色轉型，降低整體船隊之能源耗損與碳排放。</p>
                 </div>
             </div>
-            <div class="tech-bento-right">
-                <div class="tech-bento-cell-1">
-                    <div class="tech-bento-cell-text">
-                        <h3>綠色低碳轉型</h3>
-                        <p class="desc">積極引進低碳替代燃油與智慧節能船舶系統，以科技賦能遠洋漁業的綠色轉型，降低整體船隊之能源耗損與碳排放。</p>
-                    </div>
-                    <span class="tech-bento-cell-num">01</span>
+            <div class="sp-numbered-item">
+                <div class="num">02</div>
+                <div>
+                    <h3 style="font-family: var(--font-serif); color: var(--c-ink);">全流程可追溯系統</h3>
+                    <p>自主研發並對接國際漁業管理組織之全流程可追溯系統，將生態打擾與環境衝擊降至最低，落實海洋保育與合規治理。</p>
+                    <a href="sustainability-practice.html" style="display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display); font-size: var(--text-xs); letter-spacing: 0.15em; text-transform: uppercase; color: var(--c-copper); text-decoration: none; margin-top: 16px; transition: opacity 0.3s ease;">深入了解永續實踐 <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></a>
                 </div>
-                <div class="tech-bento-cell-2 tech-bento-dark">
-                    <div class="tech-bento-cell-text">
-                        <h3>全流程可追溯系統</h3>
-                        <p class="desc">自主研發並對接國際漁業管理組織之全流程可追溯系統，將生態打擾與環境衝擊降至最低，落實海洋保育與合規治理。</p>
-                        <a href="sustainability-practice.html" class="tech-bento-link">深入了解永續實踐 <i data-lucide="arrow-right"></i></a>
-                    </div>
-                    <span class="tech-bento-cell-num">02</span>
-                </div>
-                <div class="tech-bento-cell-3">
-                    <div class="tech-bento-cell-text">
-                        <h3>數位供應鏈與人權保障</h3>
-                        <p class="desc">透過數位化供應鏈透明度管理，嚴格落實 ILO 國際勞工公約標準，以科技化、可驗證的數據保障船員人權與勞動尊嚴。</p>
-                    </div>
-                    <span class="tech-bento-cell-num">03</span>
+            </div>
+            <div class="sp-numbered-item">
+                <div class="num">03</div>
+                <div>
+                    <h3 style="font-family: var(--font-serif); color: var(--c-ink);">數位供應鏈與人權保障</h3>
+                    <p>透過數位化供應鏈透明度管理，嚴格落實 ILO 國際勞工公約標準，以科技化、可驗證的數據保障船員人權與勞動尊嚴。</p>
                 </div>
             </div>
         </div>
 
-        <div class="poetic-quote-wrap reveal" style="margin: 80px auto; padding-top: 40px; border-top: 1px solid var(--c-line);">
-            <p style="font-family: var(--font-serif); font-size: var(--text-base); line-height: 2.1; color: var(--c-ink); text-align: center;">
+        <!-- 結語 -->
+        <div class="poetic-quote-wrap reveal" style="margin: 0 auto; padding-top: 60px; border-top: 1px solid var(--c-line); display: flex; flex-direction: column; align-items: center;">
+            <div style="width: 2px; height: 48px; background: var(--c-copper); margin-bottom: 32px; flex-shrink: 0;"></div>
+            <p style="font-family: var(--font-serif); font-size: var(--text-base); line-height: 2.1; color: var(--c-subtitle-blue); text-align: center; max-width: 900px; margin: 0 auto;">
                 立足於技術整合、數位制度創新及數據合規治理，海沃控股集團將持續打造兼具環境永續、社會共榮與經濟成長的現代化遠洋漁業科技控股體系。<br><br>
                 以科技驅動產業升級，以制度強化治理效能，以責任引領永續發展，全面提升遠洋漁業的智慧化、數位化與國際化水平，攜手全球夥伴共創產業新格局，實現企業成長、社會共榮與永續海洋的長期價值。
             </p>

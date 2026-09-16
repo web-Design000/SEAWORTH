@@ -2956,30 +2956,30 @@
         .about-division-content { padding: 20px; }
     }
 
-    /* 滿版三塊照片橫列：同一張照片切成三塊、中間留小縫隙，
-       用 background-size:300% + background-position 0%/50%/100% 讓
-       三塊各自顯示同一張圖的左/中/右三分之一，拼起來仍是同一張照片的
-       視覺延續，但中間又刻意露出一點縫隙做出分割感。 */
+    /* 滿版三塊照片橫列：同一張照片切成三塊、中間留小縫隙。
+       刻意挑選裁切範圍避開船隻本體，而非單純三等分——
+       左塊：左側天際線＋小型作業船（完整入鏡）
+       中塊（較寬）：主建築塔樓＋TAI HE 101 主船（完整入鏡，不從船身中間切開）
+       右塊：遠方夕陽與小船剪影 */
     .about-photo-strip {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 0.6fr 1.5fr 0.3fr;
         gap: 12px;
         width: 100%;
         margin: 32px 0 56px;
     }
     .about-photo-strip-item {
         height: 400px;
-        background-image: url('assets/landmark-fleet.jpg');
-        background-size: 300% auto;
+        background-image: url('assets/news-corporate.png');
         background-repeat: no-repeat;
-        background-position: 0% 50%;
+        background-position: 0% 100%;
         --y: 0px;
         transform: translateY(var(--y));
         transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
     }
-    .about-photo-strip-item:nth-child(1) { --y: -12px; }
-    .about-photo-strip-item:nth-child(2) { background-position: 50% 50%; --y: 12px; }
-    .about-photo-strip-item:nth-child(3) { background-position: 100% 50%; --y: -12px; }
+    .about-photo-strip-item:nth-child(1) { background-size: 303% auto; background-position: 0% 100%; --y: -12px; }
+    .about-photo-strip-item:nth-child(2) { background-size: 188.7% auto; background-position: 70.2% 100%; --y: 12px; }
+    .about-photo-strip-item:nth-child(3) { background-size: 714.3% auto; background-position: 100% 100%; --y: -12px; }
     .about-photo-strip-item:hover {
         transform: translateY(var(--y)) scale(1.02);
     }
@@ -3021,11 +3021,15 @@
                 </h1>
             </div>
 
+        </div>
+        <div class="blanz-container" style="max-width: 1500px;">
             <div class="about-photo-strip reveal" role="img" aria-label="海沃控股集團船隊">
                 <div class="about-photo-strip-item"></div>
                 <div class="about-photo-strip-item"></div>
                 <div class="about-photo-strip-item"></div>
             </div>
+        </div>
+        <div class="blanz-container" style="max-width: 1200px;">
 
             <div class="about-pullquote reveal">海沃控股集團成立於 2026 年，以整合遠洋漁業上下游資源、深化共善治理、提升營運效能為使命。集團旗下擘劃三大事業群，深耕漁撈、造船與冷鏈三大專業領域，建構健全且具韌性的全球海洋產業鏈：</div>
 

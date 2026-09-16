@@ -2634,32 +2634,107 @@
         .sp-cta-panel { padding: 70px 24px; }
     }
 
-    .sp-highlight-grid {
+    .highlight-masonry {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 4px;
-        margin-top: 4rem;
-        margin-bottom: 2rem;
-        background: var(--c-line);
-        border: 1px solid var(--c-line);
+        gap: 80px 40px;
+        padding: 60px 0 100px;
+        align-items: start;
     }
-    .sp-highlight-card {
+    .highlight-masonry .masonry-item:nth-child(3n+2) {
+        margin-top: 80px;
+    }
+    .highlight-masonry .masonry-item:nth-child(3n+3) {
+        margin-top: 40px;
+    }
+    .masonry-item {
+        display: flex;
+        flex-direction: column;
+    }
+    .masonry-item-visual {
+        position: relative;
+        margin-bottom: 32px;
+        z-index: 1;
+    }
+    .masonry-item-visual img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        display: block;
+        border-radius: 4px;
+        position: relative;
+        z-index: 2;
+    }
+    .masonry-item-icon {
+        position: absolute;
+        bottom: -20px;
+        right: 20px;
+        width: 56px;
+        height: 56px;
         background: var(--c-white);
-        padding: 44px 36px;
+        border: 1px solid var(--c-line);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--c-copper);
+        z-index: 3;
     }
-    .sp-highlight-card .sp-highlight-icon-frame {
-        margin-bottom: 24px;
+    .masonry-item-text {
+        position: relative;
+        padding: 0 12px;
     }
-    .sp-highlight-card .sp-highlight-index {
-        text-align: left;
+    .masonry-item-num {
+        font-family: var(--font-display);
+        font-size: 160px;
+        color: var(--c-copper-light);
+        opacity: 0.15;
+        position: absolute;
+        top: -60px;
+        left: -40px;
+        line-height: 1;
+        z-index: 0;
+        pointer-events: none;
+    }
+    .masonry-item-text h3 {
+        font-family: var(--font-serif);
+        font-size: var(--text-xl);
+        color: var(--c-ink);
         margin-bottom: 12px;
+        position: relative;
+        z-index: 1;
+        letter-spacing: 0.04em;
     }
+    .masonry-item-text p {
+        font-size: var(--text-sm);
+        color: var(--c-muted);
+        line-height: 1.8;
+        position: relative;
+        z-index: 1;
+    }
+
     @media (max-width: 900px) {
-        .sp-highlight-grid { grid-template-columns: repeat(2, 1fr); }
+        .highlight-masonry {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px 40px;
+        }
+        .highlight-masonry .masonry-item:nth-child(3n+2),
+        .highlight-masonry .masonry-item:nth-child(3n+3) {
+            margin-top: 0;
+        }
+        .highlight-masonry .masonry-item:nth-child(even) {
+            margin-top: 80px;
+        }
     }
     @media (max-width: 640px) {
-        .sp-highlight-grid { grid-template-columns: 1fr; }
-        .sp-highlight-card { padding: 36px 28px; }
+        .highlight-masonry {
+            grid-template-columns: 1fr;
+            padding: 40px 0 80px;
+        }
+        .highlight-masonry .masonry-item:nth-child(even) {
+            margin-top: 0;
+        }
     }
 
 </style>
@@ -2918,42 +2993,77 @@
         
         <div class="sp-lede reveal">海沃控股集團憑藉深厚產業根基與全鏈路整合能力，構築六大核心投資亮點：</div>
 
-                <div class="sp-highlight-grid">
-            <div class="sp-highlight-card reveal">
-                <div class="sp-highlight-icon-frame"><i data-lucide="anchor"></i></div>
-                <div class="sp-highlight-index">01</div>
-                <h3 class="sp-highlight-title">深耕遠洋漁業</h3>
-                <p class="sp-highlight-desc">長年深耕遠洋漁業、具備跨洋區作業經驗</p>
+        <div class="highlight-masonry">
+            <div class="masonry-item reveal">
+                <div class="masonry-item-visual">
+                    <div class="masonry-item-num">01</div>
+                    <img src="assets/hero-banner-01.jpg" alt="深耕遠洋漁業">
+                    <div class="masonry-item-icon"><i data-lucide="anchor"></i></div>
+                </div>
+                <div class="masonry-item-text">
+                    <h3>深耕遠洋漁業</h3>
+                    <p>長年深耕遠洋漁業、具備跨洋區作業經驗</p>
+                </div>
             </div>
-            <div class="sp-highlight-card reveal">
-                <div class="sp-highlight-icon-frame"><i data-lucide="ship"></i></div>
-                <div class="sp-highlight-index">02</div>
-                <h3 class="sp-highlight-title">船隊整合能力</h3>
-                <p class="sp-highlight-desc">整合圍網船、魷釣船、延繩釣船及冷凍運搬合計近 40 艘之船隊，提升整體營運效益</p>
+            
+            <div class="masonry-item reveal">
+                <div class="masonry-item-visual">
+                    <div class="masonry-item-num">02</div>
+                    <img src="assets/biz-jumbo.jpg" alt="船隊整合能力">
+                    <div class="masonry-item-icon"><i data-lucide="ship"></i></div>
+                </div>
+                <div class="masonry-item-text">
+                    <h3>船隊整合能力</h3>
+                    <p>整合圍網船、魷釣船、延繩釣船及冷凍運搬合計近 40 艘之船隊，提升整體營運效益</p>
+                </div>
             </div>
-            <div class="sp-highlight-card reveal">
-                <div class="sp-highlight-icon-frame"><i data-lucide="snowflake"></i></div>
-                <div class="sp-highlight-index">03</div>
-                <h3 class="sp-highlight-title">冷鏈與供應鏈</h3>
-                <p class="sp-highlight-desc">建構全球冷鏈供應體系，確保穩定漁獲品質優良</p>
+            
+            <div class="masonry-item reveal">
+                <div class="masonry-item-visual">
+                    <div class="masonry-item-num">03</div>
+                    <img src="assets/hero-banner-03.jpg" alt="冷鏈與供應鏈">
+                    <div class="masonry-item-icon"><i data-lucide="snowflake"></i></div>
+                </div>
+                <div class="masonry-item-text">
+                    <h3>冷鏈與供應鏈</h3>
+                    <p>建構全球冷鏈供應體系，確保穩定漁獲品質優良</p>
+                </div>
             </div>
-            <div class="sp-highlight-card reveal">
-                <div class="sp-highlight-icon-frame"><i data-lucide="globe"></i></div>
-                <div class="sp-highlight-index">04</div>
-                <h3 class="sp-highlight-title">國際合作布局</h3>
-                <p class="sp-highlight-desc">與亞洲、歐洲、美洲等市場建立供應合作關係</p>
+            
+            <div class="masonry-item reveal">
+                <div class="masonry-item-visual">
+                    <div class="masonry-item-num">04</div>
+                    <img src="assets/core-values.jpg" alt="國際合作布局">
+                    <div class="masonry-item-icon"><i data-lucide="globe"></i></div>
+                </div>
+                <div class="masonry-item-text">
+                    <h3>國際合作布局</h3>
+                    <p>與亞洲、歐洲、美洲等市場建立供應合作關係</p>
+                </div>
             </div>
-            <div class="sp-highlight-card reveal">
-                <div class="sp-highlight-icon-frame"><i data-lucide="shield-check"></i></div>
-                <div class="sp-highlight-index">05</div>
-                <h3 class="sp-highlight-title">永續與合規</h3>
-                <p class="sp-highlight-desc">推動 ESG、責任採購、供應鏈合規與風險控管</p>
+            
+            <div class="masonry-item reveal">
+                <div class="masonry-item-visual">
+                    <div class="masonry-item-num">05</div>
+                    <img src="assets/esg-governance.jpg" alt="永續與合規">
+                    <div class="masonry-item-icon"><i data-lucide="shield-check"></i></div>
+                </div>
+                <div class="masonry-item-text">
+                    <h3>永續與合規</h3>
+                    <p>推動 ESG、責任採購、供應鏈合規與風險控管</p>
+                </div>
             </div>
-            <div class="sp-highlight-card reveal">
-                <div class="sp-highlight-icon-frame"><i data-lucide="cpu"></i></div>
-                <div class="sp-highlight-index">06</div>
-                <h3 class="sp-highlight-title">技術升級</h3>
-                <p class="sp-highlight-desc">自有圍網船設計並持續優化船舶設備、冷凍技術及節能效率，強化競爭優勢</p>
+            
+            <div class="masonry-item reveal">
+                <div class="masonry-item-visual">
+                    <div class="masonry-item-num">06</div>
+                    <img src="assets/audit-analysis.jpg" alt="技術升級">
+                    <div class="masonry-item-icon"><i data-lucide="cpu"></i></div>
+                </div>
+                <div class="masonry-item-text">
+                    <h3>技術升級</h3>
+                    <p>自有圍網船設計並持續優化船舶設備、冷凍技術及節能效率，強化競爭優勢</p>
+                </div>
             </div>
         </div>
 
