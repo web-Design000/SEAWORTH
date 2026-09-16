@@ -2637,7 +2637,7 @@
     .highlight-masonry {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 80px 40px;
+        gap: 100px 80px;
         padding: 60px 0 100px;
         align-items: start;
     }
@@ -2666,21 +2666,6 @@
         position: relative;
         z-index: 2;
     }
-    .masonry-item-icon {
-        position: absolute;
-        bottom: -20px;
-        right: 20px;
-        width: 56px;
-        height: 56px;
-        background: var(--c-white);
-        border: 1px solid var(--c-line);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--c-copper);
-        z-index: 3;
-    }
     .masonry-item-text {
         position: relative;
         padding: 0 12px;
@@ -2691,8 +2676,8 @@
         color: var(--c-copper-light);
         opacity: 0.15;
         position: absolute;
-        top: -60px;
-        left: -40px;
+        top: -100px;
+        left: -80px;
         line-height: 1;
         z-index: 0;
         pointer-events: none;
@@ -2705,6 +2690,15 @@
         position: relative;
         z-index: 1;
         letter-spacing: 0.04em;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .masonry-item-text h3 i {
+        color: var(--c-copper);
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
     }
     .masonry-item-text p {
         font-size: var(--text-sm);
@@ -2998,10 +2992,9 @@
                 <div class="masonry-item-visual">
                     <div class="masonry-item-num">01</div>
                     <img src="assets/hero-banner-01.jpg" alt="深耕遠洋漁業">
-                    <div class="masonry-item-icon"><i data-lucide="anchor"></i></div>
                 </div>
                 <div class="masonry-item-text">
-                    <h3>深耕遠洋漁業</h3>
+                    <h3><i data-lucide="anchor"></i>深耕遠洋漁業</h3>
                     <p>長年深耕遠洋漁業、具備跨洋區作業經驗</p>
                 </div>
             </div>
@@ -3010,10 +3003,9 @@
                 <div class="masonry-item-visual">
                     <div class="masonry-item-num">02</div>
                     <img src="assets/biz-jumbo.jpg" alt="船隊整合能力">
-                    <div class="masonry-item-icon"><i data-lucide="ship"></i></div>
                 </div>
                 <div class="masonry-item-text">
-                    <h3>船隊整合能力</h3>
+                    <h3><i data-lucide="ship"></i>船隊整合能力</h3>
                     <p>整合圍網船、魷釣船、延繩釣船及冷凍運搬合計近 40 艘之船隊，提升整體營運效益</p>
                 </div>
             </div>
@@ -3022,10 +3014,9 @@
                 <div class="masonry-item-visual">
                     <div class="masonry-item-num">03</div>
                     <img src="assets/hero-banner-03.jpg" alt="冷鏈與供應鏈">
-                    <div class="masonry-item-icon"><i data-lucide="snowflake"></i></div>
                 </div>
                 <div class="masonry-item-text">
-                    <h3>冷鏈與供應鏈</h3>
+                    <h3><i data-lucide="snowflake"></i>冷鏈與供應鏈</h3>
                     <p>建構全球冷鏈供應體系，確保穩定漁獲品質優良</p>
                 </div>
             </div>
@@ -3034,10 +3025,9 @@
                 <div class="masonry-item-visual">
                     <div class="masonry-item-num">04</div>
                     <img src="assets/core-values.jpg" alt="國際合作布局">
-                    <div class="masonry-item-icon"><i data-lucide="globe"></i></div>
                 </div>
                 <div class="masonry-item-text">
-                    <h3>國際合作布局</h3>
+                    <h3><i data-lucide="globe"></i>國際合作布局</h3>
                     <p>與亞洲、歐洲、美洲等市場建立供應合作關係</p>
                 </div>
             </div>
@@ -3046,10 +3036,9 @@
                 <div class="masonry-item-visual">
                     <div class="masonry-item-num">05</div>
                     <img src="assets/esg-governance.jpg" alt="永續與合規">
-                    <div class="masonry-item-icon"><i data-lucide="shield-check"></i></div>
                 </div>
                 <div class="masonry-item-text">
-                    <h3>永續與合規</h3>
+                    <h3><i data-lucide="shield-check"></i>永續與合規</h3>
                     <p>推動 ESG、責任採購、供應鏈合規與風險控管</p>
                 </div>
             </div>
@@ -3058,10 +3047,9 @@
                 <div class="masonry-item-visual">
                     <div class="masonry-item-num">06</div>
                     <img src="assets/audit-analysis.jpg" alt="技術升級">
-                    <div class="masonry-item-icon"><i data-lucide="cpu"></i></div>
                 </div>
                 <div class="masonry-item-text">
-                    <h3>技術升級</h3>
+                    <h3><i data-lucide="cpu"></i>技術升級</h3>
                     <p>自有圍網船設計並持續優化船舶設備、冷凍技術及節能效率，強化競爭優勢</p>
                 </div>
             </div>
