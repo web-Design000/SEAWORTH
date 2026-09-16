@@ -269,7 +269,8 @@
             transition: max-height 0.5s var(--ease-poetic), opacity 0.4s ease, visibility 0.5s;
             z-index: 100;
         }
-        .has-dropdown:hover .nav-dropdown {
+        .has-dropdown:hover .nav-dropdown,
+        .has-dropdown.is-open .nav-dropdown {
             opacity: 1;
             visibility: visible;
             max-height: 420px;
@@ -277,11 +278,13 @@
         .nav-dropdown-inner {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 14px;
-            padding: 24px 22px;
+            align-items: stretch;
+            width: 100%;
+            gap: 0;
+            padding: 12px 22px;
         }
         .nav-dropdown a {
+            display: block;
             font-family: var(--font-sans);
             font-size: var(--text-sm);
             letter-spacing: 0.18em;
@@ -290,6 +293,7 @@
             text-align: center;
             white-space: nowrap;
             font-weight: 400;
+            padding: 10px 14px;
             transition: color 0.3s ease;
         }
         /* 一個連結被 hover 時，其他連結一起淡下去，形成群組明暗對比 */
@@ -3092,5 +3096,27 @@ document.addEventListener("DOMContentLoaded", () => {
     
 </script>
 
+    <script>
+        // 導覽下拉選單：點擊觸發項只展開選單，不直接跳轉頁面；子選項維持正常導覽
+        (function() {
+            const dropdownItems = document.querySelectorAll('.nav-split-menu > li.has-dropdown');
+            if (!dropdownItems.length) return;
+            dropdownItems.forEach(function(li) {
+                const trigger = li.querySelector(':scope > a');
+                if (!trigger) return;
+                trigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const isOpen = li.classList.contains('is-open');
+                    dropdownItems.forEach(function(other) { other.classList.remove('is-open'); });
+                    if (!isOpen) li.classList.add('is-open');
+                });
+            });
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.nav-split-menu > li.has-dropdown')) {
+                    dropdownItems.forEach(function(li) { li.classList.remove('is-open'); });
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
