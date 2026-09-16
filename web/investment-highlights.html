@@ -2274,6 +2274,7 @@
         color: var(--c-subtitle-blue);
         letter-spacing: 0.08em;
         line-height: 1.8;
+        text-align: center;
         margin: 0 auto 36px;
         max-width: 1020px;
     }
@@ -2637,9 +2638,13 @@
     .highlight-masonry {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 100px 80px;
-        padding: 60px 0 100px;
+        gap: 60px 140px;
+        padding: 60px 8vw 20px;
         align-items: start;
+        width: 100vw;
+        max-width: 1800px;
+        margin-left: 50%;
+        transform: translateX(-50%);
     }
     .highlight-masonry .masonry-item:nth-child(3n+2) {
         margin-top: 80px;
@@ -2653,13 +2658,13 @@
     }
     .masonry-item-visual {
         position: relative;
-        margin-bottom: 32px;
+        margin-bottom: 12px;
         z-index: 1;
     }
     .masonry-item-visual img {
         width: 100%;
         height: auto;
-        aspect-ratio: 4 / 3;
+        aspect-ratio: 16 / 9;
         object-fit: cover;
         display: block;
         border-radius: 4px;
@@ -2668,15 +2673,15 @@
     }
     .masonry-item-text {
         position: relative;
-        padding: 0 12px;
+        padding: 0;
     }
     .masonry-item-num {
         font-family: var(--font-display);
-        font-size: 160px;
+        font-size: 180px;
         color: var(--c-copper-light);
         opacity: 0.15;
         position: absolute;
-        top: -100px;
+        top: -130px;
         left: -80px;
         line-height: 1;
         z-index: 0;
@@ -2685,8 +2690,8 @@
     .masonry-item-text h3 {
         font-family: var(--font-serif);
         font-size: var(--text-xl);
-        color: var(--c-ink);
-        margin-bottom: 12px;
+        color: var(--c-subtitle-blue);
+        margin: 0 0 12px 0;
         position: relative;
         z-index: 1;
         letter-spacing: 0.04em;
@@ -2991,7 +2996,7 @@
             <div class="masonry-item reveal">
                 <div class="masonry-item-visual">
                     <div class="masonry-item-num">01</div>
-                    <img src="assets/hero-banner-01.jpg" alt="深耕遠洋漁業">
+                    <img src="assets/hero-banner-04.jpg" alt="深耕遠洋漁業">
                 </div>
                 <div class="masonry-item-text">
                     <h3><i data-lucide="anchor"></i>深耕遠洋漁業</h3>
@@ -3002,7 +3007,7 @@
             <div class="masonry-item reveal">
                 <div class="masonry-item-visual">
                     <div class="masonry-item-num">02</div>
-                    <img src="assets/biz-jumbo.jpg" alt="船隊整合能力">
+                    <img src="assets/crew-deck.jpg" alt="船隊整合能力">
                 </div>
                 <div class="masonry-item-text">
                     <h3><i data-lucide="ship"></i>船隊整合能力</h3>
@@ -3013,7 +3018,7 @@
             <div class="masonry-item reveal">
                 <div class="masonry-item-visual">
                     <div class="masonry-item-num">03</div>
-                    <img src="assets/hero-banner-03.jpg" alt="冷鏈與供應鏈">
+                    <img src="assets/fish-jump.jpg" alt="冷鏈與供應鏈">
                 </div>
                 <div class="masonry-item-text">
                     <h3><i data-lucide="snowflake"></i>冷鏈與供應鏈</h3>

@@ -2964,12 +2964,13 @@
     .about-photo-strip {
         display: grid;
         grid-template-columns: 0.6fr 1.2fr 0.5fr;
+        align-items: center;
         gap: 12px;
         width: 100%;
         margin: 32px 0 56px;
     }
     .about-photo-strip-item {
-        height: 400px;
+        height: 350px;
         background-image: url('assets/news-corporate.png');
         background-repeat: no-repeat;
         background-position: 0% 100%;
@@ -2978,7 +2979,7 @@
         transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
     }
     .about-photo-strip-item:nth-child(1) { background-size: 303% auto; background-position: 0% 100%; --y: -12px; }
-    .about-photo-strip-item:nth-child(2) { background-size: 188.7% auto; background-position: 70.2% 100%; --y: 12px; }
+    .about-photo-strip-item:nth-child(2) { height: 440px; background-size: 188.7% auto; background-position: 70.2% 100%; --y: 12px; }
     .about-photo-strip-item:nth-child(3) { background-size: 714.3% auto; background-position: 100% 100%; --y: -12px; }
     .about-photo-strip-item:hover {
         transform: translateY(var(--y)) scale(1.02);
@@ -2986,7 +2987,7 @@
 
     /* 置中引言，字級縮小、更接近說明文而不是巨大標語 */
     .about-pullquote {
-        max-width: 700px;
+        max-width: 860px;
         margin: 0 auto 120px;
         text-align: center;
         font-family: var(--font-serif);
@@ -3001,6 +3002,7 @@
     @media (max-width: 1024px) {
         .about-photo-strip { grid-template-columns: 1fr; margin: 28px 0 48px; gap: 8px; }
         .about-photo-strip-item { height: 240px; --y: 0px !important; }
+        .about-photo-strip-item:nth-child(2) { height: 240px; }
         .about-pullquote { margin-bottom: 80px; }
     }
 </style>
@@ -3022,7 +3024,7 @@
             </div>
 
         </div>
-        <div class="blanz-container" style="max-width: 1500px;">
+        <div class="blanz-container" style="max-width: 1600px;">
             <div class="about-photo-strip reveal" role="img" aria-label="海沃控股集團船隊">
                 <div class="about-photo-strip-item"></div>
                 <div class="about-photo-strip-item"></div>
