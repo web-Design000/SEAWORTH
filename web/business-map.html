@@ -1949,6 +1949,26 @@
         .delay-1 { transition-delay: 0.1s; }
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
+
+        /* ===== 封面圖入場效果 (Hero Entrance) ===== */
+        .sp-hero img {
+            transform: scale(1.08);
+            transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .sp-hero.is-revealed img {
+            transform: scale(1);
+        }
+        .sp-hero-inner > * {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .sp-hero.is-revealed .sp-hero-inner > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .sp-hero-inner > *:nth-child(2) { transition-delay: 0.1s; }
+        .sp-hero-inner > *:nth-child(3) { transition-delay: 0.2s; }
         .delay-4 { transition-delay: 0.4s; }
 
         /* ===== 旗艦船隊 FLAGSHIP FLEET (Tuna Manzai 707，移植自 seaworth-homepage-corporate.html .master 區塊) ===== */
@@ -3028,11 +3048,19 @@
 
                 document.querySelectorAll('.reveal, .reveal-trigger').forEach(el => observer.observe(el));
             }
+            // 封面圖入場：Loading 畫面淡出後才觸發，避免跟上面同一個問題一樣被遮住
+            let heroRevealed = false;
+            function revealHero() {
+                if (heroRevealed) return;
+                heroRevealed = true;
+                document.querySelectorAll('.sp-hero').forEach(el => el.classList.add('is-revealed'));
+            }
             if (document.getElementById('siteLoader')) {
-                window.addEventListener('siteLoaderHidden', startRevealObserver, { once: true });
-                setTimeout(startRevealObserver, 3000); // 保險：避免事件漏接導致內容永遠不顯示
+                window.addEventListener('siteLoaderHidden', () => { startRevealObserver(); revealHero(); }, { once: true });
+                setTimeout(() => { startRevealObserver(); revealHero(); }, 3000); // 保險：避免事件漏接導致內容永遠不顯示
             } else {
                 startRevealObserver();
+                revealHero();
             }
         })();
 </script>

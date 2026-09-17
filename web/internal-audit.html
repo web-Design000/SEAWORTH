@@ -1949,6 +1949,26 @@
         .delay-1 { transition-delay: 0.1s; }
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
+
+        /* ===== 封面圖入場效果 (Hero Entrance) ===== */
+        .sp-hero img {
+            transform: scale(1.08);
+            transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .sp-hero.is-revealed img {
+            transform: scale(1);
+        }
+        .sp-hero-inner > * {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .sp-hero.is-revealed .sp-hero-inner > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .sp-hero-inner > *:nth-child(2) { transition-delay: 0.1s; }
+        .sp-hero-inner > *:nth-child(3) { transition-delay: 0.2s; }
         .delay-4 { transition-delay: 0.4s; }
 
         /* ===== 旗艦船隊 FLAGSHIP FLEET (Tuna Manzai 707，移植自 seaworth-homepage-corporate.html .master 區塊) ===== */
@@ -2580,6 +2600,68 @@
         .sp-accordion-head-left { gap: 12px; }
         .sp-cta-panel { padding: 70px 24px; }
     }
+    /* 內部稽核重點區塊 (Full width) */
+    .audit-dark-banner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+    }
+    .audit-dark-banner h4 {
+        font-family: var(--font-serif);
+        font-size: var(--text-2xl);
+        margin-bottom: 24px;
+        color: var(--c-copper-light);
+    }
+    .audit-dark-banner p {
+        max-width: 800px;
+        line-height: 1.8;
+        font-size: var(--text-lg);
+        color: rgba(255,255,255,0.8);
+        margin-bottom: 40px;
+    }
+    .audit-stats-row {
+        display: flex;
+        gap: 60px;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 40px;
+    }
+    .audit-stat-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+    .audit-stat-value {
+        font-family: var(--font-display);
+        font-size: var(--text-4xl);
+        color: #FFF;
+        line-height: 1;
+    }
+    .audit-stat-label {
+        font-size: var(--text-sm);
+        color: var(--c-copper-light);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+    @media (max-width: 768px) {
+        .audit-dark-banner {
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+        .audit-dark-banner h4 {
+            font-size: var(--text-xl);
+        }
+        .audit-stats-row {
+            gap: 30px;
+            flex-direction: column;
+        }
+    }
 </style>
 
 </head>
@@ -2846,9 +2928,33 @@
             </div>
         </div>
 
-        <div class="sp-intro reveal" style="margin-top:70px;">
-            <p>集團透過授權核准、權責分工、文件留存、系統紀錄及異常追蹤等控制機制，持續提升營運透明度、資料可靠性及管理品質，建構可追溯、可衡量及持續改善之內部控制體系。</p>
+        </div></section>
+
+    <section class="blanz-section" style="background-color: var(--c-ocean-deep); color: #FFF; position: relative; overflow: hidden; padding: 120px 0;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at top right, rgba(255,255,255,0.03), transparent 60%); pointer-events: none;"></div>
+        <div class="blanz-container">
+            <div class="audit-dark-banner reveal">
+                <h4>建構可追溯、可衡量及持續改善之內部控制體系</h4>
+            <p>集團透過授權核准、權責分工、文件留存、系統紀錄及異常追蹤等控制機制，持續提升營運透明度、資料可靠性及管理品質。</p>
+            <div class="audit-stats-row">
+                <div class="audit-stat-item">
+                    <span class="audit-stat-value">100<span class="num-sym">%</span></span>
+                    <span class="audit-stat-label">AUTHORIZATION</span>
+                </div>
+                <div class="audit-stat-item">
+                    <span class="audit-stat-value">0</span>
+                    <span class="audit-stat-label">TOLERANCE</span>
+                </div>
+                <div class="audit-stat-item">
+                    <span class="audit-stat-value">24<span class="num-sym">/7</span></span>
+                    <span class="audit-stat-label">SYSTEM LOGS</span>
+                </div>
+            </div>
         </div>
+        </div>
+    </section>
+
+    <section class="blanz-section sp-section"><div class="blanz-container">
     
     
         <div class="sp-crosslink-row reveal">
@@ -2948,11 +3054,19 @@
 
                 document.querySelectorAll('.reveal, .reveal-trigger').forEach(el => observer.observe(el));
             }
+            // 封面圖入場：Loading 畫面淡出後才觸發，避免跟上面同一個問題一樣被遮住
+            let heroRevealed = false;
+            function revealHero() {
+                if (heroRevealed) return;
+                heroRevealed = true;
+                document.querySelectorAll('.sp-hero').forEach(el => el.classList.add('is-revealed'));
+            }
             if (document.getElementById('siteLoader')) {
-                window.addEventListener('siteLoaderHidden', startRevealObserver, { once: true });
-                setTimeout(startRevealObserver, 3000); // 保險：避免事件漏接導致內容永遠不顯示
+                window.addEventListener('siteLoaderHidden', () => { startRevealObserver(); revealHero(); }, { once: true });
+                setTimeout(() => { startRevealObserver(); revealHero(); }, 3000); // 保險：避免事件漏接導致內容永遠不顯示
             } else {
                 startRevealObserver();
+                revealHero();
             }
         })();
 </script>
@@ -3001,6 +3115,62 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (!e.target.closest('.nav-split-menu > li.has-dropdown')) {
                     dropdownItems.forEach(function(li) { li.classList.remove('is-open'); });
                 }
+            });
+        })();
+    </script>
+    
+    <!-- 數字跑動動畫 (與事業版圖相同) -->
+    <script>
+        (function() {
+            const row = document.querySelector('.audit-stats-row');
+            if (!row) return;
+            const items = Array.from(row.querySelectorAll('.audit-stat-value')).map(el => {
+                const suffixEl = el.querySelector('.num-sym');
+                const suffixHTML = suffixEl ? suffixEl.outerHTML : '';
+                const target = parseInt(el.textContent, 10) || 0;
+                // 立即設定為 0
+                el.innerHTML = '0' + suffixHTML;
+                return { el, target, suffixHTML };
+            });
+
+            function animate(duration) {
+                duration = duration || 800;
+                const start = performance.now();
+                let lastUpdate = 0;
+                
+                function tick(now) {
+                    const t = Math.min(1, (now - start) / duration);
+                    
+                    if (now - lastUpdate > 50 || t === 1) {
+                        items.forEach(item => {
+                            if (t < 1) {
+                                const maxVal = Math.pow(10, item.target.toString().length);
+                                const randomNum = Math.floor(Math.random() * maxVal);
+                                item.el.innerHTML = randomNum + item.suffixHTML;
+                            } else {
+                                item.el.innerHTML = item.target + item.suffixHTML;
+                            }
+                        });
+                        lastUpdate = now;
+                    }
+                    
+                    if (t < 1) requestAnimationFrame(tick);
+                }
+                requestAnimationFrame(tick);
+            }
+
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    const observer = new IntersectionObserver((entries, obs) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                setTimeout(() => animate(), 300);
+                                obs.disconnect();
+                            }
+                        });
+                    }, { threshold: 0.1 });
+                    observer.observe(row);
+                }, 500);
             });
         })();
     </script>
