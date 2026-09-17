@@ -2251,7 +2251,7 @@
         margin-top: 16px;
     }
 
-    .sp-section { padding: 120px 0; }
+    .sp-section { padding: 80px 0; }
     .sp-section-tight { padding: 60px 0 120px; }
     .sp-section-head { margin-bottom: 56px; max-width: 760px; }
     .sp-section-head .en-poetic-title { margin-bottom: 14px; }
@@ -2622,6 +2622,7 @@
                 const wait = Math.max(0, MIN_DISPLAY - (performance.now() - shownAt));
                 setTimeout(() => {
                     loader.classList.add('is-hidden');
+                    window.dispatchEvent(new Event('siteLoaderHidden'));
                     setTimeout(() => loader.remove(), 900);
                 }, wait);
             }
@@ -2866,64 +2867,39 @@
     /* 三大事業群：橫向並排的可展開面板，平常只露出直式名稱，
        滑鼠移過去（或手機點擊）該面板會橫向展開露出 Logo／標題／說明，
        其他面板同時收窄。整段只佔一排的高度，不會變成三段重複的長版面。 */
-    .about-divisions-row {
-        display: flex;
-        height: 560px;
-        gap: 4px;
-        margin: 0 0 120px;
+    .about-divisions-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+        max-width: 1800px;
+        margin: 0 auto 120px;
+    }
+    .about-division-card:nth-child(2) {
+        transform: translateY(-80px);
+    }
+    .about-division-card:nth-child(3) {
+        transform: translateY(60px);
+    }
+    @media (max-width: 1024px) {
+        .about-division-card:nth-child(2),
+        .about-division-card:nth-child(3) {
+            transform: none;
+        }
+    }
+    .about-division-card-img {
+        height: 380px;
         overflow: hidden;
-        border-radius: 4px;
+        margin-bottom: 28px;
+        background: var(--c-white);
     }
-    .about-division-panel {
-        position: relative;
-        flex: 1;
-        min-width: 0;
-        overflow: hidden;
-        cursor: pointer;
-        background-size: cover;
-        background-position: center;
-        transition: flex 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    .about-division-card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
     }
-    .about-division-panel.is-active {
-        flex: 3.2;
-    }
-    .about-division-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(0deg, rgba(14,18,23,0.8) 0%, rgba(14,18,23,0.1) 55%, rgba(14,18,23,0.3) 100%);
-    }
-    .about-division-vlabel {
-        position: absolute;
-        left: 50%;
-        bottom: 36px;
-        transform: translateX(-50%);
-        writing-mode: vertical-rl;
-        font-family: var(--font-display);
-        font-size: var(--text-sm);
-        letter-spacing: 0.25em;
-        color: #FFFFFF;
-        text-transform: uppercase;
-        white-space: nowrap;
-        opacity: 1;
-        transition: opacity 0.35s ease;
-    }
-    .about-division-panel.is-active .about-division-vlabel {
-        opacity: 0;
-        pointer-events: none;
-    }
-    .about-division-content {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        padding: 44px;
-        opacity: 0;
-        transform: translateY(16px);
-        transition: opacity 0.5s ease 0.15s, transform 0.5s ease 0.15s;
-    }
-    .about-division-panel.is-active .about-division-content {
-        opacity: 1;
-        transform: translateY(0);
+    .about-division-card:hover .about-division-card-img img {
+        transform: scale(1.05);
     }
     .about-division-logo {
         height: 32px;
@@ -2931,29 +2907,25 @@
         margin-bottom: 18px;
         display: block;
     }
-    .about-division-content h3 {
+    .about-division-card h3 {
         font-family: var(--font-serif);
         font-size: var(--text-2xl);
-        color: #FFFFFF;
+        color: var(--c-ink);
         margin-bottom: 14px;
         font-weight: 400;
         letter-spacing: 0.04em;
     }
-    .about-division-content p {
+    .about-division-card p {
         font-size: var(--text-sm);
-        color: rgba(255,255,255,0.86);
+        color: var(--c-muted);
         line-height: 1.9;
-        max-width: 480px;
     }
     @media (max-width: 1024px) {
-        .about-divisions-row { height: 460px; }
-        .about-division-content { padding: 28px; }
-        .about-division-content p { max-width: 100%; }
+        .about-divisions-grid { grid-template-columns: 1fr; gap: 56px; }
+        .about-division-card-img { height: 340px; }
     }
     @media (max-width: 640px) {
-        .about-divisions-row { height: 380px; }
-        .about-division-vlabel { font-size: var(--text-xs); bottom: 20px; }
-        .about-division-content { padding: 20px; }
+        .about-division-card-img { height: 260px; margin-bottom: 20px; }
     }
 
     /* 滿版三塊照片橫列：同一張照片切成三塊、中間留小縫隙。
@@ -3034,53 +3006,36 @@
         <div class="blanz-container" style="max-width: 1200px;">
 
             <div class="about-pullquote reveal">海沃控股集團成立於 2026 年，以整合遠洋漁業上下游資源、深化共善治理、提升營運效能為使命。集團旗下擘劃三大事業群，深耕漁撈、造船與冷鏈三大專業領域，建構健全且具韌性的全球海洋產業鏈：</div>
-
-            <div class="about-divisions-row reveal" id="aboutDivisions">
-                <div class="about-division-panel is-active" data-index="0" style="background-image:url('assets/2_nologo.jpg');">
-                    <div class="about-division-overlay"></div>
-                    <span class="about-division-vlabel">華偉漁業事業群</span>
-                    <div class="about-division-content">
-                        <img class="about-division-logo" src="assets/logo-huawei.png" alt="華偉漁業事業群">
-                        <h3>華偉漁業事業群</h3>
-                        <p>發展起源可追溯至 1983 年，黃氏家族自高雄前鎮漁港投入冷凍倉儲，深耕遠洋漁業領域。集團自一艘圍網漁船啟航，隨著長年經驗累積逐步擴建船隊規模，為集團奠定厚實根基。</p>
+        </div>
+        <div class="blanz-container" style="max-width: 1900px;">
+            <div class="about-divisions-grid">
+                <div class="about-division-card reveal">
+                    <div class="about-division-card-img">
+                        <img src="assets/2_nologo.jpg" alt="華偉漁業事業群">
                     </div>
+                    <img class="about-division-logo" src="assets/logo-huawei.png" alt="華偉漁業事業群">
+                    <h3>華偉漁業事業群</h3>
+                    <p>發展起源可追溯至 1983 年，黃氏家族自高雄前鎮漁港投入冷凍倉儲，深耕遠洋漁業領域。集團自一艘圍網漁船啟航，隨著長年經驗累積逐步擴建船隊規模，為集團奠定厚實根基。</p>
                 </div>
-                <div class="about-division-panel" data-index="1" style="background-image:url('assets/4_nologo.jpg');">
-                    <div class="about-division-overlay"></div>
-                    <span class="about-division-vlabel">巨寶漁業事業群</span>
-                    <div class="about-division-content">
-                        <img class="about-division-logo" src="assets/logo-jubao.png" alt="巨寶漁業事業群">
-                        <h3>巨寶漁業事業群</h3>
-                        <p>專營圍網漁船捕撈，並結合冷凍運搬船建構「海上移動冷鏈」優勢；同時跨足現代化造船領域，引進符合國際勞工規範與前瞻科技的船體設計，全方位提升海上作業安全與營運效率。</p>
+                <div class="about-division-card reveal">
+                    <div class="about-division-card-img">
+                        <img src="assets/4_nologo.jpg" alt="巨寶漁業事業群">
                     </div>
+                    <img class="about-division-logo" src="assets/logo-jubao.png" alt="巨寶漁業事業群">
+                    <h3>巨寶漁業事業群</h3>
+                    <p>專營圍網漁船捕撈，並結合冷凍運搬船建構「海上移動冷鏈」優勢；同時跨足現代化造船領域，引進符合國際勞工規範與前瞻科技的船體設計，全方位提升海上作業安全與營運效率。</p>
                 </div>
-                <div class="about-division-panel" data-index="2" style="background-image:url('assets/3_nologo.jpg');">
-                    <div class="about-division-overlay"></div>
-                    <span class="about-division-vlabel">華昇魷釣事業群</span>
-                    <div class="about-division-content">
-                        <img class="about-division-logo" src="assets/logo-huasheng.png" alt="華昇魷釣事業群">
-                        <h3>華昇魷釣事業群</h3>
-                        <p>專精高技術漁法，經營魷魚秋刀魚船與延繩釣漁船。多元船隊相輔相成，完美展現從精準捕撈、生態永續到全球冷鏈供應的頂尖實力。</p>
+                <div class="about-division-card reveal">
+                    <div class="about-division-card-img">
+                        <img src="assets/3_nologo.jpg" alt="華昇魷釣事業群">
                     </div>
+                    <img class="about-division-logo" src="assets/logo-huasheng.png" alt="華昇魷釣事業群">
+                    <h3>華昇魷釣事業群</h3>
+                    <p>專精高技術漁法，經營魷魚秋刀魚船與延繩釣漁船。多元船隊相輔相成，完美展現從精準捕撈、生態永續到全球冷鏈供應的頂尖實力。</p>
                 </div>
             </div>
-            <script>
-                (function() {
-                    const row = document.getElementById('aboutDivisions');
-                    if (!row) return;
-                    const panels = row.querySelectorAll('.about-division-panel');
-                    function setActive(panel) {
-                        panels.forEach(p => p.classList.toggle('is-active', p === panel));
-                    }
-                    const canHover = window.matchMedia('(hover: hover)').matches;
-                    panels.forEach(panel => {
-                        if (canHover) {
-                            panel.addEventListener('mouseenter', () => setActive(panel));
-                        }
-                        panel.addEventListener('click', () => setActive(panel));
-                    });
-                })();
-            </script>
+        </div>
+        <div class="blanz-container" style="max-width: 1200px;">
 
             <div class="sp-intro reveal" style="max-width: 860px; margin: 0 auto; padding-bottom: 80px;">
                 <p>歷經逾四十載的砥礪深耕，本集團蛻變為涵蓋智慧造船、遠洋漁撈、冷鏈物流及國際貿易的多元控股集團。我們堅持「專業、誠信、創新、永續」的核心價值，優化企業內控與合規治理，全面引領產業轉型升級。</p>
@@ -3088,7 +3043,7 @@
                 <p>從海洋出發，也對海洋負責。海沃控股集團將持續提供安全、優質且全流程可追溯的優良漁獲，攜手全球夥伴，共同推動更具責任與韌性的現代遠洋漁業。朝向「敬海而行、與世界共榮共善」的永續願景穩健邁進。</p>
             </div>
             
-            <div class="sp-crosslink-row">
+            <div class="sp-crosslink-row reveal">
                 <a href="index.html">← 首頁</a>
                 <a href="business-map.html">事業版圖 →</a>
             </div>
@@ -3166,19 +3121,31 @@
             });
 
             // 建立 IntersectionObserver 進行平滑入場監控
-            const observer = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('in');
-                        obs.unobserve(entry.target); // 動畫觸發一次即解綁，節省效能
-                    }
+            // 等待全站 Loading 畫面淡出後才開始觀察，避免入場動畫在 Loading 遮罩後面就播完，使用者完全看不到
+            let revealStarted = false;
+            function startRevealObserver() {
+                if (revealStarted) return;
+                revealStarted = true;
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('in');
+                            obs.unobserve(entry.target); // 動畫觸發一次即解綁，節省效能
+                        }
+                    });
+                }, {
+                    threshold: 0.05,
+                    rootMargin: '0px 0px 0px 0px'
                 });
-            }, {
-                threshold: 0.05,
-                rootMargin: '0px 0px 0px 0px'
-            });
 
-            document.querySelectorAll('.reveal, .reveal-trigger').forEach(el => observer.observe(el));
+                document.querySelectorAll('.reveal, .reveal-trigger').forEach(el => observer.observe(el));
+            }
+            if (document.getElementById('siteLoader')) {
+                window.addEventListener('siteLoaderHidden', startRevealObserver, { once: true });
+                setTimeout(startRevealObserver, 3000); // 保險：避免事件漏接導致內容永遠不顯示
+            } else {
+                startRevealObserver();
+            }
         })();
 </script>
 <script>

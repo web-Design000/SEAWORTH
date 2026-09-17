@@ -888,7 +888,7 @@
 
         /* 區塊 7：CONTACT US (極簡詩意登記處) */
         .contact-poetic-section {
-            padding: 140px 0;
+            padding: 80px 0 60px;
             background: var(--c-white);
         }
         .contact-poetic-header {
@@ -2267,7 +2267,7 @@
         margin-top: 16px;
     }
 
-    .sp-section { padding: 120px 0; }
+    .sp-section { padding: 80px 0; }
     .sp-section-tight { padding: 60px 0 120px; }
     .sp-section-head { margin-bottom: 56px; max-width: 760px; }
     .sp-section-head .en-poetic-title { margin-bottom: 14px; }
@@ -2547,8 +2547,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-top: 40px;
-        margin-top: 60px;
+        padding-top: 16px;
+        margin-top: 16px;
     }
     .sp-crosslink-row a {
         font-size: var(--text-sm);
@@ -2617,6 +2617,7 @@
                 const wait = Math.max(0, MIN_DISPLAY - (performance.now() - shownAt));
                 setTimeout(() => {
                     loader.classList.add('is-hidden');
+                    window.dispatchEvent(new Event('siteLoaderHidden'));
                     setTimeout(() => loader.remove(), 900);
                 }, wait);
             }
@@ -2850,13 +2851,13 @@
     
         <section class="contact-poetic-section" id="contact">
         <div class="blanz-container">
-            <div class="contact-poetic-header">
+            <div class="contact-poetic-header reveal">
                 <h2 class="contact-poetic-title">INQUIRY &<br>REGISTRATION</h2>
                 <span style="font-family: var(--font-serif); font-size: var(--text-lg); font-weight: 400; color: var(--c-subtitle-blue); letter-spacing: 0.15em; display: block; margin-top: 16px;">攜手海沃 ‧ 共創海洋永續價值</span>
             </div>
             <div class="contact-poetic-grid">
                 <!-- 左側聯絡資訊 -->
-                <div class="contact-poetic-info">
+                <div class="contact-poetic-info reveal reveal-left">
                     <p>
                         誠摯歡迎全球合作夥伴、機構投資人與產業先進與我們聯繫。我們將於 24 小時內指派專人與您聯繫。
                     </p>
@@ -2882,7 +2883,7 @@
                 </div>
 
                 <!-- 右側極簡下劃線表單 -->
-                <div class="form-poetic-box">
+                <div class="form-poetic-box reveal reveal-right">
                     <form id="blanzContactForm" onsubmit="handleFormSubmit(event)">
                         <div class="form-line-group">
                             <label class="form-line-label" for="serviceSelectTrigger">SELECT INQUIRY TYPE *</label>
@@ -2942,8 +2943,8 @@
         </div>
     </section>
     
-    <div class="blanz-container" style="padding-bottom:100px;">
-        <div class="sp-crosslink-row">
+    <div class="blanz-container" style="padding-bottom:60px;">
+        <div class="sp-crosslink-row reveal">
                 <a href="locations.html">← 營運據點</a>
                 <a href="careers.html">人才招募 →</a>
             </div>
@@ -3020,19 +3021,31 @@
             });
 
             // 建立 IntersectionObserver 進行平滑入場監控
-            const observer = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('in');
-                        obs.unobserve(entry.target); // 動畫觸發一次即解綁，節省效能
-                    }
+            // 等待全站 Loading 畫面淡出後才開始觀察，避免入場動畫在 Loading 遮罩後面就播完，使用者完全看不到
+            let revealStarted = false;
+            function startRevealObserver() {
+                if (revealStarted) return;
+                revealStarted = true;
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('in');
+                            obs.unobserve(entry.target); // 動畫觸發一次即解綁，節省效能
+                        }
+                    });
+                }, {
+                    threshold: 0.05,
+                    rootMargin: '0px 0px 0px 0px'
                 });
-            }, {
-                threshold: 0.05,
-                rootMargin: '0px 0px 0px 0px'
-            });
 
-            document.querySelectorAll('.reveal, .reveal-trigger').forEach(el => observer.observe(el));
+                document.querySelectorAll('.reveal, .reveal-trigger').forEach(el => observer.observe(el));
+            }
+            if (document.getElementById('siteLoader')) {
+                window.addEventListener('siteLoaderHidden', startRevealObserver, { once: true });
+                setTimeout(startRevealObserver, 3000); // 保險：避免事件漏接導致內容永遠不顯示
+            } else {
+                startRevealObserver();
+            }
         })();
 </script>
 <script>

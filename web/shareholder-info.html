@@ -2251,7 +2251,7 @@
         margin-top: 16px;
     }
 
-    .sp-section { padding: 120px 0; }
+    .sp-section { padding: 80px 0; }
     .sp-section-tight { padding: 60px 0 120px; }
     .sp-section-head { margin-bottom: 56px; max-width: 760px; }
     .sp-section-head .en-poetic-title { margin-bottom: 14px; }
@@ -2404,16 +2404,23 @@
         gap: 20px;
     }
     .sp-accordion-index {
-        font-family: var(--font-display);
-        font-size: var(--text-lg);
+        font-family: var(--font-serif);
+        font-size: 1.5rem;
+        min-width: 30px;
         color: var(--c-copper-light);
         flex-shrink: 0;
+        transition: color 0.4s ease;
     }
     .sp-accordion-title {
         font-family: var(--font-serif);
         font-size: var(--text-lg);
         color: var(--c-ink);
         letter-spacing: 0.03em;
+        transition: color 0.4s ease;
+    }
+    .sp-accordion-item.is-open .sp-accordion-index,
+    .sp-accordion-item.is-open .sp-accordion-title {
+        color: var(--c-subtitle-blue);
     }
     .sp-accordion-tag {
         display: block;
@@ -2427,13 +2434,13 @@
         flex-shrink: 0;
         width: 18px; height: 18px;
         color: var(--c-muted);
-        transition: transform 0.4s var(--ease-poetic);
+        transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), color 0.4s ease;
     }
-    .sp-accordion-item.is-open .sp-accordion-icon { transform: rotate(45deg); }
+    .sp-accordion-item.is-open .sp-accordion-icon { transform: rotate(-180deg); color: var(--c-subtitle-blue); }
     .sp-accordion-panel-wrap {
         display: grid;
         grid-template-rows: 0fr;
-        transition: grid-template-rows 0.5s var(--ease-poetic);
+        transition: grid-template-rows 0.6s cubic-bezier(0.25, 1, 0.5, 1);
     }
     .sp-accordion-item.is-open .sp-accordion-panel-wrap { grid-template-rows: 1fr; }
     .sp-accordion-panel { overflow: hidden; }
@@ -2601,6 +2608,7 @@
                 const wait = Math.max(0, MIN_DISPLAY - (performance.now() - shownAt));
                 setTimeout(() => {
                     loader.classList.add('is-hidden');
+                    window.dispatchEvent(new Event('siteLoaderHidden'));
                     setTimeout(() => loader.remove(), 900);
                 }, wait);
             }
@@ -2844,7 +2852,7 @@
             <p>常見問答</p>
         </div>
         <div class="sp-accordion">
-            <div class="sp-accordion-item">
+            <div class="sp-accordion-item reveal">
                 <button type="button" class="sp-accordion-head" aria-expanded="false">
                     <span class="sp-accordion-head-left">
                         <span class="sp-accordion-index">01</span>
@@ -2853,7 +2861,7 @@
                             
                         </span>
                     </span>
-                    <i data-lucide="plus" class="sp-accordion-icon"></i>
+                    <i data-lucide="chevron-down" class="sp-accordion-icon"></i>
                 </button>
                 <div class="sp-accordion-panel-wrap">
                     <div class="sp-accordion-panel">
@@ -2864,7 +2872,7 @@
                     </div>
                 </div>
             </div>
-            <div class="sp-accordion-item">
+            <div class="sp-accordion-item reveal">
                 <button type="button" class="sp-accordion-head" aria-expanded="false">
                     <span class="sp-accordion-head-left">
                         <span class="sp-accordion-index">02</span>
@@ -2873,7 +2881,7 @@
                             
                         </span>
                     </span>
-                    <i data-lucide="plus" class="sp-accordion-icon"></i>
+                    <i data-lucide="chevron-down" class="sp-accordion-icon"></i>
                 </button>
                 <div class="sp-accordion-panel-wrap">
                     <div class="sp-accordion-panel">
@@ -2884,7 +2892,7 @@
                     </div>
                 </div>
             </div>
-            <div class="sp-accordion-item">
+            <div class="sp-accordion-item reveal">
                 <button type="button" class="sp-accordion-head" aria-expanded="false">
                     <span class="sp-accordion-head-left">
                         <span class="sp-accordion-index">03</span>
@@ -2893,7 +2901,7 @@
                             
                         </span>
                     </span>
-                    <i data-lucide="plus" class="sp-accordion-icon"></i>
+                    <i data-lucide="chevron-down" class="sp-accordion-icon"></i>
                 </button>
                 <div class="sp-accordion-panel-wrap">
                     <div class="sp-accordion-panel">
@@ -2904,7 +2912,7 @@
                     </div>
                 </div>
             </div>
-            <div class="sp-accordion-item">
+            <div class="sp-accordion-item reveal">
                 <button type="button" class="sp-accordion-head" aria-expanded="false">
                     <span class="sp-accordion-head-left">
                         <span class="sp-accordion-index">04</span>
@@ -2913,7 +2921,7 @@
                             
                         </span>
                     </span>
-                    <i data-lucide="plus" class="sp-accordion-icon"></i>
+                    <i data-lucide="chevron-down" class="sp-accordion-icon"></i>
                 </button>
                 <div class="sp-accordion-panel-wrap">
                     <div class="sp-accordion-panel">
@@ -2924,7 +2932,7 @@
                     </div>
                 </div>
             </div>
-            <div class="sp-accordion-item">
+            <div class="sp-accordion-item reveal">
                 <button type="button" class="sp-accordion-head" aria-expanded="false">
                     <span class="sp-accordion-head-left">
                         <span class="sp-accordion-index">05</span>
@@ -2933,7 +2941,7 @@
                             
                         </span>
                     </span>
-                    <i data-lucide="plus" class="sp-accordion-icon"></i>
+                    <i data-lucide="chevron-down" class="sp-accordion-icon"></i>
                 </button>
                 <div class="sp-accordion-panel-wrap">
                     <div class="sp-accordion-panel">
@@ -2944,7 +2952,7 @@
                     </div>
                 </div>
             </div>
-            <div class="sp-accordion-item">
+            <div class="sp-accordion-item reveal">
                 <button type="button" class="sp-accordion-head" aria-expanded="false">
                     <span class="sp-accordion-head-left">
                         <span class="sp-accordion-index">06</span>
@@ -2953,7 +2961,7 @@
                             
                         </span>
                     </span>
-                    <i data-lucide="plus" class="sp-accordion-icon"></i>
+                    <i data-lucide="chevron-down" class="sp-accordion-icon"></i>
                 </button>
                 <div class="sp-accordion-panel-wrap">
                     <div class="sp-accordion-panel">
@@ -2964,7 +2972,7 @@
                     </div>
                 </div>
             </div>
-            <div class="sp-accordion-item">
+            <div class="sp-accordion-item reveal">
                 <button type="button" class="sp-accordion-head" aria-expanded="false">
                     <span class="sp-accordion-head-left">
                         <span class="sp-accordion-index">07</span>
@@ -2973,7 +2981,7 @@
                             
                         </span>
                     </span>
-                    <i data-lucide="plus" class="sp-accordion-icon"></i>
+                    <i data-lucide="chevron-down" class="sp-accordion-icon"></i>
                 </button>
                 <div class="sp-accordion-panel-wrap">
                     <div class="sp-accordion-panel">
@@ -2984,7 +2992,7 @@
                     </div>
                 </div>
             </div>
-            <div class="sp-accordion-item">
+            <div class="sp-accordion-item reveal">
                 <button type="button" class="sp-accordion-head" aria-expanded="false">
                     <span class="sp-accordion-head-left">
                         <span class="sp-accordion-index">08</span>
@@ -2993,7 +3001,7 @@
                             
                         </span>
                     </span>
-                    <i data-lucide="plus" class="sp-accordion-icon"></i>
+                    <i data-lucide="chevron-down" class="sp-accordion-icon"></i>
                 </button>
                 <div class="sp-accordion-panel-wrap">
                     <div class="sp-accordion-panel">
@@ -3007,7 +3015,7 @@
             </div>
     
     
-        <div class="sp-crosslink-row">
+        <div class="sp-crosslink-row reveal">
                 <a href="strategy.html">← 策略佈局</a>
                 <a href="announcements.html">官方公告 →</a>
             </div>
@@ -3085,19 +3093,31 @@
             });
 
             // 建立 IntersectionObserver 進行平滑入場監控
-            const observer = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('in');
-                        obs.unobserve(entry.target); // 動畫觸發一次即解綁，節省效能
-                    }
+            // 等待全站 Loading 畫面淡出後才開始觀察，避免入場動畫在 Loading 遮罩後面就播完，使用者完全看不到
+            let revealStarted = false;
+            function startRevealObserver() {
+                if (revealStarted) return;
+                revealStarted = true;
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('in');
+                            obs.unobserve(entry.target); // 動畫觸發一次即解綁，節省效能
+                        }
+                    });
+                }, {
+                    threshold: 0.05,
+                    rootMargin: '0px 0px 0px 0px'
                 });
-            }, {
-                threshold: 0.05,
-                rootMargin: '0px 0px 0px 0px'
-            });
 
-            document.querySelectorAll('.reveal, .reveal-trigger').forEach(el => observer.observe(el));
+                document.querySelectorAll('.reveal, .reveal-trigger').forEach(el => observer.observe(el));
+            }
+            if (document.getElementById('siteLoader')) {
+                window.addEventListener('siteLoaderHidden', startRevealObserver, { once: true });
+                setTimeout(startRevealObserver, 3000); // 保險：避免事件漏接導致內容永遠不顯示
+            } else {
+                startRevealObserver();
+            }
         })();
 </script>
 <script>
@@ -3133,11 +3153,10 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!head) return;
             head.addEventListener('click', () => {
                 const isOpen = item.classList.contains('is-open');
-                item.closest('.sp-accordion').querySelectorAll('.sp-accordion-item').forEach(i => {
-                    i.classList.remove('is-open');
-                    i.querySelector('.sp-accordion-head').setAttribute('aria-expanded', 'false');
-                });
-                if (!isOpen) {
+                if (isOpen) {
+                    item.classList.remove('is-open');
+                    head.setAttribute('aria-expanded', 'false');
+                } else {
                     item.classList.add('is-open');
                     head.setAttribute('aria-expanded', 'true');
                 }

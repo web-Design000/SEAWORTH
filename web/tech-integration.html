@@ -2251,7 +2251,7 @@
         margin-top: 16px;
     }
 
-    .sp-section { padding: 120px 0; }
+    .sp-section { padding: 80px 0; }
     .sp-section-tight { padding: 60px 0 120px; }
     .sp-section-head { margin-bottom: 56px; max-width: 760px; }
     .sp-section-head .en-poetic-title { margin-bottom: 14px; }
@@ -2757,6 +2757,7 @@
                 const wait = Math.max(0, MIN_DISPLAY - (performance.now() - shownAt));
                 setTimeout(() => {
                     loader.classList.add('is-hidden');
+                    window.dispatchEvent(new Event('siteLoaderHidden'));
                     setTimeout(() => loader.remove(), 900);
                 }, wait);
             }
@@ -2993,7 +2994,7 @@
 
         <div class="sp-media-row reveal">
             <div class="sp-media-frame">
-                <img src="assets/landmark-fleet.jpg" alt="海沃控股集團智慧營運船隊">
+                <img src="assets/img-tech-integration.jpg" alt="海沃控股集團智慧營運船隊">
             </div>
             <div class="sp-media-text">
                 <h3>數據驅動的智慧營運中心</h3>
@@ -3063,7 +3064,6 @@
                 <div>
                     <h3 style="font-family: var(--font-serif); color: var(--c-ink);">全流程可追溯系統</h3>
                     <p>自主研發並對接國際漁業管理組織之全流程可追溯系統，將生態打擾與環境衝擊降至最低，落實海洋保育與合規治理。</p>
-                    <a href="sustainability-practice.html" style="display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display); font-size: var(--text-xs); letter-spacing: 0.15em; text-transform: uppercase; color: var(--c-copper); text-decoration: none; margin-top: 16px; transition: opacity 0.3s ease;">深入了解永續實踐 <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></a>
                 </div>
             </div>
             <div class="sp-numbered-item">
@@ -3076,16 +3076,16 @@
         </div>
 
         <!-- 結語 -->
-        <div class="poetic-quote-wrap reveal" style="margin: 0 auto; padding-top: 60px; border-top: 1px solid var(--c-line); display: flex; flex-direction: column; align-items: center;">
-            <div style="width: 2px; height: 48px; background: var(--c-copper); margin-bottom: 32px; flex-shrink: 0;"></div>
-            <p style="font-family: var(--font-serif); font-size: var(--text-base); line-height: 2.1; color: var(--c-subtitle-blue); text-align: center; max-width: 900px; margin: 0 auto;">
+        <div class="poetic-quote-wrap reveal" style="margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+            <div style="width: 40px; height: 2px; background: var(--c-copper); margin-bottom: 32px; flex-shrink: 0;"></div>
+            <p style="font-family: var(--font-serif); font-size: var(--text-base); line-height: 2.1; color: var(--c-subtitle-blue); text-align: left; max-width: 900px; margin: 0 auto;">
                 立足於技術整合、數位制度創新及數據合規治理，海沃控股集團將持續打造兼具環境永續、社會共榮與經濟成長的現代化遠洋漁業科技控股體系。<br><br>
                 以科技驅動產業升級，以制度強化治理效能，以責任引領永續發展，全面提升遠洋漁業的智慧化、數位化與國際化水平，攜手全球夥伴共創產業新格局，實現企業成長、社會共榮與永續海洋的長期價值。
             </p>
         </div>
 
 
-        <div class="sp-crosslink-row">
+        <div class="sp-crosslink-row reveal">
                 <a href="business-map.html">← 事業版圖</a>
                 <a href="governance-structure.html">公司治理架構 →</a>
             </div>
@@ -3163,19 +3163,31 @@
             });
 
             // 建立 IntersectionObserver 進行平滑入場監控
-            const observer = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('in');
-                        obs.unobserve(entry.target); // 動畫觸發一次即解綁，節省效能
-                    }
+            // 等待全站 Loading 畫面淡出後才開始觀察，避免入場動畫在 Loading 遮罩後面就播完，使用者完全看不到
+            let revealStarted = false;
+            function startRevealObserver() {
+                if (revealStarted) return;
+                revealStarted = true;
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('in');
+                            obs.unobserve(entry.target); // 動畫觸發一次即解綁，節省效能
+                        }
+                    });
+                }, {
+                    threshold: 0.05,
+                    rootMargin: '0px 0px 0px 0px'
                 });
-            }, {
-                threshold: 0.05,
-                rootMargin: '0px 0px 0px 0px'
-            });
 
-            document.querySelectorAll('.reveal, .reveal-trigger').forEach(el => observer.observe(el));
+                document.querySelectorAll('.reveal, .reveal-trigger').forEach(el => observer.observe(el));
+            }
+            if (document.getElementById('siteLoader')) {
+                window.addEventListener('siteLoaderHidden', startRevealObserver, { once: true });
+                setTimeout(startRevealObserver, 3000); // 保險：避免事件漏接導致內容永遠不顯示
+            } else {
+                startRevealObserver();
+            }
         })();
 </script>
 <script>

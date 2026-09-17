@@ -2251,7 +2251,7 @@
         margin-top: 16px;
     }
 
-    .sp-section { padding: 120px 0; }
+    .sp-section { padding: 80px 0; }
     .sp-section-tight { padding: 60px 0 120px; }
     .sp-section-head { margin-bottom: 56px; max-width: 760px; }
     .sp-section-head .en-poetic-title { margin-bottom: 14px; }
@@ -2758,6 +2758,7 @@
                 const wait = Math.max(0, MIN_DISPLAY - (performance.now() - shownAt));
                 setTimeout(() => {
                     loader.classList.add('is-hidden');
+                    window.dispatchEvent(new Event('siteLoaderHidden'));
                     setTimeout(() => loader.remove(), 900);
                 }, wait);
             }
@@ -3062,7 +3063,7 @@
 
     
     
-        <div class="sp-crosslink-row">
+        <div class="sp-crosslink-row reveal">
                 <a href="social-responsibility.html">← 社會責任</a>
                 <a href="strategy.html">策略佈局 →</a>
             </div>
@@ -3140,19 +3141,31 @@
             });
 
             // 建立 IntersectionObserver 進行平滑入場監控
-            const observer = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('in');
-                        obs.unobserve(entry.target); // 動畫觸發一次即解綁，節省效能
-                    }
+            // 等待全站 Loading 畫面淡出後才開始觀察，避免入場動畫在 Loading 遮罩後面就播完，使用者完全看不到
+            let revealStarted = false;
+            function startRevealObserver() {
+                if (revealStarted) return;
+                revealStarted = true;
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('in');
+                            obs.unobserve(entry.target); // 動畫觸發一次即解綁，節省效能
+                        }
+                    });
+                }, {
+                    threshold: 0.05,
+                    rootMargin: '0px 0px 0px 0px'
                 });
-            }, {
-                threshold: 0.05,
-                rootMargin: '0px 0px 0px 0px'
-            });
 
-            document.querySelectorAll('.reveal, .reveal-trigger').forEach(el => observer.observe(el));
+                document.querySelectorAll('.reveal, .reveal-trigger').forEach(el => observer.observe(el));
+            }
+            if (document.getElementById('siteLoader')) {
+                window.addEventListener('siteLoaderHidden', startRevealObserver, { once: true });
+                setTimeout(startRevealObserver, 3000); // 保險：避免事件漏接導致內容永遠不顯示
+            } else {
+                startRevealObserver();
+            }
         })();
 </script>
 <script>
