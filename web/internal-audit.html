@@ -1933,7 +1933,7 @@
         .reveal {
             opacity: 0;
             transform: translateY(32px);
-            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1), transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: opacity, transform;
         }
         .reveal.reveal-left {
@@ -1953,7 +1953,7 @@
         /* ===== 封面圖入場效果 (Hero Entrance) ===== */
         .sp-hero img {
             transform: scale(1.08);
-            transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 2.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .sp-hero.is-revealed img {
             transform: scale(1);
@@ -1961,7 +1961,7 @@
         .sp-hero-inner > * {
             opacity: 0;
             transform: translateY(24px);
-            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1), transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .sp-hero.is-revealed .sp-hero-inner > * {
             opacity: 1;
@@ -2618,9 +2618,10 @@
     .audit-dark-banner p {
         max-width: 800px;
         line-height: 1.8;
-        font-size: var(--text-lg);
+        font-size: var(--text-base);
         color: rgba(255,255,255,0.8);
         margin-bottom: 40px;
+        text-align: left;
     }
     .audit-stats-row {
         display: flex;
@@ -2954,10 +2955,10 @@
         </div>
     </section>
 
-    <section class="blanz-section sp-section"><div class="blanz-container">
+    <section style="padding-bottom: 80px;"><div class="blanz-container">
     
     
-        <div class="sp-crosslink-row reveal">
+        <div class="sp-crosslink-row reveal" style="margin-top: 0; padding-top: 60px;">
                 <a href="risk-management.html">← 風險管理政策</a>
                 <a href="integrity.html">誠信經營守則 →</a>
             </div>
