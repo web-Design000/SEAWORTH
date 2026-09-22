@@ -2487,9 +2487,14 @@
     .sp-location-card {
         padding: 36px 28px;
         border: 1px solid var(--c-line);
-        transition: border-color 0.3s ease;
+        background: #FFFFFF;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
     }
-    .sp-location-card:hover { border-color: var(--c-subtitle-blue); }
+    .sp-location-card:hover { 
+        transform: translateY(-6px);
+        box-shadow: 0 24px 48px rgba(14, 18, 23, 0.06);
+        border-color: var(--c-subtitle-blue); 
+    }
     .sp-location-tag {
         font-size: var(--text-tiny);
         letter-spacing: 0.15em;
