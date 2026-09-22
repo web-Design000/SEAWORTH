@@ -2127,7 +2127,7 @@
         .reveal {
             opacity: 0;
             transform: translateY(32px);
-            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1), transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: opacity, transform;
         }
         .reveal.reveal-left {
@@ -2684,11 +2684,7 @@
 
                 <!-- 右側：切換投影片/導覽選單 -->
                 <div class="hero-slide-nav">
-                    <a href="#about" class="slide-nav-item active-nav">
-                        <span class="nav-text">集團總覽 <span class="nav-text-en">About</span></span>
-                        <i data-lucide="arrow-right" class="nav-icon"></i>
-                    </a>
-                    <a href="#three-sectors" class="slide-nav-item">
+                    <a href="#three-sectors" class="slide-nav-item active-nav">
                         <span class="nav-text">三大事業群 <span class="nav-text-en">Pillars</span></span>
                         <i data-lucide="arrow-right" class="nav-icon"></i>
                     </a>
@@ -2698,6 +2694,10 @@
                     </a>
                     <a href="#news" class="slide-nav-item">
                         <span class="nav-text">最新消息 <span class="nav-text-en">News</span></span>
+                        <i data-lucide="arrow-right" class="nav-icon"></i>
+                    </a>
+                    <a href="#contact" class="slide-nav-item">
+                        <span class="nav-text">聯絡我們 <span class="nav-text-en">Contact</span></span>
                         <i data-lucide="arrow-right" class="nav-icon"></i>
                     </a>
                 </div>
@@ -3002,13 +3002,13 @@
     <!-- 區塊 7：CONTACT US (極簡詩意登記處) -->
     <section class="contact-poetic-section" id="contact">
         <div class="blanz-container">
-            <div class="contact-poetic-header">
+            <div class="contact-poetic-header reveal">
                 <h2 class="contact-poetic-title">INQUIRY &<br>REGISTRATION</h2>
                 <span style="font-family: var(--font-serif); font-size: var(--text-lg); font-weight: 400; color: var(--c-subtitle-blue); letter-spacing: 0.15em; display: block; margin-top: 16px;">攜手海沃 ‧ 共創海洋永續價值</span>
             </div>
             <div class="contact-poetic-grid">
                 <!-- 左側聯絡資訊 -->
-                <div class="contact-poetic-info">
+                <div class="contact-poetic-info reveal delay-1">
                     <p>
                         誠摯歡迎全球合作夥伴、機構投資人與產業先進與我們聯繫。我們將於 24 小時內指派專人與您聯繫。
                     </p>
@@ -3034,7 +3034,7 @@
                 </div>
 
                 <!-- 右側極簡下劃線表單 -->
-                <div class="form-poetic-box">
+                <div class="form-poetic-box reveal delay-2">
                     <form id="blanzContactForm" onsubmit="handleFormSubmit(event)">
                         <div class="form-line-group">
                             <label class="form-line-label" for="serviceSelectTrigger">SELECT INQUIRY TYPE *</label>
