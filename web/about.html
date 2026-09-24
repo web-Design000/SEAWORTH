@@ -1942,6 +1942,9 @@
         .reveal.reveal-right {
             transform: translateX(32px);
         }
+        .reveal.reveal-scale-down {
+            transform: scale(1.15) translateY(40px);
+        }
         .reveal.in {
             opacity: 1;
             transform: translate(0, 0);
@@ -2194,7 +2197,7 @@
         }
     
         /* 暫時停用的連結 */
-        .disabled-link {
+        . {
             pointer-events: none;
             cursor: default;
             opacity: 0.5;
@@ -2671,13 +2674,13 @@
                     <img src="assets/logo-header-2.png" alt="SEAWORTH HOLDING" class="logo-mobile" style="height:34px; width:auto;">
                 </a>
                 <ul class="nav-split-menu">
-                    <li class="has-dropdown disabled-link">
-                        <a href="#" class="disabled-link">集團總覽</a>
+                    <li class="has-dropdown">
+                        <a href="#" >集團總覽</a>
                         <div class="nav-dropdown">
                             <div class="nav-dropdown-inner">
-                                <a href="#" class="disabled-link">關於海沃</a>
-                                <a href="#" class="disabled-link">事業版圖</a>
-                                <a href="#" class="disabled-link">技術整合能力</a>
+                                <a href="about.html" >關於海沃</a>
+                                <a href="business-map.html" >事業版圖</a>
+                                <a href="tech-integration.html" >技術整合能力</a>
                             </div>
                         </div>
                     </li>
@@ -2732,13 +2735,13 @@
                             </div>
                         </div>
                     </li>
-                    <li class="has-dropdown disabled-link">
-                        <a href="#" class="disabled-link">聯繫海沃</a>
+                    <li class="has-dropdown">
+                        <a href="#" >聯繫海沃</a>
                         <div class="nav-dropdown">
                             <div class="nav-dropdown-inner">
-                                <a href="#" class="disabled-link">營運據點</a>
-                                <a href="#" class="disabled-link">聯絡我們</a>
-                                <a href="#" class="disabled-link">人才招募</a>
+                                <a href="locations.html" >營運據點</a>
+                                <a href="contact-us.html" >聯絡我們</a>
+                                <a href="careers.html" >人才招募</a>
                             </div>
                         </div>
                     </li>
@@ -2766,11 +2769,11 @@
     <!-- 手機版全螢幕選單面板 -->
     <div class="nav-mobile-panel" id="navMobilePanel">
         <div class="nav-mobile-group">
-            <button type="button" class="nav-mobile-group-head disabled-link">集團總覽 <i data-lucide="chevron-down"></i></button>
+            <button type="button" class="nav-mobile-group-head">集團總覽 <i data-lucide="chevron-down"></i></button>
             <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
-                <a href="#" class="disabled-link">關於海沃</a>
-                <a href="#" class="disabled-link">事業版圖</a>
-                <a href="#" class="disabled-link">技術整合能力</a>
+                <a href="about.html" >關於海沃</a>
+                <a href="business-map.html" >事業版圖</a>
+                <a href="tech-integration.html" >技術整合能力</a>
             </div></div>
         </div>
         <div class="nav-mobile-group">
@@ -2806,11 +2809,11 @@
             </div></div>
         </div>
         <div class="nav-mobile-group">
-            <button type="button" class="nav-mobile-group-head disabled-link">聯繫海沃 <i data-lucide="chevron-down"></i></button>
+            <button type="button" class="nav-mobile-group-head">聯繫海沃 <i data-lucide="chevron-down"></i></button>
             <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
-                <a href="#" class="disabled-link">營運據點</a>
-                <a href="#" class="disabled-link">聯絡我們</a>
-                <a href="#" class="disabled-link">人才招募</a>
+                <a href="locations.html" >營運據點</a>
+                <a href="contact-us.html" >聯絡我們</a>
+                <a href="careers.html" >人才招募</a>
             </div></div>
         </div>
         <div class="nav-mobile-lang">
@@ -3011,20 +3014,20 @@
         <div class="blanz-container" style="max-width: 1200px;">
             
             <nav class="sp-breadcrumb" style="color: var(--c-muted); margin-bottom: 24px;">
-                <a href="index.html" style="color: var(--c-muted);">首頁</a> ／ <a href="#" class="disabled-link" style="color: var(--c-muted);">集團總覽</a> ／ 關於海沃
+                <a href="index.html" style="color: var(--c-muted);">首頁</a> ／ <a href="#"  style="color: var(--c-muted);">集團總覽</a> ／ 關於海沃
             </nav>
             
-            <div class="about-manifesto reveal" style="padding-top: 0; text-align: center;">
-                <span class="eyebrow" style="font-family: var(--font-display); letter-spacing: 0.3em; text-transform: uppercase; font-size: var(--text-sm); color: var(--c-copper); display: block; margin-bottom: 24px;">GROUP OVERVIEW</span>
+            <div class="about-manifesto" style="padding-top: 0; text-align: center;">
+                <span class="eyebrow reveal" style="font-family: var(--font-display); letter-spacing: 0.3em; text-transform: uppercase; font-size: var(--text-sm); color: var(--c-copper); display: inline-block; margin-bottom: 24px;">GROUP OVERVIEW</span>
                 <h1 class="about-manifesto-title" style="margin-bottom: 0;">
-                    ABOUT SEAWORTH
-                    <span style="color: var(--c-subtitle-blue);">關於海沃</span>
+                    <div class="reveal delay-1" style="display: inline-block;">ABOUT SEAWORTH</div>
+                    <span class="reveal delay-2" style="color: var(--c-subtitle-blue);">關於海沃</span>
                 </h1>
             </div>
 
         </div>
         <div class="blanz-container" style="max-width: 1600px;">
-            <div class="about-photo-strip reveal delay-2" role="img" aria-label="海沃控股集團船隊">
+            <div class="about-photo-strip reveal reveal-scale-down delay-2" role="img" aria-label="海沃控股集團船隊">
                 <div class="about-photo-strip-item"></div>
                 <div class="about-photo-strip-item"></div>
                 <div class="about-photo-strip-item"></div>
@@ -3064,12 +3067,46 @@
         </div>
     </section>
 
-    <section class="blanz-section" style="background-color: var(--c-ocean-deep); padding: 100px 0;">
-        <div class="blanz-container" style="max-width: 1200px;">
-            <div class="sp-intro" style="max-width: 860px; margin: 0 auto;">
-                <p class="reveal" style="color: rgba(255, 255, 255, 0.85);">歷經逾四十載的砥礪深耕，本集團蛻變為涵蓋智慧造船、遠洋漁撈、冷鏈物流及國際貿易的多元控股集團。我們堅持「專業、誠信、創新、永續」的核心價值，優化企業內控與合規治理，全面引領產業轉型升級。</p>
-                <p class="reveal delay-2" style="color: rgba(255, 255, 255, 0.85);">迎向全球漁業資源與環境永續的新局，海沃積極推動數位化船隊管理，落實 FISH、MSC 等國際永續認證與漁業組織規範；同時率先導入海上遠距醫療機制，以具體行動守護船員人權與職業安全。</p>
-                <p class="reveal delay-4" style="color: rgba(255, 255, 255, 0.85);">從海洋出發，也對海洋負責。海沃控股集團將持續提供安全、優質且全流程可追溯的優良漁獲，攜手全球夥伴，共同推動更具責任與韌性的現代遠洋漁業。朝向「敬海而行、與世界共榮共善」的永續願景穩健邁進。</p>
+    <section class="blanz-section" style="margin: 0 0 200px; padding: 40px 0; position: relative; z-index: 1;">
+        <!-- 全滿版深色背景色塊 -->
+        <div class="reveal" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--c-ocean-deep); z-index: -1;"></div>
+        
+        <div class="blanz-container" style="max-width: 1300px; position: relative; z-index: 2;">
+            <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 80px;">
+                
+                <!-- 左側圖片：上方保留在色塊內，下方大幅超出色塊，並移除陰影 -->
+                <div class="reveal" style="flex: 1; min-width: 300px; margin-bottom: -180px; margin-left: -40px;">
+                    <div class="parallax-wrap" style="width: 100%; transition: transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);">
+                        <img src="assets/about-manifesto-photo.jpg" alt="關於海沃" style="width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 4px;">
+                    </div>
+                </div>
+                
+                <script>
+                    window.addEventListener('DOMContentLoaded', () => {
+                        const wrap = document.querySelector('.parallax-wrap');
+                        if (wrap) {
+                            window.addEventListener('scroll', () => {
+                                const rect = wrap.parentElement.getBoundingClientRect();
+                                const windowHeight = window.innerHeight;
+                                if (rect.top <= windowHeight && rect.bottom >= 0) {
+                                    // Move entire image wrapper opposite to scroll direction
+                                    const offset = (rect.top + rect.height / 2) - (windowHeight / 2);
+                                    wrap.style.transform = `translateY(${offset * -0.2}px)`;
+                                }
+                            });
+                        }
+                    });
+                </script>
+                
+                <!-- 右側文字 -->
+                <div style="flex: 1.5; min-width: 300px; padding-top: 20px;">
+                    <div class="sp-intro" style="max-width: 800px;">
+                        <p class="reveal delay-1" style="color: rgba(255, 255, 255, 0.85); margin-bottom: 24px; font-size: var(--text-base); text-align: justify;">歷經逾四十載的砥礪深耕，本集團蛻變為涵蓋智慧造船、遠洋漁撈、冷鏈物流及國際貿易的多元控股集團。我們堅持「專業、誠信、創新、永續」的核心價值，優化企業內控與合規治理，全面引領產業轉型升級。</p>
+                        <p class="reveal delay-2" style="color: rgba(255, 255, 255, 0.85); margin-bottom: 24px; font-size: var(--text-base); text-align: justify;">迎向全球漁業資源與環境永續的新局，海沃積極推動數位化船隊管理，落實 FISH、MSC 等國際永續認證與漁業組織規範；同時率先導入海上遠距醫療機制，以具體行動守護船員人權與職業安全。</p>
+                        <p class="reveal delay-3" style="color: rgba(255, 255, 255, 0.85); font-size: var(--text-base); text-align: justify;">從海洋出發，也對海洋負責。海沃控股集團將持續提供安全、優質且全流程可追溯的優良漁獲，攜手全球夥伴，共同推動更具責任與韌性的現代遠洋漁業。朝向「敬海而行、與世界共榮共善」的永續願景穩健邁進。</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -3079,7 +3116,7 @@
             
             <div class="sp-crosslink-row reveal" style="margin-top: 40px; padding-top: 0;">
                 <a href="index.html">← 首頁</a>
-                <a href="#" class="disabled-link">事業版圖 →</a>
+                <a href="#" class="">事業版圖 →</a>
             </div>
         </div>
     </section>

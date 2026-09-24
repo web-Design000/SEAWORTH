@@ -2194,7 +2194,7 @@
         }
     
         /* 暫時停用的連結 */
-        .disabled-link {
+        . {
             pointer-events: none;
             cursor: default;
             opacity: 0.5;
@@ -2807,13 +2807,13 @@
                     <img src="assets/logo-header-2.png" alt="SEAWORTH HOLDING" class="logo-mobile" style="height:34px; width:auto;">
                 </a>
                 <ul class="nav-split-menu">
-                    <li class="has-dropdown disabled-link">
-                        <a href="#" class="disabled-link">集團總覽</a>
+                    <li class="has-dropdown">
+                        <a href="#" >集團總覽</a>
                         <div class="nav-dropdown">
                             <div class="nav-dropdown-inner">
-                                <a href="#" class="disabled-link">關於海沃</a>
-                                <a href="#" class="disabled-link">事業版圖</a>
-                                <a href="#" class="disabled-link">技術整合能力</a>
+                                <a href="about.html" >關於海沃</a>
+                                <a href="business-map.html" >事業版圖</a>
+                                <a href="tech-integration.html" >技術整合能力</a>
                             </div>
                         </div>
                     </li>
@@ -2868,13 +2868,13 @@
                             </div>
                         </div>
                     </li>
-                    <li class="has-dropdown disabled-link">
-                        <a href="#" class="disabled-link">聯繫海沃</a>
+                    <li class="has-dropdown">
+                        <a href="#" >聯繫海沃</a>
                         <div class="nav-dropdown">
                             <div class="nav-dropdown-inner">
-                                <a href="#" class="disabled-link">營運據點</a>
-                                <a href="#" class="disabled-link">聯絡我們</a>
-                                <a href="#" class="disabled-link">人才招募</a>
+                                <a href="locations.html" >營運據點</a>
+                                <a href="contact-us.html" >聯絡我們</a>
+                                <a href="careers.html" >人才招募</a>
                             </div>
                         </div>
                     </li>
@@ -2902,11 +2902,11 @@
     <!-- 手機版全螢幕選單面板 -->
     <div class="nav-mobile-panel" id="navMobilePanel">
         <div class="nav-mobile-group">
-            <button type="button" class="nav-mobile-group-head disabled-link">集團總覽 <i data-lucide="chevron-down"></i></button>
+            <button type="button" class="nav-mobile-group-head">集團總覽 <i data-lucide="chevron-down"></i></button>
             <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
-                <a href="#" class="disabled-link">關於海沃</a>
-                <a href="#" class="disabled-link">事業版圖</a>
-                <a href="#" class="disabled-link">技術整合能力</a>
+                <a href="about.html" >關於海沃</a>
+                <a href="business-map.html" >事業版圖</a>
+                <a href="tech-integration.html" >技術整合能力</a>
             </div></div>
         </div>
         <div class="nav-mobile-group">
@@ -2942,11 +2942,11 @@
             </div></div>
         </div>
         <div class="nav-mobile-group">
-            <button type="button" class="nav-mobile-group-head disabled-link">聯繫海沃 <i data-lucide="chevron-down"></i></button>
+            <button type="button" class="nav-mobile-group-head">聯繫海沃 <i data-lucide="chevron-down"></i></button>
             <div class="nav-mobile-sub"><div class="nav-mobile-sub-inner">
-                <a href="#" class="disabled-link">營運據點</a>
-                <a href="#" class="disabled-link">聯絡我們</a>
-                <a href="#" class="disabled-link">人才招募</a>
+                <a href="locations.html" >營運據點</a>
+                <a href="contact-us.html" >聯絡我們</a>
+                <a href="careers.html" >人才招募</a>
             </div></div>
         </div>
         <div class="nav-mobile-lang">
@@ -3008,7 +3008,7 @@
         <img src="assets/hero-tech.jpg" alt="技術整合能力">
         <div class="sp-hero-inner">
             <nav class="sp-breadcrumb">
-                    <a href="index.html">首頁</a> ／ <a href="#" class="disabled-link">集團總覽</a> ／ 技術整合能力
+                    <a href="index.html">首頁</a> ／ <a href="#" >集團總覽</a> ／ 技術整合能力
                 </nav>
             <span class="sp-hero-eyebrow">GROUP OVERVIEW</span>
             <h1 class="sp-hero-title">TECHNOLOGY<span class="sp-hero-sub">技術整合能力</span></h1>
@@ -3037,31 +3037,37 @@
         <div class="blanz-container">
             <div class="en-poetic-title reveal" style="color: #FFF; margin-bottom: 60px; text-align: center;">TECH PILLARS</div>
             <div class="sp-grid-3">
-                <div class="sp-card reveal delay-1">
-                    <div class="sp-card-media">
-                        <img src="assets/tech-tide-analysis.jpg" alt="洋流潮汐分析">
-                    </div>
-                    <div class="sp-card-body">
-                        <h3>洋流潮汐分析</h3>
-                        <p>整合海事大數據，精準掌握漁場動態與洋流變化，優化航線規劃與捕撈時機。</p>
-                    </div>
-                </div>
-                <div class="sp-card reveal delay-2">
-                    <div class="sp-card-media">
-                        <img src="assets/tech-fish-ai.jpg" alt="科技魚況分析">
-                    </div>
-                    <div class="sp-card-body">
-                        <h3>科技魚況分析</h3>
-                        <p>導入 AI 輔助漁撈設備，實現漁況動態的精準預測，全面優化捕撈作業效能。</p>
+                <div class="reveal delay-1">
+                    <div class="sp-card" style="height: 100%;">
+                        <div class="sp-card-media">
+                            <img src="assets/tech-tide-analysis.jpg" alt="洋流潮汐分析">
+                        </div>
+                        <div class="sp-card-body">
+                            <h3>洋流潮汐分析</h3>
+                            <p>整合海事大數據，精準掌握漁場動態與洋流變化，優化航線規劃與捕撈時機。</p>
+                        </div>
                     </div>
                 </div>
-                <div class="sp-card reveal delay-3">
-                    <div class="sp-card-media">
-                        <img src="assets/tech-telemedicine.jpg" alt="海上遠距醫療">
+                <div class="reveal delay-2">
+                    <div class="sp-card" style="height: 100%;">
+                        <div class="sp-card-media">
+                            <img src="assets/tech-fish-ai.jpg" alt="科技魚況分析">
+                        </div>
+                        <div class="sp-card-body">
+                            <h3>科技魚況分析</h3>
+                            <p>導入 AI 輔助漁撈設備，實現漁況動態的精準預測，全面優化捕撈作業效能。</p>
+                        </div>
                     </div>
-                    <div class="sp-card-body">
-                        <h3>海上遠距醫療</h3>
-                        <p>低延遲遠距醫療照護平台，突破海洋通訊限制，提供即時健康監測與緊急決策支援。</p>
+                </div>
+                <div class="reveal delay-3">
+                    <div class="sp-card" style="height: 100%;">
+                        <div class="sp-card-media">
+                            <img src="assets/tech-telemedicine.jpg" alt="海上遠距醫療">
+                        </div>
+                        <div class="sp-card-body">
+                            <h3>海上遠距醫療</h3>
+                            <p>低延遲遠距醫療照護平台，突破海洋通訊限制，提供即時健康監測與緊急決策支援。</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -3079,22 +3085,22 @@
         </div>
 
         <!-- 三大實踐條列 -->
-        <div class="sp-numbered-list reveal" style="max-width: 900px; margin: 0 auto 80px;">
-            <div class="sp-numbered-item">
+        <div class="sp-numbered-list" style="max-width: 900px; margin: 0 auto 80px;">
+            <div class="sp-numbered-item reveal delay-1">
                 <div class="num">01</div>
                 <div>
                     <h3 style="font-family: var(--font-serif); color: var(--c-ink);">綠色低碳轉型</h3>
                     <p>積極引進低碳替代燃油與智慧節能船舶系統，以科技賦能遠洋漁業的綠色轉型，降低整體船隊之能源耗損與碳排放。</p>
                 </div>
             </div>
-            <div class="sp-numbered-item">
+            <div class="sp-numbered-item reveal delay-2">
                 <div class="num">02</div>
                 <div>
                     <h3 style="font-family: var(--font-serif); color: var(--c-ink);">全流程可追溯系統</h3>
                     <p>自主研發並對接國際漁業管理組織之全流程可追溯系統，將生態打擾與環境衝擊降至最低，落實海洋保育與合規治理。</p>
                 </div>
             </div>
-            <div class="sp-numbered-item">
+            <div class="sp-numbered-item reveal delay-3">
                 <div class="num">03</div>
                 <div>
                     <h3 style="font-family: var(--font-serif); color: var(--c-ink);">數位供應鏈與人權保障</h3>
@@ -3106,7 +3112,7 @@
         <!-- 結語 -->
         <div class="poetic-quote-wrap reveal" style="margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
             <div style="width: 40px; height: 2px; background: var(--c-copper); margin-bottom: 32px; flex-shrink: 0;"></div>
-            <p style="font-family: var(--font-serif); font-size: var(--text-base); line-height: 2.1; color: var(--c-subtitle-blue); text-align: left; max-width: 900px; margin: 0 auto;">
+            <p style="font-size: var(--text-base); line-height: 2.1; text-align: left; max-width: 900px; margin: 0 auto;">
                 立足於技術整合、數位制度創新及數據合規治理，海沃控股集團將持續打造兼具環境永續、社會共榮與經濟成長的現代化遠洋漁業科技控股體系。<br><br>
                 以科技驅動產業升級，以制度強化治理效能，以責任引領永續發展，全面提升遠洋漁業的智慧化、數位化與國際化水平，攜手全球夥伴共創產業新格局，實現企業成長、社會共榮與永續海洋的長期價值。
             </p>
@@ -3114,7 +3120,7 @@
 
 
         <div class="sp-crosslink-row reveal">
-                <a href="#" class="disabled-link">← 事業版圖</a>
+                <a href="#" class="">← 事業版圖</a>
                 <a href="governance-structure.html">公司治理架構 →</a>
             </div>
             </div>
