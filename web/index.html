@@ -24,7 +24,7 @@
       "url": "https://www.seaworth.com",
       "logo": "https://www.seaworth.com/assets/logo-seaworth.svg",
       "description": "整合智慧造船、遠洋漁撈、冷鏈物流與國際貿易，建構全流程可追溯的全球永續海洋產業體系。",
-      "foundingDate": "2026",
+      "foundingDate": "2025",
       "headquarters": {
         "@type": "Place",
         "address": {
@@ -579,8 +579,16 @@
         .hero-bg-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%);
+            /* 只在右側（圓點指示器＋導覽選單所在區域）保留深色漸層，
+               其餘上／中／左都維持透明，讓輪播圖片本身的顏色與解析度完整呈現。 */
+            background: linear-gradient(to left, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 3%, rgba(0,0,0,0) 15%);
             z-index: 3;
+        }
+        @media (max-width: 1024px) {
+            /* 手機／平板版標題與選單改成直式堆疊在畫面底部，改回底部漸層 */
+            .hero-bg-overlay {
+                background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.6) 100%);
+            }
         }
         .hero-content-wrapper {
             position: relative;
@@ -2715,7 +2723,7 @@
                     <span class="accent-line">全鏈路整合 ‧ 深耕全球大洋</span>
                 </h2>
                 <div class="about-hero-desc">
-                    <p>海沃控股集團（SEAWORTH HOLDING）成立於 2026 年，傳承逾四十載深厚根基，以整合遠洋漁業上下游資源、深化共善治理為使命，並建立「從深海到市場」的一體化全球供應網絡。</p>
+                    <p>海沃控股集團（SEAWORTH HOLDING）成立於 2025 年，傳承逾四十載深厚根基，以整合遠洋漁業上下游資源、深化共善治理為使命，並建立「從深海到市場」的一體化全球供應網絡。</p>
                 </div>
             </div>
         </div>
@@ -2761,7 +2769,7 @@
             <div class="sector-group group-2">
                 <div class="overlay-panel">
                     <img src="assets/logo-jubao.png" alt="巨寶漁業事業群 JUMBO" class="sector-brand-logo">
-                    <p class="panel-desc">專營圍網捕撈與現代化冷凍運搬船，引進前瞻船舶設計與國際勞工合規標準，打造頂尖海上移動冷鏈。</p>
+                    <p class="panel-desc">深耕圍網捕撈，引進新世代前瞻船舶設計，嚴格接軌國際勞工合規標準。</p>
                     <div class="panel-divider"></div>
                     <div class="panel-sub-label">技術與合規佈局</div>
                     <div class="tag-group">
@@ -3099,7 +3107,7 @@
         <div class="blanz-container">
             <div class="footer-logo-center">SEAWORTH</div>
             <p class="footer-poetic-statement">
-                海沃控股集團（SEAWORTH HOLDING）成立於 2026 年，傳承逾四十載深厚根基，以整合遠洋漁業上下游資源、深化共善治理為使命，建構全流程可追溯的全球海洋產業體系。
+                海沃控股集團（SEAWORTH HOLDING）成立於 2025 年，傳承逾四十載深厚根基，以整合遠洋漁業上下游資源、深化共善治理為使命，建構全流程可追溯的全球海洋產業體系。
             </p>
 
             <div class="footer-bottom-info">
