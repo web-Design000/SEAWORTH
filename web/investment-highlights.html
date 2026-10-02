@@ -74,6 +74,51 @@
             --ease-poetic: cubic-bezier(0.19, 1, 0.22, 1);
         }
 
+        /* ===== 字級 RWD 縮放 (Typography Responsive Scale) =====
+           :root 內每一個 --text-* 變數在此依斷點統一縮小，全站所有引用
+           var(--text-*) 的地方會自動跟著變小，不需要在個別 class 裡另外
+           覆寫 font-size（符合 design-system.md 規範 §2.3）。 */
+        @media (max-width: 1024px) {
+            :root {
+                --text-giga: 9rem;
+                --text-mega: 6.5rem;
+                --text-hero: 4.4rem;
+                --text-4xl: 3rem;
+                --text-3xl: 2.6rem;
+                --text-2xl: 1.9rem;
+                --text-xl: 1.6rem;
+                --text-lg: 1.2rem;
+
+                --space-section-md: 70px;
+                --space-section-lg: 90px;
+                --space-section-xl: 100px;
+            }
+        }
+        @media (max-width: 640px) {
+            :root {
+                --text-giga: 5.5rem;
+                --text-mega: 4.2rem;
+                --text-hero: 3rem;
+                --text-4xl: 2.4rem;
+                --text-3xl: 2rem;
+                --text-2xl: 1.6rem;
+                --text-xl: 1.4rem;
+                --text-lg: 1.1rem;
+                --text-base: 0.95rem;
+
+                --space-section-md: 32px;
+                --space-section-lg: 40px;
+                --space-section-xl: 48px;
+                --text-sm: 0.86rem;
+                --text-xs: 0.78rem;
+                --text-tiny: 0.7rem;
+
+                --space-section-md: 56px;
+                --space-section-lg: 70px;
+                --space-section-xl: 80px;
+            }
+        }
+
         * {
             margin: 0;
             padding: 0;

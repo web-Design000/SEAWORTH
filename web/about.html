@@ -74,6 +74,51 @@
             --ease-poetic: cubic-bezier(0.19, 1, 0.22, 1);
         }
 
+        /* ===== 字級 RWD 縮放 (Typography Responsive Scale) =====
+           :root 內每一個 --text-* 變數在此依斷點統一縮小，全站所有引用
+           var(--text-*) 的地方會自動跟著變小，不需要在個別 class 裡另外
+           覆寫 font-size（符合 design-system.md 規範 §2.3）。 */
+        @media (max-width: 1024px) {
+            :root {
+                --text-giga: 9rem;
+                --text-mega: 6.5rem;
+                --text-hero: 4.4rem;
+                --text-4xl: 3rem;
+                --text-3xl: 2.6rem;
+                --text-2xl: 1.9rem;
+                --text-xl: 1.6rem;
+                --text-lg: 1.2rem;
+
+                --space-section-md: 70px;
+                --space-section-lg: 90px;
+                --space-section-xl: 100px;
+            }
+        }
+        @media (max-width: 640px) {
+            :root {
+                --text-giga: 5.5rem;
+                --text-mega: 4.2rem;
+                --text-hero: 3rem;
+                --text-4xl: 2.4rem;
+                --text-3xl: 2rem;
+                --text-2xl: 1.6rem;
+                --text-xl: 1.4rem;
+                --text-lg: 1.1rem;
+                --text-base: 0.95rem;
+
+                --space-section-md: 32px;
+                --space-section-lg: 40px;
+                --space-section-xl: 48px;
+                --text-sm: 0.86rem;
+                --text-xs: 0.78rem;
+                --text-tiny: 0.7rem;
+
+                --space-section-md: 56px;
+                --space-section-lg: 70px;
+                --space-section-xl: 80px;
+            }
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -2957,6 +3002,13 @@
     @media (max-width: 640px) {
         .about-division-card-img { height: 260px; margin-bottom: 20px; }
     }
+    .about-manifesto-img, .about-manifesto-text { min-width: 300px; }
+    .about-manifesto-img { margin-bottom: -180px; margin-left: -40px; }
+    @media (max-width: 768px) {
+        .about-manifesto-flex { flex-direction: column; gap: 32px; }
+        .about-manifesto-img, .about-manifesto-text { min-width: 0; width: 100%; }
+        .about-manifesto-img { margin-bottom: 0; margin-left: 0; }
+    }
 
     /* 滿版三塊照片橫列：同一張照片切成三塊、中間留小縫隙。
        刻意挑選裁切範圍避開船隻本體，而非單純三等分——
@@ -3005,7 +3057,7 @@
         .about-photo-strip { grid-template-columns: 1fr; margin: 28px 0 48px; gap: 8px; }
         .about-photo-strip-item { height: 240px; --y: 0px !important; }
         .about-photo-strip-item:nth-child(2) { height: 240px; }
-        .about-pullquote { margin-bottom: 80px; }
+        .about-pullquote { margin-bottom: 80px; font-size: var(--text-base); }
     }
 </style>
 
@@ -3072,10 +3124,10 @@
         <div class="reveal" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--c-ocean-deep); z-index: -1;"></div>
         
         <div class="blanz-container" style="max-width: 1300px; position: relative; z-index: 2;">
-            <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 80px;">
-                
+            <div class="about-manifesto-flex" style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 80px;">
+
                 <!-- 左側圖片：上方保留在色塊內，下方大幅超出色塊，並移除陰影 -->
-                <div class="reveal" style="flex: 1; min-width: 300px; margin-bottom: -180px; margin-left: -40px;">
+                <div class="reveal about-manifesto-img" style="flex: 1;">
                     <div class="parallax-wrap" style="width: 100%; transition: transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);">
                         <img src="assets/about-manifesto-photo.jpg" alt="關於海沃" style="width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 4px;">
                     </div>
@@ -3099,7 +3151,7 @@
                 </script>
                 
                 <!-- 右側文字 -->
-                <div style="flex: 1.5; min-width: 300px; padding-top: 20px;">
+                <div class="about-manifesto-text" style="flex: 1.5; padding-top: 20px;">
                     <div class="sp-intro" style="max-width: 800px;">
                         <p class="reveal delay-1" style="color: rgba(255, 255, 255, 0.85); margin-bottom: 24px; font-size: var(--text-base); text-align: justify;">歷經逾四十載的砥礪深耕，本集團蛻變為涵蓋智慧造船、遠洋漁撈、冷鏈物流及國際貿易的多元控股集團。我們堅持「專業、誠信、創新、永續」的核心價值，優化企業內控與合規治理，全面引領產業轉型升級。</p>
                         <p class="reveal delay-2" style="color: rgba(255, 255, 255, 0.85); margin-bottom: 24px; font-size: var(--text-base); text-align: justify;">迎向全球漁業資源與環境永續的新局，海沃積極推動數位化船隊管理，落實 FISH、MSC 等國際永續認證與漁業組織規範；同時率先導入海上遠距醫療機制，以具體行動守護船員人權與職業安全。</p>
