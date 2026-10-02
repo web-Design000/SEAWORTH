@@ -2681,7 +2681,8 @@
         .sp-media-row.reverse .sp-media-frame { order: 0; }
     }
     @media (max-width: 640px) {
-        .sp-hero { height: 40vh; min-height: 320px; }
+        .sp-hero { height: 24vh; min-height: 180px; margin-top: 64px; align-items: center; }
+        .sp-hero-inner { padding: 0 24px; }
         .sp-hero-title { font-size: var(--text-2xl); }
         .sp-grid-3, .sp-grid-2 { grid-template-columns: 1fr; }
         .sp-location-grid { grid-template-columns: 1fr; }
@@ -2820,7 +2821,8 @@
     .sp-idle-desc { font-size: var(--text-sm); font-weight: 300; color: var(--c-muted); line-height: 1.9; max-width: 320px; margin: 0; }
 
     @media (max-width:900px){
-        .sp-stage { height: auto; min-height: 0; }
+        html { scroll-snap-type: none; }
+        .sp-stage { height: auto; min-height: 0; scroll-snap-align: none; }
         .sp-content-row { grid-template-columns: 1fr; justify-items: center; gap: 36px; padding: 80px 28px 60px; }
         .sp-sphere-col { grid-column: 1; flex-direction: row; }
         .sp-text-col { grid-column: 1; text-align: center; }

@@ -2641,9 +2641,16 @@
         .sp-stat-row { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; }
         .sp-media-row { grid-template-columns: 1fr; gap: 36px; }
         .sp-media-row.reverse .sp-media-frame { order: 0; }
+        .sp-media-frame { 
+            height: auto;
+            width: 100vw;
+            margin-left: calc(50% - 50vw);
+        }
+        .sp-media-frame img { height: auto; object-fit: contain; display: block; }
     }
     @media (max-width: 640px) {
-        .sp-hero { height: 40vh; min-height: 320px; }
+        .sp-hero { height: 24vh; min-height: 180px; margin-top: 64px; align-items: center; }
+        .sp-hero-inner { padding: 0 24px; }
         .sp-hero-title { font-size: var(--text-2xl); }
         .sp-grid-3, .sp-grid-2 { grid-template-columns: 1fr; }
         .sp-location-grid { grid-template-columns: 1fr; }
@@ -2651,6 +2658,10 @@
         .sp-numbered-item { grid-template-columns: 1fr; gap: 8px; }
         .sp-accordion-head-left { gap: 12px; }
         .sp-cta-panel { padding: 70px 24px; }
+        .sp-section, .blanz-section { padding: 40px 0; }
+        .sp-intro[style] { margin-top: 30px !important; }
+        .sp-stat-row[style] { margin-bottom: 30px !important; }
+        .sp-crosslink-row { margin-top: 30px; padding-top: 20px; }
     }
 </style>
 
@@ -2930,7 +2941,7 @@
 
         <div class="sp-media-row reveal">
             <div class="sp-media-frame">
-                <img src="assets/enterprise-map.jpg" alt="海沃控股集團全球事業版圖">
+                <img src="assets/enterprise-map.jpg" alt="海沃控股集團全球事業版圖" onclick="openLightbox(this.src)" style="cursor: zoom-in;" title="點擊放大圖片">
             </div>
             <div class="sp-media-text">
                 <h3>鏈結全球大洋資源</h3>
@@ -3164,6 +3175,38 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
         })();
+    </script>
+
+    <!-- Lightbox Overlay -->
+    <style>
+        .lightbox-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.9); z-index: 10000;
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .lightbox-overlay.is-active { opacity: 1; visibility: visible; }
+        .lightbox-content { max-width: 95vw; max-height: 95vh; object-fit: contain; transform: scale(0.95); transition: transform 0.3s ease; cursor: zoom-out; }
+        .lightbox-overlay.is-active .lightbox-content { transform: scale(1); }
+        .lightbox-close {
+            position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; cursor: pointer; z-index: 10001; font-family: sans-serif;
+        }
+    </style>
+    <div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightboxImg" src="" alt="Zoomed Map">
+    </div>
+    <script>
+        function openLightbox(src) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightboxOverlay').classList.add('is-active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            document.getElementById('lightboxOverlay').classList.remove('is-active');
+            document.body.style.overflow = '';
+        }
     </script>
 </body>
 </html>
