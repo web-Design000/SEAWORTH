@@ -2642,13 +2642,15 @@
         .sp-media-row.reverse .sp-media-frame { order: 0; }
     }
     @media (max-width: 640px) {
+        .blanz-section.sp-section { padding: 40px 0; }
         .sp-hero { height: 24vh; min-height: 180px; margin-top: 64px; align-items: center; }
         .sp-hero-inner { padding: 0 24px; }
         .sp-hero-title { font-size: var(--text-2xl); }
         .sp-grid-3, .sp-grid-2 { grid-template-columns: 1fr; }
         .sp-location-grid { grid-template-columns: 1fr; }
         .sp-stat-row { grid-template-columns: repeat(2, 1fr); }
-        .sp-numbered-item { grid-template-columns: 1fr; gap: 8px; }
+        .sp-numbered-item { grid-template-columns: 1fr; gap: 8px; padding: 24px 0; }
+        .sp-section-head[style], .sp-numbered-list[style] { margin-bottom: 32px !important; }
         .sp-accordion-head-left { gap: 12px; }
         .sp-cta-panel { padding: 70px 24px; }
     }
@@ -2908,7 +2910,7 @@
     <section class="blanz-section sp-section"><div class="blanz-container">
         
         <div class="sp-lede reveal">公益與地方回饋、海洋環境保護、船員福祉人權</div>
-        <div class="projects-4-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <div class="projects-4-grid">
             <div class="project-card-item reveal">
                     <div class="project-thumb-box">
                         <img src="assets/news-sustain-01.jpg" alt="旗下船隊全面導入非纏結集魚器與低碳導航技術">

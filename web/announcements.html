@@ -2514,13 +2514,15 @@
         .sp-media-row.reverse .sp-media-frame { order: 0; }
     }
     @media (max-width: 640px) {
+        .blanz-section.sp-section { padding: 40px 0; }
         .sp-hero { height: 24vh; min-height: 180px; margin-top: 60px; align-items: center; }
         .sp-hero-inner { padding: 0 24px; }
         .sp-hero-title { font-size: var(--text-2xl); }
         .sp-grid-3, .sp-grid-2 { grid-template-columns: 1fr; }
         .sp-location-grid { grid-template-columns: 1fr; }
         .sp-stat-row { grid-template-columns: repeat(2, 1fr); }
-        .sp-numbered-item { grid-template-columns: 1fr; gap: 8px; }
+        .sp-numbered-item { grid-template-columns: 1fr; gap: 8px; padding: 24px 0; }
+        .sp-section-head[style], .sp-numbered-list[style] { margin-bottom: 32px !important; }
         .sp-accordion-head-left { gap: 12px; }
         .sp-cta-panel { padding: 70px 24px; }
     }
@@ -2928,7 +2930,7 @@
 
         <!-- ⚠️ 以下 5 則（02～06）為版面示意用假資料，只為了讓你預覽 6 篇文章
              滿版時的捲動視覺效果，正式上線前請整批替換成真實公告內容或刪除。 -->
-        <div class="projects-4-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <div class="projects-4-grid">
             <a class="project-card-item reveal" href="article-seaworth-founding.html" style="color: inherit; text-decoration: none;">
                     <div class="project-thumb-box">
                         <img src="assets/news-corporate.png" alt="海沃控股集團正式成立，整合遠洋全產業鏈生態系">

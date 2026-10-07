@@ -95,6 +95,7 @@
             }
         }
         @media (max-width: 640px) {
+        .blanz-section.sp-section { padding: 40px 0; }
             :root {
                 --text-giga: 5.5rem;
                 --text-mega: 4.2rem;
@@ -489,6 +490,7 @@
             .logo-mobile { display: block; }
         }
         @media (max-width: 640px) {
+        .blanz-section.sp-section { padding: 40px 0; }
             .blanz-nav-inner { padding: 12px 20px; }
             .nav-mobile-panel { padding: 4px 22px 50px; }
         }
@@ -724,6 +726,7 @@
             .slide-nav-item { width: 100%; max-width: 320px; }
         }
         @media (max-width: 640px) {
+        .blanz-section.sp-section { padding: 40px 0; }
             .hero-big-title { font-size: var(--text-3xl); }
             .hero-big-subtitle { font-size: var(--text-tiny); top: 0; display: block; margin-top: 8px; }
             .hero-big-title-group { flex-direction: column; gap: 0; }
@@ -1231,6 +1234,7 @@
             }
         }
         @media (max-width: 640px) {
+        .blanz-section.sp-section { padding: 40px 0; }
             .blanz-nav-menu {
                 display: none;
             }
@@ -1352,6 +1356,7 @@
             }
         }
         @media (max-width: 640px) {
+        .blanz-section.sp-section { padding: 40px 0; }
             .projects-4-grid {
                 grid-template-columns: 1fr;
             }
@@ -2209,6 +2214,7 @@
             .flagship-cap { position: static; margin-top: 40px; }
         }
         @media (max-width: 640px) {
+        .blanz-section.sp-section { padding: 40px 0; }
             .flagship-photo { width: 200px; }
             .flagship-num { font-size: 4rem; }
         }
@@ -2666,13 +2672,15 @@
         .sp-media-row.reverse .sp-media-frame { order: 0; }
     }
     @media (max-width: 640px) {
+        .blanz-section.sp-section { padding: 40px 0; }
         .sp-hero { height: 24vh; min-height: 180px; margin-top: 64px; align-items: center; }
         .sp-hero-inner { padding: 0 24px; }
         .sp-hero-title { font-size: var(--text-2xl); }
         .sp-grid-3, .sp-grid-2 { grid-template-columns: 1fr; }
         .sp-location-grid { grid-template-columns: 1fr; }
         .sp-stat-row { grid-template-columns: repeat(2, 1fr); }
-        .sp-numbered-item { grid-template-columns: 1fr; gap: 8px; }
+        .sp-numbered-item { grid-template-columns: 1fr; gap: 8px; padding: 24px 0; }
+        .sp-section-head[style], .sp-numbered-list[style] { margin-bottom: 32px !important; }
         .sp-accordion-head-left { gap: 12px; }
         .sp-cta-panel { padding: 70px 24px; }
     }
@@ -3001,16 +3009,19 @@
         .about-division-card-img { height: 340px; }
     }
     @media (max-width: 640px) {
+        .blanz-section.sp-section { padding: 40px 0; }
         .about-division-card-img { height: 260px; margin-bottom: 20px; }
+        .about-divisions-grid { margin-bottom: 40px; }
     }
     .about-manifesto-section { margin: 0 0 200px; }
+    .about-manifesto-flex { gap: 80px; }
     .about-manifesto-img, .about-manifesto-text { min-width: 300px; }
     .about-manifesto-img { margin-bottom: -180px; margin-left: -40px; }
     @media (max-width: 768px) {
         .about-manifesto-section { margin-bottom: 60px; }
-        .about-manifesto-flex { flex-direction: column; gap: 32px; }
+        .about-manifesto-flex { flex-direction: column; gap: 20px; }
         .about-manifesto-img, .about-manifesto-text { min-width: 0; width: 100%; }
-        .about-manifesto-img { margin-bottom: 0; margin-left: 0; }
+        .about-manifesto-img { margin-bottom: 0; max-width: 75%; margin-left: auto; margin-right: auto; }
     }
 
     /* 滿版三塊照片橫列：同一張照片切成三塊、中間留小縫隙。
@@ -3063,6 +3074,7 @@
         .about-pullquote { margin: 40px auto 48px; font-size: var(--text-base); }
     }
     @media (max-width: 640px) {
+        .blanz-section.sp-section { padding: 40px 0; }
         .about-photo-strip { gap: 4px; }
         .about-photo-strip-item { height: 100px; }
         .about-photo-strip-item:nth-child(2) { height: 125px; }
@@ -3132,7 +3144,7 @@
         <div class="reveal" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--c-ocean-deep); z-index: -1;"></div>
         
         <div class="blanz-container" style="max-width: 1300px; position: relative; z-index: 2;">
-            <div class="about-manifesto-flex" style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 80px;">
+            <div class="about-manifesto-flex" style="display: flex; flex-wrap: wrap; align-items: flex-start;">
 
                 <!-- 左側圖片：上方保留在色塊內，下方大幅超出色塊，並移除陰影 -->
                 <div class="reveal about-manifesto-img" style="flex: 1;">
@@ -3146,6 +3158,7 @@
                         const wrap = document.querySelector('.parallax-wrap');
                         if (wrap) {
                             window.addEventListener('scroll', () => {
+                                if (window.innerWidth <= 768) return;
                                 const rect = wrap.parentElement.getBoundingClientRect();
                                 const windowHeight = window.innerHeight;
                                 if (rect.top <= windowHeight && rect.bottom >= 0) {
