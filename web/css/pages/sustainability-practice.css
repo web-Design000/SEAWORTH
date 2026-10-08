@@ -403,6 +403,16 @@ body.nav-open {
             .projects-4-grid {
                 grid-template-columns: 1fr;
             }
+            .project-thumb-box {
+                height: 220px;
+            }
+            .project-card-item:hover {
+                transform: none !important;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            }
+            .project-card-item:hover .project-thumb-box img {
+                transform: none;
+            }
         }
 
 /* ----- 三事業 版型實驗 B CSS (深色背景) ----- */

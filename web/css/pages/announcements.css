@@ -1066,6 +1066,9 @@ body.nav-open .nav-mobile-panel {
             letter-spacing: 0.1em;
         }
 
+/* 手機版導覽：Logo 圖片切換（桌機用純文字版，手機用完整組合版） */
+        .logo-mobile { display: none; }
+
 @media (max-width: 1024px) {
             .nav-left-area .nav-split-menu,
             .nav-right-area .nav-split-menu,
@@ -1082,7 +1085,6 @@ body.nav-open .nav-mobile-panel {
                 align-items: center;
                 padding: 14px 24px;
             }
+            .logo-desktop { display: none; }
+            .logo-mobile { display: block; }
         }
-
-/* 共用導覽列含手機版 Logo，此頁原本沒有手機版 Logo 樣式，維持只顯示桌機版 */
-.logo-mobile { display: none; }
