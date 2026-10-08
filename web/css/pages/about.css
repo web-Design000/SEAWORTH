@@ -1129,6 +1129,11 @@ body.nav-open {
         text-transform: uppercase;
     }
 
+/* 320px 這類最窄的手機，最小字級 3.5rem 的「ABOUT SEAWORTH」會比內容寬度寬而撐出畫面 */
+@media (max-width: 360px) {
+    .about-manifesto-title { font-size: 2.9rem; }
+}
+
 .about-manifesto-title span {
         font-family: var(--font-serif); 
         font-size: clamp(1.8rem, 4vw, var(--text-2xl)); 
@@ -1246,7 +1251,7 @@ body.nav-open {
 
 .about-photo-strip-item {
         height: 350px;
-        background-image: url('assets/news/news-corporate.jpg');
+        background-image: url('../../assets/news/news-corporate.jpg');
         background-repeat: no-repeat;
         background-position: 0% 100%;
         --y: 0px;
