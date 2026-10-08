@@ -753,6 +753,7 @@
             .hero-big-title { font-size: var(--text-3xl); }
             .hero-big-subtitle { font-size: var(--text-tiny); top: 0; display: block; margin-top: 8px; }
             .hero-big-title-group { flex-direction: column; gap: 0; }
+            .hero-bottom-area { gap: 16px; }
             .hero-content-wrapper { padding-left: 24px; padding-right: 24px; }
             .hero-slide-dots { padding-right: 0px; }
         }
@@ -2667,10 +2668,22 @@
     <section class="blanz-hero">
         <div class="hero-bg-wrapper">
             <!-- 底圖，為了看到切換效果加上濾鏡，實際上可以換成不同的圖片 src -->
-            <img src="assets/hero-wave.jpg" alt="Slide 1" class="hero-bg-img active" style="animation-duration: 4400ms;">
-            <img src="assets/hero-banner-02.jpg" alt="Slide 2" class="hero-bg-img" style="filter: none;">
-            <img src="assets/hero-banner-04.jpg" alt="Slide 3" class="hero-bg-img" style="filter: none;">
-            <img src="assets/hero-banner-01.jpg" alt="Slide 4" class="hero-bg-img" style="filter: none;">
+            <picture>
+                <source media="(max-width: 640px)" srcset="assets/hero-mobile-01.jpg">
+                <img src="assets/hero-wave.jpg" alt="Slide 1" class="hero-bg-img active" style="animation-duration: 4400ms;">
+            </picture>
+            <picture>
+                <source media="(max-width: 640px)" srcset="assets/hero-mobile-02.jpg">
+                <img src="assets/hero-banner-02.jpg" alt="Slide 2" class="hero-bg-img" style="filter: none;">
+            </picture>
+            <picture>
+                <source media="(max-width: 640px)" srcset="assets/hero-mobile-03.jpg">
+                <img src="assets/hero-banner-04.jpg" alt="Slide 3" class="hero-bg-img" style="filter: none;">
+            </picture>
+            <picture>
+                <source media="(max-width: 640px)" srcset="assets/hero-mobile-04.jpg">
+                <img src="assets/hero-banner-01.jpg" alt="Slide 4" class="hero-bg-img" style="filter: none;">
+            </picture>
             <canvas class="hero-morph-canvas" id="heroMorphCanvas"></canvas>
             <div class="hero-bg-overlay"></div>
         </div>
@@ -3422,7 +3435,7 @@
             // 貼圖快取：同一張圖只上傳一次 GPU，換頁時直接重複使用，避免每次轉場都重新上傳造成卡頓
             const textureCache = new Map();
             function getTexture(img) {
-                const cached = textureCache.get(img.src);
+                const cached = textureCache.get(img.currentSrc || img.src);
                 if (cached) return cached;
                 const { source, width, height } = downscaleForTexture(img);
                 const tex = createTexture();
@@ -3430,7 +3443,7 @@
                 gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
                 gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, source);
                 const entry = { tex, width, height };
-                textureCache.set(img.src, entry);
+                textureCache.set(img.currentSrc || img.src, entry);
                 return entry;
             }
 
