@@ -1277,8 +1277,10 @@ body.nav-open {
 @media (max-width:900px){
         html { scroll-snap-type: none; }
         .sp-stage { height: auto; min-height: 0; scroll-snap-align: none; }
-        .sp-content-row { grid-template-columns: 1fr; justify-items: center; gap: 36px; padding: 80px 28px 60px; }
-        .sp-sphere-col { grid-column: 1; flex-direction: row; }
+        .sp-content-row { grid-template-columns: minmax(0, 1fr); justify-items: center; gap: 36px; padding: 80px 28px 60px; }
+        .sp-sphere-col { grid-column: 1; flex-direction: row; gap: 12px; }
+        /* 三顆圓球固定 112px 加間距會比手機寬度寬而撐出畫面，改依螢幕寬度縮放 */
+        .sp-sphere { width: clamp(76px, 25vw, 140px); height: clamp(76px, 25vw, 140px); }
         .sp-text-col { grid-column: 1; text-align: center; }
         .sp-headline { white-space: normal; }
         .sp-brand-lockup { justify-content: center; }
