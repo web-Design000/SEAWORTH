@@ -388,6 +388,12 @@ body.nav-open {
             .form-2-split {
                 grid-template-columns: 1fr;
             }
+            .btn-poetic-submit {
+                display: block;
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+            }
             .hero-panorama-stage {
                 height: 48vh;
             }
