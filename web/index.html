@@ -544,7 +544,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.85);
+            filter: none;
             opacity: 0;
             transition: opacity 1.5s ease-in-out;
             transform: scale(1.02);
@@ -579,15 +579,15 @@
         .hero-bg-overlay {
             position: absolute;
             inset: 0;
-            /* 只在右側（圓點指示器＋導覽選單所在區域）保留深色漸層，
-               其餘上／中／左都維持透明，讓輪播圖片本身的顏色與解析度完整呈現。 */
-            background: linear-gradient(to left, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 3%, rgba(0,0,0,0) 15%);
+            /* 左～中間完全透明，只在右側（圓點指示器＋導覽選單所在區域）
+               漸增到 10% 的淡灰，讓按鈕清楚又不壓住圖片。 */
+            background: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.1) 100%);
             z-index: 3;
         }
         @media (max-width: 1024px) {
             /* 手機／平板版標題與選單改成直式堆疊在畫面底部，改回底部漸層 */
             .hero-bg-overlay {
-                background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.6) 100%);
+                background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.3) 100%);
             }
         }
         .hero-content-wrapper {
@@ -2531,7 +2531,7 @@
                 <ul class="nav-split-menu">
                     <li class="nav-lang-picker has-dropdown">
                         <a href="#" style="display: flex; align-items: center; gap: 4px;">
-                            TW <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i>
+                            English <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i>
                         </a>
                         <div class="nav-dropdown">
                             <div class="nav-dropdown-inner">
@@ -2668,9 +2668,9 @@
         <div class="hero-bg-wrapper">
             <!-- 底圖，為了看到切換效果加上濾鏡，實際上可以換成不同的圖片 src -->
             <img src="assets/hero-wave.jpg" alt="Slide 1" class="hero-bg-img active" style="animation-duration: 4400ms;">
-            <img src="assets/hero-banner-02.jpg" alt="Slide 2" class="hero-bg-img" style="filter: brightness(0.85);">
-            <img src="assets/hero-banner-04.jpg" alt="Slide 3" class="hero-bg-img" style="filter: brightness(0.85);">
-            <img src="assets/hero-banner-01.jpg" alt="Slide 4" class="hero-bg-img" style="filter: brightness(0.85);">
+            <img src="assets/hero-banner-02.jpg" alt="Slide 2" class="hero-bg-img" style="filter: none;">
+            <img src="assets/hero-banner-04.jpg" alt="Slide 3" class="hero-bg-img" style="filter: none;">
+            <img src="assets/hero-banner-01.jpg" alt="Slide 4" class="hero-bg-img" style="filter: none;">
             <canvas class="hero-morph-canvas" id="heroMorphCanvas"></canvas>
             <div class="hero-bg-overlay"></div>
         </div>
@@ -3022,15 +3022,15 @@
                     <ul class="contact-channels-list">
                         <li>
                             <span class="channel-label">投資人關係 (IR)</span>
-                            <a href="mailto:invest@seaworth.com" class="channel-mail">invest@seaworth.com</a>
+                            <a href="mailto:invest@seaworthholding.com" class="channel-mail">invest@seaworthholding.com</a>
                         </li>
                         <li>
                             <span class="channel-label">商務合作與業務洽詢</span>
-                            <a href="mailto:partnership@seaworth.com" class="channel-mail">partnership@seaworth.com</a>
+                            <a href="mailto:partnership@seaworthholding.com" class="channel-mail">partnership@seaworthholding.com</a>
                         </li>
                         <li>
                             <span class="channel-label">公共關係與媒體事務</span>
-                            <a href="mailto:press@seaworth.com" class="channel-mail">press@seaworth.com</a>
+                            <a href="mailto:press@seaworthholding.com" class="channel-mail">press@seaworthholding.com</a>
                         </li>
                     </ul>
 
@@ -3050,9 +3050,9 @@
                                     <i data-lucide="chevron-down" class="custom-select-chevron"></i>
                                 </button>
                                 <ul class="custom-select-list" role="listbox" tabindex="-1">
-                                    <li role="option" data-value="IR">投資人關係洽詢 (invest@seaworth.com)</li>
-                                    <li role="option" data-value="Partnership">商務合作與業務洽詢 (partnership@seaworth.com)</li>
-                                    <li role="option" data-value="PR">公共關係與媒體事務 (press@seaworth.com)</li>
+                                    <li role="option" data-value="IR">投資人關係洽詢 (invest@seaworthholding.com)</li>
+                                    <li role="option" data-value="Partnership">商務合作與業務洽詢 (partnership@seaworthholding.com)</li>
+                                    <li role="option" data-value="PR">公共關係與媒體事務 (press@seaworthholding.com)</li>
                                     <li role="option" data-value="Other">其他事宜</li>
                                 </ul>
                                 <input type="hidden" id="serviceSelect" name="service" required>
@@ -3356,8 +3356,6 @@
                     vec4 colA = texture2D(uTexA, clamp(sA, 0.001, 0.999));
                     vec4 colB = texture2D(uTexB, clamp(sB, 0.001, 0.999));
                     vec3 outColor = mix(colA.rgb, colB.rgb, m);
-                    // 對應 <img> 的 CSS filter: brightness(0.85)，避免轉場時畫面突然變亮又暗回去
-                    outColor *= 0.85;
                     gl_FragColor = vec4(outColor, 1.0);
                 }
             `;
